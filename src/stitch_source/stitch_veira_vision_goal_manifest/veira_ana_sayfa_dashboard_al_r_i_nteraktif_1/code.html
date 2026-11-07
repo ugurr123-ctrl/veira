@@ -1,0 +1,533 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><title>Veira</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'background': '#080A16', 'on-primary': '#1000a9', 'on-error-container': '#ffdad6', 'on-tertiary-container': '#002d40', 'on-primary-fixed': '#07006c', 'on-secondary-fixed-variant': '#574500', 'surface-container': '#14172B', 'on-primary-fixed-variant': '#2f2ebe', 'tertiary': '#7bd0ff', 'on-tertiary-fixed-variant': '#004c69', 'tertiary-container': '#009bd1', 'surface-variant': '#20243d', 'on-tertiary': '#00354a', 'inverse-primary': '#494bd6', 'secondary': '#F5D061', 'on-background': '#dee0ff', 'surface-container-high': '#1e223c', 'primary-fixed-dim': '#c0c1ff', 'tertiary-fixed-dim': '#7bd0ff', 'primary-fixed': '#e1e0ff', 'on-error': '#690005', 'on-primary-container': '#0d0096', 'secondary-fixed-dim': '#F5D061', 'tertiary-fixed': '#c4e7ff', 'surface-container-low': '#0e1122', 'on-surface': '#dee0ff', 'secondary-fixed': '#ffe089', 'surface-bright': '#2b3052', 'outline-variant': '#3a3e5c', 'surface': '#080A16', 'inverse-surface': '#dee0ff', 'error-container': '#93000a', 'surface-container-highest': '#272c4a', 'outline': '#7a7e9e', 'primary-container': '#8083ff', 'surface-dim': '#080A16', 'primary': '#c0c1ff', 'on-surface-variant': '#9fa2be', 'surface-tint': '#c0c1ff', 'error': '#ffb4ab', 'on-secondary': '#3d2f00', 'surface-container-lowest': '#05060f', 'on-secondary-container': '#fffbff', 'inverse-on-surface': '#2b2f46', 'on-tertiary-fixed': '#001e2c', 'secondary-container': '#634d00' }, borderRadius: { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', '2xl': '1rem', 'full': '9999px' }, spacing: { 'space-md': '1rem', 'gutter': '1rem', 'margin-lg': '1.5rem', 'space-lg': '1.5rem', 'space-xs': '0.25rem', 'margin': '1.25rem', 'space-sm': '0.5rem', 'gutter-sm': '0.75rem', 'space-xl': '2rem' }, fontFamily: { 'body-md': ['Inter', 'sans-serif'], 'label-md': ['Inter', 'sans-serif'], 'headline-md': ['Playfair Display', 'serif'], 'title-lg': ['Inter', 'sans-serif'], 'title-md': ['Inter', 'sans-serif'], 'display-sm': ['Playfair Display', 'serif'], 'headline-lg-mobile': ['Playfair Display', 'serif'], 'headline-lg': ['Playfair Display', 'serif'], 'display-lg': ['Playfair Display', 'serif'], 'body-lg': ['Inter', 'sans-serif'], 'label-lg': ['Inter', 'sans-serif'], 'label-sm': ['Inter', 'sans-serif'], 'body-sm': ['Inter', 'sans-serif'] }, fontSize: { 'body-md': ['14px', { 'lineHeight': '20px', 'fontWeight': '400' }], 'label-md': ['12px', { 'lineHeight': '16px', 'letterSpacing': '0.02em', 'fontWeight': '500' }], 'headline-md': ['20px', { 'lineHeight': '28px', 'fontWeight': '500' }], 'title-lg': ['18px', { 'lineHeight': '24px', 'letterSpacing': '-0.01em', 'fontWeight': '600' }], 'title-md': ['16px', { 'lineHeight': '22px', 'fontWeight': '600' }], 'display-sm': ['32px', { 'lineHeight': '40px', 'letterSpacing': '-0.01em', 'fontWeight': '600' }], 'headline-lg-mobile': ['22px', { 'lineHeight': '30px', 'letterSpacing': '-0.01em', 'fontWeight': '500' }], 'headline-lg': ['28px', { 'lineHeight': '36px', 'letterSpacing': '-0.01em', 'fontWeight': '500' }], 'display-lg': ['40px', { 'lineHeight': '48px', 'letterSpacing': '-0.02em', 'fontWeight': '600' }], 'body-lg': ['16px', { 'lineHeight': '24px', 'fontWeight': '400' }], 'label-lg': ['14px', { 'lineHeight': '20px', 'letterSpacing': '0.01em', 'fontWeight': '500' }], 'label-sm': ['11px', { 'lineHeight': '14px', 'letterSpacing': '0.04em', 'fontWeight': '600' }], 'body-sm': ['12px', { 'lineHeight': '16px', 'fontWeight': '400' }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#080A16;color:#dee0ff;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+  /* Ripple & Feedback effects */
+  .tap-target {
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .ripple-circle {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple-anim 0.55s cubic-bezier(0.1, 0.7, 0.1, 1) forwards;
+    background: radial-gradient(circle, rgba(245,208,97,0.3) 0%, rgba(192,193,255,0.12) 70%, transparent 100%);
+    pointer-events: none;
+  }
+  @keyframes ripple-anim {
+    to {
+      transform: scale(3.2);
+      opacity: 0;
+    }
+  }
+  /* Audio bar wave */
+  .audio-bar {
+    animation: wave-bar 0.8s ease-in-out infinite alternate;
+  }
+  .audio-bar:nth-child(2) { animation-delay: 0.18s; }
+  .audio-bar:nth-child(3) { animation-delay: 0.36s; }
+  .audio-bar:nth-child(4) { animation-delay: 0.12s; }
+  @keyframes wave-bar {
+    0% { height: 3px; }
+    100% { height: 13px; }
+  }
+  /* Particle sparkle */
+  .confetti-particle {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
+    animation: pop-particle 0.8s cubic-bezier(0.12, 0, 0.39, 0) forwards;
+  }
+  @keyframes pop-particle {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--dx), var(--dy)) scale(0); opacity: 0; }
+  }
+</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-screen h-auto select-none"><header class="fixed top-0 w-full z-50 pt-safe bg-[#080A16]/85 backdrop-blur-xl border-b border-surface-variant/30"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-2 cursor-pointer select-none" id="brand-header"><img alt="Veira Celestial Logo" class="h-8 w-8 object-contain transition-transform active:scale-95 duration-200 rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChst6p9MJzfQQfrA_4McOfjT1GNsc9_OFu0oIXpJ8knn6bGLrsIuMb2L94hQPra2UE17rHqpC10UmmXSYamqYwP2Y1vMWguKTbNWar5lqMn8Dq0b2jLXUiXxtybLILZ3wgEol1ao3yCWnSsDhM2XoHDx-xRFpDq5fUeAf84RezGbeOTPzjs_x5Tc6j5q6aELtJVAanqXFKTx3GOKXjDnPGiElCvR_UtjjSWqPBYeOXXcYLUs7Pejls"><span class="font-headline-md text-headline-md text-secondary tracking-tight font-serif">Veira</span></div><div class="flex items-center"><span class="font-title-md text-title-md text-on-surface text-center tracking-tight" id="screen-header-title">Home</span></div><div class="flex items-center"><a class="w-10 h-10 flex items-center justify-center rounded-full transition-transform active:scale-90" data-path="settings" href="#" id="profile-avatar-btn"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-secondary/40 active:ring-secondary transition-all shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi3a-psaNJ_QU-72Xk020WcxXT0weHKVr0dxtketi3AfYdGjQE0pkeV1TxmQm84hVhT0dDYaR1K3Vn7ar1Vow9SCF_CzgefPXCrNnOXcCjwHeklD47ZVj8Szf5GaDskIOBEcZn5UQKJGj4wtMBLcJXvks2x9qZc2WAz3X8IE2W-LHjlqmq2AKvrUa2zYibLT77AjUqNtzdsFtgZh2JvTDD3mZD5GPHtnkbRFBoO4t1P2LSK3m2QjJ3"></a></div></div></header><main class="flex-1 flex flex-col relative w-full px-margin pt-16 bg-surface pb-28"><div class="flex flex-col w-full gap-space-lg">
+<!-- Üst Selamlama Alanı -->
+<div class="flex items-center justify-between gap-space-sm pt-2">
+<div class="flex flex-col min-w-0 flex-1 pr-2"><div class="flex items-center gap-2 flex-wrap"><h1 class="font-headline-lg-mobile text-[24px] text-on-surface font-headline-md tracking-tight font-serif">İyi Akşamlar, Selin</h1><span class="text-secondary select-none text-[18px] flex-shrink-0 animate-pulse">✨</span></div><p class="font-body-sm text-[13px] text-on-surface-variant mt-0.5 tracking-normal">Zihinsel disiplin akışındasın</p></div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary-container/40 border border-secondary/25 shadow-sm transition-all duration-300 active:scale-95 cursor-pointer flex-shrink-0 select-none hover:bg-secondary-container/60 tap-target" id="streak-pill">
+<span class="material-symbols-outlined text-[17px] text-secondary transition-transform duration-300" id="streak-fire" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-label-md text-label-md text-secondary-fixed font-semibold tracking-tight whitespace-nowrap" id="streak-text">14 Gün Seri</span>
+</div>
+</div>
+<!-- Hero Kart: Günün Niyeti & Afirmasyonu -->
+<section class="relative overflow-hidden rounded-2xl bg-surface-container/70 backdrop-blur-2xl p-space-lg shadow-xl shadow-surface-container-lowest/60 border border-surface-variant/40">
+<div class="absolute -top-12 -right-12 w-44 h-44 rounded-full bg-primary-container/10 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-10 -left-10 w-36 h-36 rounded-full bg-secondary/10 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-3.5">
+<div class="flex items-center justify-between gap-2"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-secondary" style="font-variation-settings: 'FILL' 1;">sparkles</span><span class="font-label-sm text-[11px] uppercase tracking-wider text-secondary font-semibold">Günün Niyeti &amp; Afirmasyonu</span></div><button class="relative flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-variant/80 text-on-surface hover:text-secondary hover:bg-surface-variant transition-all active:scale-95 shadow-sm flex-shrink-0 border border-outline-variant/30 select-none cursor-pointer tap-target" id="audio-toggle-btn"><span class="material-symbols-outlined text-[15px] text-secondary transition-transform duration-200" id="audio-icon">headphones</span><span class="font-label-sm text-[11px] text-on-surface font-medium transition-colors" id="audio-label">Dinle <span class="text-secondary/90 font-mono text-[10px]">(432Hz)</span></span><span class="hidden items-end gap-0.5 h-3 ml-0.5" id="audio-waves"><span class="audio-bar w-0.5 bg-secondary rounded-full"></span><span class="audio-bar w-0.5 bg-secondary rounded-full"></span><span class="audio-bar w-0.5 bg-secondary rounded-full"></span><span class="audio-bar w-0.5 bg-secondary rounded-full"></span></span></button></div>
+<blockquote class="font-headline-lg-mobile text-[20px] sm:text-[21px] text-on-surface font-headline-md italic leading-relaxed pt-1 select-none tracking-tight font-serif text-shadow-sm">“Bugün attığım her küçük adım, 2027 vizyonumun bir mimarisini inşa eder.”</blockquote>
+<div class="flex items-center justify-between pt-1 border-t border-surface-variant/30 mt-0.5">
+<span class="font-label-sm text-[11px] text-on-surface-variant tracking-normal">Odak Boyutu: Gelecek Tasarımı</span>
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-[11px] text-secondary font-medium">Hizalanmış Zihin</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Günün 15 Dakikalık Tek Mikro-Eylemi -->
+<section class="flex flex-col gap-2">
+<div class="flex items-center justify-between px-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Vizyon → Eylem Köprüsü</span>
+<span class="font-label-sm text-label-sm text-tertiary font-medium bg-tertiary-container/15 px-2.5 py-0.5 rounded-full border border-tertiary/25">Tekil Odak</span>
+</div>
+<div class="relative rounded-2xl bg-surface-container/60 backdrop-blur-xl p-space-md shadow-lg shadow-surface-container-lowest/40 flex items-center gap-space-md transition-all duration-300 border border-surface-variant/30 hover:border-secondary/30" id="task-container-card">
+<div class="relative w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container-high shadow-md">
+<img alt="Lake Como Balcony" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="A serene workspace on the balcony overlooking Lake Como at twilight with a minimal laptop, warm golden lamp, and espresso cup amidst quiet indigo mist." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADXrnUH7gIyobSm5MJV6BSRgd2q00wL6vRvH5UOtmty6TobiWIpJ4Erphm_LgD7f89uwrQ4RfyHQ8YmfRhRpf5RE4BEuU3mrJuKa0SJU3JYAl2P79FsYHsTrQNp8AtQMdwKAZLF9y_Ck3Dw3CqIIy2X-byVgulwNM6tm2njk_a78EV-mJzOU17D5kYMsfxH6tKfUBvm6iaHWcNyhQEYDAjK4_o-spBtYtuBakJXzCibvRBl7kW09Ue">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 via-transparent to-transparent pointer-events-none"></div>
+<span class="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded bg-surface-container-lowest/90 backdrop-blur-sm font-label-sm text-[10px] text-secondary font-semibold leading-none shadow-sm transition-all" id="task-badge">
+        15 dk
+      </span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 pr-1 justify-center select-none cursor-pointer" id="task-text-container">
+<span class="font-label-sm text-[11px] text-secondary font-medium tracking-tight truncate">Kariyer &amp; Bolluk: Como Gölü Kıyısında Yaşam</span>
+<p class="font-title-md text-[14px] leading-snug text-on-surface font-medium mt-1 line-clamp-2 transition-all duration-300" id="task-title">
+        İtalyanca çalışma portföyünden 1 vize yazısını incele ve 3 anahtar kelimeyi not al.
+      </p>
+</div>
+<div class="relative flex-shrink-0">
+<button aria-label="Görevi tamamla" class="w-12 h-12 rounded-full flex items-center justify-center bg-surface-variant/60 hover:bg-surface-variant transition-all duration-300 active:scale-80 group shadow-md cursor-pointer border border-outline-variant/40 relative overflow-visible tap-target" id="task-check-btn">
+<span class="material-symbols-outlined text-[28px] text-on-surface-variant transition-all duration-300 group-hover:text-secondary group-hover:scale-105" id="check-icon">radio_button_unchecked</span>
+</button>
+<div class="absolute inset-0 pointer-events-none flex items-center justify-center" id="confetti-anchor"></div>
+</div>
+</div>
+</section>
+<!-- Yaşam Çarkı Dengesi & İlerleme Kartı -->
+<section class="rounded-2xl bg-surface-container/60 backdrop-blur-xl p-space-lg shadow-lg shadow-surface-container-lowest/40 border border-surface-variant/30">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-primary">trip_origin</span>
+<h2 class="font-title-lg text-title-lg text-on-surface tracking-tight font-medium">Yaşam Dengesi Ritmi</h2>
+</div>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim bg-primary-container/20 border border-primary-container/30 px-2.5 py-0.5 rounded-full font-medium">Haftalık Döngü</span>
+</div>
+<div class="flex items-center gap-space-lg">
+<!-- 3 İç İçe Konsantrik SVG Halka -->
+<div class="relative w-32 h-32 flex-shrink-0 flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-105 active:scale-95 tap-target rounded-full" id="balance-circle-card" title="Denge çarkı detayları">
+<svg class="w-32 h-32 transform -rotate-90 drop-shadow-[0_0_12px_rgba(245,208,97,0.15)]" viewBox="0 0 120 120">
+<!-- Arka Plan İzleri -->
+<circle cx="60" cy="60" fill="none" opacity="0.4" r="50" stroke="#20243d" stroke-width="6"></circle>
+<circle cx="60" cy="60" fill="none" opacity="0.4" r="38" stroke="#20243d" stroke-width="6"></circle>
+<circle cx="60" cy="60" fill="none" opacity="0.4" r="26" stroke="#20243d" stroke-width="6"></circle>
+<!-- Dış Halka: Kariyer (%75 - Altın) -->
+<circle class="transition-all duration-1000 ease-out" cx="60" cy="60" fill="none" id="ring-career" r="50" stroke="#F5D061" stroke-dasharray="314.16" stroke-dashoffset="78.54" stroke-linecap="round" stroke-width="6"></circle>
+<!-- Orta Halka: Sağlık (%45 - Camgöbeği) -->
+<circle class="transition-all duration-1000 ease-out" cx="60" cy="60" fill="none" id="ring-health" r="38" stroke="#7bd0ff" stroke-dasharray="238.76" stroke-dashoffset="131.31" stroke-linecap="round" stroke-width="6"></circle>
+<!-- İç Halka: Ruhsal (%85 - Eflatun / Mor) -->
+<circle class="transition-all duration-1000 ease-out" cx="60" cy="60" fill="none" id="ring-spiritual" r="26" stroke="#c0c1ff" stroke-dasharray="163.36" stroke-dashoffset="24.50" stroke-linecap="round" stroke-width="6"></circle>
+</svg>
+<!-- Merkez Odak Göstergesi -->
+<div class="absolute inset-0 flex flex-col items-center justify-center select-none pointer-events-none">
+<span class="font-headline-md text-headline-md text-secondary font-bold leading-none tracking-tight" id="balance-score-text">%68</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-wider mt-0.5">Uyum</span>
+</div>
+</div>
+<!-- Kategori Lejantı ve Metrikler -->
+<div class="flex flex-col justify-center flex-1 gap-2.5">
+<!-- Kariyer -->
+<div class="flex items-center justify-between p-1.5 px-2 rounded-lg hover:bg-surface-variant/40 transition-colors cursor-pointer tap-target">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary shadow-sm shadow-secondary/40"></span>
+<span class="font-body-md text-[13px] text-on-surface">Kariyer</span>
+</div>
+<span class="font-label-md text-label-md text-secondary font-semibold" id="career-pct-val">%75</span>
+</div>
+<!-- Sağlık -->
+<div class="flex items-center justify-between p-1.5 px-2 rounded-lg hover:bg-surface-variant/40 transition-colors cursor-pointer tap-target">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary shadow-sm shadow-tertiary/40"></span>
+<span class="font-body-md text-[13px] text-on-surface">Sağlık</span>
+</div>
+<span class="font-label-md text-label-md text-tertiary font-semibold">%45</span>
+</div>
+<!-- Ruhsal Gelişim -->
+<div class="flex items-center justify-between p-1.5 px-2 rounded-lg hover:bg-surface-variant/40 transition-colors cursor-pointer tap-target">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary shadow-sm shadow-primary/40"></span>
+<span class="font-body-md text-[13px] text-on-surface">Ruhsal</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-semibold">%85</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Hızlı Erişim Kapsül Butonları -->
+<section class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-xs font-semibold">Kutsal Alanlar</span>
+<div class="grid grid-cols-1 gap-space-sm" id="nav-action-cards">
+<a class="nav-card tap-target flex items-center justify-between p-space-md rounded-2xl bg-surface-container/60 hover:bg-surface-container transition-all duration-200 active:scale-[0.98] group shadow-sm backdrop-blur-xl border border-surface-variant/30 hover:border-secondary/40 cursor-pointer" data-name="Vizyon Panom" data-path="vision-board" href="#">
+<div class="flex items-center gap-space-sm pointer-events-none">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-variant/70 text-secondary group-hover:scale-110 group-hover:bg-secondary-container/40 transition-all duration-300">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface group-hover:text-secondary transition-colors font-medium">Vizyon Panom</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">12 Tezahür Görseli Aktif</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant group-hover:text-secondary group-hover:translate-x-1 transition-all duration-200 pointer-events-none">arrow_forward</span>
+</a>
+<a class="nav-card tap-target flex items-center justify-between p-space-md rounded-2xl bg-surface-container/60 hover:bg-surface-container transition-all duration-200 active:scale-[0.98] group shadow-sm backdrop-blur-xl border border-surface-variant/30 hover:border-tertiary/40 cursor-pointer" data-name="Manifest Çalar" data-path="manifest" href="#">
+<div class="flex items-center gap-space-sm pointer-events-none">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-variant/70 text-tertiary group-hover:scale-110 group-hover:bg-tertiary-container/30 transition-all duration-300">
+<span class="material-symbols-outlined text-[20px]">graphic_eq</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface group-hover:text-tertiary transition-colors font-medium">Manifest Çalar</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">432Hz Rezonans &amp; Frekans Akışı</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant group-hover:text-tertiary group-hover:translate-x-1 transition-all duration-200 pointer-events-none">arrow_forward</span>
+</a>
+<button class="nav-card tap-target flex items-center justify-between p-space-md rounded-2xl bg-surface-container/60 hover:bg-surface-container transition-all duration-200 active:scale-[0.98] group shadow-sm text-left w-full backdrop-blur-xl border border-surface-variant/30 hover:border-primary/40 cursor-pointer" data-name="Yeni Hedef Ekle" id="btn-add-goal">
+<div class="flex items-center gap-space-sm pointer-events-none">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-primary-container/25 text-primary-fixed-dim group-hover:scale-110 group-hover:bg-primary-container/40 transition-all duration-300">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface group-hover:text-primary transition-colors font-medium">Yeni Hedef Ekle</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Yıldız Haritasına Yeni Bir Eksen Belirle</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant group-hover:text-primary group-hover:translate-x-1 transition-all duration-200 pointer-events-none">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Toast Bildirim Kapsülü -->
+<div aria-live="polite" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 pointer-events-none transition-all duration-300 opacity-0 translate-y-3 scale-95" id="toast-notification">
+<div class="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#14172B]/95 text-secondary border border-secondary/40 shadow-2xl backdrop-blur-xl shadow-secondary/15">
+<span class="material-symbols-outlined text-[18px] text-secondary" style="font-variation-settings: 'FILL' 1;">sparkles</span>
+<span class="font-label-md text-label-md text-on-surface font-medium whitespace-nowrap" id="toast-message">İşlem tamamlandı</span>
+</div>
+</div>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-[#080A16]/90 backdrop-blur-xl border-t border-surface-variant/30" id="bottom-navigation">
+<div class="h-20 px-gutter flex items-center justify-between">
+<button aria-current="page" class="nav-tab relative flex flex-col items-center justify-center w-14 h-14 min-w-[44px] min-h-[44px] transition-all duration-200 text-secondary scale-105 font-bold group cursor-pointer tap-target rounded-full" data-path="home" data-title="Home">
+<span class="material-symbols-outlined text-[24px] transition-transform duration-200 group-active:scale-90" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-sm text-[11px] mt-1 tracking-tight">Bugün</span>
+<span class="nav-dot absolute bottom-1 w-1 h-1 rounded-full bg-secondary"></span>
+</button>
+<button class="nav-tab relative flex flex-col items-center justify-center w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant transition-all duration-200 hover:text-on-surface group cursor-pointer tap-target rounded-full" data-path="vision-board" data-title="Vizyon Panosu">
+<span class="material-symbols-outlined text-[24px] transition-transform duration-200 group-active:scale-90" style="font-variation-settings: 'FILL' 0;">grid_view</span>
+<span class="font-label-sm text-[11px] mt-1 tracking-tight">Vizyon</span>
+<span class="nav-dot hidden absolute bottom-1 w-1 h-1 rounded-full bg-secondary"></span>
+</button>
+<button class="nav-tab relative flex flex-col items-center justify-center w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant transition-all duration-200 hover:text-on-surface group cursor-pointer tap-target rounded-full" data-path="manifest" data-title="Manifest Çalar">
+<span class="material-symbols-outlined text-[24px] transition-transform duration-200 group-active:scale-90" style="font-variation-settings: 'FILL' 0;">graphic_eq</span>
+<span class="font-label-sm text-[11px] mt-1 tracking-tight">432Hz</span>
+<span class="nav-dot hidden absolute bottom-1 w-1 h-1 rounded-full bg-secondary"></span>
+</button>
+<button class="nav-tab relative flex flex-col items-center justify-center w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant transition-all duration-200 hover:text-on-surface group cursor-pointer tap-target rounded-full" data-path="goals" data-title="Hedefler">
+<span class="material-symbols-outlined text-[24px] transition-transform duration-200 group-active:scale-90" style="font-variation-settings: 'FILL' 0;">track_changes</span>
+<span class="font-label-sm text-[11px] mt-1 tracking-tight">Hedefler</span>
+<span class="nav-dot hidden absolute bottom-1 w-1 h-1 rounded-full bg-secondary"></span>
+</button>
+<button class="nav-tab relative flex flex-col items-center justify-center w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant transition-all duration-200 hover:text-on-surface group cursor-pointer tap-target rounded-full" data-path="settings" data-title="Ayarlar">
+<span class="material-symbols-outlined text-[24px] transition-transform duration-200 group-active:scale-90" style="font-variation-settings: 'FILL' 0;">tune</span>
+<span class="font-label-sm text-[11px] mt-1 tracking-tight">Ayarlar</span>
+<span class="nav-dot hidden absolute bottom-1 w-1 h-1 rounded-full bg-secondary"></span>
+</button>
+</div>
+</nav>
+<!-- JavaScript: Gelişmiş Etkileşim & İşlevsellik -->
+<script>
+  (function() {
+    // 1. Toast Bildirim Yardımcısı
+    let toastTimeout;
+    function showToast(message) {
+      const toast = document.getElementById('toast-notification');
+      const toastText = document.getElementById('toast-message');
+      if (!toast || !toastText) return;
+      toastText.textContent = message;
+      clearTimeout(toastTimeout);
+      toast.classList.remove('opacity-0', 'translate-y-3', 'scale-95');
+      toast.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+        toast.classList.add('opacity-0', 'translate-y-3', 'scale-95');
+      }, 2600);
+    }
+
+    // 2. Parıltı / Konfeti Parçacık Üretici
+    function createSparks(anchor) {
+      if (!anchor) return;
+      anchor.innerHTML = '';
+      const colors = ['#F5D061', '#ffe089', '#7bd0ff', '#c0c1ff', '#ffffff'];
+      for (let i = 0; i < 18; i++) {
+        const p = document.createElement('span');
+        p.className = 'confetti-particle';
+        const size = Math.random() * 5 + 3;
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        const angle = (i / 18) * 2 * Math.PI + (Math.random() * 0.4 - 0.2);
+        const distance = Math.random() * 42 + 25;
+        const dx = Math.cos(angle) * distance;
+        const dy = Math.sin(angle) * distance;
+        p.style.setProperty('--dx', dx + 'px');
+        p.style.setProperty('--dy', dy + 'px');
+        anchor.appendChild(p);
+      }
+      setTimeout(() => {
+        anchor.innerHTML = '';
+      }, 850);
+    }
+
+    // 3. 15 Dk Tek Eylem Check-in & Seri Sayacı Mantığı
+    const checkBtn = document.getElementById('task-check-btn');
+    const checkIcon = document.getElementById('check-icon');
+    const streakText = document.getElementById('streak-text');
+    const streakFire = document.getElementById('streak-fire');
+    const streakPill = document.getElementById('streak-pill');
+    const taskContainer = document.getElementById('task-container-card');
+    const taskTitle = document.getElementById('task-title');
+    const taskBadge = document.getElementById('task-badge');
+    const confettiAnchor = document.getElementById('confetti-anchor');
+    const taskTextContainer = document.getElementById('task-text-container');
+    const ringCareer = document.getElementById('ring-career');
+    const careerPctVal = document.getElementById('career-pct-val');
+    const balanceScoreText = document.getElementById('balance-score-text');
+
+    let isCompleted = false;
+
+    function toggleTask() {
+      isCompleted = !isCompleted;
+      if (isCompleted) {
+        checkIcon.textContent = 'check_circle';
+        checkIcon.style.fontVariationSettings = "'FILL' 1";
+        checkIcon.classList.remove('text-on-surface-variant');
+        checkIcon.classList.add('text-secondary', 'scale-110');
+        checkBtn.classList.remove('bg-surface-variant/60', 'border-outline-variant/40');
+        checkBtn.classList.add('bg-secondary-container/70', 'border-secondary/60', 'shadow-[0_0_18px_rgba(245,208,97,0.45)]');
+
+        if (taskContainer) {
+          taskContainer.classList.add('border-secondary/40', 'bg-surface-container/80');
+        }
+        if (taskTitle) {
+          taskTitle.classList.add('line-through', 'text-on-surface-variant/70');
+        }
+        if (taskBadge) {
+          taskBadge.classList.remove('text-secondary');
+          taskBadge.classList.add('text-secondary-fixed', 'bg-secondary/20');
+          taskBadge.textContent = 'Tamamlandı ✨';
+        }
+
+        if (streakText) streakText.textContent = '15 Gün Seri';
+        if (streakFire) {
+          streakFire.classList.add('scale-125');
+          setTimeout(() => streakFire.classList.remove('scale-125'), 350);
+        }
+        if (streakPill) {
+          streakPill.classList.add('ring-2', 'ring-secondary/50', 'bg-secondary-container/70');
+        }
+
+        // Yaşam Çarkı İlerlemesi: Kariyer %75 -> %80, Denge %68 -> %70
+        if (ringCareer) {
+          ringCareer.setAttribute('stroke-dashoffset', '62.83');
+        }
+        if (careerPctVal) careerPctVal.textContent = '%80';
+        if (balanceScoreText) balanceScoreText.textContent = '%70';
+
+        createSparks(confettiAnchor);
+        showToast('Tebrikler! 15 dakikalık eylem tamamlandı (15 Gün Seri 🔥)');
+      } else {
+        checkIcon.textContent = 'radio_button_unchecked';
+        checkIcon.style.fontVariationSettings = "'FILL' 0";
+        checkIcon.classList.remove('text-secondary', 'scale-110');
+        checkIcon.classList.add('text-on-surface-variant');
+        checkBtn.classList.remove('bg-secondary-container/70', 'border-secondary/60', 'shadow-[0_0_18px_rgba(245,208,97,0.45)]');
+        checkBtn.classList.add('bg-surface-variant/60', 'border-outline-variant/40');
+
+        if (taskContainer) {
+          taskContainer.classList.remove('border-secondary/40', 'bg-surface-container/80');
+        }
+        if (taskTitle) {
+          taskTitle.classList.remove('line-through', 'text-on-surface-variant/70');
+        }
+        if (taskBadge) {
+          taskBadge.classList.add('text-secondary');
+          taskBadge.classList.remove('text-secondary-fixed', 'bg-secondary/20');
+          taskBadge.textContent = '15 dk';
+        }
+
+        if (streakText) streakText.textContent = '14 Gün Seri';
+        if (streakPill) {
+          streakPill.classList.remove('ring-2', 'ring-secondary/50', 'bg-secondary-container/70');
+        }
+
+        if (ringCareer) {
+          ringCareer.setAttribute('stroke-dashoffset', '78.54');
+        }
+        if (careerPctVal) careerPctVal.textContent = '%75';
+        if (balanceScoreText) balanceScoreText.textContent = '%68';
+
+        showToast('Eylem tamamlanmadı olarak işaretlendi ↺');
+      }
+    }
+
+    if (checkBtn) {
+      checkBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleTask();
+      });
+    }
+    if (taskTextContainer) {
+      taskTextContainer.addEventListener('click', toggleTask);
+    }
+
+    // 4. Dinle (432Hz) Ses Oynatıcı Durum Değişimi
+    const audioBtn = document.getElementById('audio-toggle-btn');
+    const audioIcon = document.getElementById('audio-icon');
+    const audioLabel = document.getElementById('audio-label');
+    const audioWaves = document.getElementById('audio-waves');
+    let isPlaying = false;
+
+    if (audioBtn) {
+      audioBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        isPlaying = !isPlaying;
+        if (isPlaying) {
+          audioBtn.classList.remove('bg-surface-variant/80');
+          audioBtn.classList.add('bg-secondary-container/80', 'border-secondary/50', 'shadow-[0_0_14px_rgba(245,208,97,0.35)]');
+          if (audioIcon) {
+            audioIcon.textContent = 'pause';
+            audioIcon.classList.add('animate-pulse');
+          }
+          if (audioLabel) {
+            audioLabel.innerHTML = '<span class="text-secondary-fixed font-semibold">Çalıyor</span>';
+          }
+          if (audioWaves) {
+            audioWaves.classList.remove('hidden');
+            audioWaves.classList.add('flex');
+          }
+          showToast('432Hz Rezonans frekansı çalınıyor 🎧✨');
+        } else {
+          audioBtn.classList.remove('bg-secondary-container/80', 'border-secondary/50', 'shadow-[0_0_14px_rgba(245,208,97,0.35)]');
+          audioBtn.classList.add('bg-surface-variant/80');
+          if (audioIcon) {
+            audioIcon.textContent = 'headphones';
+            audioIcon.classList.remove('animate-pulse');
+          }
+          if (audioLabel) {
+            audioLabel.innerHTML = 'Dinle <span class="text-secondary/90 font-mono text-[10px]">(432Hz)</span>';
+          }
+          if (audioWaves) {
+            audioWaves.classList.remove('flex');
+            audioWaves.classList.add('hidden');
+          }
+          showToast('Frekans akışı duraklatıldı');
+        }
+      });
+    }
+
+    // 5. Dokunma / Ripple Efekti
+    function applyRipple(element, event) {
+      const rect = element.getBoundingClientRect();
+      const circle = document.createElement('span');
+      circle.className = 'ripple-circle';
+      const size = Math.max(rect.width, rect.height);
+      const x = event.clientX ? (event.clientX - rect.left - size / 2) : 0;
+      const y = event.clientY ? (event.clientY - rect.top - size / 2) : 0;
+      circle.style.width = circle.style.height = size + 'px';
+      circle.style.left = x + 'px';
+      circle.style.top = y + 'px';
+      element.appendChild(circle);
+      setTimeout(() => {
+        circle.remove();
+      }, 550);
+    }
+
+    // Hızlı Erişim Kartları
+    const navCards = document.querySelectorAll('.nav-card');
+    navCards.forEach(card => {
+      card.addEventListener('click', function(e) {
+        e.preventDefault();
+        applyRipple(this, e);
+        const name = this.getAttribute('data-name') || 'Kutsal Alan';
+        if (name === 'Yeni Hedef Ekle') {
+          showToast('Yeni hedef belirleme alanı açılıyor ✨');
+        } else {
+          showToast(`${name} alanına yönlendiriliyorsunuz`);
+        }
+      });
+    });
+
+    // 6. Alt Navigasyon Sekmeleri
+    const navTabs = document.querySelectorAll('.nav-tab');
+    const headerTitle = document.getElementById('screen-header-title');
+
+    navTabs.forEach(tab => {
+      tab.addEventListener('click', function(e) {
+        e.preventDefault();
+        applyRipple(this, e);
+
+        navTabs.forEach(t => {
+          t.removeAttribute('aria-current');
+          t.classList.remove('text-secondary', 'scale-105', 'font-bold');
+          t.classList.add('text-on-surface-variant');
+          const icon = t.querySelector('.material-symbols-outlined');
+          if (icon) icon.style.fontVariationSettings = "'FILL' 0";
+          const dot = t.querySelector('.nav-dot');
+          if (dot) dot.classList.add('hidden');
+        });
+
+        this.setAttribute('aria-current', 'page');
+        this.classList.remove('text-on-surface-variant');
+        this.classList.add('text-secondary', 'scale-105', 'font-bold');
+        const icon = this.querySelector('.material-symbols-outlined');
+        if (icon) icon.style.fontVariationSettings = "'FILL' 1";
+        const dot = this.querySelector('.nav-dot');
+        if (dot) dot.classList.remove('hidden');
+
+        const title = this.getAttribute('data-title') || 'Veira';
+        if (headerTitle) {
+          headerTitle.style.opacity = '0';
+          setTimeout(() => {
+            headerTitle.textContent = title;
+            headerTitle.style.opacity = '1';
+          }, 150);
+        }
+
+        const tabLabel = this.querySelector('.font-label-sm')?.textContent.trim();
+        showToast(`${tabLabel} sekmesi aktif`);
+      });
+    });
+
+    // 7. Yaşam Dengesi Kartı Tıklama
+    const balanceCard = document.getElementById('balance-circle-card');
+    if (balanceCard) {
+      balanceCard.addEventListener('click', function(e) {
+        applyRipple(this, e);
+        showToast('Haftalık Denge: Kariyer %75 | Sağlık %45 | Ruhsal %85 ✨');
+      });
+    }
+
+    // 8. Seri Pili Tıklama
+    if (streakPill) {
+      streakPill.addEventListener('click', function(e) {
+        applyRipple(this, e);
+        const currStreak = streakText ? streakText.textContent : '14 Gün Seri';
+        showToast(`Zihinsel odak: ${currStreak} 🔥`);
+      });
+    }
+
+    // 9. Profil Avatarı Tıklama
+    const profileBtn = document.getElementById('profile-avatar-btn');
+    if (profileBtn) {
+      profileBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        showToast('Selin Demir • Profil ve Tercihler');
+      });
+    }
+  })();
+</script>
+
+
+</body></html>

@@ -1,0 +1,899 @@
+<!DOCTYPE html><html class="dark" lang="tr" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><title>Veira — Celestial Sanctuary</title>
+<!-- Anti-FOUT & Font Preload Optimizations with display=swap and font-family fallbacks -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'background': '#0e1228',
+        'on-primary': '#1000a9',
+        'on-error-container': '#ffdad6',
+        'on-tertiary-container': '#002d40',
+        'on-primary-fixed': '#07006c',
+        'on-secondary-fixed-variant': '#574500',
+        'surface-container': '#1a1e35',
+        'on-primary-fixed-variant': '#2f2ebe',
+        'tertiary': '#7bd0ff',
+        'on-tertiary-fixed-variant': '#004c69',
+        'tertiary-container': '#009bd1',
+        'surface-variant': '#2f334b',
+        'on-tertiary': '#00354a',
+        'inverse-primary': '#494bd6',
+        'secondary': '#e7c355',
+        'on-background': '#dee0ff',
+        'surface-container-high': '#252840',
+        'primary-fixed-dim': '#c0c1ff',
+        'tertiary-fixed-dim': '#7bd0ff',
+        'primary-fixed': '#e1e0ff',
+        'on-error': '#690005',
+        'on-primary-container': '#0d0096',
+        'secondary-fixed-dim': '#e7c355',
+        'tertiary-fixed': '#c4e7ff',
+        'surface-container-low': '#161a30',
+        'on-surface': '#dee0ff',
+        'secondary-fixed': '#ffe089',
+        'surface-bright': '#343850',
+        'outline-variant': '#464554',
+        'surface': '#0e1228',
+        'inverse-surface': '#dee0ff',
+        'error-container': '#93000a',
+        'surface-container-highest': '#2f334b',
+        'outline': '#908fa0',
+        'primary-container': '#8083ff',
+        'surface-dim': '#0e1228',
+        'primary': '#c0c1ff',
+        'on-surface-variant': '#c7c4d7',
+        'surface-tint': '#c0c1ff',
+        'error': '#ffb4ab',
+        'on-secondary': '#3d2f00',
+        'surface-container-lowest': '#080c22',
+        'on-secondary-container': '#fffbff',
+        'inverse-on-surface': '#2b2f46',
+        'on-tertiary-fixed': '#001e2c',
+        'secondary-container': '#8e7100'
+      },
+      borderRadius: {
+        'DEFAULT': '0.25rem',
+        'lg': '0.5rem',
+        'xl': '0.75rem',
+        'full': '9999px'
+      },
+      spacing: {
+        'space-md': '1rem',
+        'gutter': '1rem',
+        'margin-lg': '1.5rem',
+        'space-lg': '1.5rem',
+        'space-xs': '0.25rem',
+        'margin': '1.25rem',
+        'space-sm': '0.5rem',
+        'gutter-sm': '0.75rem',
+        'space-xl': '2rem'
+      },
+      fontFamily: {
+        'body-md': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        'label-md': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        'headline-md': ['Playfair Display', 'Georgia', 'serif'],
+        'title-lg': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        'title-md': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        'display-sm': ['Playfair Display', 'Georgia', 'serif'],
+        'headline-lg-mobile': ['Playfair Display', 'Georgia', 'serif'],
+        'headline-lg': ['Playfair Display', 'Georgia', 'serif'],
+        'display-lg': ['Playfair Display', 'Georgia', 'serif'],
+        'body-lg': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        'label-lg': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        'label-sm': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        'body-sm': ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+      }
+    }
+  }
+};
+</script>
+<style>
+@layer base {
+  *, *::before, *::after {
+    touch-action: manipulation;
+  }
+  html, body {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-color: #080c22;
+    color: #dee0ff;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom, 16px); }
+  .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+  main > :first-child { margin-top: 0 !important; }
+}
+::-webkit-scrollbar { display: none; }
+body { min-height: max(884px, 100dvh); }
+
+/* GPU Acceleration & Performance Optimizations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Snappy SPA transitions (180ms ease-out) & Render cycle isolation */
+.tab-panel {
+  display: none;
+  opacity: 0;
+  transform: translate3d(0, 4px, 0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
+  transition: opacity 180ms ease-out, transform 180ms ease-out;
+}
+
+.tab-panel.active {
+  display: flex;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  contain: paint layout;
+}
+
+/* Material symbols font optimization */
+.material-symbols-outlined {
+  font-display: swap;
+  transform: translateZ(0);
+}
+
+/* Fluid Sliding Pill & Celestial Aurora Glow Tracker */
+#sliding-pill-indicator {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 0;
+  width: 0;
+  pointer-events: none;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #f7d570 0%, #e7c355 50%, #d8b242 100%);
+  box-shadow: 0 0 25px rgba(245, 208, 97, 0.45), 0 0 40px rgba(245, 208, 97, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  transition: transform 0.38s cubic-bezier(0.34, 1.4, 0.64, 1), width 0.38s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.25s ease;
+  will-change: transform, width;
+  z-index: 1;
+}
+
+#sliding-pill-indicator::after {
+  content: '';
+  position: absolute;
+  inset: -6px -10px;
+  border-radius: 9999px;
+  background: radial-gradient(ellipse at center, rgba(231, 195, 85, 0.4) 0%, rgba(231, 195, 85, 0.1) 60%, transparent 80%);
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(4px);
+}
+
+#sliding-pill-indicator.pill-press {
+  transform: var(--pill-transform) scale(0.95) !important;
+  transition: transform 0.1s ease-out;
+}
+
+#sliding-pill-indicator.bloom-pulse {
+  animation: bloomPulse 0.45s cubic-bezier(0.34, 1.4, 0.64, 1) forwards;
+}
+
+@keyframes bloomPulse {
+  0% { box-shadow: 0 0 25px rgba(245, 208, 97, 0.45), 0 0 40px rgba(245, 208, 97, 0.25); }
+  50% { box-shadow: 0 0 35px rgba(245, 208, 97, 0.75), 0 0 55px rgba(245, 208, 97, 0.45); }
+  100% { box-shadow: 0 0 25px rgba(245, 208, 97, 0.45), 0 0 40px rgba(245, 208, 97, 0.25); }
+}
+
+nav button[id^='tab-btn-'] {
+  position: relative;
+  z-index: 2;
+  transition: color 0.22s ease, transform 0.25s cubic-bezier(0.34, 1.4, 0.64, 1);
+  will-change: transform;
+}
+nav button[id^='tab-btn-']:active {
+  transform: scale(0.94);
+}
+nav button[id^='tab-btn-'] .material-symbols-outlined {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.22s ease;
+  will-change: transform;
+  display: inline-block;
+}
+nav button[id^='tab-btn-']:hover .material-symbols-outlined {
+  transform: scale(1.08);
+}
+
+/* Stardust & Celestial Particle Trail Keyframes & Layering */
+#stardust-trail-container {
+  position: absolute;
+  inset: -12px -8px;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 10;
+}
+
+.stardust-particle {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  will-change: transform, opacity;
+  animation: particleFloatFade var(--p-dur, 650ms) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.stardust-sparkle {
+  position: absolute;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, opacity;
+  animation: sparkleTwinkleFade var(--p-dur, 700ms) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes particleFloatFade {
+  0% {
+    opacity: 0.95;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: drop-shadow(0 0 6px currentColor);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift-x, 0px), var(--drift-y, -18px), 0) scale(0.15);
+    filter: drop-shadow(0 0 1px currentColor) blur(1.5px);
+  }
+}
+
+@keyframes sparkleTwinkleFade {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(0.2) rotate(0deg);
+  }
+  30% {
+    opacity: 1;
+    transform: translate3d(var(--drift-x, 0px), calc(var(--drift-y, -14px) * 0.4), 0) scale(1.2) rotate(45deg);
+    filter: drop-shadow(0 0 8px rgba(245, 208, 97, 0.9));
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift-x, 0px), var(--drift-y, -22px), 0) scale(0.1) rotate(90deg);
+    filter: drop-shadow(0 0 2px rgba(245, 208, 97, 0.2)) blur(1px);
+  }
+}
+</style></head>
+<body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-screen h-auto selection:bg-secondary/30 selection:text-secondary-fixed"><div class="fixed inset-0 pointer-events-none overflow-hidden z-0"><div class="absolute -top-32 -left-20 w-96 h-96 rounded-full bg-gradient-to-br from-indigo-900/25 via-secondary/10 to-transparent blur-3xl opacity-70 animate-pulse"></div><div class="absolute top-1/3 -right-24 w-80 h-80 rounded-full bg-gradient-to-bl from-tertiary/15 via-primary/10 to-transparent blur-3xl opacity-60 animate-pulse" style="animation-duration: 8s;"></div><div class="absolute bottom-20 left-1/4 w-72 h-72 rounded-full bg-secondary/10 blur-3xl opacity-40 animate-pulse" style="animation-duration: 12s;"></div><div class="absolute top-24 left-10 w-1 h-1 bg-secondary rounded-full animate-ping opacity-60"></div><div class="absolute top-56 right-8 w-1.5 h-1.5 bg-[#FFE089] rounded-full animate-pulse opacity-80" style="animation-duration: 3s;"></div><div class="absolute top-96 left-1/3 w-1 h-1 bg-tertiary rounded-full animate-pulse opacity-50" style="animation-duration: 4s;"></div><div class="absolute bottom-80 right-12 w-1.5 h-1.5 bg-secondary rounded-full animate-pulse opacity-70" style="animation-duration: 5s;"></div><div class="absolute bottom-44 left-16 w-1 h-1 bg-[#FFE089] rounded-full animate-ping opacity-40"></div></div>
+<!-- Sabit Üst Header -->
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/85 backdrop-blur-xl border-b border-surface-container-highest/40 shadow-[0_1px_12px_rgba(0,0,0,0.25)] gpu-accelerated">
+<div class="h-16 px-margin flex items-center justify-between">
+<div class="flex items-center gap-space-sm cursor-pointer select-none active:opacity-80 transition-opacity duration-150" onclick="switchTab('home')">
+<img alt="Veira Celestial Logo" class="h-8 w-auto object-contain filter drop-shadow-[0_0_8px_rgba(231,195,85,0.3)] gpu-accelerated" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChst6p9MJzfQQfrA_4McOfjT1GNsc9_OFu0oIXpJ8knn6bGLrsIuMb2L94hQPra2UE17rHqpC10UmmXSYamqYwP2Y1vMWguKTbNWar5lqMn8Dq0b2jLXUiXxtybLILZ3wgEol1ao3yCWnSsDhM2XoHDx-xRFpDq5fUeAf84RezGbeOTPzjs_x5Tc6j5q6aELtJVAanqXFKTx3GOKXjDnPGiElCvR_UtjjSWqPBYeOXXcYLUs7Pejls">
+<span class="font-headline-md text-headline-md text-secondary tracking-tight">Veira</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-title-md text-title-md text-on-surface text-center px-space-xs tracking-tight transition-all duration-150" id="header-title">Bugün</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button aria-label="Profil ve Ayarlar" class="w-11 h-11 flex items-center justify-center rounded-full transition-all duration-150 active:scale-95 ring-1 ring-secondary/30 hover:ring-secondary/60 gpu-accelerated" onclick="switchTab('settings')">
+<img alt="Profil" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi3a-psaNJ_QU-72Xk020WcxXT0weHKVr0dxtketi3AfYdGjQE0pkeV1TxmQm84hVhT0dDYaR1K3Vn7ar1Vow9SCF_CzgefPXCrNnOXcCjwHeklD47ZVj8Szf5GaDskIOBEcZn5UQKJGj4wtMBLcJXvks2x9qZc2WAz3X8IE2W-LHjlqmq2AKvrUa2zYibLT77AjUqNtzdsFtgZh2JvTDD3mZD5GPHtnkbRFBoO4t1P2LSK3m2QjJ3">
+</button>
+</div>
+</div>
+</header>
+<!-- Ana Gövde (SPA Panelleri) -->
+<main class="flex-1 flex flex-col relative w-full px-margin pt-20 pb-28 bg-surface">
+<!-- ==================== 1. BUGÜN (HOME) SEKME MODÜLÜ ==================== -->
+<section class="tab-panel active flex-col w-full gap-space-lg" id="tab-home">
+<!-- Üst Selamlama Alanı -->
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<h1 class="font-headline-lg-mobile text-headline-lg text-on-surface font-headline-md tracking-tight truncate">İyi Akşamlar, Selin</h1>
+<span class="text-secondary select-none animate-pulse text-[18px]">✨</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Zihinsel disiplin akışındasın</p>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary-container/40 shadow-sm transition-transform duration-150 active:scale-95 cursor-pointer flex-shrink-0 border border-secondary/20 gpu-accelerated">
+<span class="material-symbols-outlined text-[18px] text-secondary" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-label-md text-label-md text-secondary-fixed font-bold tracking-tight whitespace-nowrap">14 Gün Seri</span>
+</div>
+</div>
+<!-- Hero Kart: Günün Niyeti & Afirmasyonu -->
+<div class="relative overflow-hidden rounded-2xl bg-gradient-to-b from-surface-container/90 via-surface-container/70 to-surface-container-low/90 backdrop-blur-2xl p-space-lg shadow-2xl shadow-surface-container-lowest/85 border border-secondary/40 gpu-accelerated ring-1 ring-secondary/20"><div class="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-gradient-to-br from-primary-container/20 to-secondary/10 blur-3xl pointer-events-none"></div><div class="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-secondary/15 blur-2xl pointer-events-none"></div><div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-secondary/60 to-transparent pointer-events-none"></div><svg class="absolute top-3 right-3 w-4 h-4 text-secondary/60 pointer-events-none" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14 9.5L24 12L14 14.5L12 24L10 14.5L0 12L10 9.5Z"></path></svg><div class="relative z-10 flex flex-col gap-space-md"><div class="flex items-center justify-between gap-space-sm"><div class="flex items-center gap-2"><div class="w-7 h-7 rounded-lg bg-secondary/15 border border-secondary/30 flex items-center justify-center text-secondary shadow-sm shadow-secondary/20"><span class="material-symbols-outlined text-[16px] text-secondary drop-shadow-[0_0_8px_rgba(231,195,85,0.4)]" style="font-variation-settings: 'FILL' 1;">sparkles</span></div><span class="font-label-sm text-[11px] tracking-wider uppercase text-secondary font-semibold">Günün Niyeti &amp; Afirmasyonu</span></div><button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-variant/80 hover:bg-surface-variant text-on-surface hover:text-secondary transition-all duration-150 shadow-md flex-shrink-0 active:scale-95 border border-secondary/40 gpu-accelerated group" id="audio-toggle-btn" onclick="switchTab('manifest')"><div class="flex items-end gap-[2px] h-3.5"><span class="w-[2px] h-2 bg-secondary rounded-full animate-pulse"></span><span class="w-[2px] h-3.5 bg-secondary rounded-full animate-pulse" style="animation-delay: 150ms;"></span><span class="w-[2px] h-1.5 bg-secondary rounded-full animate-pulse" style="animation-delay: 300ms;"></span></div><span class="material-symbols-outlined text-[15px] text-secondary group-hover:scale-110 transition-transform">headphones</span><span class="font-label-sm text-label-sm text-on-surface font-medium">Dinle <span class="text-secondary font-mono text-[11px] font-bold">432Hz</span></span></button></div><blockquote class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-headline-md italic leading-relaxed pt-1 select-none tracking-tight">“Bugün attığım her küçük adım, 2027 vizyonumun bir mimarisini inşa eder.”</blockquote><div class="flex items-center justify-between pt-1 border-t border-surface-container-highest/40"><span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px] text-primary">explore</span>Odak Boyutu: Gelecek Tasarımı</span><div class="flex items-center gap-1.5 text-secondary px-2.5 py-0.5 rounded-full bg-secondary/10 border border-secondary/20"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-ping"></span><span class="font-label-sm text-label-sm text-secondary font-semibold">Hizalanmış Zihin</span></div></div></div></div>
+<!-- Günün 15 Dakikalık Tek Mikro-Eylemi -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Vizyon → Eylem Köprüsü</span>
+<span class="font-label-sm text-label-sm text-tertiary font-medium bg-surface-container/70 px-2 py-0.5 rounded-full border border-tertiary/20">Tekil Odak</span>
+</div>
+<div class="relative rounded-2xl bg-gradient-to-r from-surface-container/80 via-surface-container/70 to-surface-container/80 backdrop-blur-xl p-space-md shadow-xl shadow-surface-container-lowest/60 flex items-center gap-space-md transition-all duration-150 hover:bg-surface-container border border-secondary/30 hover:border-secondary/50 gpu-accelerated ring-1 ring-secondary/10"><div class="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-secondary/40 to-transparent pointer-events-none"></div><div class="relative w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container-high ring-1 ring-secondary/40 shadow-lg"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Lake Como workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADXrnUH7gIyobSm5MJV6BSRgd2q00wL6vRvH5UOtmty6TobiWIpJ4Erphm_LgD7f89uwrQ4RfyHQ8YmfRhRpf5RE4BEuU3mrJuKa0SJU3JYAl2P79FsYHsTrQNp8AtQMdwKAZLF9y_Ck3Dw3CqIIy2X-byVgulwNM6tm2njk_a78EV-mJzOU17D5kYMsfxH6tKfUBvm6iaHWcNyhQEYDAjK4_o-spBtYtuBakJXzCibvRBl7kW09Ue"><div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-transparent"></div><span class="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded-full bg-surface-container-lowest/90 border border-secondary/40 font-label-sm text-[10px] text-secondary font-semibold leading-none shadow-sm">15 dk</span></div><div class="flex flex-col flex-1 min-w-0 pr-1 justify-center"><div class="flex items-center gap-1.5 mb-0.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-sm shadow-secondary/40"></span><span class="font-label-sm text-[11px] text-secondary font-semibold uppercase tracking-wider truncate">Kariyer &amp; Bolluk</span></div><p class="font-title-md text-[14px] text-on-surface font-medium leading-snug line-clamp-2 transition-all duration-150" id="task-text">İtalyanca çalışma portföyünden 1 vize yazısını incele ve 3 anahtar kelimeyi not al.</p></div><button aria-label="Görevi tamamla" class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 bg-surface-variant/80 hover:bg-secondary/20 transition-all duration-150 active:scale-90 group shadow-md border border-secondary/40 hover:border-secondary/60 gpu-accelerated ring-1 ring-secondary/20" id="task-check-btn"><span class="material-symbols-outlined text-[24px] text-secondary drop-shadow-[0_0_8px_rgba(231,195,85,0.4)] transition-colors duration-150" id="check-icon">radio_button_unchecked</span></button></div>
+</div>
+<!-- Yaşam Çarkı Dengesi & İlerleme Kartı -->
+<div class="rounded-2xl bg-gradient-to-b from-surface-container/80 via-surface-container/70 to-surface-container-low/90 backdrop-blur-xl p-space-lg shadow-2xl shadow-surface-container-lowest/60 border border-secondary/30 relative overflow-hidden gpu-accelerated ring-1 ring-secondary/15"><div class="absolute -right-12 -top-12 w-44 h-44 rounded-full bg-tertiary/15 blur-3xl pointer-events-none"></div><div class="absolute -left-12 -bottom-12 w-36 h-36 rounded-full bg-secondary/10 blur-3xl pointer-events-none"></div><div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-secondary/50 to-transparent pointer-events-none"></div><div class="flex items-center justify-between mb-space-md"><div class="flex items-center gap-space-xs"><div class="w-7 h-7 rounded-lg bg-secondary/15 border border-secondary/30 flex items-center justify-center text-secondary"><span class="material-symbols-outlined text-[18px] text-secondary" style="font-variation-settings: 'FILL' 1;">donut_large</span></div><h2 class="font-title-lg text-title-lg text-on-surface tracking-tight font-semibold">Yaşam Dengesi Ritmi</h2></div><span class="font-label-sm text-[11px] text-secondary bg-secondary-container/40 border border-secondary/30 px-2.5 py-0.5 rounded-full font-semibold shadow-sm">Haftalık Döngü</span></div><div class="flex items-center gap-space-lg"><div class="relative w-32 h-32 flex-shrink-0 flex items-center justify-center"><div class="absolute w-20 h-20 rounded-full bg-secondary/10 blur-xl animate-pulse pointer-events-none"></div><svg class="w-32 h-32 transform -rotate-90 gpu-accelerated" viewBox="0 0 120 120"><circle cx="60" cy="60" fill="none" opacity="0.2" r="50" stroke="#252840" stroke-width="5"></circle><circle cx="60" cy="60" fill="none" opacity="0.2" r="38" stroke="#252840" stroke-width="5"></circle><circle cx="60" cy="60" fill="none" opacity="0.2" r="26" stroke="#252840" stroke-width="5"></circle><circle class="transition-all duration-500 ease-out filter drop-shadow-[0_0_6px_rgba(231,195,85,0.5)]" cx="60" cy="60" fill="none" r="50" stroke="#e7c355" stroke-dasharray="314.16" stroke-dashoffset="78.54" stroke-linecap="round" stroke-width="5.5"></circle><circle class="transition-all duration-500 ease-out filter drop-shadow-[0_0_6px_rgba(123,208,255,0.4)]" cx="60" cy="60" fill="none" r="38" stroke="#7bd0ff" stroke-dasharray="238.76" stroke-dashoffset="131.31" stroke-linecap="round" stroke-width="5.5"></circle><circle class="transition-all duration-500 ease-out filter drop-shadow-[0_0_6px_rgba(192,193,255,0.4)]" cx="60" cy="60" fill="none" r="26" stroke="#c0c1ff" stroke-dasharray="163.36" stroke-dashoffset="24.50" stroke-linecap="round" stroke-width="5.5"></circle></svg><div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none"><span class="font-headline-md text-[22px] text-secondary font-bold leading-none drop-shadow-[0_0_12px_rgba(231,195,85,0.5)]">%68</span><span class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-wider mt-1 font-semibold">Uyum</span></div></div><div class="flex flex-col justify-center flex-1 gap-2.5"><div class="flex items-center justify-between p-1.5 px-2.5 rounded-lg bg-surface-container-high/40 border border-secondary/15 hover:border-secondary/30 transition-colors"><div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-secondary shadow-sm shadow-secondary/50"></span><span class="font-body-md text-sm text-on-surface font-medium">Kariyer</span></div><span class="font-label-md text-sm text-secondary font-bold">%75</span></div><div class="flex items-center justify-between p-1.5 px-2.5 rounded-lg bg-surface-container-high/40 border border-tertiary/15 hover:border-tertiary/30 transition-colors"><div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-tertiary shadow-sm shadow-tertiary/50"></span><span class="font-body-md text-sm text-on-surface font-medium">Sağlık</span></div><span class="font-label-md text-sm text-tertiary font-bold">%45</span></div><div class="flex items-center justify-between p-1.5 px-2.5 rounded-lg bg-surface-container-high/40 border border-primary/15 hover:border-primary/30 transition-colors"><div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-primary shadow-sm shadow-primary/50"></span><span class="font-body-md text-sm text-on-surface font-medium">Ruhsal</span></div><span class="font-label-md text-sm text-primary font-bold">%85</span></div></div></div></div>
+<!-- Hızlı Erişim Kapsül Butonları -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-xs font-semibold">Kutsal Alanlar</span>
+<div class="grid grid-cols-1 gap-space-sm"><button class="flex items-center justify-between p-space-md rounded-2xl bg-gradient-to-r from-surface-container/70 via-surface-container/60 to-surface-container/80 hover:from-surface-container/90 hover:to-surface-container/90 transition-all duration-200 active:scale-[0.99] group shadow-md backdrop-blur-xl border border-secondary/20 hover:border-secondary/40 text-left gpu-accelerated ring-1 ring-secondary/10" onclick="switchTab('vision')"><div class="flex items-center gap-space-sm"><div class="w-11 h-11 rounded-xl flex items-center justify-center bg-gradient-to-br from-surface-variant/90 to-surface-container-high border border-secondary/30 text-secondary group-hover:scale-105 transition-transform duration-150 shadow-md shadow-secondary/10 gpu-accelerated"><span class="material-symbols-outlined text-[22px] drop-shadow-[0_0_6px_rgba(231,195,85,0.3)]">grid_view</span></div><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface group-hover:text-secondary transition-colors duration-150 font-semibold">Vizyon Panom</span><span class="font-body-sm text-body-sm text-on-surface-variant">12 Tezahür Görseli Aktif</span></div></div><div class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-variant/50 border border-secondary/20 group-hover:bg-secondary/20 transition-all duration-150"><span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-secondary group-hover:translate-x-0.5 transition-transform duration-150">arrow_forward</span></div></button><button class="flex items-center justify-between p-space-md rounded-2xl bg-gradient-to-r from-surface-container/70 via-surface-container/60 to-surface-container/80 hover:from-surface-container/90 hover:to-surface-container/90 transition-all duration-200 active:scale-[0.99] group shadow-md backdrop-blur-xl border border-tertiary/20 hover:border-tertiary/40 text-left gpu-accelerated ring-1 ring-tertiary/10" onclick="switchTab('manifest')"><div class="flex items-center gap-space-sm"><div class="w-11 h-11 rounded-xl flex items-center justify-center bg-gradient-to-br from-surface-variant/90 to-surface-container-high border border-tertiary/30 text-tertiary group-hover:scale-105 transition-transform duration-150 shadow-md shadow-tertiary/10 gpu-accelerated"><span class="material-symbols-outlined text-[22px] drop-shadow-[0_0_6px_rgba(123,208,255,0.3)]">graphic_eq</span></div><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface group-hover:text-tertiary transition-colors duration-150 font-semibold">Manifest Çalar</span><span class="font-body-sm text-body-sm text-on-surface-variant">432Hz Rezonans &amp; Frekans Akışı</span></div></div><div class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-variant/50 border border-tertiary/20 group-hover:bg-tertiary/20 transition-all duration-150"><span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-tertiary group-hover:translate-x-0.5 transition-transform duration-150">arrow_forward</span></div></button><button class="flex items-center justify-between p-space-md rounded-2xl bg-gradient-to-r from-surface-container/70 via-surface-container/60 to-surface-container/80 hover:from-surface-container/90 hover:to-surface-container/90 transition-all duration-200 active:scale-[0.99] group shadow-md text-left w-full backdrop-blur-xl border border-primary/20 hover:border-primary/40 gpu-accelerated ring-1 ring-primary/10" onclick="switchTab('goals')"><div class="flex items-center gap-space-sm"><div class="w-11 h-11 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary-container/30 to-surface-container-high border border-primary/30 text-primary-fixed-dim group-hover:scale-105 transition-transform duration-150 shadow-md shadow-primary/10 gpu-accelerated"><span class="material-symbols-outlined text-[22px] drop-shadow-[0_0_6px_rgba(192,193,255,0.3)]">track_changes</span></div><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface group-hover:text-primary transition-colors duration-150 font-semibold">Hedeflerim &amp; Eylemler</span><span class="font-body-sm text-body-sm text-on-surface-variant">Yıldız Haritası ve 3 Aylık Adımlar</span></div></div><div class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-variant/50 border border-primary/20 group-hover:bg-primary/20 transition-all duration-150"><span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-primary group-hover:translate-x-0.5 transition-transform duration-150">arrow_forward</span></div></button></div>
+</div>
+</section>
+<!-- ==================== 2. VİZYON PANOSU SEKME MODÜLÜ ==================== -->
+<section class="tab-panel flex-col w-full gap-space-lg" id="tab-vision">
+<div class="flex items-center justify-between pt-1">
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg text-on-surface font-headline-md tracking-tight">Vizyon Panom</h1>
+<p class="font-body-sm text-on-surface-variant mt-0.5">Bilinçaltı rezonansında 12 canlı tezahür boyutu</p>
+</div>
+<button class="px-3 py-1.5 rounded-full bg-secondary text-on-secondary font-label-md font-semibold flex items-center gap-1 shadow-md shadow-secondary/20 hover:bg-secondary-fixed transition-all duration-150 active:scale-95 gpu-accelerated">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">Ekle</span>
+</button>
+</div>
+<!-- Yıldız Niyeti Banner -->
+<div class="p-4 rounded-xl bg-gradient-to-r from-surface-container-high via-surface-container to-surface-container-high border border-secondary/30 relative overflow-hidden shadow-lg gpu-accelerated">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center text-secondary flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">auto_awesome</span>
+</div>
+<div>
+<span class="font-label-sm text-secondary font-semibold uppercase tracking-wider">Kutup Yıldızı Niyeti (2027)</span>
+<p class="font-title-md text-on-surface font-medium text-[15px] leading-snug">"İtalya'da göl kıyısında sakin, yaratıcı ve finansal bağımsız bir yaşam."</p>
+</div>
+</div>
+</div>
+<!-- Vizyon Kartları Grid (12 Görsel / Boyut) -->
+<div class="grid grid-cols-2 gap-3">
+<!-- Kart 1 -->
+<div class="group relative rounded-xl overflow-hidden bg-surface-container-low border border-outline-variant/30 aspect-[4/5] shadow-md hover:border-secondary/50 transition-all duration-150 gpu-accelerated">
+<img alt="Lake Como" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 gpu-accelerated" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADXrnUH7gIyobSm5MJV6BSRgd2q00wL6vRvH5UOtmty6TobiWIpJ4Erphm_LgD7f89uwrQ4RfyHQ8YmfRhRpf5RE4BEuU3mrJuKa0SJU3JYAl2P79FsYHsTrQNp8AtQMdwKAZLF9y_Ck3Dw3CqIIy2X-byVgulwNM6tm2njk_a78EV-mJzOU17D5kYMsfxH6tKfUBvm6iaHWcNyhQEYDAjK4_o-spBtYtuBakJXzCibvRBl7kW09Ue">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-black/20 to-transparent pointer-events-none"></div>
+<div class="absolute bottom-2.5 left-2.5 right-2.5 flex flex-col">
+<span class="font-label-sm text-[11px] text-secondary font-bold">Kariyer &amp; Yaşam</span>
+<p class="font-body-sm text-[13px] text-on-surface font-medium truncate">Como Gölü Stüdyosu</p>
+</div>
+</div>
+<!-- Kart 2 -->
+<div class="group relative rounded-xl overflow-hidden bg-surface-container-low border border-outline-variant/30 aspect-[4/5] shadow-md hover:border-secondary/50 transition-all duration-150 gpu-accelerated">
+<div class="w-full h-full bg-gradient-to-br from-indigo-950 via-slate-900 to-amber-950/40 p-4 flex flex-col justify-between">
+<span class="material-symbols-outlined text-secondary text-[28px]">spa</span>
+<div>
+<span class="font-label-sm text-[11px] text-tertiary font-bold">Sağlık &amp; Canlılık</span>
+<p class="font-title-md text-on-surface font-medium text-[14px]">Sabah Meditasyon Ritüeli</p>
+</div>
+</div>
+</div>
+<!-- Kart 3 -->
+<div class="group relative rounded-xl overflow-hidden bg-surface-container-low border border-outline-variant/30 aspect-[4/5] shadow-md hover:border-secondary/50 transition-all duration-150 gpu-accelerated">
+<div class="w-full h-full bg-gradient-to-tr from-purple-950/80 via-surface-container to-amber-900/30 p-4 flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary text-[28px]">monetization_on</span>
+<div>
+<span class="font-label-sm text-[11px] text-secondary font-bold">Bolluk Akışı</span>
+<p class="font-title-md text-on-surface font-medium text-[14px]">Finansal Özerklik</p>
+</div>
+</div>
+</div>
+<!-- Kart 4 -->
+<div class="group relative rounded-xl overflow-hidden bg-surface-container-low border border-outline-variant/30 aspect-[4/5] shadow-md hover:border-secondary/50 transition-all duration-150 gpu-accelerated">
+<div class="w-full h-full bg-gradient-to-bl from-teal-950/70 via-surface-container to-surface-container-lowest p-4 flex flex-col justify-between">
+<span class="material-symbols-outlined text-tertiary text-[28px]">favorite</span>
+<div>
+<span class="font-label-sm text-[11px] text-tertiary font-bold">İlişkiler</span>
+<p class="font-title-md text-on-surface font-medium text-[14px]">Derin Ruhsal Bağ</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== 3. 432Hz MANİFEST ÇALARI SEKME MODÜLÜ ==================== -->
+<section class="tab-panel flex-col w-full gap-space-lg" id="tab-manifest">
+<div class="flex items-center justify-between pt-1">
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg text-on-surface font-headline-md tracking-tight">432Hz Rezonans</h1>
+<p class="font-body-sm text-on-surface-variant mt-0.5">Bilinçaltı frekans terapisi ve çift kanallı ses mikseri</p>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-tertiary/20 text-tertiary font-mono text-[11px] font-semibold border border-tertiary/30 animate-pulse">432.00 Hz</span>
+</div>
+<!-- Oynatıcı Ana Küre / Görsel Rezonatör -->
+<div class="relative w-full rounded-2xl bg-gradient-to-b from-surface-container via-surface-container-low to-surface-container-lowest p-6 flex flex-col items-center justify-center border border-outline-variant/30 shadow-2xl overflow-hidden gpu-accelerated">
+<div class="absolute -top-16 w-56 h-56 rounded-full bg-secondary/10 blur-3xl pointer-events-none"></div>
+<!-- Merkez Mistik Daire & Frekans Dalgaları -->
+<div class="relative w-44 h-44 my-2 flex items-center justify-center gpu-accelerated">
+<div class="absolute inset-0 rounded-full border border-secondary/20 animate-ping opacity-25"></div>
+<div class="absolute inset-3 rounded-full border border-tertiary/30 animate-pulse"></div>
+<div class="w-32 h-32 rounded-full bg-gradient-to-tr from-surface-container-highest via-surface-variant to-secondary-container/30 flex flex-col items-center justify-center shadow-inner border border-secondary/40 gpu-accelerated">
+<span class="material-symbols-outlined text-[38px] text-secondary" style="font-variation-settings: 'FILL' 1;">graphic_eq</span>
+<span class="font-label-sm text-[11px] text-secondary font-mono mt-1">Theta Akışı</span>
+</div>
+</div>
+<div class="text-center mt-3">
+<h3 class="font-headline-md text-headline-md text-on-surface font-serif">Kozmik Bolluk &amp; Dingin Zihin</h3>
+<p class="font-body-sm text-on-surface-variant text-[13px] mt-0.5">Selin'in Kendi Ses Frekansı + Yağmur Uğultusu</p>
+</div>
+<!-- Dalga / Zaman Çubuğu -->
+<div class="w-full mt-6">
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-secondary to-tertiary h-full w-[42%] rounded-full"></div>
+</div>
+<div class="flex justify-between items-center text-[11px] text-on-surface-variant mt-1.5 font-mono">
+<span class="">06:18</span>
+<span class="">15:00</span>
+</div>
+</div>
+<!-- Çalma Kontrolleri -->
+<div class="flex items-center justify-center gap-6 mt-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:text-secondary transition-colors duration-150 active:scale-90 gpu-accelerated">
+<span class="material-symbols-outlined text-[24px]">skip_previous</span>
+</button>
+<button class="w-16 h-16 rounded-full bg-secondary text-surface-container-lowest flex items-center justify-center shadow-lg shadow-secondary/30 active:scale-95 transition-transform duration-150 gpu-accelerated" id="player-master-btn">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">pause</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:text-secondary transition-colors duration-150 active:scale-90 gpu-accelerated">
+<span class="material-symbols-outlined text-[24px]">skip_next</span>
+</button>
+</div>
+</div>
+<!-- Mikser Kanalları -->
+<div class="flex flex-col gap-3">
+<span class="font-label-sm uppercase tracking-wider text-on-surface-variant font-semibold px-1">Çift Kanallı Frekans Mikseri</span>
+<div class="p-4 rounded-xl bg-surface-container/60 border border-outline-variant/30 flex flex-col gap-3 gpu-accelerated">
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-secondary">record_voice_over</span> Kendi Sesli Afirmasyonun</span>
+<span class="font-mono text-secondary text-xs">%80</span>
+</div>
+<input class="w-full accent-[#e7c355] bg-surface-variant rounded-lg h-1.5 cursor-pointer" type="range" value="80">
+</div>
+<div class="p-4 rounded-xl bg-surface-container/60 border border-outline-variant/30 flex flex-col gap-3 gpu-accelerated">
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-tertiary">water_drop</span> 432Hz Gece Yağmuru &amp; Kase</span>
+<span class="font-mono text-tertiary text-xs">%65</span>
+</div>
+<input class="w-full accent-[#7bd0ff] bg-surface-variant rounded-lg h-1.5 cursor-pointer" type="range" value="65">
+</div>
+</div>
+</section>
+<!-- ==================== 4. HEDEFLER & EYLEMLER SEKME MODÜLÜ ==================== -->
+<section class="tab-panel flex-col w-full gap-space-lg" id="tab-goals">
+<div class="flex items-center justify-between pt-1">
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg text-on-surface font-headline-md tracking-tight">Hedefler &amp; Eylemler</h1>
+<p class="font-body-sm text-on-surface-variant mt-0.5">Vizyondan günlük mikro adımlara dönüşüm</p>
+</div>
+<button class="w-9 h-9 rounded-full bg-surface-variant flex items-center justify-center text-secondary hover:bg-secondary/20 transition-all duration-150 active:scale-95 gpu-accelerated">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+</div>
+<!-- Aktif Ana Hedef -->
+<div class="p-5 rounded-xl bg-surface-container/70 border border-secondary/30 relative shadow-lg flex flex-col gap-3 gpu-accelerated">
+<div class="flex items-start justify-between">
+<div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/40 text-secondary text-[10px] font-bold uppercase tracking-wider">3 Aylık Odak</span>
+<h3 class="font-title-lg text-on-surface font-semibold mt-1">Avrupa Çalışma &amp; Yaşam İzni Dosyası</h3>
+</div>
+<span class="font-headline-md text-secondary font-bold">%40</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full transition-all duration-300" style="width: 40%;"></div>
+</div>
+<!-- Adımı Küçült Butonu -->
+<div class="mt-2 pt-3 border-t border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">psychology</span>
+<span class="font-body-sm text-on-surface-variant">Büyük adım seni bunaltıyor mu?</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-variant hover:bg-secondary/20 text-secondary text-xs font-semibold transition-all duration-150 border border-secondary/30 active:scale-95 flex items-center gap-1 gpu-accelerated" id="shrink-step-btn">
+<span class="material-symbols-outlined text-[15px]">compress</span>
+<span class="">5 Dk Yap</span>
+</button>
+</div>
+</div>
+<!-- Kilometre Taşları Listesi -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm uppercase tracking-wider text-on-surface-variant font-semibold px-1">Önümüzdeki Kilometre Taşları</span>
+<div class="p-3.5 rounded-xl bg-surface-container/60 border border-outline-variant/30 flex items-center justify-between gpu-accelerated">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<div>
+<p class="font-body-md text-on-surface font-medium line-through text-on-surface-variant">Dil Portföyü Ön İnceleme</p>
+<span class="font-label-sm text-[11px] text-on-surface-variant">Tamamlandı • 3 gün önce</span>
+</div>
+</div>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container/60 border border-secondary/40 flex items-center justify-between shadow-sm gpu-accelerated">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container/40 text-secondary flex items-center justify-center flex-shrink-0 border border-secondary/30">
+<span class="material-symbols-outlined text-[18px]">radio_button_checked</span>
+</div>
+<div>
+<p class="font-body-md text-on-surface font-medium">Biyografi &amp; Motivasyon Mektubu Taslağı</p>
+<span class="font-label-sm text-[11px] text-secondary font-medium">Aktif Aşama • Kalan 4 gün</span>
+</div>
+</div>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container/60 border border-outline-variant/30 flex items-center justify-between opacity-70 gpu-accelerated">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+</div>
+<div>
+<p class="font-body-md text-on-surface font-medium">Konsolosluk Randevusu ve Mülakat Pratiği</p>
+<span class="font-label-sm text-[11px] text-on-surface-variant">Son Aşama</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== 5. AYARLAR & PROFİL SEKME MODÜLÜ ==================== -->
+<section class="tab-panel flex-col w-full gap-space-lg" id="tab-settings">
+<div class="flex items-center justify-between pt-1">
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg text-on-surface font-headline-md tracking-tight">Kişisel Kutsal Alan</h1>
+<p class="font-body-sm text-on-surface-variant mt-0.5">Hesap, zihinsel ritim ve gizlilik kasası</p>
+</div>
+</div>
+<!-- Profil Kartı -->
+<div class="p-4 rounded-xl bg-surface-container/70 border border-outline-variant/30 flex items-center gap-4 shadow-md gpu-accelerated">
+<img alt="Selin" class="w-16 h-16 rounded-full object-cover ring-2 ring-secondary/50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi3a-psaNJ_QU-72Xk020WcxXT0weHKVr0dxtketi3AfYdGjQE0pkeV1TxmQm84hVhT0dDYaR1K3Vn7ar1Vow9SCF_CzgefPXCrNnOXcCjwHeklD47ZVj8Szf5GaDskIOBEcZn5UQKJGj4wtMBLcJXvks2x9qZc2WAz3X8IE2W-LHjlqmq2AKvrUa2zYibLT77AjUqNtzdsFtgZh2JvTDD3mZD5GPHtnkbRFBoO4t1P2LSK3m2QjJ3">
+<div class="flex-1 min-w-0">
+<h3 class="font-title-lg text-on-surface font-semibold truncate">Selin Yılmaz</h3>
+<p class="font-body-sm text-secondary font-medium">Veira Celestial • Üstat Seviye</p>
+<span class="font-label-sm text-on-surface-variant text-[11px]">Üyelik Bitiş: Aralık 2027</span>
+</div>
+</div>
+<!-- Ayar Öğeleri -->
+<div class="flex flex-col gap-2">
+<span class="font-label-sm uppercase tracking-wider text-on-surface-variant font-semibold px-1">Frekans &amp; Bildirimler</span>
+<div class="p-3.5 rounded-xl bg-surface-container/60 border border-outline-variant/30 flex items-center justify-between gpu-accelerated">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px]">notifications_active</span>
+<div>
+<p class="font-title-md text-on-surface text-[15px]">Günün Niyeti Hatırlatıcı</p>
+<span class="font-body-sm text-on-surface-variant text-xs">Her sabah 08:30 sakin bildirim</span>
+</div>
+</div>
+<input checked="" class="w-5 h-5 rounded text-secondary focus:ring-0 cursor-pointer accent-[#e7c355]" type="checkbox">
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container/60 border border-outline-variant/30 flex items-center justify-between gpu-accelerated">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-[22px]">lock</span>
+<div>
+<p class="font-title-md text-on-surface text-[15px]">Biyometrik Gizlilik Kasası</p>
+<span class="font-body-sm text-on-surface-variant text-xs">FaceID ile vizyon panosu koruması</span>
+</div>
+</div>
+<input checked="" class="w-5 h-5 rounded text-secondary focus:ring-0 cursor-pointer accent-[#e7c355]" type="checkbox">
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container/60 border border-outline-variant/30 flex items-center justify-between cursor-pointer hover:bg-surface-container/80 transition-all duration-150 gpu-accelerated">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[22px]">cloud_sync</span>
+<div>
+<p class="font-title-md text-on-surface text-[15px]">Yedekleme ve Bulut Şifreleme</p>
+<span class="font-body-sm text-on-surface-variant text-xs">Son eşitleme: 2 dakika önce</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Alt Navigasyon Çubuğu (SPA Tab Bar & Fluid Sliding Pill Tracker) -->
+<nav class="fixed bottom-4 left-0 right-0 mx-auto w-[92%] max-w-md z-50 rounded-full bg-surface-container-low/90 backdrop-blur-2xl border border-secondary/20 shadow-2xl shadow-surface-container-lowest/85 p-1.5 gpu-accelerated" id="bottom-dock-nav">
+<!-- Yıldız Tozu & Kozmik Parçacık Konteynırı (Stardust Trail Container) -->
+<div aria-hidden="true" id="stardust-trail-container"></div>
+<!-- Akıcı & Elastik Kayan Altın Kapsül ve Kozmik Işıltı Katmanı -->
+<div id="sliding-pill-indicator" style="transition: none; --pill-transform: translate3d(6.800000190734863px, 0, 0); transform: translate3d(6.8px, 0px, 0px); width: 90.4375px;"></div>
+<div class="relative flex items-center justify-between gap-1 w-full" id="tabs-container">
+<button class="flex items-center gap-1.5 px-3.5 py-2 rounded-full font-semibold flex-1 justify-center cursor-pointer select-none gpu-accelerated text-[#1A1400]" id="tab-btn-home" onclick="switchTab('home')" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-sm text-[12px] font-bold tracking-tight whitespace-nowrap tab-label">Bugün</span>
+</button>
+<button class="flex items-center gap-1.5 px-2.5 py-2 rounded-full text-[#94A3B8] hover:text-on-surface flex-1 justify-center cursor-pointer select-none gpu-accelerated" id="tab-btn-vision" onclick="switchTab('vision')" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">grid_view</span>
+<span class="font-label-sm text-[12px] font-medium tracking-tight whitespace-nowrap tab-label hidden">Panom</span>
+</button>
+<button class="flex items-center gap-1.5 px-2.5 py-2 rounded-full text-[#94A3B8] hover:text-on-surface flex-1 justify-center cursor-pointer select-none gpu-accelerated" id="tab-btn-manifest" onclick="switchTab('manifest')" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">graphic_eq</span>
+<span class="font-label-sm text-[12px] font-medium tracking-tight whitespace-nowrap tab-label hidden">Manifest</span>
+</button>
+<button class="flex items-center gap-1.5 px-2.5 py-2 rounded-full text-[#94A3B8] hover:text-on-surface flex-1 justify-center cursor-pointer select-none gpu-accelerated" id="tab-btn-goals" onclick="switchTab('goals')" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">track_changes</span>
+<span class="font-label-sm text-[12px] font-medium tracking-tight whitespace-nowrap tab-label hidden">Hedefler</span>
+</button>
+<button class="flex items-center gap-1.5 px-2.5 py-2 rounded-full text-[#94A3B8] hover:text-on-surface flex-1 justify-center cursor-pointer select-none gpu-accelerated" id="tab-btn-settings" onclick="switchTab('settings')" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">tune</span>
+<span class="font-label-sm text-[12px] font-medium tracking-tight whitespace-nowrap tab-label hidden">Ayarlar</span>
+</button>
+</div>
+</nav>
+<!-- Dinamik SPA Sekme Değiştirici ve Etkileşim Motoru -->
+<script>
+  const TAB_TITLES = {
+    'home': 'Bugün',
+    'vision': 'Vizyon Panom',
+    'manifest': '432Hz Manifest',
+    'goals': 'Hedefler',
+    'settings': 'Ayarlar'
+  };
+
+  const TAB_KEYS = ['home', 'vision', 'manifest', 'goals', 'settings'];
+  let currentActiveTab = 'home';
+  let previousPillCenter = null;
+
+  // Veira Celestial Stardust Renk Paleti
+  const CELESTIAL_COLORS = [
+    '#F5D061', // Celestial Gold
+    '#FDF4DC', // Starlight Champagne / Silver Gold
+    '#E7C355', // Primary Secondary Accent
+    '#FFE089', // Light Gold
+    '#6366F1', // Mystic Violet
+    '#7BD0FF'  // Tertiary Cyan Starlight
+  ];
+
+  // Yıldız Tozu Parçacık İzi ve Pırıltı Patlaması Motoru
+  function createStardustTrail(startX, endX, centerY) {
+    const container = document.getElementById('stardust-trail-container');
+    if (!container) return;
+
+    const particleCount = 10 + Math.floor(Math.random() * 4); // 10-13 adet
+    const distance = endX - startX;
+    const direction = distance >= 0 ? 1 : -1;
+
+    for (let i = 0; i < particleCount; i++) {
+      // Parçacıkların yol boyunca dağılımı (başlangıçtan hedefe)
+      const progress = (i + Math.random() * 0.4) / particleCount;
+      const posX = startX + distance * progress + (Math.random() - 0.5) * 16;
+      const posY = centerY + (Math.random() - 0.5) * 18;
+
+      const isStarSparkle = i % 3 === 0;
+      const color = CELESTIAL_COLORS[Math.floor(Math.random() * CELESTIAL_COLORS.length)];
+      const size = isStarSparkle ? (9 + Math.random() * 6) : (2.5 + Math.random() * 4);
+      const duration = 520 + Math.random() * 260; // 520ms - 780ms
+      const driftX = -direction * (8 + Math.random() * 22) + (Math.random() - 0.5) * 12;
+      const driftY = -(14 + Math.random() * 22); // Yukarı doğru süzülme
+
+      const el = document.createElement('div');
+      el.style.setProperty('--drift-x', `${driftX}px`);
+      el.style.setProperty('--drift-y', `${driftY}px`);
+      el.style.setProperty('--p-dur', `${duration}ms`);
+      el.style.left = `${posX}px`;
+      el.style.top = `${posY}px`;
+
+      if (isStarSparkle) {
+        el.className = 'stardust-sparkle';
+        el.innerHTML = `
+          <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}" style="filter: drop-shadow(0 0 5px ${color})">
+            <path d="M12 0L14.2 9.2L24 12L14.2 14.8L12 24L9.8 14.8L0 12L9.8 9.2L12 0Z"/>
+          </svg>
+        `;
+      } else {
+        el.className = 'stardust-particle';
+        el.style.width = `${size}px`;
+        el.style.height = `${size}px`;
+        el.style.backgroundColor = color;
+        el.style.boxShadow = `0 0 ${size * 2}px ${color}, 0 0 ${size * 4}px ${color}88`;
+      }
+
+      // Parçacığı ekle ve süresi bittiğinde bellekten temizle
+      container.appendChild(el);
+      setTimeout(() => {
+        if (el && el.parentNode) {
+          el.parentNode.removeChild(el);
+        }
+      }, duration + 30);
+    }
+  }
+
+  // Tıklama Anında Hedef Sekmede Mini Yıldız Patlaması (Sparkle Burst)
+  function createSparkleBurst(centerX, centerY) {
+    const container = document.getElementById('stardust-trail-container');
+    if (!container) return;
+
+    const burstCount = 6;
+    for (let i = 0; i < burstCount; i++) {
+      const angle = (Math.PI * 2 * i) / burstCount + (Math.random() - 0.5) * 0.5;
+      const dist = 14 + Math.random() * 18;
+      const driftX = Math.cos(angle) * dist;
+      const driftY = Math.sin(angle) * dist - 10;
+      const color = CELESTIAL_COLORS[Math.floor(Math.random() * CELESTIAL_COLORS.length)];
+      const size = 3 + Math.random() * 3.5;
+      const duration = 450 + Math.random() * 200;
+
+      const el = document.createElement('div');
+      el.className = 'stardust-particle';
+      el.style.setProperty('--drift-x', `${driftX}px`);
+      el.style.setProperty('--drift-y', `${driftY}px`);
+      el.style.setProperty('--p-dur', `${duration}ms`);
+      el.style.left = `${centerX}px`;
+      el.style.top = `${centerY}px`;
+      el.style.width = `${size}px`;
+      el.style.height = `${size}px`;
+      el.style.backgroundColor = color;
+      el.style.boxShadow = `0 0 8px ${color}`;
+
+      container.appendChild(el);
+      setTimeout(() => {
+        if (el && el.parentNode) {
+          el.parentNode.removeChild(el);
+        }
+      }, duration + 20);
+    }
+  }
+
+  function updateSlidingPill(tabId, animate = true) {
+    const dockNav = document.getElementById('bottom-dock-nav');
+    const targetBtn = document.getElementById('tab-btn-' + tabId);
+    const pill = document.getElementById('sliding-pill-indicator');
+    if (!dockNav || !targetBtn || !pill) return;
+
+    const navRect = dockNav.getBoundingClientRect();
+    const btnRect = targetBtn.getBoundingClientRect();
+
+    const left = btnRect.left - navRect.left;
+    const width = btnRect.width;
+    const currentCenter = left + width / 2;
+    const centerY = navRect.height / 2;
+
+    if (!animate) {
+      pill.style.transition = 'none';
+      previousPillCenter = currentCenter;
+    } else {
+      pill.style.transition = 'transform 0.38s cubic-bezier(0.34, 1.4, 0.64, 1), width 0.38s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.25s ease';
+      
+      // Kayan kapsül hareket ettikçe arkasında süzülen altın ve gümüş yıldız tozu izi bırak
+      if (previousPillCenter !== null && Math.abs(currentCenter - previousPillCenter) > 4) {
+        createStardustTrail(previousPillCenter, currentCenter, centerY);
+        createSparkleBurst(currentCenter, centerY);
+      }
+      previousPillCenter = currentCenter;
+    }
+
+    pill.style.setProperty('--pill-transform', `translate3d(${left}px, 0, 0)`);
+    pill.style.transform = `translate3d(${left}px, 0, 0)`;
+    pill.style.width = `${width}px`;
+
+    // Dokunma / varış mikro ışıltı patlaması (bloom pulse)
+    if (animate) {
+      pill.classList.remove('bloom-pulse');
+      void pill.offsetWidth;
+      pill.classList.add('bloom-pulse');
+    }
+  }
+
+  function switchTab(tabId) {
+    if (!TAB_KEYS.includes(tabId)) return;
+    currentActiveTab = tabId;
+
+    // 1. Panelleri gizle & hedef paneli göster
+    TAB_KEYS.forEach(key => {
+      const panel = document.getElementById('tab-' + key);
+      const btn = document.getElementById('tab-btn-' + key);
+      if (!panel || !btn) return;
+
+      const icon = btn.querySelector('.material-symbols-outlined');
+      const label = btn.querySelector('.tab-label');
+
+      if (key === tabId) {
+        panel.classList.add('active');
+        btn.classList.remove('text-[#94A3B8]');
+        btn.classList.add('text-[#1A1400]', 'font-bold');
+        if (icon) icon.style.fontVariationSettings = "'FILL' 1";
+        if (label) {
+          label.classList.remove('hidden');
+          label.classList.add('font-bold');
+        }
+      } else {
+        panel.classList.remove('active');
+        btn.classList.remove('text-[#1A1400]', 'font-bold');
+        btn.classList.add('text-[#94A3B8]');
+        if (icon) icon.style.fontVariationSettings = "'FILL' 0";
+        if (label) {
+          label.classList.add('hidden');
+          label.classList.remove('font-bold');
+        }
+      }
+    });
+
+    // 2. Kayan Kapsül Pozisyonunu Hesapla ve Güncelle
+    // Mikro gecikme ile etiket açıldıktan sonra genişliğin doğru yakalanmasını sağla
+    requestAnimationFrame(() => {
+      updateSlidingPill(tabId, true);
+    });
+
+    // 3. Üst Header Başlığını Güncelle
+    const headerTitle = document.getElementById('header-title');
+    if (headerTitle) {
+      headerTitle.textContent = TAB_TITLES[tabId] || 'Veira';
+    }
+
+    // 4. Scroll pozisyonunu sıfırla
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  // İlk açılış ve pencere boyutu değişiminde kayan kapsülü konumlandır
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      updateSlidingPill(currentActiveTab, false);
+    }, 50);
+  });
+  window.addEventListener('resize', () => {
+    updateSlidingPill(currentActiveTab, false);
+  });
+
+  // Dokunma / basılı tutma anında hafif elastik daralma (scale 0.95)
+  TAB_KEYS.forEach(key => {
+    const btn = document.getElementById('tab-btn-' + key);
+    const pill = document.getElementById('sliding-pill-indicator');
+    if (btn && pill) {
+      btn.addEventListener('pointerdown', () => {
+        pill.classList.add('pill-press');
+      });
+      btn.addEventListener('pointerup', () => {
+        pill.classList.remove('pill-press');
+      });
+      btn.addEventListener('pointercancel', () => {
+        pill.classList.remove('pill-press');
+      });
+    }
+  });
+
+  // Görev Tamamlama Butonu
+  const checkBtn = document.getElementById('task-check-btn');
+  const checkIcon = document.getElementById('check-icon');
+  const taskText = document.getElementById('task-text');
+  let isDone = false;
+
+  if (checkBtn && checkIcon) {
+    checkBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      isDone = !isDone;
+      if (isDone) {
+        checkIcon.textContent = 'check_circle';
+        checkIcon.style.fontVariationSettings = "'FILL' 1";
+        checkIcon.classList.remove('text-on-surface-variant');
+        checkIcon.classList.add('text-secondary');
+        checkBtn.classList.add('bg-secondary-container/60');
+        if (taskText) taskText.classList.add('line-through', 'opacity-60');
+      } else {
+        checkIcon.textContent = 'radio_button_unchecked';
+        checkIcon.style.fontVariationSettings = "'FILL' 0";
+        checkIcon.classList.remove('text-secondary');
+        checkIcon.classList.add('text-on-surface-variant');
+        checkBtn.classList.remove('bg-secondary-container/60');
+        if (taskText) taskText.classList.remove('line-through', 'opacity-60');
+      }
+    });
+  }
+
+  // 5 Dk Yap (Adımı Küçült) Etkileşimi
+  const shrinkBtn = document.getElementById('shrink-step-btn');
+  if (shrinkBtn) {
+    shrinkBtn.addEventListener('click', function() {
+      alert("✨ Adım Mikro-Eyleme Küçültüldü: 'Sadece 1 paragraf taslak yaz veya 3 dakika gözlerini kapatıp İtalya'daki masanı hayal et.' (Zihinsel bariyer kaldırıldı)");
+    });
+  }
+
+  // Çalar Oynat/Durdur Butonu
+  const masterBtn = document.getElementById('player-master-btn');
+  let isPlayingAudio = true;
+  if (masterBtn) {
+    masterBtn.addEventListener('click', function() {
+      isPlayingAudio = !isPlayingAudio;
+      const icon = masterBtn.querySelector('.material-symbols-outlined');
+      if (isPlayingAudio) {
+        icon.textContent = 'pause';
+      } else {
+        icon.textContent = 'play_arrow';
+      }
+    });
+  }
+</script>
+
+
+</body></html>

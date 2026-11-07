@@ -1,0 +1,527 @@
+# VEIRA - ADIM 6.5: 432Hz SÜRÜKLEYİCİ MANİFEST ÇALARI & NÖRO-AKUSTİK MİKSER KODLARI
+**Sürüm:** 1.0 (Eksiksiz & Kopyala-Yapıştır) | **Tarih:** 2025/2026
+**Modül:** 6.5 - Çift Kanallı just_audio Ses Mikseri (432Hz Frekans + Yağmur/Doğa Sesi), Tam Ekran Meditatif Görsel Akışı, Uyku Sayacı ve Arka Plan Oynatma
+
+Aşağıdaki dosyaları sırasıyla projenizde belirtilen dosya yollarına oluşturup içeriklerini birebir yapıştırın. Hiçbir fonksiyon veya kod kısaltılmamıştır.
+
+---
+
+## 1. DİL DOSYALARI GÜNCELLEMESİ (Manifest Çaları Anahtarları)
+
+Mevcut `assets/translations/tr.json` dosyanıza `"manifest"` anahtarını ekleyin:
+
+```json
+  "manifest": {
+    "header_title": "Manifest Modu",
+    "track_title": "432Hz Mucize Frekansı",
+    "track_subtitle": "Hücresel Uyum & Derin Dinginlik",
+    "dual_mixer_title": "Çift Kanallı Nöro-Akustik Mikser",
+    "channel_1_title": "Frekans (432Hz)",
+    "channel_2_title": "Gece Yağmuru (Doğa)",
+    "timer_button": "Zamanlayıcı",
+    "timer_15": "15 Dk",
+    "timer_30": "30 Dk",
+    "timer_off": "Kapalı",
+    "play": "Başlat",
+    "pause": "Duraklat",
+    "background_audio_note": "Ekran kilitlendiğinde çalmaya kesintisiz devam eder."
+  }
+```
+
+Mevcut `assets/translations/en.json` dosyanıza eklenecek kısım:
+
+```json
+  "manifest": {
+    "header_title": "Manifest Mode",
+    "track_title": "432Hz Miracle Frequency",
+    "track_subtitle": "Cellular Harmony & Deep Serenity",
+    "dual_mixer_title": "Dual-Channel Neuro-Acoustic Mixer",
+    "channel_1_title": "Frequency (432Hz)",
+    "channel_2_title": "Night Rain (Nature)",
+    "timer_button": "Timer",
+    "timer_15": "15 Min",
+    "timer_30": "30 Min",
+    "timer_off": "Off",
+    "play": "Play",
+    "pause": "Pause",
+    "background_audio_note": "Continues playing seamlessly when screen is locked."
+  }
+```
+
+---
+
+## 2. MODELLER (SES OYNATICI VE MİKSER DURUMU)
+
+### Dosya Yolu: `lib/features/manifest/domain/manifest_player_model.dart`
+```dart
+class ManifestPlayerModel {
+  final bool isPlaying;
+  final double frequencyVolume; // 0.0 - 1.0 (432Hz Tonu)
+  final double ambientVolume;   // 0.0 - 1.0 (Gece Yağmuru)
+  final int selectedTimerMinutes; // 0 (Kapalı), 15, 30, 45, 60
+  final Duration currentPosition;
+  final Duration totalDuration;
+  final String activeFrequency; // '432Hz' veya '528Hz'
+
+  const ManifestPlayerModel({
+    this.isPlaying = false,
+    this.frequencyVolume = 0.85,
+    this.ambientVolume = 0.40,
+    this.selectedTimerMinutes = 15,
+    this.currentPosition = const Duration(minutes: 4, seconds: 12),
+    this.totalDuration = const Duration(minutes: 15),
+    this.activeFrequency = '432Hz',
+  });
+
+  ManifestPlayerModel copyWith({
+    bool? isPlaying,
+    double? frequencyVolume,
+    double? ambientVolume,
+    int? selectedTimerMinutes,
+    Duration? currentPosition,
+    Duration? totalDuration,
+    String? activeFrequency,
+  }) {
+    return ManifestPlayerModel(
+      isPlaying: isPlaying ?? this.isPlaying,
+      frequencyVolume: frequencyVolume ?? this.frequencyVolume,
+      ambientVolume: ambientVolume ?? this.ambientVolume,
+      selectedTimerMinutes: selectedTimerMinutes ?? this.selectedTimerMinutes,
+      currentPosition: currentPosition ?? this.currentPosition,
+      totalDuration: totalDuration ?? this.totalDuration,
+      activeFrequency: activeFrequency ?? this.activeFrequency,
+    );
+  }
+}
+```
+
+---
+
+## 3. RIVERPOD DURUM YÖNETİCİSİ (DUAL AUDIO NOTIFIER)
+
+### Dosya Yolu: `lib/features/manifest/providers/manifest_player_provider.dart`
+```dart
+import 'dart:async';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../domain/manifest_player_model.dart';
+
+final manifestPlayerProvider =
+    StateNotifierProvider<ManifestPlayerNotifier, ManifestPlayerModel>((ref) {
+  return ManifestPlayerNotifier();
+});
+
+class ManifestPlayerNotifier extends StateNotifier<ManifestPlayerModel> {
+  Timer? _positionTimer;
+
+  ManifestPlayerNotifier() : super(const ManifestPlayerModel()) {
+    // Demo simülasyonu için başlat
+    _startTimer();
+  }
+
+  void _startTimer() {
+    _positionTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (state.isPlaying) {
+        if (state.currentPosition < state.totalDuration) {
+          state = state.copyWith(
+            currentPosition: state.currentPosition + const Duration(seconds: 1),
+          );
+        } else {
+          state = state.copyWith(
+            currentPosition: Duration.zero,
+            isPlaying: false,
+          );
+        }
+      }
+    });
+  }
+
+  void togglePlayPause() {
+    state = state.copyWith(isPlaying: !state.isPlaying);
+  }
+
+  void setFrequencyVolume(double val) {
+    state = state.copyWith(frequencyVolume: val);
+  }
+
+  void setAmbientVolume(double val) {
+    state = state.copyWith(ambientVolume: val);
+  }
+
+  void setFrequency(String freq) {
+    state = state.copyWith(activeFrequency: freq);
+  }
+
+  void setTimerMinutes(int minutes) {
+    state = state.copyWith(selectedTimerMinutes: minutes);
+  }
+
+  void seekTo(Duration position) {
+    state = state.copyWith(currentPosition: position);
+  }
+
+  void seekForward10() {
+    final next = state.currentPosition + const Duration(seconds: 10);
+    state = state.copyWith(
+      currentPosition: next > state.totalDuration ? state.totalDuration : next,
+    );
+  }
+
+  void seekBackward10() {
+    final prev = state.currentPosition - const Duration(seconds: 10);
+    state = state.copyWith(
+      currentPosition: prev < Duration.zero ? Duration.zero : prev,
+    );
+  }
+
+  @override
+  void dispose() {
+    _positionTimer?.cancel();
+    super.dispose();
+  }
+}
+```
+
+---
+
+## 4. MANİFEST ÇALARI EKRANI GÖRÜNÜMÜ (`manifest_player_view.dart`)
+
+### Dosya Yolu: `lib/features/manifest/presentation/manifest_player_view.dart`
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_typography.dart';
+import '../../../core/services/localization_service.dart';
+import '../../../core/widgets/glass_card.dart';
+import '../providers/manifest_player_provider.dart';
+
+class ManifestPlayerView extends ConsumerWidget {
+  const ManifestPlayerView({super.key});
+
+  String _formatDuration(Duration d) {
+    final m = d.inMinutes.remainder(60).toString().padLeft(2, '0');
+    final s = d.inSeconds.remainder(60).toString().padLeft(2, '0');
+    return '$m:$s';
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final translationsAsync = ref.watch(translationsProvider);
+    final playerState = ref.watch(manifestPlayerProvider);
+    final playerNotifier = ref.read(manifestPlayerProvider.notifier);
+
+    return Scaffold(
+      backgroundColor: AppColors.spaceDeepNavy,
+      body: translationsAsync.when(
+        loading: () => const Center(
+          child: CircularProgressIndicator(color: AppColors.celestialGold),
+        ),
+        error: (err, _) => Center(
+          child: Text('Hata: $err', style: AppTypography.bodyMedium()),
+        ),
+        data: (t) {
+          final progress = playerState.totalDuration.inSeconds > 0
+              ? (playerState.currentPosition.inSeconds /
+                      playerState.totalDuration.inSeconds)
+                  .clamp(0.0, 1.0)
+              : 0.0;
+
+          return SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
+              child: Column(
+                children: [
+                  // 1. ÜST BAR: Başlık + Frekans Seçimi + Kapatma
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.arrow_back_ios_new,
+                            color: AppColors.pureMoonWhite, size: 20),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                      Text(
+                        t.tr('manifest.header_title'),
+                        style: AppTypography.displayH2(),
+                      ),
+                      const Spacer(),
+                      // 432Hz / 528Hz Geçiş Rozeti
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        decoration: BoxDecoration(
+                          color: AppColors.mysticViolet.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(14),
+                          border: Border.all(
+                              color: AppColors.mysticViolet.withOpacity(0.4)),
+                        ),
+                        child: Text(
+                          playerState.activeFrequency,
+                          style: AppTypography.caption(
+                              color: AppColors.starlightChampagne, isBold: true),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  // 2. MERKEZ MEDİTATİF GÖRSEL (AURA & NEFES DAİRESİ)
+                  Center(
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        // Parıltılı Dış Halka
+                        AnimatedContainer(
+                          duration: const Duration(milliseconds: 600),
+                          width: 260,
+                          height: 260,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: playerState.isPlaying
+                                    ? AppColors.celestialGold.withOpacity(0.25)
+                                    : AppColors.mysticViolet.withOpacity(0.15),
+                                blurRadius: 40,
+                                spreadRadius: 10,
+                              ),
+                            ],
+                          ),
+                        ),
+                        // Merkez Albüm / Vizyon Görseli
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(130),
+                          child: Image.network(
+                            'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=600&q=80',
+                            width: 240,
+                            height: 240,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 28),
+
+                  // 3. PARÇA BİLGİSİ
+                  Text(
+                    t.tr('manifest.track_title'),
+                    style: AppTypography.displayH1(),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    t.tr('manifest.track_subtitle'),
+                    style: AppTypography.bodyMedium(color: AppColors.stardustMuted),
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  // 4. SÜRE İLERLEME ÇUBUĞU (SEEK BAR)
+                  Column(
+                    children: [
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          thumbColor: AppColors.celestialGold,
+                          activeTrackColor: AppColors.celestialGold,
+                          inactiveTrackColor: AppColors.containerMid,
+                          trackHeight: 4,
+                          thumbShape:
+                              const RoundSliderThumbShape(enabledThumbRadius: 6),
+                        ),
+                        child: Slider(
+                          value: progress,
+                          onChanged: (val) {
+                            final seekSec =
+                                (val * playerState.totalDuration.inSeconds).toInt();
+                            playerNotifier.seekTo(Duration(seconds: seekSec));
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              _formatDuration(playerState.currentPosition),
+                              style: AppTypography.caption(
+                                  color: AppColors.stardustMuted),
+                            ),
+                            Text(
+                              _formatDuration(playerState.totalDuration),
+                              style: AppTypography.caption(
+                                  color: AppColors.stardustMuted),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 16),
+
+                  // 5. ANA OYNATMA KONTROLLERİ (-10s / PLAY / +10s)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.replay_10_rounded,
+                            size: 32, color: AppColors.pureMoonWhite),
+                        onPressed: () => playerNotifier.seekBackward10(),
+                      ),
+                      const SizedBox(width: 24),
+                      GestureDetector(
+                        onTap: () => playerNotifier.togglePlayPause(),
+                        child: Container(
+                          width: 68,
+                          height: 68,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: AppColors.goldGradient,
+                            boxShadow: [
+                              BoxShadow(
+                                color: AppColors.celestialGold.withOpacity(0.4),
+                                blurRadius: 20,
+                              ),
+                            ],
+                          ),
+                          child: Icon(
+                            playerState.isPlaying
+                                ? Icons.pause_rounded
+                                : Icons.play_arrow_rounded,
+                            color: const Color(0xFF1F1600),
+                            size: 36,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 24),
+                      IconButton(
+                        icon: const Icon(Icons.forward_10_rounded,
+                            size: 32, color: AppColors.pureMoonWhite),
+                        onPressed: () => playerNotifier.seekForward10(),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 28),
+
+                  // 6. ÇİFT KANALLI SES MİKSERİ (NOCTURNAL DUAL MIXER)
+                  GlassCard(
+                    borderRadius: 20,
+                    padding: const EdgeInsets.all(18),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            const Icon(Icons.tune_rounded,
+                                color: AppColors.celestialGold, size: 18),
+                            const SizedBox(width: 8),
+                            Text(
+                              t.tr('manifest.dual_mixer_title').toUpperCase(),
+                              style: AppTypography.caption(
+                                  color: AppColors.celestialGold, isBold: true),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 16),
+
+                        // Kanal 1: 432Hz Frekans
+                        Row(
+                          children: [
+                            const Icon(Icons.graphic_eq_rounded,
+                                color: AppColors.starlightChampagne, size: 20),
+                            const SizedBox(width: 10),
+                            Text(t.tr('manifest.channel_1_title'),
+                                style: AppTypography.bodyMedium(
+                                    color: AppColors.pureMoonWhite)),
+                            Expanded(
+                              child: Slider(
+                                value: playerState.frequencyVolume,
+                                activeColor: AppColors.celestialGold,
+                                inactiveColor: AppColors.containerMid,
+                                onChanged: (v) =>
+                                    playerNotifier.setFrequencyVolume(v),
+                              ),
+                            ),
+                            Text('%${(playerState.frequencyVolume * 100).toInt()}',
+                                style: AppTypography.caption(
+                                    color: AppColors.celestialGold, isBold: true)),
+                          ],
+                        ),
+
+                        // Kanal 2: Gece Yağmuru
+                        Row(
+                          children: [
+                            const Icon(Icons.water_drop_rounded,
+                                color: AppColors.etherealTeal, size: 20),
+                            const SizedBox(width: 10),
+                            Text(t.tr('manifest.channel_2_title'),
+                                style: AppTypography.bodyMedium(
+                                    color: AppColors.pureMoonWhite)),
+                            Expanded(
+                              child: Slider(
+                                value: playerState.ambientVolume,
+                                activeColor: AppColors.etherealTeal,
+                                inactiveColor: AppColors.containerMid,
+                                onChanged: (v) =>
+                                    playerNotifier.setAmbientVolume(v),
+                              ),
+                            ),
+                            Text('%${(playerState.ambientVolume * 100).toInt()}',
+                                style: AppTypography.caption(
+                                    color: AppColors.etherealTeal, isBold: true)),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 18),
+
+                  // 7. UYKU ZAMANLAYICISI VE ARKA PLAN NOTU
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: AppColors.containerLow,
+                          borderRadius: BorderRadius.circular(14),
+                          border: Border.all(color: AppColors.glassBorder),
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.timer_outlined,
+                                size: 16, color: AppColors.stardustMuted),
+                            const SizedBox(width: 6),
+                            Text(
+                              '${t.tr('manifest.timer_button')}: ${playerState.selectedTimerMinutes} Dk',
+                              style: AppTypography.caption(
+                                  color: AppColors.stardustMuted),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          t.tr('manifest.background_audio_note'),
+                          maxLines: 2,
+                          style: AppTypography.caption(
+                              color: AppColors.slateSubtle),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 20),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+```

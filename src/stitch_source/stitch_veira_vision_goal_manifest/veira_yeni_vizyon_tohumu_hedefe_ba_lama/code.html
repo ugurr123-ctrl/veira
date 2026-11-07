@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-bright": "#343850", "primary-fixed-dim": "#c0c1ff", "on-primary-container": "#0d0096", "primary": "#c0c1ff", "surface-dim": "#0e1228", "surface-container-highest": "#2f334b", "on-secondary-fixed": "#241a00", "primary-container": "#8083ff", "outline": "#908fa0", "on-background": "#dee0ff", "background": "#0e1228", "surface-tint": "#c0c1ff", "inverse-surface": "#dee0ff", "on-secondary-fixed-variant": "#574500", "secondary-container": "#8e7100", "tertiary": "#7bd0ff", "tertiary-fixed-dim": "#7bd0ff", "surface": "#0e1228", "on-tertiary-container": "#002d40", "error-container": "#93000a", "on-secondary": "#3d2f00", "surface-container": "#1a1e35", "on-tertiary-fixed": "#001e2c", "tertiary-fixed": "#c4e7ff", "on-tertiary": "#00354a", "on-surface-variant": "#c7c4d7", "on-surface": "#dee0ff", "on-error": "#690005", "on-tertiary-fixed-variant": "#004c69", "inverse-primary": "#494bd6", "on-primary": "#1000a9", "primary-fixed": "#e1e0ff", "on-primary-fixed": "#07006c", "secondary-fixed": "#ffe089", "tertiary-container": "#009bd1", "surface-variant": "#2f334b", "surface-container-lowest": "#080c22", "outline-variant": "#464554", "surface-container-high": "#252840", "secondary-fixed-dim": "#e7c355", "on-primary-fixed-variant": "#2f2ebe", "secondary": "#e7c355", "on-error-container": "#ffdad6", "surface-container-low": "#161a30", "error": "#ffb4ab", "inverse-on-surface": "#2b2f46", "on-secondary-container": "#fffbff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-lg": "1.5rem", "margin": "1.25rem", "space-xs": "0.25rem", "margin-lg": "1.5rem", "gutter-sm": "0.75rem", "space-xl": "2rem", "space-md": "1rem", "gutter": "1rem", "space-sm": "0.5rem" }, "fontFamily": { "headline-lg": [ "Playfair Display" ], "label-md": [ "Inter" ], "display-lg": [ "Playfair Display" ], "body-md": [ "Inter" ], "headline-md": [ "Playfair Display" ], "label-lg": [ "Inter" ], "title-md": [ "Inter" ], "display-sm": [ "Playfair Display" ], "label-sm": [ "Inter" ], "body-lg": [ "Inter" ], "body-sm": [ "Inter" ], "headline-lg-mobile": [ "Playfair Display" ], "title-lg": [ "Inter" ] }, "fontSize": { "headline-lg": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "display-lg": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-md": [ "20px", { "lineHeight": "28px", "fontWeight": "500" } ], "label-lg": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" } ], "title-md": [ "16px", { "lineHeight": "22px", "fontWeight": "600" } ], "display-sm": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "label-sm": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "body-sm": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "headline-lg-mobile": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "title-lg": [ "18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" } ] } } } };</script><style>@layer base { html, body { width: 100vw; margin: 0; padding: 0; background-color: #0e1228; } body { overscroll-behavior: none; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; } .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 24; }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md min-h-screen flex flex-col relative selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 inset-x-0 z-50 bg-surface/75 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-gutter"><button aria-label="Kapat" class="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-surface-container/60 hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[20px]">close</span></button><div class="flex items-center gap-space-sm"><img alt="Veira markasının mistik, lüks ve göksel gece estetiğini (Nocturnal Serenity) simgeleyen logo: Gece mavisi arka plan üzerinde zarif 8 köşeli altın Polaris kutup yıldızı (North Star), etrafında ince hilal/aurora yayı ve zarif 'V' monogramı ile 'VEIRA' editoryal serif tipografisi. Lüks altın tonları (#F5D061, #FDF4DC).. Brand logo. - Primary color: #6366f1
+- Font: playfairDisplay
+- Mode: dark
+- Roundness: rounded-md
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1U4SsmQs6d2wI2EOvktvBpwMFksv4aRElSSolwDw5CO9fAxcoRkpW_JOY7xpTca-wZDdbZ5o77TMO-P4xhoFzT123iAA2X6tZh3evo2DqUZsg1dezCBGsUA4nH-kEA5s1mwKjSj52UUTVbahUsGeLb4Ns6BhI9TYDlhvCnoemT01bhC07JQWz4_RIN172rj2yWFjd7xXq0EG4DQIhdrz1WCaFXn7yRLE3iPoxUiaC0j"/><h1 class="font-headline-md text-headline-md text-on-surface font-medium tracking-tight truncate max-w-[140px]">Yeni Vizyon Tohumu</h1></div></div><div class="flex items-center gap-space-sm"><button class="min-h-[44px] px-space-md flex items-center justify-center rounded-full bg-secondary text-on-secondary font-label-md text-label-md font-semibold tracking-wide hover:brightness-110 active:scale-95 transition-all shadow-[0_0_16px_rgba(231,195,85,0.25)]" type="button"><span class="material-symbols-outlined text-[16px] mr-1">arrow_back_ios_new</span>Panoya Ekle</button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 bg-surface"><div class="flex flex-col w-full px-margin pb-12 gap-space-lg text-on-surface">
+<!-- 1. ÜST BİLGİ & 12 GÖRSEL KURALI SAYACI -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-primary-container/20 text-primary-fixed">
+<span class="material-symbols-outlined text-[16px] text-secondary">psychiatry</span>
+<span class="font-label-sm text-label-sm tracking-wider uppercase">Yeni Vizyon Tohumu</span>
+</div>
+<!-- Nöro-odak Sayaç Hapı -->
+<div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-high shadow-sm">
+<span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#e7c355]"></span>
+<span class="font-label-md text-label-md font-semibold text-secondary-fixed">7 / 12 Görsel Dolu</span>
+</div>
+</div>
+<!-- Nöro-odak Açıklama -->
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-tertiary">flare</span>
+<p class="font-body-sm text-body-sm italic">
+        Nöro-odak kuralı: Zihniniz en berrak ve kalıcı sinaptik bağı en fazla 12 ana vizyonla kurar.
+      </p>
+</div>
+<!-- İlerleme Çubuğu -->
+<div class="w-full h-1.5 rounded-full bg-surface-container-lowest overflow-hidden flex">
+<div class="h-full bg-gradient-to-r from-primary to-secondary rounded-full shadow-[0_0_12px_rgba(231,195,85,0.45)]" style="width: 58.3%;"></div>
+</div>
+</section>
+<!-- 2. GÖRSEL ÖNİZLEME & ÇERÇEVELEME ALANI (INTERACTIVE CROP & CANVAS) -->
+<section class="flex flex-col gap-space-md">
+<div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-lowest shadow-[0_12px_40px_rgba(8,12,34,0.7)] group">
+<!-- Vizyon Görseli -->
+<img class="w-full h-full object-cover select-none pointer-events-none transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Editorial cinematic photograph of a serene minimalist luxury workspace balcony overlooking Lake Como at twilight. Warm glowing ambient desk lamp, espresso cup, open leather notebook, tranquil dark azure waters, misty Italian alpine mountains in the background, elegant nocturnal mood with deep indigo shadows and subtle golden candle highlights, high aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzRvB_cY7Xsrn4WWr0Ra7G3WrsZ3SPUWhhVUTA0gIscjy0Wgtinrm061u0pq0UpLWOEWiyORoZcXS2tAydmmI8M_c8ZEN43ODwDKEeI4ZtmRgMOUSiB9QDBj5ojoqFN0GgLySmtHdMad4uzTEoJ44V5P-5Tef8UaOSj9rf85AwBtmYNM9r_Cj77ozRXJB9fX_VNbsb4gRPLMKlvFVGHrKYty-M3B87zq1KStT6LUU"/>
+<!-- Altın/Mistik Gölgeleme Katmanı -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim/90 via-transparent to-surface-dim/30 pointer-events-none"></div>
+<!-- Kırpma / Kompozisyon Kılavuz Izgarası (Rule of Thirds) -->
+<div class="absolute inset-0 grid grid-cols-3 grid-rows-3 pointer-events-none opacity-40">
+<div class="border-r border-b border-white/20"></div>
+<div class="border-r border-b border-white/20"></div>
+<div class="border-b border-white/20"></div>
+<div class="border-r border-b border-white/20"></div>
+<div class="border-r border-b border-white/20"></div>
+<div class="border-b border-white/20"></div>
+<div class="border-r border-white/20"></div>
+<div class="border-r border-white/20"></div>
+<div></div>
+</div>
+<!-- Odak Köşe İşaretleyicileri -->
+<div class="absolute top-4 left-4 w-5 h-5 border-t-2 border-l-2 border-secondary/80 pointer-events-none"></div>
+<div class="absolute top-4 right-4 w-5 h-5 border-t-2 border-r-2 border-secondary/80 pointer-events-none"></div>
+<div class="absolute bottom-4 left-4 w-5 h-5 border-b-2 border-l-2 border-secondary/80 pointer-events-none"></div>
+<div class="absolute bottom-4 right-4 w-5 h-5 border-b-2 border-r-2 border-secondary/80 pointer-events-none"></div>
+<!-- Üst Araçlar: Cihaz İçi AI Temizle Rozeti & Grid Kilidi -->
+<div class="absolute top-3 inset-x-3 flex items-center justify-between">
+<button class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-full bg-surface-container-high/80 backdrop-blur-md text-on-surface shadow-md active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px] text-tertiary">grid_goldenratio</span>
+<span class="font-label-sm text-label-sm">4:5 Dikey</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-full bg-surface-container-highest/85 backdrop-blur-md text-secondary-fixed shadow-[0_0_16px_rgba(231,195,85,0.2)] hover:bg-surface-bright active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">auto_fix_high</span>
+<span class="font-label-sm text-label-sm font-semibold">Arka Planı Temizle (AI)</span>
+</button>
+</div>
+<!-- Alt Durum Etiketi -->
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-dim/80 backdrop-blur-md">
+<span class="material-symbols-outlined text-[14px] text-secondary">location_on</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Lago di Como, İtalya</span>
+</div>
+<div class="flex items-center gap-1 px-2 py-1 rounded-full bg-surface-dim/80 backdrop-blur-md text-tertiary">
+<span class="material-symbols-outlined text-[14px]">tune</span>
+<span class="font-label-sm text-label-sm font-semibold">Düzenle</span>
+</div>
+</div>
+</div>
+<!-- Format Seçici Sekmeleri -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Çerçeve &amp; Estetik Dokusu</span>
+<div class="grid grid-cols-4 gap-space-xs">
+<!-- 1. Polaroid (Seçili) -->
+<button class="flex flex-col items-center justify-center py-2 px-1 rounded-lg bg-surface-container-highest text-secondary shadow-[0_0_14px_rgba(231,195,85,0.25)] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px] mb-1">filter_frames</span>
+<span class="font-label-sm text-label-sm font-semibold text-center leading-tight">Polaroid</span>
+</button>
+<!-- 2. Dergi Kupürü -->
+<button class="flex flex-col items-center justify-center py-2 px-1 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" type="button">
+<span class="material-symbols-outlined text-[20px] mb-1">auto_stories</span>
+<span class="font-label-sm text-label-sm text-center leading-tight">Kupür</span>
+</button>
+<!-- 3. Minimalist Cam -->
+<button class="flex flex-col items-center justify-center py-2 px-1 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" type="button">
+<span class="material-symbols-outlined text-[20px] mb-1">blur_on</span>
+<span class="font-label-sm text-label-sm text-center leading-tight">Mistik Cam</span>
+</button>
+<!-- 4. Serbest Kesim -->
+<button class="flex flex-col items-center justify-center py-2 px-1 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" type="button">
+<span class="material-symbols-outlined text-[20px] mb-1">crop_free</span>
+<span class="font-label-sm text-label-sm text-center leading-tight">Serbest</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 3. İLHAM VERİCİ VİZYON BAŞLIĞI & AFİRMASYON METNİ -->
+<section class="flex flex-col gap-space-md p-space-lg rounded-xl bg-surface-container shadow-md">
+<!-- Başlık Giriş Alanı -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-outline uppercase tracking-wider" for="vision-title">
+          Vizyon Başlığı
+        </label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">36/60</span>
+</div>
+<div class="relative flex items-center">
+<input class="w-full py-3 px-space-md rounded-lg bg-surface-container-highest text-on-surface font-title-md text-title-md focus:outline-none focus:bg-surface-bright transition-all" id="vision-title" type="text" value="Como Gölü Tasarım Stüdyosu &amp; Sakin Yaşam"/>
+<span class="absolute right-3 material-symbols-outlined text-[20px] text-secondary">verified</span>
+</div>
+</div>
+<!-- Niyet / Afirmasyon Girişi -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-outline uppercase tracking-wider" for="vision-affirmation">
+          Şimdiki Zaman Niyeti &amp; Afirmasyon
+        </label>
+<!-- Veira AI Butonu -->
+<button class="flex items-center gap-1 text-secondary font-label-sm text-label-sm hover:brightness-120 transition-all" type="button">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+<span>Veira AI ile Güçlendir</span>
+</button>
+</div>
+<div class="relative">
+<textarea class="w-full p-space-md rounded-lg bg-surface-container-highest text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-bright resize-none leading-relaxed" id="vision-affirmation" rows="3">Her sabah gölün dinginliğine uyanıyor, küresel projelerimi özgürce yönetiyorum. Ruhum huzurda, zihnim berrak ve bolluk akışında.</textarea>
+</div>
+</div>
+</section>
+<!-- 4. HEDEFE BAĞLAMA (VISION-TO-ACTION BRIDGE) -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-secondary">explore</span>
+<h2 class="font-title-lg text-title-lg text-on-surface">Hangi Yaşam Hedefine Bağlansın?</h2>
+</div>
+<span class="font-label-sm text-label-sm text-primary">Köprüleme Zorunlu</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant -mt-1">
+      Görseller sadece hayal değil, nörolojik olarak ölçülebilir bir eylem sütununa kilitlenmelidir.
+    </p>
+<!-- Bağlı Hedef Seçim Kartları Listesi -->
+<div class="flex flex-col gap-space-sm">
+<!-- Kart 1: [SEÇİLİ - ALTIN IŞIMA] -->
+<div class="relative p-space-md rounded-xl bg-surface-container-highest shadow-[0_0_20px_rgba(231,195,85,0.18)] cursor-pointer transition-all">
+<div class="flex items-start justify-between gap-space-sm mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="flex items-center justify-center w-7 h-7 rounded-full bg-secondary-container text-on-secondary-container">
+<span class="material-symbols-outlined text-[16px] text-secondary-fixed">domain</span>
+</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-secondary font-semibold">Kariyer &amp; Bolluk</span>
+</div>
+<!-- Seçili Tik İkonu -->
+<div class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</div>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-space-xs">
+          Como Gölü Kıyısında Yaşam ve Özgür Çalışma Düzeni
+        </h3>
+<!-- İlerleme ve Gün Bilgisi -->
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant mb-space-xs">
+<span class="text-secondary font-semibold">%75 İlerleme</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">timelapse</span>
+            142 Gün Kaldı
+          </span>
+</div>
+<!-- İlerleme Çizgisi -->
+<div class="w-full h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 75%;"></div>
+</div>
+</div>
+<!-- Kart 2: Beden & Canlılık -->
+<div class="p-space-md rounded-xl bg-surface-container hover:bg-surface-container-high cursor-pointer transition-all">
+<div class="flex items-start justify-between gap-space-sm mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="flex items-center justify-center w-7 h-7 rounded-full bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-tertiary">spa</span>
+</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-outline font-semibold">Beden &amp; Canlılık</span>
+</div>
+<div class="w-5 h-5 rounded-full bg-surface-container-highest"></div>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-space-xs">
+          Haftalık 4 Gün Pilates ve Hücresel Arınma
+        </h3>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>%40 İlerleme</span>
+<span>Sürekli Rutin</span>
+</div>
+</div>
+<!-- Kart 3: Ruhsal Denge -->
+<div class="p-space-md rounded-xl bg-surface-container hover:bg-surface-container-high cursor-pointer transition-all">
+<div class="flex items-start justify-between gap-space-sm mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="flex items-center justify-center w-7 h-7 rounded-full bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary">bedtime</span>
+</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-outline font-semibold">Ruhsal Denge</span>
+</div>
+<div class="w-5 h-5 rounded-full bg-surface-container-highest"></div>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-space-xs">
+          432Hz Günlük Gece Dinginlik ve Meditasyon Seansı
+        </h3>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>%90 Alışkanlık Tutarlılığı</span>
+<span>21 Günlük Seri</span>
+</div>
+</div>
+<!-- Kart 4: Yeni Hedef Ekle -->
+<button class="flex items-center justify-center gap-space-xs p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-all" type="button">
+<span class="material-symbols-outlined text-[20px] text-secondary">add_circle</span>
+<span class="font-label-lg text-label-lg font-medium">+ Yeni Yaşam Hedefi Oluştur</span>
+</button>
+</div>
+</section>
+<!-- 5. BAĞLI GÜNLÜK 15 DAKİKALIK MİKRO-ADIM ÖNERİSİ -->
+<section class="relative overflow-hidden p-space-lg rounded-xl bg-gradient-to-br from-surface-container-high via-surface-container to-surface-container-low shadow-lg">
+<!-- Arka plan kozmik ışık efekti -->
+<div class="absolute -right-8 -bottom-8 w-32 h-32 rounded-full bg-secondary/10 blur-2xl pointer-events-none"></div>
+<div class="flex flex-col gap-space-sm relative z-10">
+<div class="flex items-center gap-space-xs text-secondary">
+<span class="material-symbols-outlined text-[20px] animate-pulse">bolt</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">
+          Bu Görselin Günlük 15 Dakikalık Tohumu
+        </span>
+</div>
+<!-- Mikro-Eylem Kutusu -->
+<div class="p-space-md rounded-lg bg-surface-container-lowest/80 backdrop-blur-md flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-tertiary mt-0.5 shrink-0">check_box_outline_blank</span>
+<div class="flex flex-col">
+<p class="font-body-md text-body-md text-on-surface font-medium leading-snug">
+            İtalyanca çalışma portföyünden 1 vize yazısını incele ve 3 somut not al.
+          </p>
+<span class="font-label-sm text-label-sm text-secondary-fixed mt-1">Önerilen Saat: 21:30 (Akşam Dinginliği)</span>
+</div>
+</div>
+<!-- Nöro Eşleşme Bilgisi -->
+<div class="flex items-center gap-space-xs text-on-surface-variant pt-1">
+<span class="material-symbols-outlined text-[16px] text-primary">widgets</span>
+<p class="font-body-sm text-body-sm">
+          Görsel panoya mühürlendiğinde Ana Sayfa ve Kilit Ekranı widget'ınızda bu tek eylemle senkronize olacaktır.
+        </p>
+</div>
+</div>
+</section>
+<!-- 6. ALT AKSİYON BUTONLARI -->
+<section class="flex flex-col gap-space-sm pt-space-xs">
+<!-- Altın Mühürleme Butonu -->
+<button class="w-full py-4 px-space-lg rounded-full bg-gradient-to-r from-secondary-fixed-dim via-secondary to-secondary-fixed text-on-secondary font-label-lg text-label-lg font-bold tracking-wide shadow-[0_0_24px_rgba(231,195,85,0.4)] hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span>Vizyon Panoma Mühürle &amp; Ekle</span>
+</button>
+<!-- Farklı Görsel Seçimi Butonu -->
+<button class="w-full py-3.5 px-space-lg rounded-full bg-surface-container-high text-on-surface font-label-lg text-label-lg hover:bg-surface-bright active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">add_photo_alternate</span>
+<span>Farklı Görsel Seç (Galeri / Kamera)</span>
+</button>
+</section>
+</div>
+<script>
+  // Basit haptik etkileşim ve seçim geri bildirimleri
+  document.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (window.navigator && window.navigator.vibrate) {
+        window.navigator.vibrate(25);
+      }
+    });
+  });
+</script></main></body></html>

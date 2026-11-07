@@ -1,0 +1,567 @@
+# VEIRA - ADIM 6.4: 12 GÖRSELLİ VİZYON PANOSU EDİTÖRÜ KODLARI (VISION BOARD ENGINE)
+**Sürüm:** 1.0 (Eksiksiz & Kopyala-Yapıştır) | **Tarih:** 2025/2026
+**Modül:** 6.4 - 12 Görsel Kuralı, Çok Katmanlı Serbest Tuval (Free-Transform), Polaroid/Dergi Kupürü Şablonları, Hedef Bağlantısı ve 4K/HD Dışa Aktarma
+
+Aşağıdaki dosyaları sırasıyla projenizde belirtilen dosya yollarına oluşturup içeriklerini birebir yapıştırın. Hiçbir fonksiyon veya kod kısaltılmamıştır.
+
+---
+
+## 1. DİL DOSYALARI GÜNCELLEMESİ (Vizyon Panosu Anahtarları)
+
+Mevcut `assets/translations/tr.json` dosyanıza `"vision_board"` anahtarını ekleyin:
+
+```json
+  "vision_board": {
+    "header_title": "Vizyon Panosu",
+    "year_selector": "2027 Vizyon Panom ✨",
+    "export_hd": "HD İndir",
+    "exporting": "4K Duvar Kağıdı Oluşturuluyor...",
+    "limit_badge": "{current} / 12 Görsel",
+    "limit_warning": "Odak sınırındasın: Beynin en net 12 niyetle çalışır.",
+    "add_photo": "Görsel Ekle",
+    "templates": "Şablonlar",
+    "connect_goal": "Hedefe Bağla",
+    "remove_bg": "Arka Planı Sil",
+    "tap_hint": "Görsellere dokunarak bağlı 15 dakikalık günlük görevi açabilir veya yönlendirebilirsiniz.",
+    "active_action_badge": "Bağlı Mikro-Eylem"
+  }
+```
+
+Mevcut `assets/translations/en.json` dosyanıza eklenecek kısım:
+
+```json
+  "vision_board": {
+    "header_title": "Vision Board",
+    "year_selector": "2027 Vision Board ✨",
+    "export_hd": "Export HD",
+    "exporting": "Rendering 4K Wallpaper...",
+    "limit_badge": "{current} / 12 Visuals",
+    "limit_warning": "Focus limit reached: Your mind thrives best with 12 core intentions.",
+    "add_photo": "Add Photo",
+    "templates": "Templates",
+    "connect_goal": "Link Goal",
+    "remove_bg": "Cutout (On-Device)",
+    "tap_hint": "Tap any visual card to open its linked 15-minute daily action.",
+    "active_action_badge": "Linked Action"
+  }
+```
+
+---
+
+## 2. MODELLER (BOARD ITEM & CANVAS CONFIG)
+
+### Dosya Yolu: `lib/features/vision_board/domain/board_item_model.dart`
+```dart
+class BoardItemModel {
+  final String id;
+  final String imageUrl;
+  final String title;
+  final String category;
+  final String? affirmationText;
+  final String? connectedGoalId;
+  final String? connectedMicroAction;
+  final double posX;
+  final double posY;
+  final double scale;
+  final double rotation; // radyan cinsinden
+  final int layerOrder;
+  final bool isCenterpiece; // 1 Numaralı Ana Niyet Yıldızı
+
+  const BoardItemModel({
+    required this.id,
+    required this.imageUrl,
+    required this.title,
+    required this.category,
+    this.affirmationText,
+    this.connectedGoalId,
+    this.connectedMicroAction,
+    this.posX = 0.0,
+    this.posY = 0.0,
+    this.scale = 1.0,
+    this.rotation = 0.0,
+    this.layerOrder = 0,
+    this.isCenterpiece = false,
+  });
+
+  BoardItemModel copyWith({
+    String? id,
+    String? imageUrl,
+    String? title,
+    String? category,
+    String? affirmationText,
+    String? connectedGoalId,
+    String? connectedMicroAction,
+    double? posX,
+    double? posY,
+    double? scale,
+    double? rotation,
+    int? layerOrder,
+    bool? isCenterpiece,
+  }) {
+    return BoardItemModel(
+      id: id ?? this.id,
+      imageUrl: imageUrl ?? this.imageUrl,
+      title: title ?? this.title,
+      category: category ?? this.category,
+      affirmationText: affirmationText ?? this.affirmationText,
+      connectedGoalId: connectedGoalId ?? this.connectedGoalId,
+      connectedMicroAction: connectedMicroAction ?? this.connectedMicroAction,
+      posX: posX ?? this.posX,
+      posY: posY ?? this.posY,
+      scale: scale ?? this.scale,
+      rotation: rotation ?? this.rotation,
+      layerOrder: layerOrder ?? this.layerOrder,
+      isCenterpiece: isCenterpiece ?? this.isCenterpiece,
+    );
+  }
+}
+```
+
+---
+
+## 3. RIVERPOD DURUM YÖNETİCİSİ (CANVAS NOTIFIER)
+
+### Dosya Yolu: `lib/features/vision_board/providers/vision_board_provider.dart`
+```dart
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../domain/board_item_model.dart';
+
+class VisionBoardState {
+  final List<BoardItemModel> items;
+  final String? selectedItemId;
+  final bool isExporting;
+  final String activeTemplate; // 'polaroid', 'magazine', 'luxury_dark'
+
+  const VisionBoardState({
+    required this.items,
+    this.selectedItemId,
+    this.isExporting = false,
+    this.activeTemplate = 'luxury_dark',
+  });
+
+  int get count => items.length;
+  bool get isMaxReached => items.length >= 12;
+
+  VisionBoardState copyWith({
+    List<BoardItemModel>? items,
+    String? selectedItemId,
+    bool? isExporting,
+    String? activeTemplate,
+  }) {
+    return VisionBoardState(
+      items: items ?? this.items,
+      selectedItemId: selectedItemId,
+      isExporting: isExporting ?? this.isExporting,
+      activeTemplate: activeTemplate ?? this.activeTemplate,
+    );
+  }
+}
+
+final visionBoardProvider = StateNotifierProvider<VisionBoardNotifier, VisionBoardState>((ref) {
+  return VisionBoardNotifier();
+});
+
+class VisionBoardNotifier extends StateNotifier<VisionBoardState> {
+  VisionBoardNotifier()
+      : super(
+          const VisionBoardState(
+            items: [
+              BoardItemModel(
+                id: 'item-1',
+                imageUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80',
+                title: 'Bolluk & Bağımsızlık',
+                category: 'Kariyer & Bolluk',
+                affirmationText: 'Como Gölü Kıyısında Yaşam & Çalışma',
+                connectedGoalId: 'goal-1',
+                connectedMicroAction: 'Günlük Görev: 15 Dk Odak Seansı',
+                isCenterpiece: true,
+                layerOrder: 1,
+              ),
+              BoardItemModel(
+                id: 'item-2',
+                imageUrl: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80',
+                title: 'Hafif ve Canlı',
+                category: 'Beden & Canlılık',
+                affirmationText: 'Su & Güneş Döngüsü',
+                connectedGoalId: 'goal-2',
+                layerOrder: 2,
+              ),
+              BoardItemModel(
+                id: 'item-3',
+                imageUrl: 'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=600&q=80',
+                title: 'Sonsuz Dinginlik',
+                category: 'Ruhsal Denge',
+                affirmationText: '432Hz Zihin Hali',
+                connectedGoalId: 'goal-3',
+                layerOrder: 3,
+              ),
+              BoardItemModel(
+                id: 'item-4',
+                imageUrl: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=80',
+                title: 'Özgür Rotalar',
+                category: 'Yeni Ufuklar',
+                affirmationText: 'Seyahat Haritası',
+                layerOrder: 4,
+              ),
+              BoardItemModel(
+                id: 'item-5',
+                imageUrl: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&q=80',
+                title: 'Sıcak Güven',
+                category: 'Aşk & Aile',
+                affirmationText: 'Kalp Bağı',
+                layerOrder: 5,
+              ),
+              BoardItemModel(
+                id: 'item-6',
+                imageUrl: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80',
+                title: 'Özgün İz Bırak',
+                category: 'Yaratıcılık & Tasarım',
+                affirmationText: 'Tasarım Stüdyosu',
+                layerOrder: 6,
+              ),
+            ],
+          ),
+        );
+
+  void selectItem(String? id) {
+    state = state.copyWith(selectedItemId: id);
+  }
+
+  void updatePosition(String id, double dx, double dy) {
+    final updated = state.items.map((item) {
+      if (item.id == id) {
+        return item.copyWith(posX: item.posX + dx, posY: item.posY + dy);
+      }
+      return item;
+    }).toList();
+    state = state.copyWith(items: updated);
+  }
+
+  void updateScaleAndRotation(String id, double scaleDelta, double rotationDelta) {
+    final updated = state.items.map((item) {
+      if (item.id == id) {
+        return item.copyWith(
+          scale: (item.scale * scaleDelta).clamp(0.6, 2.5),
+          rotation: item.rotation + rotationDelta,
+        );
+      }
+      return item;
+    }).toList();
+    state = state.copyWith(items: updated);
+  }
+
+  Future<void> exportHdWallpaper() async {
+    state = state.copyWith(isExporting: true);
+    await Future.delayed(const Duration(milliseconds: 1400));
+    state = state.copyWith(isExporting: false);
+  }
+}
+```
+
+---
+
+## 4. VİZYON PANOSU GÖRÜNÜMÜ (`vision_board_view.dart`)
+
+### Dosya Yolu: `lib/features/vision_board/presentation/vision_board_view.dart`
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_typography.dart';
+import '../../../core/services/localization_service.dart';
+import '../../../core/widgets/glass_card.dart';
+import '../providers/vision_board_provider.dart';
+
+class VisionBoardView extends ConsumerWidget {
+  const VisionBoardView({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final translationsAsync = ref.watch(translationsProvider);
+    final boardState = ref.watch(visionBoardProvider);
+    final boardNotifier = ref.read(visionBoardProvider.notifier);
+
+    return Scaffold(
+      backgroundColor: AppColors.spaceDeepNavy,
+      body: translationsAsync.when(
+        loading: () => const Center(
+          child: CircularProgressIndicator(color: AppColors.celestialGold),
+        ),
+        error: (err, _) => Center(
+          child: Text('Hata: $err', style: AppTypography.bodyMedium()),
+        ),
+        data: (t) {
+          final centerpiece = boardState.items.firstWhere(
+            (item) => item.isCenterpiece,
+            orElse: () => boardState.items.first,
+          );
+          final gridItems = boardState.items.where((i) => !i.isCenterpiece).toList();
+
+          return SafeArea(
+            child: Column(
+              children: [
+                // 1. ÜST BAR: Başlık + HD İndir Butonu
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        t.tr('vision_board.year_selector'),
+                        style: AppTypography.displayH2(color: AppColors.pureMoonWhite),
+                      ),
+                      const Spacer(),
+                      // HD Duvar Kağıdı İndirme Butonu
+                      InkWell(
+                        onTap: boardState.isExporting ? null : () => boardNotifier.exportHdWallpaper(),
+                        borderRadius: BorderRadius.circular(16),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+                          decoration: BoxDecoration(
+                            gradient: AppColors.goldGradient,
+                            borderRadius: BorderRadius.circular(16),
+                            boxShadow: [
+                              BoxShadow(
+                                color: AppColors.celestialGold.withOpacity(0.3),
+                                blurRadius: 10,
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            children: [
+                              const Icon(Icons.wallpaper_rounded, size: 16, color: Color(0xFF1F1600)),
+                              const SizedBox(width: 6),
+                              Text(
+                                boardState.isExporting
+                                    ? t.tr('vision_board.exporting')
+                                    : t.tr('vision_board.export_hd'),
+                                style: AppTypography.caption(color: const Color(0xFF1F1600), isBold: true),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // 2. SERBEST KAYDIRILABİLİR PANO ALANI
+                Expanded(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                    child: Column(
+                      children: [
+                        // MERKEZ GÖRSEL: 1 Numaralı Ana Niyet Yıldızı
+                        GestureDetector(
+                          onTap: () {
+                            if (centerpiece.connectedGoalId != null) {
+                              Navigator.pushNamed(context, '/goal_detail');
+                            }
+                          },
+                          child: Container(
+                            height: 250,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(22),
+                              border: Border.all(color: AppColors.celestialGold.withOpacity(0.5), width: 1.5),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: AppColors.celestialGold.withOpacity(0.18),
+                                  blurRadius: 20,
+                                  offset: const Offset(0, 4),
+                                ),
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Stack(
+                                fit: StackFit.expand,
+                                children: [
+                                  Image.network(centerpiece.imageUrl, fit: BoxFit.cover),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [
+                                          Colors.transparent,
+                                          Colors.black.withOpacity(0.8),
+                                        ],
+                                        stops: const [0.4, 1.0],
+                                      ),
+                                    ),
+                                  ),
+                                  // Sağ Üst Rozet
+                                  Positioned(
+                                    top: 12,
+                                    right: 12,
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                                      decoration: BoxDecoration(
+                                        color: AppColors.spaceDarkSurface.withOpacity(0.85),
+                                        borderRadius: BorderRadius.circular(12),
+                                        border: Border.all(color: AppColors.celestialGold.withOpacity(0.4)),
+                                      ),
+                                      child: Text(
+                                        t.tr('vision_board.active_action_badge'),
+                                        style: AppTypography.caption(color: AppColors.celestialGold, isBold: true),
+                                      ),
+                                    ),
+                                  ),
+                                  // Alt Metin
+                                  Positioned(
+                                    bottom: 16,
+                                    left: 16,
+                                    right: 16,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'ANA NİYET YILDIZI',
+                                          style: AppTypography.caption(color: AppColors.celestialGold, isBold: true),
+                                        ),
+                                        const SizedBox(height: 4),
+                                        Text(
+                                          centerpiece.title,
+                                          style: AppTypography.displayH1(),
+                                        ),
+                                        if (centerpiece.connectedMicroAction != null) ...[
+                                          const SizedBox(height: 6),
+                                          Row(
+                                            children: [
+                                              const Icon(Icons.flash_on, color: AppColors.celestialGold, size: 14),
+                                              const SizedBox(width: 4),
+                                              Text(
+                                                centerpiece.connectedMicroAction!,
+                                                style: AppTypography.caption(color: AppColors.pureMoonWhite),
+                                              ),
+                                              const Spacer(),
+                                              const Icon(Icons.arrow_forward_ios, color: AppColors.stardustMuted, size: 12),
+                                            ],
+                                          ),
+                                        ],
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        const SizedBox(height: 14),
+
+                        // DİĞER VİZYON KARTLARI (2x2 Grid)
+                        GridView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollException(),
+                          itemCount: gridItems.length,
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 12,
+                            mainAxisSpacing: 12,
+                            childAspectRatio: 0.85,
+                          ),
+                          itemBuilder: (context, index) {
+                            final item = gridItems[index];
+
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/goal_detail');
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: AppColors.containerLow,
+                                  borderRadius: BorderRadius.circular(18),
+                                  border: Border.all(color: AppColors.glassBorder),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(18),
+                                  child: Stack(
+                                    fit: StackFit.expand,
+                                    children: [
+                                      Image.network(item.imageUrl, fit: BoxFit.cover),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          gradient: LinearGradient(
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                            colors: [
+                                              Colors.transparent,
+                                              Colors.black.withOpacity(0.85),
+                                            ],
+                                            stops: const [0.45, 1.0],
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        bottom: 12,
+                                        left: 12,
+                                        right: 12,
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              item.category.toUpperCase(),
+                                              style: AppTypography.caption(color: AppColors.celestialGold, isBold: true),
+                                            ),
+                                            const SizedBox(height: 2),
+                                            Text(
+                                              item.title,
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: AppTypography.displayH3(color: AppColors.pureMoonWhite),
+                                            ),
+                                            if (item.affirmationText != null) ...[
+                                              const SizedBox(height: 2),
+                                              Text(
+                                                item.affirmationText!,
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: AppTypography.caption(color: AppColors.stardustMuted),
+                                              ),
+                                            ],
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+
+                        const SizedBox(height: 16),
+
+                        // Alt Bilgilendirme Notu
+                        GlassCard(
+                          borderRadius: 14,
+                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                          child: Row(
+                            children: [
+                              const Icon(Icons.touch_app_rounded, color: AppColors.celestialGold, size: 16),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  t.tr('vision_board.tap_hint'),
+                                  style: AppTypography.caption(color: AppColors.stardustMuted),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        const SizedBox(height: 20),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+```

@@ -1,0 +1,164 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_stack" name="shell-type"><title>Veira</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;1,400&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'background': '#0e1228', 'on-primary': '#1000a9', 'on-error-container': '#ffdad6', 'on-tertiary-container': '#002d40', 'on-primary-fixed': '#07006c', 'on-secondary-fixed-variant': '#574500', 'surface-container': '#1a1e35', 'on-primary-fixed-variant': '#2f2ebe', 'tertiary': '#7bd0ff', 'on-tertiary-fixed-variant': '#004c69', 'tertiary-container': '#009bd1', 'surface-variant': '#2f334b', 'on-tertiary': '#00354a', 'inverse-primary': '#494bd6', 'secondary': '#e7c355', 'on-background': '#dee0ff', 'surface-container-high': '#252840', 'primary-fixed-dim': '#c0c1ff', 'tertiary-fixed-dim': '#7bd0ff', 'primary-fixed': '#e1e0ff', 'on-error': '#690005', 'on-primary-container': '#0d0096', 'secondary-fixed-dim': '#e7c355', 'tertiary-fixed': '#c4e7ff', 'surface-container-low': '#161a30', 'on-surface': '#dee0ff', 'secondary-fixed': '#ffe089', 'surface-bright': '#343850', 'outline-variant': '#464554', 'surface': '#0e1228', 'inverse-surface': '#dee0ff', 'error-container': '#93000a', 'surface-container-highest': '#2f334b', 'outline': '#908fa0', 'primary-container': '#8083ff', 'surface-dim': '#0e1228', 'primary': '#c0c1ff', 'on-surface-variant': '#c7c4d7', 'surface-tint': '#c0c1ff', 'error': '#ffb4ab', 'on-secondary': '#3d2f00', 'surface-container-lowest': '#080c22', 'on-secondary-container': '#fffbff', 'inverse-on-surface': '#2b2f46', 'on-tertiary-fixed': '#001e2c', 'secondary-container': '#8e7100' }, borderRadius: { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, spacing: { 'space-md': '1rem', 'gutter': '1rem', 'margin-lg': '1.5rem', 'space-lg': '1.5rem', 'space-xs': '0.25rem', 'margin': '1.25rem', 'space-sm': '0.5rem', 'gutter-sm': '0.75rem', 'space-xl': '2rem' }, fontFamily: { 'body-md': ['Inter'], 'label-md': ['Inter'], 'headline-md': ['Playfair Display'], 'title-lg': ['Inter'], 'title-md': ['Inter'], 'display-sm': ['Playfair Display'], 'headline-lg-mobile': ['Playfair Display'], 'headline-lg': ['Playfair Display'], 'display-lg': ['Playfair Display'], 'body-lg': ['Inter'], 'label-lg': ['Inter'], 'label-sm': ['Inter'], 'body-sm': ['Inter'] }, fontSize: { 'body-md': ['14px', { 'lineHeight': '20px', 'fontWeight': '400' }], 'label-md': ['12px', { 'lineHeight': '16px', 'letterSpacing': '0.02em', 'fontWeight': '500' }], 'headline-md': ['20px', { 'lineHeight': '28px', 'fontWeight': '500' }], 'title-lg': ['18px', { 'lineHeight': '24px', 'letterSpacing': '-0.01em', 'fontWeight': '600' }], 'title-md': ['16px', { 'lineHeight': '22px', 'fontWeight': '600' }], 'display-sm': ['32px', { 'lineHeight': '40px', 'letterSpacing': '-0.01em', 'fontWeight': '600' }], 'headline-lg-mobile': ['24px', { 'lineHeight': '32px', 'letterSpacing': '-0.01em', 'fontWeight': '500' }], 'headline-lg': ['28px', { 'lineHeight': '36px', 'letterSpacing': '-0.01em', 'fontWeight': '500' }], 'display-lg': ['40px', { 'lineHeight': '48px', 'letterSpacing': '-0.02em', 'fontWeight': '600' }], 'body-lg': ['16px', { 'lineHeight': '24px', 'fontWeight': '400' }], 'label-lg': ['14px', { 'lineHeight': '20px', 'letterSpacing': '0.01em', 'fontWeight': '500' }], 'label-sm': ['11px', { 'lineHeight': '14px', 'letterSpacing': '0.04em', 'fontWeight': '600' }], 'body-sm': ['12px', { 'lineHeight': '16px', 'fontWeight': '400' }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#080c22;color:#dee0ff;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm"><button class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface hover:text-secondary active:scale-95 transition-all" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span></button><img alt="Veira Celestial Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChst6p9MJzfQQfrA_4McOfjT1GNsc9_OFu0oIXpJ8knn6bGLrsIuMb2L94hQPra2UE17rHqpC10UmmXSYamqYwP2Y1vMWguKTbNWar5lqMn8Dq0b2jLXUiXxtybLILZ3wgEol1ao3yCWnSsDhM2XoHDx-xRFpDq5fUeAf84RezGbeOTPzjs_x5Tc6j5q6aELtJVAanqXFKTx3GOKXjDnPGiElCvR_UtjjSWqPBYeOXXcYLUs7Pejls"><h1 class="font-headline-md text-[18px] text-on-surface tracking-tight truncate font-semibold">Hedef Detayı &amp; Eylem Planı</h1></div><div class="flex items-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi3a-psaNJ_QU-72Xk020WcxXT0weHKVr0dxtketi3AfYdGjQE0pkeV1TxmQm84hVhT0dDYaR1K3Vn7ar1Vow9SCF_CzgefPXCrNnOXcCjwHeklD47ZVj8Szf5GaDskIOBEcZn5UQKJGj4wtMBLcJXvks2x9qZc2WAz3X8IE2W-LHjlqmq2AKvrUa2zYibLT77AjUqNtzdsFtgZh2JvTDD3mZD5GPHtnkbRFBoO4t1P2LSK3m2QjJ3"></div></div></header><main class="flex-1 flex flex-col relative w-full px-margin pt-16 pb-safe bg-surface"><div class="flex flex-col w-full pb-space-xl">
+<!-- Üst Vizyon Görseli Hero Header -->
+<div class="relative w-full rounded-xl overflow-hidden shadow-2xl mb-space-md">
+<div class="w-full h-72 bg-cover bg-center flex flex-col justify-end p-space-lg relative" style="background-image: url(&quot;https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&amp;fit=crop&amp;w=1200&amp;q=80&quot;);"><div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/60 to-transparent"></div><div class="relative z-10 flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs flex-wrap"><span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container/50 text-secondary-fixed text-label-sm font-label-sm tracking-wider uppercase backdrop-blur-md shadow-sm"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>Kariyer &amp; Bolluk</span><span class="px-2.5 py-1 rounded-full bg-surface-container-high/60 text-tertiary-fixed text-label-sm font-label-sm backdrop-blur-md">Stratejik Vizyon</span></div><h2 class="font-headline-lg text-headline-lg-mobile text-on-surface tracking-tight mt-1 text-balance">Como Gölü Kıyısında Yaşam &amp; Çalışma</h2></div></div>
+</div>
+<!-- Duygusal Çapa Kartı (Neden Önemli?) -->
+<div class="w-full rounded-xl bg-surface-container/75 p-space-lg shadow-xl backdrop-blur-xl mb-space-md relative overflow-hidden"><div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-2xl pointer-events-none"></div><div class="flex items-center justify-between mb-space-sm relative z-10"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-secondary-container/40 flex items-center justify-center text-secondary shrink-0"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">diamond</span></div><span class="font-label-sm text-label-sm tracking-widest uppercase text-secondary font-semibold">Duygusal Çapa (Neden Önemli?)</span></div><button class="text-outline hover:text-on-surface transition-colors p-1" title="Çapayı Düzenle"><span class="material-symbols-outlined text-[20px]">edit_note</span></button></div><p class="font-headline-md text-headline-md text-on-surface italic leading-relaxed pl-space-xs text-balance relative z-10">“Aileme özgür ve huzurlu bir yaşam alanı sunmak, sabahları doğaya uyanıp kendi potansiyelimi en yüksek seviyede gerçekleştirmek.”</p></div>
+<!-- SMART Metrik Sayaçları (Yan Yana 2 Cam Kart) -->
+<div class="grid grid-cols-2 gap-space-sm mb-space-md"><div class="w-full rounded-xl bg-surface-container/70 p-space-md shadow-lg backdrop-blur-xl flex flex-col justify-between min-h-[120px]"><div class="flex items-center justify-between mb-space-xs"><span class="font-label-md text-label-md text-on-surface-variant font-medium">Vizyon İlerlemesi</span><span class="material-symbols-outlined text-secondary text-[20px]">timelapse</span></div><div class="flex items-baseline gap-1 my-1"><span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-secondary-fixed tracking-tight">%45</span><span class="font-label-sm text-label-sm text-on-surface-variant">tamam</span></div><div class="w-full bg-surface-variant/70 h-2 rounded-full overflow-hidden mt-1 p-[1px]"><div class="bg-gradient-to-r from-secondary-container via-secondary to-secondary-fixed h-full rounded-full transition-all duration-700" style="width: 45%;"></div></div></div><div class="w-full rounded-xl bg-surface-container/70 p-space-md shadow-lg backdrop-blur-xl flex flex-col justify-between min-h-[120px]"><div class="flex items-center justify-between mb-space-xs"><span class="font-label-md text-label-md text-on-surface-variant font-medium">Kalan Süre</span><span class="px-2 py-0.5 rounded-full bg-secondary-container/40 text-secondary-fixed text-label-sm font-label-sm flex items-center gap-0.5"><span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>Yüksek Öncelik</span></div><div class="flex items-baseline gap-1 my-1"><span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-tertiary tracking-tight">142</span><span class="font-label-sm text-label-sm text-tertiary-fixed-dim">Gün</span></div><p class="font-label-sm text-label-sm text-outline truncate">Hedef Tarih: 30 Eylül</p></div></div>
+<!-- Bugünkü 15 Dakikalık Mikro-Eylem Kartı (Can Alıcı Bölüm) -->
+<div class="w-full rounded-xl bg-surface-container-high/90 p-space-lg shadow-2xl backdrop-blur-2xl mb-space-md relative overflow-hidden transition-all duration-500" id="micro-action-card">
+<div class="absolute -top-12 -right-12 w-44 h-44 bg-primary-container/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-space-md relative z-10">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/20 text-secondary-fixed font-label-sm text-label-sm font-semibold tracking-wider">
+<span class="material-symbols-outlined text-[15px]">timer</span>
+<span id="duration-badge" class="">15 DAKİKA</span>
+</span>
+<!-- AI Küçült Butonu -->
+<button class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-bright/70 hover:bg-surface-bright active:scale-95 text-tertiary-fixed text-label-sm font-label-sm shadow-sm backdrop-blur-md transition-all" id="reduce-action-btn">
+<span class="material-symbols-outlined text-[15px] text-tertiary">auto_fix_high</span>
+<span id="reduce-text" class="">✨ Adımı Küçült (5 Dk Yap)</span>
+</button>
+</div>
+<!-- Eylem Metni -->
+<div class="mb-space-lg relative z-10">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline block mb-1">Günün Seçilmiş Mikro-Eylemi</span>
+<p class="font-body-lg text-body-lg text-on-surface font-medium leading-relaxed" id="action-description">
+        İtalyanca çalışma portföyünden 1 vize başvuru yazısını incele ve 3 anahtar kelimeyi not al.
+      </p>
+</div>
+<!-- Aksiyon Butonu -->
+<button class="w-full h-14 rounded-full bg-gradient-to-r from-secondary-container via-secondary to-secondary-fixed text-on-secondary font-label-lg text-label-lg font-bold shadow-[0_0_24px_rgba(231,195,85,0.35)] active:scale-[0.98] transition-all flex items-center justify-center gap-space-sm relative z-10" id="complete-action-btn">
+<span class="material-symbols-outlined text-[22px]">check_circle</span>
+<span id="complete-btn-text" class="">Bugünkü 15 Dakikayı Tamamladım</span>
+</button>
+</div>
+<!-- 3 Aylık Kilometre Taşları (Q1 - Q3) -->
+<div class="w-full rounded-xl bg-surface-container/60 p-space-lg shadow-xl backdrop-blur-xl">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">flag</span>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Kilometre Taşları</h3>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Q1 — Q3</span>
+</div>
+<div class="flex flex-col gap-space-md relative">
+<!-- Dikey Bağlantı Çizgisi (Renkli Gradyan Konteynırı ile) -->
+<div class="absolute left-4 top-6 bottom-6 w-0.5 -translate-x-1/2 bg-surface-variant/80 pointer-events-none"></div>
+<!-- Q1 Kilometre Taşı (Tamamlandı) -->
+<div class="flex items-start gap-space-md relative z-10">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-secondary-fixed shrink-0 shadow-md">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex-1 min-w-0 pt-0.5">
+<div class="flex items-center justify-between gap-space-xs">
+<span class="font-label-sm text-label-sm text-secondary-fixed font-semibold uppercase tracking-wider">Q1 • Tamamlandı</span>
+<span class="font-label-sm text-label-sm text-secondary">Mart 2024</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium mt-0.5">
+            İtalyanca B1 Dil Sertifikası &amp; Vize Portföyü
+          </p>
+<span class="font-body-sm text-body-sm text-outline block mt-0.5">Resmi evraklar onaylandı ve arşive eklendi.</span>
+</div>
+</div>
+<!-- Q2 Kilometre Taşı (Devam Ediyor) -->
+<div class="flex items-start gap-space-md relative z-10">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shrink-0 shadow-[0_0_12px_rgba(128,131,255,0.4)]">
+<span class="w-2.5 h-2.5 rounded-full bg-on-primary-container animate-ping"></span>
+</div>
+<div class="flex-1 min-w-0 pt-0.5">
+<div class="flex items-center justify-between gap-space-xs">
+<span class="font-label-sm text-label-sm text-primary font-semibold uppercase tracking-wider">Q2 • Devam Ediyor</span>
+<span class="font-label-sm text-label-sm text-primary">Haziran 2024</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-semibold mt-0.5">
+            Como/Milano Çalışma Sözleşmesi &amp; Şirket Evrakları
+          </p>
+<span class="font-body-sm text-body-sm text-on-surface-variant block mt-0.5">Son mülakat aşamasında, sözleşme taslağı inceleniyor.</span>
+</div>
+</div>
+<!-- Q3 Kilometre Taşı (Planlandı) -->
+<div class="flex items-start gap-space-md relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-outline shrink-0">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+</div>
+<div class="flex-1 min-w-0 pt-0.5">
+<div class="flex items-center justify-between gap-space-xs">
+<span class="font-label-sm text-label-sm text-outline font-semibold uppercase tracking-wider">Q3 • Planlandı</span>
+<span class="font-label-sm text-label-sm text-outline">Eylül 2024</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+            Ev Kiralama, Uçak Bileti ve Yerleşim
+          </p>
+<span class="font-body-sm text-body-sm text-outline block mt-0.5">Varenna &amp; Bellagio bölgesinde konut araştırması.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function initVisionActionCard() {
+    const reduceBtn = document.getElementById('reduce-action-btn');
+    const completeBtn = document.getElementById('complete-action-btn');
+    const actionDesc = document.getElementById('action-description');
+    const durationBadge = document.getElementById('duration-badge');
+    const reduceText = document.getElementById('reduce-text');
+    const completeBtnText = document.getElementById('complete-btn-text');
+    const card = document.getElementById('micro-action-card');
+
+    let isReduced = false;
+    let isCompleted = false;
+
+    if (reduceBtn && actionDesc && durationBadge) {
+      reduceBtn.addEventListener('click', () => {
+        if (isCompleted) return;
+        isReduced = !isReduced;
+        if (isReduced) {
+          durationBadge.textContent = '5 DAKİKA';
+          reduceText.textContent = '↺ Normal Adıma Dön (15 Dk)';
+          actionDesc.textContent = 'İtalyanca çalışma portföyünü sadece aç ve ilk paragrafa 2 dakika boyunca göz at.';
+          if (!isCompleted) {
+            completeBtnText.textContent = 'Bugünkü 5 Dakikayı Tamamladım';
+          }
+        } else {
+          durationBadge.textContent = '15 DAKİKA';
+          reduceText.textContent = '✨ Adımı Küçült (5 Dk Yap)';
+          actionDesc.textContent = 'İtalyanca çalışma portföyünden 1 vize başvuru yazısını incele ve 3 anahtar kelimeyi not al.';
+          if (!isCompleted) {
+            completeBtnText.textContent = 'Bugünkü 15 Dakikayı Tamamladım';
+          }
+        }
+      });
+    }
+
+    if (completeBtn && completeBtnText) {
+      completeBtn.addEventListener('click', () => {
+        isCompleted = !isCompleted;
+        if (isCompleted) {
+          completeBtn.className = 'w-full h-14 rounded-full bg-secondary-container text-secondary-fixed font-label-lg text-label-lg font-bold transition-all flex items-center justify-center gap-space-sm relative z-10 shadow-lg';
+          completeBtnText.textContent = 'Harika! Bugünün Eylemi Tamamlandı ✓';
+          if (card) {
+            card.classList.add('scale-[0.99]');
+          }
+        } else {
+          completeBtn.className = 'w-full h-14 rounded-full bg-gradient-to-r from-secondary-container via-secondary to-secondary-fixed text-on-secondary font-label-lg text-label-lg font-bold shadow-[0_0_24px_rgba(231,195,85,0.35)] active:scale-[0.98] transition-all flex items-center justify-center gap-space-sm relative z-10';
+          completeBtnText.textContent = isReduced ? 'Bugünkü 5 Dakikayı Tamamladım' : 'Bugünkü 15 Dakikayı Tamamladım';
+          if (card) {
+            card.classList.remove('scale-[0.99]');
+          }
+        }
+      });
+    }
+  })();
+</script></main>
+
+
+
+</body></html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,500;0,600;1,500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed": "#ffe089", "on-primary": "#1000a9", "tertiary-fixed": "#c4e7ff", "secondary-fixed-dim": "#e7c355", "primary": "#c0c1ff", "on-tertiary-fixed": "#001e2c", "secondary": "#e7c355", "on-primary-container": "#0d0096", "outline-variant": "#464554", "error-container": "#93000a", "on-tertiary": "#00354a", "on-error-container": "#ffdad6", "surface-variant": "#2f334b", "surface-container-low": "#161a30", "surface-bright": "#343850", "primary-fixed-dim": "#c0c1ff", "on-error": "#690005", "primary-container": "#8083ff", "secondary-container": "#8e7100", "surface-container-high": "#252840", "tertiary": "#7bd0ff", "surface-dim": "#0e1228", "tertiary-container": "#009bd1", "outline": "#908fa0", "error": "#ffb4ab", "on-tertiary-container": "#002d40", "surface-container": "#1a1e35", "on-secondary": "#3d2f00", "surface": "#0e1228", "on-primary-fixed": "#07006c", "surface-tint": "#c0c1ff", "surface-container-lowest": "#080c22", "background": "#0e1228", "on-primary-fixed-variant": "#2f2ebe", "inverse-surface": "#dee0ff", "on-tertiary-fixed-variant": "#004c69", "inverse-on-surface": "#2b2f46", "tertiary-fixed-dim": "#7bd0ff", "inverse-primary": "#494bd6", "on-surface": "#dee0ff", "on-secondary-fixed": "#241a00", "on-background": "#dee0ff", "surface-container-highest": "#2f334b", "on-secondary-fixed-variant": "#574500", "primary-fixed": "#e1e0ff", "on-secondary-container": "#fffbff", "on-surface-variant": "#c7c4d7" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "1rem", "space-xl": "2rem", "gutter": "1rem", "gutter-sm": "0.75rem", "margin": "1.25rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "margin-lg": "1.5rem", "space-lg": "1.5rem" }, "fontFamily": { "display-sm": ["Playfair Display"], "label-lg": ["Inter"], "label-sm": ["Inter"], "body-lg": ["Inter"], "body-sm": ["Inter"], "headline-lg-mobile": ["Playfair Display"], "label-md": ["Inter"], "title-lg": ["Inter"], "headline-lg": ["Playfair Display"], "body-md": ["Inter"], "title-md": ["Inter"], "headline-md": ["Playfair Display"], "display-lg": ["Playfair Display"] }, "fontSize": { "display-sm": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "title-lg": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "title-md": ["16px", { "lineHeight": "22px", "fontWeight": "600" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "500" }], "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#080c22;color:#dee0ff;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-surface-container-lowest font-body-md text-body-md text-on-surface antialiased min-h-screen"><header class="fixed top-0 w-full z-40 pt-safe bg-surface-container-lowest/70 backdrop-blur-2xl shadow-[0_4px_30px_rgba(0,0,0,0.5)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-xs"><button aria-label="Vazgeç" class="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span></button><img alt="Veira markasının mistik, lüks ve göksel gece estetiğini (Nocturnal Serenity) simgeleyen logo: Gece mavisi arka plan üzerinde zarif 8 köşeli altın Polaris kutup yıldızı (North Star), etrafında ince hilal/aurora yayı ve zarif 'V' monogramı ile 'VEIRA' editoryal serif tipografisi. Lüks altın tonları (#F5D061, #FDF4DC).. Brand logo. - Primary color: #6366f1 - Font: playfairDisplay - Mode: dark - Roundness: rounded-md" class="h-7 w-auto object-contain ml-space-xs hidden sm:block" src="https://lh3.googleusercontent.com/aida/AEtjO1U4SsmQs6d2wI2EOvktvBpwMFksv4aRElSSolwDw5CO9fAxcoRkpW_JOY7xpTca-wZDdbZ5o77TMO-P4xhoFzT123iAA2X6tZh3evo2DqUZsg1dezCBGsUA4nH-kEA5s1mwKjSj52UUTVbahUsGeLb4Ns6BhI9TYDlhvCnoemT01bhC07JQWz4_RIN172rj2yWFjd7xXq0EG4DQIhdrz1WCaFXn7yRLE3iPoxUiaC0j"/><span class="text-xs font-label-sm uppercase tracking-widest text-secondary/80 hidden sm:inline-block">Veira</span></div><div class="flex-1 text-center px-space-xs"><h1 class="font-headline-md text-headline-md font-medium text-on-surface tracking-tight truncate">Zihinsel Kimlik &amp; Profil</h1></div><div class="flex items-center gap-space-xs justify-end"><button aria-label="Kaydet" class="min-h-[44px] px-space-sm flex items-center gap-space-xs rounded-full bg-secondary/10 hover:bg-secondary/20 text-secondary transition-all" onclick="showAuraToast('Profil ve ayarlar başarıyla mühürlendi ✨')" type="button"><span class="font-label-lg text-label-lg font-semibold tracking-wide">Kaydet</span><span class="material-symbols-outlined text-[18px]">check</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0 cursor-pointer" onclick="openPhotoSheet()"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface-container-lowest"><div class="flex flex-col w-full relative pb-10 px-margin space-y-space-lg">
+<!-- Ambient Cosmic Aura Background Refraction -->
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 w-80 h-80 bg-primary-container/20 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+<div class="absolute top-96 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-[90px] pointer-events-none -z-10"></div>
+<!-- SECTION 1: AVATAR & CELESTIAL AURA FRAME -->
+<section class="flex flex-col items-center text-center pt-space-xs">
+<!-- Aura Orbital Glow Ring -->
+<div class="relative flex items-center justify-center p-space-xs group cursor-pointer" onclick="openPhotoSheet()" role="button" tabindex="0">
+<!-- Outer Orbit Ring -->
+<div class="absolute inset-0 rounded-full bg-gradient-to-tr from-secondary/40 via-primary/30 to-tertiary/40 animate-spin" style="animation-duration: 20s;"></div>
+<!-- Halo Light Layer -->
+<div class="relative p-[3px] rounded-full bg-gradient-to-b from-secondary-fixed via-secondary to-primary-container shadow-[0_0_35px_rgba(245,208,97,0.35)]">
+<div class="relative w-28 h-28 rounded-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-opacity duration-300" data-alt="Editorial close-up portrait of a chic, serene Mediterranean woman named Selin, soft cinematic studio lighting, glowing nocturnal starlight tones, indigo-golden background reflections, highly detailed elegant atmospheric photography" id="mainAvatarImage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBltYkOyZ_3LIt2mtDceOtaetiph6fqwitIlzTHw-xUNGp0WAZ4Giaiy3XxUtmUdClPzCfQWkSbA1oGCp11dqfotIBUqUJd9UXWbddG2B6ZsKijvAzdQgNI_cc89bNYEHeb-wXUP7pYq6dW8pB0hF8e-eOWBjgwrc11TAhW9Kx11_c0cRDjKJdY855zNBgSLcX0jXGQQ59LOqc3acIljYGKRZnYgbdHPwukgt-SUXM"/>
+</div>
+</div>
+<!-- Interactive Edit / Camera Badge -->
+<button aria-label="Profil Fotoğrafını Değiştir" class="absolute bottom-1 right-1 w-9 h-9 rounded-full bg-gradient-to-br from-secondary-fixed to-secondary text-on-secondary flex items-center justify-center shadow-[0_4px_16px_rgba(231,195,85,0.6)] active:scale-90 transition-transform" onclick="event.stopPropagation(); openPhotoSheet();" type="button">
+<span class="material-symbols-outlined text-[19px]">photo_camera</span>
+</button>
+<!-- Celestial Star Pin Decoration -->
+<div class="absolute -top-1 left-3 text-secondary animate-pulse pointer-events-none">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+</div>
+<!-- User Meta Subhead -->
+<div class="mt-space-sm space-y-space-xs">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container/70 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-ping"></span>
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">7. Seviye Zihinsel Berraklık</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-display-sm tracking-tight">Selin Aydın</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">auto_awesome</span>
+<span>Aura Frekansı:</span>
+<span class="text-on-surface font-medium">963 Hz Kozmik Akış</span>
+</p>
+</div>
+<!-- Celestial Archetype Selector -->
+<div class="w-full mt-space-md">
+<div class="flex items-center justify-between mb-space-xs px-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Göksel Arketipini Seç</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]">info</span>
+          Aktif Aura
+        </span>
+</div>
+<div class="grid grid-cols-4 gap-gutter-sm">
+<!-- 1. Polaris (Active) -->
+<button class="flex flex-col items-center p-space-xs rounded-xl bg-gradient-to-b from-secondary/20 to-surface-container-high shadow-[0_0_15px_rgba(231,195,85,0.25)] transition-all transform active:scale-95 text-center" type="button">
+<div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center text-secondary mb-1 shadow-inner">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">flare</span>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-secondary truncate w-full">Polaris</span>
+<span class="text-[10px] leading-tight text-on-surface-variant truncate w-full">Kutup Yıldızı</span>
+</button>
+<!-- 2. Aurora -->
+<button class="flex flex-col items-center p-space-xs rounded-xl bg-surface-container/60 hover:bg-surface-container text-on-surface-variant transition-all transform active:scale-95 text-center" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-tertiary mb-1">
+<span class="material-symbols-outlined text-[20px]">cyclone</span>
+</div>
+<span class="font-label-sm text-label-sm font-medium text-on-surface truncate w-full">Aurora</span>
+<span class="text-[10px] leading-tight text-on-surface-variant truncate w-full">Işık Dansı</span>
+</button>
+<!-- 3. Crescent -->
+<button class="flex flex-col items-center p-space-xs rounded-xl bg-surface-container/60 hover:bg-surface-container text-on-surface-variant transition-all transform active:scale-95 text-center" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary mb-1">
+<span class="material-symbols-outlined text-[20px]">bedtime</span>
+</div>
+<span class="font-label-sm text-label-sm font-medium text-on-surface truncate w-full">Hilal</span>
+<span class="text-[10px] leading-tight text-on-surface-variant truncate w-full">Derin Sezgi</span>
+</button>
+<!-- 4. Nebula -->
+<button class="flex flex-col items-center p-space-xs rounded-xl bg-surface-container/60 hover:bg-surface-container text-on-surface-variant transition-all transform active:scale-95 text-center" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant mb-1">
+<span class="material-symbols-outlined text-[20px]">all_inclusive</span>
+</div>
+<span class="font-label-sm text-label-sm font-medium text-on-surface truncate w-full">Nebula</span>
+<span class="text-[10px] leading-tight text-on-surface-variant truncate w-full">Yaratım</span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION 2: PERSONAL INFO & APPLICATIVE GREETING -->
+<section class="rounded-xl bg-surface-container-low/80 backdrop-blur-xl p-space-md shadow-[0_8px_32px_rgba(0,0,0,0.36)] space-y-space-md">
+<div class="flex items-center gap-space-xs pb-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">fingerprint</span>
+<h3 class="font-title-md text-title-md text-on-surface">Zihinsel Profil &amp; Hitap</h3>
+</div>
+<!-- Visible Name -->
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Görünür İsim &amp; Soyisim</label>
+<div class="relative flex items-center bg-surface-container/80 rounded-lg px-space-md py-space-sm focus-within:ring-2 focus-within:ring-secondary/40 transition-all shadow-inner">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] mr-space-sm">badge</span>
+<input class="w-full bg-transparent text-on-surface font-body-md text-body-md focus:outline-none" type="text" value="Selin Aydın"/>
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+</div>
+</div>
+<!-- In-App Greeting -->
+<div class="space-y-1">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Uygulama İçi Selamlama Adı</label>
+<span class="font-label-sm text-label-sm text-tertiary">Örnek: "İyi Akşamlar, Selin ✨"</span>
+</div>
+<div class="relative flex items-center bg-surface-container/80 rounded-lg px-space-md py-space-sm focus-within:ring-2 focus-within:ring-secondary/40 transition-all shadow-inner">
+<span class="material-symbols-outlined text-secondary text-[20px] mr-space-sm">magic_button</span>
+<input class="w-full bg-transparent text-on-surface font-body-md text-body-md focus:outline-none" type="text" value="Selin ✨"/>
+</div>
+</div>
+<!-- Astro-Harmonics & Cosmic Resonance -->
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Doğum &amp; Göksel Uyum Tarihi</label>
+<div class="flex items-center justify-between bg-surface-container/80 rounded-lg px-space-md py-space-sm shadow-inner">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">nightlight_round</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface">18 Ekim 1996</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Terazi Burcu • Ay Yükseleni</p>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_calendar</span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION 3: NORTH STAR VISION MOTTO (MIND & VISION ARCHITECTURE) -->
+<section class="relative rounded-xl bg-gradient-to-b from-surface-container-high/90 to-surface-container/90 backdrop-blur-2xl p-space-md shadow-[0_12px_40px_rgba(8,10,22,0.6)] space-y-space-sm overflow-hidden">
+<!-- Radiant Accent Glow -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-secondary/15 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-space-xs px-2.5 py-1 rounded-full bg-secondary/15 text-secondary">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wider uppercase">2027 Kuzey Yıldızı Mottosu</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">74 / 120</span>
+</div>
+<!-- Editorial Quote Box -->
+<div class="relative bg-surface-container-lowest/60 rounded-lg p-space-md shadow-inner">
+<span class="material-symbols-outlined text-secondary/30 absolute top-2 left-2 text-[28px] pointer-events-none font-display-sm">format_quote</span>
+<textarea class="w-full bg-transparent text-on-surface font-display-sm text-headline-md italic leading-relaxed focus:outline-none pl-space-md pr-1 resize-none" rows="3">"Her gün Como Gölü kıyısında dingin bir zihinle yaratıyor, bedenimi ve ruhumu sevgiyle besliyorum."</textarea>
+</div>
+<!-- AI Polish Action Bar -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">psychology</span>
+<span>Zihinsel Çapa: Como Vizyonu</span>
+</div>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary-container/20 to-secondary/15 text-secondary hover:text-secondary-fixed text-label-sm font-label-sm font-semibold transition-all shadow-sm active:scale-95" type="button">
+<span class="material-symbols-outlined text-[15px]">auto_fix_high</span>
+<span>Veira AI ile Güçlendir</span>
+</button>
+</div>
+</section>
+<!-- SECTION 4: PRIMARY LIFE PILLAR -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between px-space-xs">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Birincil Yaşam Çarkı Çapası</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Bu yılın odak ekseni ve frekans merkezi</p>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Değiştir</span>
+</div>
+<div class="space-y-gutter-sm">
+<!-- 1. Kariyer & Bolluk (Selected) -->
+<div class="relative flex items-center justify-between p-space-md rounded-xl bg-gradient-to-r from-secondary-container/40 via-surface-container-high to-surface-container shadow-[0_6px_24px_rgba(231,195,85,0.18)]">
+<div class="flex items-center gap-space-md">
+<div class="w-11 h-11 rounded-full bg-secondary/20 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<h4 class="font-title-md text-title-md text-on-surface">Kariyer &amp; Bolluk</h4>
+<span class="px-2 py-0.5 rounded-full bg-secondary/20 text-secondary font-label-sm text-[11px] font-semibold">Aktif Çapa</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">İtalya tasarım stüdyosu vizyonuna bağlı • %75 uyum</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-md shrink-0">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</div>
+</div>
+<!-- 2. Beden & Canlılık -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-low/70 hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-11 h-11 rounded-full bg-tertiary/15 flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-[24px]">spa</span>
+</div>
+<div class="space-y-0.5">
+<h4 class="font-title-md text-title-md text-on-surface">Beden &amp; Canlılık</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Haftalık 4 gün pilates ve hücresel arınma ritmi</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center shrink-0 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</div>
+</div>
+<!-- 3. Ruhsal Denge & İç Huzur -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-low/70 hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-11 h-11 rounded-full bg-primary/15 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[24px]">self_improvement</span>
+</div>
+<div class="space-y-0.5">
+<h4 class="font-title-md text-title-md text-on-surface">Ruhsal Denge &amp; İç Huzur</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Her gün 15 dk sessizlik ve nefes farkındalığı</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center shrink-0 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: ACCOUNT, SYNC & SACRED PRIVACY -->
+<section class="rounded-xl bg-surface-container-low/80 backdrop-blur-xl p-space-md shadow-lg space-y-space-md">
+<div class="flex items-center gap-space-xs pb-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">shield_person</span>
+<h3 class="font-title-md text-title-md text-on-surface">Senkronizasyon &amp; Kutsal Gizlilik</h3>
+</div>
+<!-- Apple ID Relay Connection -->
+<div class="p-space-sm rounded-lg bg-surface-container/70 flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]">ios</span>
+</div>
+<div class="space-y-0.5">
+<p class="font-label-md text-label-md font-medium text-on-surface">Apple ID ile Korunuyor</p>
+<p class="font-body-sm text-[11px] text-on-surface-variant">selin.***@privaterelay.appleid.com</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-[11px] font-label-sm font-semibold text-tertiary bg-tertiary/10 px-2.5 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>Şifreli</span>
+</div>
+</div>
+<!-- Privacy Toggle 1: Face ID -->
+<div class="flex items-center justify-between pt-1">
+<div class="space-y-0.5 pr-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">lock_clock</span>
+<span class="font-label-lg text-label-lg font-medium text-on-surface">Biyometrik Kimlik (Face ID)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Zihinsel defterini her açılışta yüz tanıma ile koru</p>
+</div>
+<!-- iOS Style Custom Toggle Switch (Active) -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-secondary-container after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<!-- Privacy Toggle 2: Local Device Only Media -->
+<div class="flex items-center justify-between pt-1">
+<div class="space-y-0.5 pr-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary text-[18px]">cloud_off</span>
+<span class="font-label-lg text-label-lg font-medium text-on-surface">Fotoğraflar Sadece Cihazda</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">%100 yerel mahremiyet, hiçbir sunucuya aktarılmaz</p>
+</div>
+<!-- iOS Style Custom Toggle Switch (Active) -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-secondary-container after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+</section>
+<!-- SECTION 6: ACTIONS & CONFIRMATION -->
+<section class="space-y-space-sm pt-space-xs">
+<!-- Radiant Cosmic Primary Button -->
+<button class="w-full h-14 rounded-full bg-gradient-to-r from-secondary-fixed via-secondary to-secondary-fixed-dim text-on-secondary font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-[0_0_28px_rgba(231,195,85,0.45)] hover:shadow-[0_0_35px_rgba(231,195,85,0.6)] active:scale-[0.98] transition-all" onclick="showAuraToast('Tüm değişiklikler ve zihinsel imzan başarıyla mühürlendi ✨')" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span>Değişiklikleri Mühürle &amp; Kaydet</span>
+</button>
+<!-- Sacred Privacy Reassurance Footnote -->
+<div class="flex items-center justify-center gap-1.5 text-center text-on-surface-variant/80 font-body-sm text-[12px] pt-space-xs">
+<span class="material-symbols-outlined text-[15px] text-secondary">encrypted</span>
+<span>Zihinsel kimliğin cihaz içi çift katmanlı kriptografi ile mühürlenir.</span>
+</div>
+</section>
+</div></main>
+<!-- Hidden Real File Input for Gallery / Local Upload -->
+<input accept="image/*" class="hidden" id="realPhotoInput" onchange="handleFileSelected(event)" type="file"/>
+<!-- iOS / NOCTURNAL SERENITY ACTION SHEET MODAL -->
+<div class="fixed inset-0 z-50 flex flex-col justify-end transition-all duration-300 pointer-events-none opacity-0" id="photoActionSheetModal">
+<!-- Backdrop -->
+<div class="absolute inset-0 bg-[#080c22]/80 backdrop-blur-md transition-opacity duration-300" onclick="closePhotoSheet()"></div>
+<!-- Sheet Container -->
+<div class="relative w-full max-w-lg mx-auto bg-surface-container-low/95 border-t border-secondary/20 rounded-t-[28px] p-margin pb-[calc(1rem+env(safe-area-inset-bottom,16px))] shadow-[0_-12px_48px_rgba(0,0,0,0.8)] backdrop-blur-2xl transform translate-y-full transition-transform duration-300 flex flex-col space-y-space-md" id="sheetContent">
+<!-- Drag Handle Indicator -->
+<div class="flex justify-center -mt-1 mb-1">
+<div class="w-10 h-1 rounded-full bg-outline-variant/60"></div>
+</div>
+<!-- Header -->
+<div class="flex items-center justify-between pb-1 border-b border-surface-variant/50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface font-headline-md tracking-tight">Profil Aurasını Değiştir</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Göksel enerjine ve vizyonuna uygun kaynağı seç</p>
+</div>
+</div>
+<button aria-label="Kapat" class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" onclick="closePhotoSheet()" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Simulated Live Camera Viewfinder (Initially Hidden) -->
+<div class="hidden relative w-full h-44 rounded-2xl overflow-hidden bg-surface-container-lowest border border-secondary/30 flex-col items-center justify-between p-3 shadow-inner" id="cameraViewfinder">
+<div class="w-full flex items-center justify-between text-[11px] text-secondary font-label-sm uppercase tracking-wider">
+<span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-error animate-ping"></span> CANLI VİZÖR • 4K HDR</span>
+<button class="text-on-surface-variant hover:text-on-surface text-[12px] flex items-center gap-0.5" onclick="closeCameraPreview()"><span class="material-symbols-outlined text-[15px]">close</span> İptal</button>
+</div>
+<div class="relative w-24 h-24 rounded-full border-2 border-dashed border-secondary/60 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary/40 text-[40px] animate-pulse">face</span>
+</div>
+<button class="px-5 py-2 rounded-full bg-secondary text-on-secondary font-label-md text-label-md font-semibold flex items-center gap-2 shadow-[0_0_20px_rgba(231,195,85,0.4)] active:scale-95 transition-transform" onclick="captureSimulatedShot()" type="button">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span>
+<span>Pozu Yakala &amp; Uygula</span>
+</button>
+</div>
+<!-- Action Sheet Options Stack -->
+<div class="space-y-space-xs" id="sheetMainOptions">
+<!-- Option 1: Anlık Kamera -->
+<button class="w-full p-space-sm rounded-xl bg-surface-container/70 hover:bg-surface-container-high border border-outline-variant/30 flex items-center justify-between transition-all group active:scale-[0.99] text-left" onclick="triggerInstantCamera()" type="button">
+<div class="flex items-center gap-space-sm">
+<div class="w-11 h-11 rounded-full bg-secondary/15 group-hover:bg-secondary/25 text-secondary flex items-center justify-center transition-colors shadow-inner">
+<span class="material-symbols-outlined text-[22px]">photo_camera</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-surface group-hover:text-secondary-fixed transition-colors">Anlık Fotoğraf Çek (Kamera)</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Ön vizörle canlı mistik çekim yap</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary text-[20px] transition-colors">chevron_right</span>
+</button>
+<!-- Option 2: Galeri -->
+<button class="w-full p-space-sm rounded-xl bg-surface-container/70 hover:bg-surface-container-high border border-outline-variant/30 flex items-center justify-between transition-all group active:scale-[0.99] text-left" onclick="triggerFilePicker()" type="button">
+<div class="flex items-center gap-space-sm">
+<div class="w-11 h-11 rounded-full bg-tertiary/15 group-hover:bg-tertiary/25 text-tertiary flex items-center justify-center transition-colors shadow-inner">
+<span class="material-symbols-outlined text-[22px]">photo_library</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-surface group-hover:text-tertiary transition-colors">Fotoğraf Galerisinden Seç</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Film rulosu veya arşivden yükle</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-tertiary text-[20px] transition-colors">chevron_right</span>
+</button>
+</div>
+<!-- Option 3: Göksel Arketip Avatarları (Aura) Presets -->
+<div class="space-y-space-xs pt-1">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+          Göksel Arketip Avatarları (Aura)
+        </span>
+<span class="text-[11px] text-on-surface-variant">Dokun &amp; Değiştir</span>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<!-- Preset 1: Polaris -->
+<button class="flex flex-col items-center p-2 rounded-xl bg-surface-container/60 hover:bg-surface-container border border-secondary/30 transition-all transform active:scale-95 group text-center" onclick="setAvatarPreset('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=400&amp;q=80', 'Polaris Altın Işığı')" type="button">
+<div class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-secondary/50 mb-1 shadow-[0_0_12px_rgba(231,195,85,0.3)]">
+<img alt="Polaris Aura" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8voPnEJwc0j3K380lLQWkjSEUr338e_F0fhQg0D3npZtHAM13an28wbJWFISIrTKNrbgDBnBOHdKr1YQ44Ln4wipgbRc-swpwuGws3zNpf_mZQYguCobmon8r6yC8AWKTJ4I6qTb0ySKAsBwXvjcOIP1xN2IWBtI_hx99r9g0MPpG7oo4fygvRTB7opsa9dxzSMdlVghd2SdO6vKbxbLbfMNaTHwiy4ZAlbS9gj5F_Z0DuwhIvTc1"/>
+</div>
+<span class="text-[11px] font-label-md font-semibold text-secondary">Polaris</span>
+<span class="text-[9px] text-on-surface-variant truncate w-full">Işık Çapası</span>
+</button>
+<!-- Preset 2: Aurora Serenity -->
+<button class="flex flex-col items-center p-2 rounded-xl bg-surface-container/60 hover:bg-surface-container border border-outline-variant/30 transition-all transform active:scale-95 group text-center" onclick="setAvatarPreset('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&amp;fit=crop&amp;w=400&amp;q=80', 'Aurora Kozmik Denge')" type="button">
+<div class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-tertiary/50 mb-1 shadow-[0_0_12px_rgba(123,208,255,0.3)]">
+<img alt="Aurora Aura" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6Xo_130vYoIxYisDxNfuBHrDbBNaIpbGgobvVwkG82lff5d6Ki5ssrekJ-W5nPkP7bMIvGHGuD1QHj6onn7ktIBRJ5Kny9t-2r8BFq1ImKpdRg3e2jYMPtuEbUDc7Lyicn9KylDK-0EFL_U0vWOc8I35zd4iLC-T2BJXBeRpELg7DQKZlzJP6wHrZbwyh7ziiNIF_cEgruLnZ4MBpV3T2hZm-Qj5g50ijLyI72fWA-j17LQ81ZuOi"/>
+</div>
+<span class="text-[11px] font-label-md font-medium text-tertiary">Aurora</span>
+<span class="text-[9px] text-on-surface-variant truncate w-full">Akış Hali</span>
+</button>
+<!-- Preset 3: Crescent Luna -->
+<button class="flex flex-col items-center p-2 rounded-xl bg-surface-container/60 hover:bg-surface-container border border-outline-variant/30 transition-all transform active:scale-95 group text-center" onclick="setAvatarPreset('https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&amp;fit=crop&amp;w=400&amp;q=80', 'Hilal Sezgi')" type="button">
+<div class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-primary/50 mb-1 shadow-[0_0_12px_rgba(192,193,255,0.3)]">
+<img alt="Crescent Luna Aura" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4fK220BL_9ZAAT7Dk-HUPPqkPbWM2aQyIwpm08SR_Jq4sldTN66jv6tDsnOlAR3Z5qV9OME4mCGW2N3a7o9IpKkUnHSwxgVELgwaAOSA-WDnXz7s9x0D-Xoh3QSvMeKCnCJmjduYPCOE9KICjUuQkVd7pUOO8KrrMVJjeEzVLWUkpFDwJ8x6KnxR2etwPIvGAwruAbQPtRtz8lQ1c773iGC2iY0EqMwL1rmQpnJhm1hckxPPN9nbc"/>
+</div>
+<span class="text-[11px] font-label-md font-medium text-primary">Hilal</span>
+<span class="text-[9px] text-on-surface-variant truncate w-full">Derin Sezgi</span>
+</button>
+<!-- Preset 4: Nebula Mystic -->
+<button class="flex flex-col items-center p-2 rounded-xl bg-surface-container/60 hover:bg-surface-container border border-outline-variant/30 transition-all transform active:scale-95 group text-center" onclick="setAvatarPreset('https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&amp;fit=crop&amp;w=400&amp;q=80', 'Nebula Yaratım')" type="button">
+<div class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-outline/50 mb-1 shadow-[0_0_12px_rgba(255,255,255,0.15)]">
+<img alt="Nebula Aura" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAljA_l3sZ9UQKdzioC07Qn8tIeGuGQG6fTc_vSxAd-jSJwtJuWL6hhEQlQukEN_wHkoV32f_gleXNDAAH6LpjmhBlOXSE4fcU4TVrb9k0AP_qm4lqCF6EAMr2JaoIQeeYVOH1krmH1i5h-R2IblFZfOAhduxf2FdoJUdKOYnXQicIURWiZBCmB7HcBDDZW0v2WgHTB6-PMZZuddpPoSXdQV0e4sb0y3JGBR6PKQkoVXDfGxN74H5_c"/>
+</div>
+<span class="text-[11px] font-label-md font-medium text-on-surface">Nebula</span>
+<span class="text-[9px] text-on-surface-variant truncate w-full">Öz Yaratım</span>
+</button>
+</div>
+</div>
+<!-- Cancel Button -->
+<div class="pt-1">
+<button class="w-full h-12 rounded-xl bg-surface-container hover:bg-surface-variant text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg font-medium transition-all" onclick="closePhotoSheet()" type="button">
+        Vazgeç
+      </button>
+</div>
+</div>
+</div>
+<!-- CELESTIAL TOAST NOTIFICATION -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 z-50 pointer-events-none transition-all duration-300 opacity-0 -translate-y-4" id="auraToast">
+<div class="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-surface-container-high/95 border border-secondary/50 text-secondary shadow-[0_8px_30px_rgba(231,195,85,0.35)] backdrop-blur-xl">
+<span class="material-symbols-outlined text-[19px] animate-spin" style="animation-duration: 4s;">flare</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface tracking-wide" id="toastMessage">Profil auran başarıyla güncellendi ✨</span>
+</div>
+</div>
+<!-- INTERACTION JAVASCRIPT -->
+<script>
+  function openPhotoSheet() {
+    const modal = document.getElementById('photoActionSheetModal');
+    const content = document.getElementById('sheetContent');
+    modal.classList.remove('pointer-events-none', 'opacity-0');
+    modal.classList.add('opacity-100');
+    content.classList.remove('translate-y-full');
+    content.classList.add('translate-y-0');
+  }
+
+  function closePhotoSheet() {
+    const modal = document.getElementById('photoActionSheetModal');
+    const content = document.getElementById('sheetContent');
+    content.classList.remove('translate-y-0');
+    content.classList.add('translate-y-full');
+    modal.classList.remove('opacity-100');
+    modal.classList.add('opacity-0');
+    setTimeout(() => {
+      modal.classList.add('pointer-events-none');
+      closeCameraPreview();
+    }, 300);
+  }
+
+  function triggerFilePicker() {
+    document.getElementById('realPhotoInput').click();
+  }
+
+  function handleFileSelected(event) {
+    const file = event.target.files && event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        updateMainAvatar(e.target.result);
+        closePhotoSheet();
+        showAuraToast('Profil auran galeriden başarıyla yüklendi ✨');
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function triggerInstantCamera() {
+    const cameraBox = document.getElementById('cameraViewfinder');
+    cameraBox.classList.remove('hidden');
+    cameraBox.classList.add('flex');
+  }
+
+  function closeCameraPreview() {
+    const cameraBox = document.getElementById('cameraViewfinder');
+    cameraBox.classList.remove('flex');
+    cameraBox.classList.add('hidden');
+  }
+
+  function captureSimulatedShot() {
+    // Cinematic instant portrait capture
+    const shotUrl = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80';
+    updateMainAvatar(shotUrl);
+    closeCameraPreview();
+    closePhotoSheet();
+    showAuraToast('Anlık çekim auranızla birleştirildi ✨');
+  }
+
+  function setAvatarPreset(url, name) {
+    updateMainAvatar(url);
+    closePhotoSheet();
+    showAuraToast(name + ' aurası aktive edildi ✨');
+  }
+
+  function updateMainAvatar(newSrc) {
+    const avatar = document.getElementById('mainAvatarImage');
+    avatar.style.opacity = '0';
+    setTimeout(() => {
+      avatar.src = newSrc;
+      avatar.style.opacity = '1';
+    }, 150);
+  }
+
+  function showAuraToast(text) {
+    const toast = document.getElementById('auraToast');
+    const msg = document.getElementById('toastMessage');
+    if (text) msg.textContent = text;
+    
+    toast.classList.remove('opacity-0', '-translate-y-4');
+    toast.classList.add('opacity-100', 'translate-y-0');
+    
+    setTimeout(() => {
+      toast.classList.remove('opacity-100', 'translate-y-0');
+      toast.classList.add('opacity-0', '-translate-y-4');
+    }, 3200);
+  }
+</script>
+</body></html>

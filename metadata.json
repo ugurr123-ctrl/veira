@@ -1,0 +1,6 @@
+{
+  "name": "Veira — Vision & Goal Manifest Sanctuary",
+  "description": "An atmospheric, nocturnal sanctuary dedicated to mindful intentionality, deep reflection, goal manifesting, and habit alignment with ambient 432Hz soundscapes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

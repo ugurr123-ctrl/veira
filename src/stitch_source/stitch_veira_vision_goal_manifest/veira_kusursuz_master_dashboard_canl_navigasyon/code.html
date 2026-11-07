@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>VEIRA — Sakin Zihin &amp; Vizyon</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-lowest": "#080c22",
+            "surface-container-low": "#121630",
+            "surface-container": "#181d3d",
+            "surface-container-high": "#22274d",
+            "surface-container-highest": "#2e3460",
+            "on-surface": "#dee0ff",
+            "on-surface-variant": "#9ba1c7",
+            "secondary": "#e7c355",
+            "secondary-container": "#8e7100",
+            "on-secondary": "#3d2f00",
+            "secondary-fixed": "#ffe089",
+            "primary": "#c0c1ff",
+            "primary-container": "#8083ff",
+            "on-primary-container": "#0d0096",
+            "tertiary": "#7bd0ff",
+            "tertiary-container": "#009bd1",
+            "error": "#ffb4ab",
+            "error-container": "#93000a"
+          },
+          fontFamily: {
+            sans: ["'Plus Jakarta Sans'", "sans-serif"],
+            serif: ["'Playfair Display'", "serif"]
+          },
+          spacing: {
+            margin: "1.25rem"
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    body {
+      overscroll-behavior-y: none;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    .pb-safe { padding-bottom: env(safe-area-inset-bottom, 16px); }
+    .pt-safe { padding-top: env(safe-area-inset-top, 12px); }
+  </style>
+</head>
+<body class="bg-surface-container-lowest font-sans text-on-surface flex flex-col min-h-screen selection:bg-secondary/30 selection:text-secondary">
+<!-- Ambient Light Orbs -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute -top-24 -left-20 w-80 h-80 rounded-full bg-primary-container/15 blur-[90px]"></div>
+<div class="absolute top-1/3 -right-24 w-72 h-72 rounded-full bg-secondary/10 blur-[80px]"></div>
+<div class="absolute bottom-28 left-6 w-64 h-64 rounded-full bg-tertiary/10 blur-[80px]"></div>
+</div>
+<!-- Toast Notification System -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-all duration-300 scale-95 flex items-center gap-2 bg-surface-container-high/95 backdrop-blur-xl px-4 py-2 rounded-full border border-secondary/20 shadow-[0_8px_30px_rgba(0,0,0,0.6)]" id="veira-toast">
+<svg class="w-4 h-4 text-secondary flex-shrink-0" fill="currentColor" id="toast-icon-svg" viewbox="0 0 24 24">
+<path d="M12 2l2.4 6.9 7.1.3-5.5 4.6 1.8 6.9L12 16.8 6.2 20.7l1.8-6.9-5.5-4.6 7.1-.3L12 2z"></path>
+</svg>
+<span class="text-xs font-medium text-on-surface" id="toast-text">İşlem kaydedildi</span>
+</div>
+<!-- TOP HEADER -->
+<header class="fixed top-0 w-full z-40 pt-safe bg-surface-container-lowest/85 backdrop-blur-xl border-b border-surface-container-high/40">
+<div class="h-14 px-margin flex items-center justify-between">
+<!-- Logo + 8-Point Golden Star -->
+<div class="flex items-center gap-2 cursor-pointer" onclick="switchTab('bugun')">
+<div class="w-8 h-8 rounded-full bg-secondary/15 flex items-center justify-center border border-secondary/35 shadow-[0_0_12px_rgba(231,195,85,0.25)]">
+<svg class="w-4 h-4 text-secondary" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2l1.9 6.1H20l-4.9 3.8 1.9 6.1L12 14.2 6.9 18l1.9-6.1L4 8.1h6.1L12 2z"></path>
+</svg>
+</div>
+<span class="font-serif font-bold text-lg tracking-wider text-secondary">VEIRA</span>
+</div>
+<!-- Center Title -->
+<span class="text-sm font-medium tracking-wide text-on-surface/90">Bugün</span>
+<!-- Profile Avatar -->
+<button class="w-8 h-8 rounded-full overflow-hidden border border-secondary/30 relative flex items-center justify-center bg-surface-container-high hover:border-secondary transition-colors" onclick="switchTab('ayarlar')">
+<img alt="Selin Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW8WZ9uYU1MmHLu6_ELUBYBvk9vH42wagJveolo8LNDuRqOF7f6OxF5Q3_ywvWUgojIhn9xKD1p0gbULx_LTVBM2WW535Kq-RkMngRKbba5a_WSkzEoMdnCh66XelGHFIaMzXnXvbyD-jJ2IjlHiK52XtgOMbPJHWZQ4GAnaPgxMjXxBaj1m3F9TksLCF2LKoc1A-rKC8zz8FOkshRhVXoksPXeqzZBbgqtMyAVp8"/>
+</button>
+</div>
+</header>
+<!-- MAIN SCROLL CONTENT -->
+<main class="flex-1 w-full pt-16 pb-28 relative z-10">
+<!-- ========================================== -->
+<!-- TAB 1: BUGÜN (DASHBOARD)                   -->
+<!-- ========================================== -->
+<section class="tab-view flex flex-col w-full px-margin space-y-4 pt-3" id="view-bugun">
+<!-- GREETING & STREAK BAR -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">GÜNÜN RİTMİ</span>
+<h1 class="text-xl font-bold font-serif text-on-surface flex items-center gap-1.5 mt-0.5">
+            İyi Akşamlar, Selin
+            <span class="text-secondary inline-block">✨</span>
+</h1>
+<span class="text-xs text-on-surface-variant/80 mt-0.5">Zihinsel disiplin akışındasın</span>
+</div>
+<!-- 14 Gün Seri Badge -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high/90 border border-secondary/30 shadow-[0_0_14px_rgba(231,195,85,0.18)]">
+<svg class="w-4 h-4 text-secondary flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 23c-4.97 0-9-4.03-9-9 0-3.3 1.83-6.23 4.54-7.79.43-.25.99-.08 1.21.35.21.41.06.92-.32 1.15C6.18 9.07 5 11.4 5 14c0 3.86 3.14 7 7 7s7-3.14 7-7c0-2.82-1.37-5.38-3.71-6.84-.4-.25-.53-.78-.29-1.18.23-.41.77-.55 1.18-.3 2.94 1.83 4.82 5.04 4.82 8.32 0 4.97-4.03 9-9 9z"></path>
+<path d="M12 18c-2.21 0-4-1.79-4-4 0-1.63 1.02-3.08 2.53-3.66.42-.16.89.04 1.05.46.16.42-.04.89-.46 1.05-.88.34-1.12 1.23-1.12 2.15 0 1.1.9 2 2 2s2-.9 2-2c0-.75-.24-1.42-.67-1.95-.3-.37-.24-.91.13-1.21.37-.3.91-.24 1.21.13.68.85 1.03 1.95 1.03 3.03 0 2.21-1.79 4-4 4z"></path>
+</svg>
+<span class="text-xs font-semibold text-secondary-fixed" id="streak-counter">14 Gün Seri</span>
+</div>
+</div>
+<!-- HERO CARD: GÜNÜN NİYETİ & AFİRMASYONU -->
+<div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-surface-container-high/95 via-surface-container/90 to-surface-container-low/95 border border-surface-container-highest p-5 shadow-[0_12px_32px_rgba(8,12,34,0.7)]">
+<div class="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-secondary/15 blur-2xl pointer-events-none"></div>
+<!-- Top pill badges row -->
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-1.5 text-secondary">
+<!-- Sparkle SVG -->
+<svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2l2.4 5.9 5.6.8-4.1 4.1 1 5.7-4.9-2.6-4.9 2.6 1-5.7-4.1-4.1 5.6-.8L12 2z"></path>
+</svg>
+<span class="text-[11px] font-semibold tracking-wider uppercase">GÜNÜN NİYETİ &amp; AFİRMASYONU</span>
+</div>
+<!-- 432Hz badge -->
+<button class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-highest/80 border border-tertiary/25 text-tertiary text-xs font-medium hover:bg-surface-bright transition-colors" onclick="switchTab('432hz')">
+<svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+<path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+</svg>
+<span>432Hz Dinle</span>
+</button>
+</div>
+<!-- Quote -->
+<blockquote class="my-3 text-center px-1">
+<p class="font-serif italic text-base leading-relaxed text-on-surface text-balance">
+            “Bugün attığım her küçük adım, 2027 vizyonumun bir parçasını inşa eder.”
+          </p>
+</blockquote>
+<!-- Bottom Tag -->
+<div class="flex items-center justify-between pt-2 border-t border-surface-container-high/60 mt-3">
+<span class="text-[11px] text-on-surface-variant flex items-center gap-1">
+<svg class="w-3.5 h-3.5 text-secondary flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="9"></circle>
+<path d="M12 7v5l3 3"></path>
+</svg>
+            Akşam dinginliğinde içsel rehberlik
+          </span>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary/15 text-secondary text-[11px] font-semibold border border-secondary/25">
+            Hizalanmış Zihin
+          </span>
+</div>
+</div>
+<!-- VİZYON → EYLEM KÖPRÜSÜ (15 DAKİKALIK TEK EYLEM) -->
+<div class="rounded-2xl bg-surface-container-high/85 border border-surface-container-highest p-4 shadow-lg flex flex-col space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="text-[11px] font-semibold uppercase tracking-wider text-secondary">VİZYON → EYLEM KÖPRÜSÜ</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-tertiary text-[11px] font-medium border border-tertiary/20">Tekil Odak</span>
+</div>
+<div class="flex items-center gap-3">
+<!-- Thumbnail with 15 dk badge -->
+<div class="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 border border-surface-container-highest">
+<img alt="Lake Como" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc-zi_Qkm_fiGhq1itRXHVGVxN8Ia0PAdRMmZwN5WhBzoTT88F2YOivKeXlPuLHbUsaE4Z1LTt16LMhVdZUxC_erOWtqxIapx3iUKuCnbYFNavtYga90iBtIPDqFGb8te7lkyyMKr1cqoRr1H8EbhJ3Sesby4rMXRDTQLctw6U7Ya6wGRai3JBR_wRDr8Y5-QE5Vo8IgmzbynAI32bsOS3-fALTZzOlY4eeHd2fXA"/>
+<span class="absolute bottom-1 left-1 px-1.5 py-0.5 rounded bg-surface-container-lowest/80 text-[9px] font-bold text-secondary">15 dk</span>
+</div>
+<!-- Content -->
+<div class="flex-1 min-w-0">
+<span class="text-[10px] font-semibold text-secondary uppercase tracking-wider block truncate">• KARİYER &amp; BOLLUK</span>
+<h3 class="text-sm font-bold text-on-surface truncate">Como Gölü Kıyısında Yaşam &amp; Çalışma</h3>
+<p class="text-xs text-on-surface-variant line-clamp-2 mt-0.5 leading-snug">
+              İtalyanca çalışma portföyünden 1 vize yazısını incele ve 3 not al.
+            </p>
+</div>
+<!-- Interactive SVG Check Button (No font icon dependency!) -->
+<button class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center border-2 border-surface-container-highest hover:border-secondary active:scale-95 transition-all flex-shrink-0 cursor-pointer shadow-md" id="today-action-toggle" onclick="toggleTodayAction()" title="Görevi Tamamla">
+<svg class="w-5 h-5 text-on-surface-variant transition-transform" fill="none" id="today-action-icon" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="9"></circle>
+</svg>
+</button>
+</div>
+<!-- Progress Mini-Bar -->
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary transition-all duration-500 w-0" id="today-progress-bar"></div>
+</div>
+</div>
+<!-- YAŞAM ÇARKI DENGESİ -->
+<div class="rounded-2xl bg-surface-container-high/85 border border-surface-container-highest p-4 shadow-lg flex flex-col space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<svg class="w-4 h-4 text-secondary flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"></path>
+</svg>
+<h2 class="text-sm font-bold text-on-surface">Yaşam Çarkı Dengesi</h2>
+</div>
+<span class="text-[11px] font-medium text-on-surface-variant">Haftalık Ritim</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<!-- Concentric SVG Rings -->
+<div class="relative w-32 h-32 flex items-center justify-center flex-shrink-0">
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 120 120">
+<!-- Background Tracks -->
+<circle class="text-surface-container stroke-current" cx="60" cy="60" fill="none" r="48" stroke-width="7"></circle>
+<circle class="text-surface-container stroke-current" cx="60" cy="60" fill="none" r="36" stroke-width="7"></circle>
+<circle class="text-surface-container stroke-current" cx="60" cy="60" fill="none" r="24" stroke-width="7"></circle>
+<!-- Ring 1: Kariyer (Gold) 75% -> 2*PI*48 = 301.5 -> dashoffset = 75.4 -->
+<circle class="drop-shadow-[0_0_6px_rgba(231,195,85,0.4)]" cx="60" cy="60" fill="none" r="48" stroke="#e7c355" stroke-dasharray="301.5" stroke-dashoffset="75.4" stroke-linecap="round" stroke-width="7"></circle>
+<!-- Ring 2: Sağlık (Teal) 45% -> 2*PI*36 = 226.2 -> dashoffset = 124.4 -->
+<circle class="drop-shadow-[0_0_6px_rgba(123,208,255,0.4)]" cx="60" cy="60" fill="none" r="36" stroke="#7bd0ff" stroke-dasharray="226.2" stroke-dashoffset="124.4" stroke-linecap="round" stroke-width="7"></circle>
+<!-- Ring 3: Ruhsal (Violet) 85% -> 2*PI*24 = 150.8 -> dashoffset = 22.6 -->
+<circle class="drop-shadow-[0_0_6px_rgba(192,193,255,0.4)]" cx="60" cy="60" fill="none" r="24" stroke="#c0c1ff" stroke-dasharray="150.8" stroke-dashoffset="22.6" stroke-linecap="round" stroke-width="7"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="text-xl font-bold font-serif text-on-surface leading-none">%68</span>
+<span class="text-[10px] font-semibold text-on-surface-variant tracking-wider mt-0.5">UYUM</span>
+</div>
+</div>
+<!-- Legend -->
+<div class="flex flex-col space-y-2.5 pl-2 flex-1">
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary shadow-[0_0_6px_rgba(231,195,85,0.6)]"></span>
+<span class="font-medium text-on-surface">Kariyer &amp; Bolluk</span>
+</div>
+<span class="font-bold text-secondary">%75</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary shadow-[0_0_6px_rgba(123,208,255,0.6)]"></span>
+<span class="font-medium text-on-surface">Beden &amp; Sağlık</span>
+</div>
+<span class="font-bold text-tertiary">%45</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_6px_rgba(192,193,255,0.6)]"></span>
+<span class="font-medium text-on-surface">Ruhsal Denge</span>
+</div>
+<span class="font-bold text-primary">%85</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Action Navigation Pills -->
+<div class="grid grid-cols-2 gap-3 pb-2">
+<button class="h-14 rounded-2xl bg-surface-container-high/80 border border-surface-container-highest p-2.5 flex items-center gap-2.5 text-left hover:border-secondary/40 transition-all group cursor-pointer" onclick="switchTab('vizyon')">
+<div class="w-9 h-9 rounded-xl bg-secondary/15 flex items-center justify-center text-secondary group-hover:scale-105 transition-transform flex-shrink-0">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2l2.4 5.9 5.6.8-4.1 4.1 1 5.7-4.9-2.6-4.9 2.6 1-5.7-4.1-4.1 5.6-.8L12 2z"></path>
+</svg>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-xs font-semibold text-on-surface truncate">Vizyon Panosu</span>
+<span class="text-[11px] text-on-surface-variant truncate">12 Niyeti Gör</span>
+</div>
+</button>
+<button class="h-14 rounded-2xl bg-surface-container-high/80 border border-surface-container-highest p-2.5 flex items-center gap-2.5 text-left hover:border-tertiary/40 transition-all group cursor-pointer" onclick="switchTab('432hz')">
+<div class="w-9 h-9 rounded-xl bg-tertiary/15 flex items-center justify-center text-tertiary group-hover:scale-105 transition-transform flex-shrink-0">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 2v20M17 5v14M7 9v6M22 10v4M2 10v4"></path>
+</svg>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-xs font-semibold text-on-surface truncate">Manifest Çalar</span>
+<span class="text-[11px] text-on-surface-variant truncate">Frekansı Başlat</span>
+</div>
+</button>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- TAB 2: VİZYON (12-ITEM VISION BOARD)       -->
+<!-- ========================================== -->
+<section class="tab-view hidden flex flex-col w-full px-margin space-y-4 pt-3" id="view-vizyon">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">MANİFEST SİSTEMİ</span>
+<h2 class="text-xl font-bold font-serif text-on-surface">11/12 Odak Kuralı</h2>
+</div>
+<span class="px-3 py-1 rounded-full bg-secondary/15 text-secondary text-xs font-bold border border-secondary/30">
+          Zirveye 1 Adım ✨
+        </span>
+</div>
+<!-- Progress bar -->
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-secondary w-[91.6%] rounded-full shadow-[0_0_12px_rgba(231,195,85,0.4)]"></div>
+</div>
+<!-- Centerpiece Card -->
+<div class="relative overflow-hidden rounded-2xl bg-surface-container-high border border-surface-container-highest p-4 shadow-xl">
+<div class="w-full h-40 rounded-xl overflow-hidden relative mb-3">
+<img alt="Como" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc-zi_Qkm_fiGhq1itRXHVGVxN8Ia0PAdRMmZwN5WhBzoTT88F2YOivKeXlPuLHbUsaE4Z1LTt16LMhVdZUxC_erOWtqxIapx3iUKuCnbYFNavtYga90iBtIPDqFGb8te7lkyyMKr1cqoRr1H8EbhJ3Sesby4rMXRDTQLctw6U7Ya6wGRai3JBR_wRDr8Y5-QE5Vo8IgmzbynAI32bsOS3-fALTZzOlY4eeHd2fXA"/>
+<div class="absolute top-2 right-2 px-2.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-secondary text-[11px] font-semibold flex items-center gap-1 border border-secondary/30">
+            ★ Kuzey Yıldızı
+          </div>
+</div>
+<div class="flex flex-col space-y-1">
+<span class="text-[11px] font-semibold text-secondary uppercase">Bolluk &amp; Bağımsızlık</span>
+<h3 class="text-base font-bold text-on-surface">Como Gölü Kıyısında Yaşam &amp; Çalışma</h3>
+<p class="text-xs text-on-surface-variant">Sabah göl esintisi eşliğinde tasarım projeleri yönetimi ve bağımsız gelir akışı.</p>
+</div>
+</div>
+<!-- 2x2 Grid -->
+<div class="grid grid-cols-2 gap-3">
+<div class="rounded-xl bg-surface-container-high/70 border border-surface-container-highest p-3 flex flex-col space-y-2">
+<div class="w-full h-24 rounded-lg overflow-hidden relative">
+<img alt="Sanctuary" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW8WZ9uYU1MmHLu6_ELUBYBvk9vH42wagJveolo8LNDuRqOF7f6OxF5Q3_ywvWUgojIhn9xKD1p0gbULx_LTVBM2WW535Kq-RkMngRKbba5a_WSkzEoMdnCh66XelGHFIaMzXnXvbyD-jJ2IjlHiK52XtgOMbPJHWZQ4GAnaPgxMjXxBaj1m3F9TksLCF2LKoc1A-rKC8zz8FOkshRhVXoksPXeqzZBbgqtMyAVp8"/>
+<span class="absolute top-1.5 right-1.5 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-[10px] font-bold">✓</span>
+</div>
+<span class="text-[10px] font-bold text-tertiary">Beden &amp; Canlılık</span>
+<h4 class="text-xs font-semibold text-on-surface truncate">Hafif &amp; Canlı Beden</h4>
+</div>
+<div class="rounded-xl bg-surface-container-high/70 border border-surface-container-highest p-3 flex flex-col space-y-2">
+<div class="w-full h-24 rounded-lg overflow-hidden relative">
+<img alt="Stars" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX1jzqElEoULMY5dUDJCyRUiV89NL2xTBcFMmAkb7_22t1tM9lCQV9E4a1RY0Ous0JtBgKZOJws3-7l3ejCOt2QqzdPYfGjO45Y5d7z3zlcyffd8IbbWTDej7cvQYp92o56F-cwFAubULdrJiyVq2USQtGRHri_ythis6_vRU9yJt9gKsX4ZTvDq_wK8996f0rrn_qY9YiADBvNc2VcM-XDjYXCyGtiEaKMe0PrtA"/>
+<span class="absolute top-1.5 right-1.5 w-5 h-5 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center text-[10px]">●</span>
+</div>
+<span class="text-[10px] font-bold text-primary">Ruhsal Denge</span>
+<h4 class="text-xs font-semibold text-on-surface truncate">Sonsuz Dinginlik</h4>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- TAB 3: 432HZ (MANIFEST AUDIO PLAYER)       -->
+<!-- ========================================== -->
+<section class="tab-view hidden flex flex-col w-full px-margin space-y-5 pt-3" id="view-432hz">
+<div class="text-center flex flex-col items-center">
+<span class="text-[11px] font-bold text-secondary uppercase tracking-widest">NÖRO-AKUSTİK REZONANS</span>
+<h2 class="text-xl font-bold font-serif text-on-surface mt-0.5">432Hz Mucize Frekansı</h2>
+<p class="text-xs text-on-surface-variant">Hücresel Uyum &amp; Derin Dinginlik</p>
+</div>
+<!-- Sacred Mandala with Pulse Glow -->
+<div class="flex items-center justify-center py-2">
+<div class="relative w-48 h-48 rounded-full flex items-center justify-center">
+<div class="absolute inset-0 rounded-full bg-gradient-to-tr from-secondary/20 via-primary/20 to-tertiary/20 blur-xl transition-all duration-700" id="player-halo"></div>
+<div class="w-40 h-40 rounded-full overflow-hidden relative border-2 border-secondary/30 shadow-[0_0_40px_rgba(8,12,34,0.9)]">
+<img alt="432Hz Sacred Geometry" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf0dN4h34MhSZ4FOcqXiABheUJnaqGoVbKMio2F4blLTlNQAs_kS40i59hJ3ugsUWhkvDrEXfwAFMc7pbSywcEs-zEVR5GB4dD-UfnvvvTC2Q1SoR1uXEzq3JNNYnl_JHNnNX4agPJTZlaSwZfnke5Vk3YidEcmwHElR4Rx4UnEpbT1IuGEGldEKE29hRNkt2dVnHjhzcSB9d6y4Vz5O_tMOnPZYq0xc8-tWCCGng"/>
+</div>
+</div>
+</div>
+<!-- Audio Progress -->
+<div class="flex flex-col space-y-1.5">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden cursor-pointer">
+<div class="h-full bg-gradient-to-r from-tertiary to-secondary w-1/3 rounded-full"></div>
+</div>
+<div class="flex justify-between text-[11px] text-on-surface-variant">
+<span>07:42</span>
+<span>21:00</span>
+</div>
+</div>
+<!-- Controls -->
+<div class="flex items-center justify-center gap-6">
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-on-surface active:scale-95 transition-all" onclick="showToast('10 saniye geri alındı')">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+<path d="M3 3v5h5"></path>
+</svg>
+</button>
+<button class="w-14 h-14 rounded-full bg-gradient-to-tr from-secondary to-secondary-fixed text-on-secondary flex items-center justify-center shadow-[0_0_24px_rgba(231,195,85,0.45)] active:scale-95 transition-all" id="audio-play-btn" onclick="toggleAudioPlayback()">
+<svg class="w-6 h-6 fill-current" id="audio-play-icon" viewbox="0 0 24 24">
+<path d="M8 5v14l11-7z"></path>
+</svg>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-on-surface active:scale-95 transition-all" onclick="showToast('10 saniye ileri sarıldı')">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.85.99 6.57 2.6L21 8"></path>
+<path d="M21 3v5h-5"></path>
+</svg>
+</button>
+</div>
+<!-- Neuro Sliders -->
+<div class="rounded-2xl bg-surface-container-high/80 border border-surface-container-highest p-4 space-y-3">
+<span class="text-xs font-bold text-on-surface">Ses Katmanlama Mikseri</span>
+<div class="space-y-1">
+<div class="flex justify-between text-xs">
+<span class="text-on-surface-variant">432Hz Saf Sinüs</span>
+<span class="text-secondary font-bold">%85</span>
+</div>
+<input class="w-full accent-secondary h-1.5 bg-surface-container rounded-lg" max="100" min="0" type="range" value="85"/>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs">
+<span class="text-on-surface-variant">Gece Yağmuru &amp; Rüzgar</span>
+<span class="text-tertiary font-bold">%40</span>
+</div>
+<input class="w-full accent-tertiary h-1.5 bg-surface-container rounded-lg" max="100" min="0" type="range" value="40"/>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- TAB 4: HEDEFLER (GOAL DETAIL & MILESTONES) -->
+<!-- ========================================== -->
+<section class="tab-view hidden flex flex-col w-full px-margin space-y-4 pt-3" id="view-hedefler">
+<div class="relative rounded-2xl overflow-hidden shadow-xl border border-surface-container-highest">
+<div class="w-full h-40 relative">
+<img alt="Villa" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5L1pUjHRNjTXeyejzLA_1kYGFjFruAB9dccAPogpbUU5_lktbqrC8TBDYbI1DIJKyCz6qGZp2nlJK47C-wZopovJ3ZTnfVCV9ljzi0xo0DP3vROzx6HZ83fyb0_7V74bBhfKY9q3VFW8rKeOJB1vwaWPNeiF2mCAu_ekpiMYuzo18iLSxl7miax-xr_hysRWmodrLi76azyuvsYSSwCc5TfrT71RmsJ8kgM40UGs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/60 to-transparent"></div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-3">
+<span class="text-[10px] font-bold text-secondary uppercase tracking-wider">Hedef #1 • 2027 Kuzey Yıldızı</span>
+<h2 class="text-base font-bold text-on-surface font-serif">Como Gölü Kıyısında Yaşam</h2>
+</div>
+</div>
+<!-- 3 Aylık Kilometre Taşları -->
+<div class="space-y-2">
+<span class="text-xs font-bold text-on-surface">3 Aylık Kilometre Taşları</span>
+<div class="rounded-xl bg-surface-container-high/80 border border-surface-container-highest p-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-xs font-bold">✓</span>
+<div>
+<span class="text-xs font-medium text-on-surface line-through opacity-70 block">Q1 Vize Portföyü</span>
+<span class="text-[10px] text-on-surface-variant">İtalyanca evraklar hazırlandı</span>
+</div>
+</div>
+<span class="text-[11px] text-secondary font-bold">Tamam</span>
+</div>
+<div class="rounded-xl bg-surface-container-high border border-primary/40 p-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center text-xs font-bold">2</span>
+<div>
+<span class="text-xs font-bold text-on-surface block">Q2 Sözleşme &amp; Şirket</span>
+<span class="text-[10px] text-on-surface-variant">Uluslararası faturalandırma yapısı</span>
+</div>
+</div>
+<span class="text-[11px] text-primary font-bold">Süreçte</span>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- TAB 5: AYARLAR (SETTINGS & PROFILE)        -->
+<!-- ========================================== -->
+<section class="tab-view hidden flex flex-col w-full px-margin space-y-4 pt-3" id="view-ayarlar">
+<div class="rounded-2xl bg-surface-container-high/80 border border-surface-container-highest p-4 flex items-center gap-3">
+<div class="w-14 h-14 rounded-full bg-gradient-to-tr from-secondary to-primary flex items-center justify-center text-on-primary font-serif font-bold text-xl shadow-lg">
+          S
+        </div>
+<div class="flex flex-col">
+<h2 class="text-base font-bold text-on-surface">Selin Yılmaz</h2>
+<span class="text-xs text-on-surface-variant">selin@veira.mind</span>
+<span class="text-[11px] text-secondary font-medium mt-0.5">★ 2027 Kuzey Yıldızı Yolcusu</span>
+</div>
+</div>
+<div class="rounded-2xl bg-surface-container-high/60 border border-surface-container-highest p-4 space-y-3">
+<span class="text-xs font-bold text-on-surface">Gizlilik &amp; Sakin Zihin Güvencesi</span>
+<div class="flex items-center justify-between text-xs text-on-surface-variant">
+<span>Uçtan Uca Cihaz İçi Şifreleme</span>
+<span class="text-secondary font-semibold">Aktif ✓</span>
+</div>
+<div class="flex items-center justify-between text-xs text-on-surface-variant">
+<span>Sıfır Reklam, Sıfır Takipçi</span>
+<span class="text-secondary font-semibold">Garantili ✓</span>
+</div>
+</div>
+</section>
+</main>
+<!-- ========================================== -->
+<!-- BOTTOM FLOATING DOCK NAVIGATION            -->
+<!-- ========================================== -->
+<nav class="fixed bottom-0 left-0 right-0 z-40 pb-safe pointer-events-none">
+<div class="px-margin mb-3">
+<div class="pointer-events-auto h-16 rounded-full bg-surface-container-low/90 backdrop-blur-2xl border border-surface-container-highest/60 shadow-[0_12px_40px_rgba(8,12,34,0.85)] px-3 flex items-center justify-between">
+<!-- TAB 1: BUGÜN (Active Default) -->
+<button class="nav-tab flex flex-col items-center justify-center gap-0.5 w-[58px] h-12 rounded-full text-secondary bg-secondary/15 border border-secondary/30 transition-all duration-300" data-tab="bugun" onclick="switchTab('bugun')">
+<!-- Sun / Sparkle SVG -->
+<svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="4"></circle>
+<path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+</svg>
+<span class="text-[10px] font-bold tracking-wide">Bugün</span>
+</button>
+<!-- TAB 2: VİZYON -->
+<button class="nav-tab flex flex-col items-center justify-center gap-0.5 w-[58px] h-12 rounded-full text-on-surface-variant hover:text-on-surface transition-all duration-300" data-tab="vizyon" onclick="switchTab('vizyon')">
+<!-- 4-Point Star / Grid SVG -->
+<svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"></path>
+</svg>
+<span class="text-[10px] font-medium tracking-wide">Vizyon</span>
+</button>
+<!-- TAB 3: 432HZ -->
+<button class="nav-tab flex flex-col items-center justify-center gap-0.5 w-[58px] h-12 rounded-full text-on-surface-variant hover:text-on-surface transition-all duration-300" data-tab="432hz" onclick="switchTab('432hz')">
+<!-- Headphones / Soundwave SVG -->
+<svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+<path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+</svg>
+<span class="text-[10px] font-medium tracking-wide">432Hz</span>
+</button>
+<!-- TAB 4: HEDEFLER -->
+<button class="nav-tab flex flex-col items-center justify-center gap-0.5 w-[58px] h-12 rounded-full text-on-surface-variant hover:text-on-surface transition-all duration-300" data-tab="hedefler" onclick="switchTab('hedefler')">
+<!-- Compass / Target SVG -->
+<svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+</svg>
+<span class="text-[10px] font-medium tracking-wide">Hedefler</span>
+</button>
+<!-- TAB 5: AYARLAR -->
+<button class="nav-tab flex flex-col items-center justify-center gap-0.5 w-[58px] h-12 rounded-full text-on-surface-variant hover:text-on-surface transition-all duration-300" data-tab="ayarlar" onclick="switchTab('ayarlar')">
+<!-- Gear / Settings SVG -->
+<svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+<circle cx="12" cy="12" r="3"></circle>
+</svg>
+<span class="text-[10px] font-medium tracking-wide">Ayarlar</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- JAVASCRIPT LOGIC -->
+<script>
+    // Tab Switcher
+    function switchTab(targetTab) {
+      const views = document.querySelectorAll('.tab-view');
+      views.forEach(v => v.classList.add('hidden'));
+
+      const activeView = document.getElementById('view-' + targetTab);
+      if (activeView) activeView.classList.remove('hidden');
+
+      // Update Nav Dock Styling
+      const tabs = document.querySelectorAll('.nav-tab');
+      tabs.forEach(tab => {
+        const id = tab.getAttribute('data-tab');
+        if (id === targetTab) {
+          tab.className = 'nav-tab flex flex-col items-center justify-center gap-0.5 w-[58px] h-12 rounded-full text-secondary bg-secondary/15 border border-secondary/30 transition-all duration-300';
+          tab.querySelector('span').className = 'text-[10px] font-bold tracking-wide';
+        } else {
+          tab.className = 'nav-tab flex flex-col items-center justify-center gap-0.5 w-[58px] h-12 rounded-full text-on-surface-variant hover:text-on-surface transition-all duration-300';
+          tab.querySelector('span').className = 'text-[10px] font-medium tracking-wide';
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Toast Function
+    function showToast(message) {
+      const toast = document.getElementById('veira-toast');
+      const text = document.getElementById('toast-text');
+      text.innerText = message;
+      toast.classList.remove('opacity-0', 'scale-95');
+      toast.classList.add('opacity-100', 'scale-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'scale-100');
+        toast.classList.add('opacity-0', 'scale-95');
+      }, 2600);
+    }
+
+    // Micro-Action Checkmark Toggle (No font dependencies!)
+    let isActionChecked = false;
+    let currentStreak = 14;
+
+    function toggleTodayAction() {
+      isActionChecked = !isActionChecked;
+      const btn = document.getElementById('today-action-toggle');
+      const icon = document.getElementById('today-action-icon');
+      const bar = document.getElementById('today-progress-bar');
+      const streak = document.getElementById('streak-counter');
+
+      if (isActionChecked) {
+        // Checked state: Golden background, checkmark SVG
+        btn.classList.add('bg-secondary', 'border-secondary', 'text-on-secondary');
+        btn.classList.remove('bg-surface-container', 'border-surface-container-highest', 'text-on-surface-variant');
+        icon.classList.remove('text-on-surface-variant');
+        icon.classList.add('text-on-secondary');
+        icon.innerHTML = '<path d="M20 6L9 17l-5-5"/>';
+        bar.style.width = '100%';
+        currentStreak += 1;
+        streak.innerText = currentStreak + ' Gün Seri';
+        showToast('Tebrikler! 15 dakikalık niyet adımı tamamlandı ✨');
+      } else {
+        // Unchecked state: Subtle ring
+        btn.classList.remove('bg-secondary', 'border-secondary', 'text-on-secondary');
+        btn.classList.add('bg-surface-container', 'border-surface-container-highest', 'text-on-surface-variant');
+        icon.classList.add('text-on-surface-variant');
+        icon.classList.remove('text-on-secondary');
+        icon.innerHTML = '<circle cx="12" cy="12" r="9"/>';
+        bar.style.width = '0%';
+        currentStreak -= 1;
+        streak.innerText = currentStreak + ' Gün Seri';
+        showToast('Eylem geri alındı');
+      }
+    }
+
+    // Audio Playback Toggle
+    let isPlaying = false;
+    function toggleAudioPlayback() {
+      isPlaying = !isPlaying;
+      const icon = document.getElementById('audio-play-icon');
+      const halo = document.getElementById('player-halo');
+
+      if (isPlaying) {
+        icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+        halo.classList.add('scale-125', 'opacity-100');
+        showToast('432Hz rezonansı çalınıyor');
+      } else {
+        icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+        halo.classList.remove('scale-125', 'opacity-100');
+        showToast('Oynatma duraklatıldı');
+      }
+    }
+  </script>
+</body></html>

@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>Veira</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'background': '#0e1228', 'on-primary': '#1000a9', 'on-error-container': '#ffdad6', 'on-tertiary-container': '#002d40', 'on-primary-fixed': '#07006c', 'on-secondary-fixed-variant': '#574500', 'surface-container': '#1a1e35', 'on-primary-fixed-variant': '#2f2ebe', 'tertiary': '#7bd0ff', 'on-tertiary-fixed-variant': '#004c69', 'tertiary-container': '#009bd1', 'surface-variant': '#2f334b', 'on-tertiary': '#00354a', 'inverse-primary': '#494bd6', 'secondary': '#e7c355', 'on-background': '#dee0ff', 'surface-container-high': '#252840', 'primary-fixed-dim': '#c0c1ff', 'tertiary-fixed-dim': '#7bd0ff', 'primary-fixed': '#e1e0ff', 'on-error': '#690005', 'on-primary-container': '#0d0096', 'secondary-fixed-dim': '#e7c355', 'tertiary-fixed': '#c4e7ff', 'surface-container-low': '#161a30', 'on-surface': '#dee0ff', 'secondary-fixed': '#ffe089', 'surface-bright': '#343850', 'outline-variant': '#464554', 'surface': '#0e1228', 'inverse-surface': '#dee0ff', 'error-container': '#93000a', 'surface-container-highest': '#2f334b', 'outline': '#908fa0', 'primary-container': '#8083ff', 'surface-dim': '#0e1228', 'primary': '#c0c1ff', 'on-surface-variant': '#c7c4d7', 'surface-tint': '#c0c1ff', 'error': '#ffb4ab', 'on-secondary': '#3d2f00', 'surface-container-lowest': '#080c22', 'on-secondary-container': '#fffbff', 'inverse-on-surface': '#2b2f46', 'on-tertiary-fixed': '#001e2c', 'secondary-container': '#8e7100' }, borderRadius: { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, spacing: { 'space-md': '1rem', 'gutter': '1rem', 'margin-lg': '1.5rem', 'space-lg': '1.5rem', 'space-xs': '0.25rem', 'margin': '1.25rem', 'space-sm': '0.5rem', 'gutter-sm': '0.75rem', 'space-xl': '2rem' }, fontFamily: { 'body-md': ['Inter'], 'label-md': ['Inter'], 'headline-md': ['Playfair Display'], 'title-lg': ['Inter'], 'title-md': ['Inter'], 'display-sm': ['Playfair Display'], 'headline-lg-mobile': ['Playfair Display'], 'headline-lg': ['Playfair Display'], 'display-lg': ['Playfair Display'], 'body-lg': ['Inter'], 'label-lg': ['Inter'], 'label-sm': ['Inter'], 'body-sm': ['Inter'] }, fontSize: { 'body-md': ['14px', { 'lineHeight': '20px', 'fontWeight': '400' }], 'label-md': ['12px', { 'lineHeight': '16px', 'letterSpacing': '0.02em', 'fontWeight': '500' }], 'headline-md': ['20px', { 'lineHeight': '28px', 'fontWeight': '500' }], 'title-lg': ['18px', { 'lineHeight': '24px', 'letterSpacing': '-0.01em', 'fontWeight': '600' }], 'title-md': ['16px', { 'lineHeight': '22px', 'fontWeight': '600' }], 'display-sm': ['32px', { 'lineHeight': '40px', 'letterSpacing': '-0.01em', 'fontWeight': '600' }], 'headline-lg-mobile': ['24px', { 'lineHeight': '32px', 'letterSpacing': '-0.01em', 'fontWeight': '500' }], 'headline-lg': ['28px', { 'lineHeight': '36px', 'letterSpacing': '-0.01em', 'fontWeight': '500' }], 'display-lg': ['40px', { 'lineHeight': '48px', 'letterSpacing': '-0.02em', 'fontWeight': '600' }], 'body-lg': ['16px', { 'lineHeight': '24px', 'fontWeight': '400' }], 'label-lg': ['14px', { 'lineHeight': '20px', 'letterSpacing': '0.01em', 'fontWeight': '500' }], 'label-sm': ['11px', { 'lineHeight': '14px', 'letterSpacing': '0.04em', 'fontWeight': '600' }], 'body-sm': ['12px', { 'lineHeight': '16px', 'fontWeight': '400' }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#080c22;color:#dee0ff;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    @keyframes starDustFloat {
+      0% { transform: translateY(0px) scale(0.8); opacity: 0; }
+      50% { opacity: 1; transform: translateY(-30px) scale(1.2); }
+      100% { transform: translateY(-60px) scale(0.6); opacity: 0; }
+    }
+    .stardust-particle {
+      position: absolute;
+      pointer-events: none;
+      animation: starDustFloat 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes cardRipplePulse {
+      0% {
+        opacity: 0.85;
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(245, 208, 97, 0.65), 0 0 20px 4px rgba(245, 208, 97, 0.45);
+      }
+      50% {
+        opacity: 1;
+        box-shadow: 0 0 0 16px rgba(245, 208, 97, 0.25), 0 0 35px 8px rgba(245, 208, 97, 0.55);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.08);
+        box-shadow: 0 0 0 28px rgba(245, 208, 97, 0), 0 0 50px 14px rgba(245, 208, 97, 0);
+      }
+    }
+    .golden-card-ripple {
+      position: absolute;
+      inset: -4px;
+      border-radius: inherit;
+      pointer-events: none;
+      border: 1.5px solid rgba(245, 208, 97, 0.8);
+      animation: cardRipplePulse 850ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      z-index: 30;
+    }
+    .card-golden-flash {
+      border-color: #F5D061 !important;
+      box-shadow: 0 0 28px rgba(245, 208, 97, 0.5), inset 0 0 14px rgba(245, 208, 97, 0.2) !important;
+      transition: border-color 650ms ease-out, box-shadow 750ms ease-out !important;
+    }
+    @keyframes returnSparkleFly {
+      0% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+      40% { opacity: 1; transform: translate(var(--tx), var(--ty)) scale(1.2); }
+      100% { opacity: 0; transform: translate(calc(var(--tx) * 1.5), calc(var(--ty) * 1.5)) scale(0.5); }
+    }
+    .return-sparkle {
+      position: absolute;
+      pointer-events: none;
+      z-index: 35;
+      animation: returnSparkleFly 750ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    /* Celestial Completed Card Badge Styles */
+    @keyframes goldenBadgePop {
+      0% { transform: scale(0.4) rotate(-15deg); opacity: 0; filter: drop-shadow(0 0 0 rgba(245,208,97,0)); }
+      60% { transform: scale(1.15) rotate(3deg); opacity: 1; filter: drop-shadow(0 0 16px rgba(245,208,97,0.8)); }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; filter: drop-shadow(0 0 10px rgba(245,208,97,0.5)); }
+    }
+    .golden-completed-badge {
+      animation: goldenBadgePop 450ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    .card-completed-state {
+      border-color: #F5D061 !important;
+      box-shadow: 0 0 22px rgba(245, 208, 97, 0.28), 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    /* 12/12 Celestial Grand Burst Animations */
+    @keyframes celestialConfettiFall {
+      0% {
+        opacity: 0;
+        transform: translate3d(var(--start-x), var(--start-y), 0) rotate(0deg) scale(0.4);
+      }
+      15% {
+        opacity: 1;
+        transform: translate3d(calc(var(--start-x) + var(--drift-x) * 0.2), calc(var(--start-y) + 80px), 0) rotate(120deg) scale(1.1);
+      }
+      75% {
+        opacity: 0.95;
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(calc(var(--start-x) + var(--drift-x)), calc(var(--start-y) + var(--fall-dist)), 0) rotate(var(--rot)) scale(0.7);
+      }
+    }
+    .confetti-foil-particle {
+      position: absolute;
+      will-change: transform, opacity;
+      animation: celestialConfettiFall var(--duration) cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      pointer-events: none;
+    }
+
+    @keyframes bannerShimmerWave {
+      0% { transform: translateX(-150%) skewX(-20deg); }
+      100% { transform: translateX(200%) skewX(-20deg); }
+    }
+    .banner-shimmer {
+      animation: bannerShimmerWave 2.8s infinite ease-in-out;
+    }
+
+    @keyframes zenithBannerEntrance {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -60%) scale(0.75);
+        filter: drop-shadow(0 0 0 rgba(245,208,97,0));
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.05);
+        filter: drop-shadow(0 0 35px rgba(245,208,97,0.7));
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        filter: drop-shadow(0 0 24px rgba(245,208,97,0.45));
+      }
+    }
+    .zenith-banner-enter {
+      animation: zenithBannerEntrance 600ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+  </style>
+</head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-screen overflow-x-hidden"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Veira Celestial Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChst6p9MJzfQQfrA_4McOfjT1GNsc9_OFu0oIXpJ8knn6bGLrsIuMb2L94hQPra2UE17rHqpC10UmmXSYamqYwP2Y1vMWguKTbNWar5lqMn8Dq0b2jLXUiXxtybLILZ3wgEol1ao3yCWnSsDhM2XoHDx-xRFpDq5fUeAf84RezGbeOTPzjs_x5Tc6j5q6aELtJVAanqXFKTx3GOKXjDnPGiElCvR_UtjjSWqPBYeOXXcYLUs7Pejls"/><span class="font-headline-md text-headline-md text-secondary tracking-tight">Veira</span></div><div class="flex items-center gap-space-sm"><span class="font-title-md text-title-md text-on-surface text-center px-space-xs truncate max-w-[130px]">Vision Board</span></div><div class="flex items-center gap-space-sm"><a class="w-11 h-11 flex items-center justify-center rounded-full transition-transform active:scale-95" data-path="settings" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi3a-psaNJ_QU-72Xk020WcxXT0weHKVr0dxtketi3AfYdGjQE0pkeV1TxmQm84hVhT0dDYaR1K3Vn7ar1Vow9SCF_CzgefPXCrNnOXcCjwHeklD47ZVj8Szf5GaDskIOBEcZn5UQKJGj4wtMBLcJXvks2x9qZc2WAz3X8IE2W-LHjlqmq2AKvrUa2zYibLT77AjUqNtzdsFtgZh2JvTDD3mZD5GPHtnkbRFBoO4t1P2LSK3m2QjJ3"/></a></div></div></header><main class="flex-1 flex flex-col relative w-full px-margin pt-16 pb-24 bg-surface"><div class="flex flex-col w-full relative">
+<!-- Subtle Ambient Glow Orbs -->
+<div class="absolute -top-20 -left-16 w-96 h-96 bg-primary-container/15 rounded-full blur-3xl pointer-events-none animate-pulse duration-300"></div>
+<div class="absolute top-40 left-1/4 w-80 h-80 bg-tertiary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute inset-0 pointer-events-none overflow-hidden">
+<span class="absolute top-12 left-10 text-[10px] text-secondary/60 animate-ping">✦</span>
+<span class="absolute top-28 right-8 text-[8px] text-tertiary-fixed-dim/70 animate-pulse">✧</span>
+<span class="absolute top-96 left-6 text-[9px] text-secondary/50 animate-pulse">✦</span>
+<span class="absolute bottom-80 right-12 text-[10px] text-tertiary/60 animate-ping">✧</span>
+<span class="absolute bottom-40 left-16 text-[8px] text-secondary/70 animate-pulse">✦</span>
+</div>
+<div class="absolute top-80 -right-16 w-80 h-80 bg-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Section 1: Editorial Header & Celestial Rules Indicator -->
+<div class="flex flex-col gap-space-sm mb-3">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight">2027 Vizyon Panom</h1>
+<span class="text-secondary select-none animate-pulse">✦</span>
+</div>
+<button class="relative group overflow-hidden flex items-center gap-space-xs px-3.5 py-1.5 rounded-full bg-gradient-to-r from-secondary via-secondary-fixed to-secondary text-on-secondary shadow-lg shadow-secondary/20 hover:shadow-secondary/40 hover:brightness-110 active:scale-95 transition-all border border-secondary/40" id="downloadWallpaperBtn"><span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"></span><span class="material-symbols-outlined text-[16px] leading-none animate-pulse text-on-secondary">auto_awesome</span><span class="font-label-md text-label-md leading-none font-semibold">HD İndir</span><span class="text-[10px] text-on-secondary/80 select-none">✦</span></button>
+</div>
+<!-- 12 Focus Law Pill Banner (Clickable to trigger / replay 12/12 grand celebration) -->
+<div class="bg-surface-container-low/90 backdrop-blur-md rounded-xl p-space-sm shadow-md flex items-center justify-between gap-space-sm transition-all duration-500 border border-transparent cursor-pointer active:scale-[0.99] group" id="focusProgressCard" onclick="handleFocusProgressClick()" title="Dokun: 12/12 Zirve Kutlamasını Başlat">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-full bg-secondary-container/30 flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105" id="focusProgressIconWrapper">
+<span class="material-symbols-outlined text-secondary text-[20px] transition-transform duration-300" id="focusProgressIcon">verified</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-md text-label-md text-secondary font-semibold transition-all" id="focusCountLabel">11 / 12 Odak Kuralı</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary transition-colors" id="focusStatusDot"></span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold transition-colors" id="focusStatusLabel">Zirveye 1 Adım ✨</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate leading-tight mt-0.5" id="focusSubtitle">Dokunarak 12/12 Zirve Altın Patlamasını kutlayın.</p>
+</div>
+</div>
+<div class="relative w-10 h-10 flex-shrink-0 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<circle class="text-surface-variant" cx="18" cy="18" fill="none" r="14" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-secondary transition-all duration-700" cx="18" cy="18" fill="none" id="progressCircleStroke" r="14" stroke="currentColor" stroke-dasharray="88" stroke-dashoffset="7.3" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="absolute font-label-sm text-label-sm font-bold text-secondary text-[11px] transition-all" id="progressPercentageText">92%</span>
+</div>
+</div>
+</div>
+<!-- Section 2: Moodboard Canvas (Organic Layered Polaroid / Editorial Clippings) -->
+<div class="relative w-full flex flex-col gap-space-md select-none">
+<!-- Hero Centerpiece: Lake Como Desk (Main Gravity Point) -->
+<div class="relative group rounded-2xl p-3 backdrop-blur-xl transition-all duration-300 active:scale-[0.99] cursor-pointer bg-gradient-to-b from-surface-container-high/95 via-surface-container-high/85 to-surface-container-low/95 border border-secondary/40 shadow-[0_0_25px_rgba(231,195,85,0.18)] hover:shadow-[0_0_35px_rgba(231,195,85,0.3)] hover:border-secondary/60" id="card-como" onclick="openVisionCardModal('como')">
+<!-- Dynamic Celestial Golden Check Badge Placeholder -->
+<div class="hidden absolute top-3.5 left-3.5 z-30 golden-completed-badge items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#ffe089] via-[#e7c355] to-[#ffe089] text-[#241a00] font-semibold text-[11px] shadow-[0_0_15px_rgba(245,208,97,0.5)] border border-[#F5D061]" id="badge-como">
+<span class="material-symbols-outlined text-[15px] font-bold leading-none">check</span>
+<span class="">Bugün 15 Dk Tamamlandı</span>
+<span class="text-[9px]">✦</span>
+</div>
+<!-- Celestial Outer Halo Glow -->
+<div class="absolute -inset-0.5 bg-gradient-to-tr from-secondary/30 via-tertiary/20 to-primary/20 rounded-2xl blur-md opacity-70 group-hover:opacity-100 transition-opacity -z-10 pointer-events-none"></div>
+<!-- Golden Polaris Star Accent -->
+<div class="absolute -top-3 -right-2 z-20 w-8 h-8 rounded-full bg-secondary/20 backdrop-blur-md border border-secondary/50 flex items-center justify-center text-secondary shadow-lg shadow-secondary/30 pointer-events-none animate-pulse">
+<span class="text-[14px] leading-none select-none">✦</span>
+</div>
+<!-- Golden Washi Tape Accent with Celestial Shimmer -->
+<div class="absolute -top-2 left-1/2 -translate-x-1/2 w-20 h-4 bg-gradient-to-r from-secondary/30 via-secondary/50 to-secondary/30 rounded backdrop-blur-sm transform rotate-1 z-10 shadow-sm pointer-events-none border-t border-b border-secondary/40"></div>
+<!-- Live Action Badge with Stardust Aura -->
+<div class="absolute top-4 right-4 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-lowest/85 backdrop-blur-md border border-secondary/30 shadow-md">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+<span class="font-label-sm text-label-sm text-secondary font-medium tracking-tight">✦ Bağlı Mikro-Eylem</span>
+</div>
+<div class="relative w-full h-64 rounded-xl overflow-hidden mb-3 border border-secondary/20 shadow-inner">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="High-end editorial photograph of a minimalist mahogany writer desk placed on a sun-drenched terrace overlooking Lake Como Italy, vintage brass fountain pen, linen notebook, warm golden hour sunbeams, deep midnight indigo accents, cinematic serene luxury mood, 8k resolution" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3fB8QyhFc4jX2PjFo2_LSmk63_k15OuOT6EZHlgQv5exfiiurV8MWeR5QwI6Cxf5xrFT9qCNJmYLV0zwxQcFn_V1VZjMq5b0IzX9akGLEtoHRTRSSG1S4F7au9-IV_8QnRXoYvueeeoDT2xD0muAfWhO1t1Hulq-Ftggy2_072d4MsdIg0Dx5XJphDbRUNsGjty3ARPlnOyn147uYFTnKVBTdQp_rg3g5RvrsIPz4g9Yhy-Svu5sC"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/95 via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3 flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase flex items-center gap-1"><span class="text-[10px]">★</span> Ana Niyet Yıldızı</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary/20 text-secondary border border-secondary/40 text-label-sm font-label-sm font-semibold flex-shrink-0 shadow-sm">Aktif Hedef</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface italic tracking-tight leading-snug drop-shadow-md">Bolluk &amp; Bağımsızlık</h2>
+</div>
+</div>
+<!-- Smart Link Tracker Footer with Celestial Polish -->
+<div class="px-2 pb-1 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">bolt</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Günlük Görev: 15 Dk Odak Seansı</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Dynamic 2-Column Collage Section (Wheel of Life Polaroids) -->
+<div class="grid grid-cols-2 gap-space-md">
+<!-- Polaroid 1: Body & Vitality -->
+<div class="relative group bg-surface-container-low/95 rounded-xl p-2.5 pb-4 shadow-lg backdrop-blur-lg transform -rotate-1 hover:rotate-0 transition-all duration-300 cursor-pointer border border-outline-variant/50 hover:border-secondary/45 hover:shadow-[0_0_20px_rgba(231,195,85,0.18)]" id="card-beden" onclick="openVisionCardModal('beden')">
+<!-- Dynamic Celestial Golden Check Badge Placeholder -->
+<div class="hidden absolute top-2 right-2 z-30 golden-completed-badge items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-[#ffe089] via-[#e7c355] to-[#ffe089] text-[#241a00] font-semibold text-[10px] shadow-[0_0_15px_rgba(245,208,97,0.45)] border border-[#F5D061]" id="badge-beden">
+<span class="material-symbols-outlined text-[13px] font-bold leading-none">check</span>
+<span class="">15 Dk Tamam</span>
+<span class="text-[8px]">✦</span>
+</div>
+<div class="absolute -top-1.5 left-4 w-3.5 h-3.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(231,195,85,0.6)] flex items-center justify-center z-10 pointer-events-none">
+<div class="w-1.5 h-1.5 rounded-full bg-on-secondary"></div>
+</div>
+<div class="w-full h-44 rounded-lg overflow-hidden mb-2 relative border border-secondary/20">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Serene sunrise yoga practitioner beside a mist covered alpine glass lake, gentle dawn pink and midnight blue hues, quiet morning mist, warm sunlight rays, mindfulness editorial composition, ultra high quality" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5wqvFkYMG_rCFNRaDtKu4_52RWTW8Ek3vBz0v1-pcmi5C9ko35z5umwVIPn5oEQFr50x1mZxNTAr4UG7fnttb6ECY0aPK5AiOLBA6Ek32BRsJI3VlcWjOnQcsurml02fzK3N8AojjbD3Hzw4ROFb0QGOSUu44hVVEMkb8YzQjT11xZvqmDGr5ZryuThInojxVGJdRViMEr31kKTpz3swEwwrhSV3N2_pHFTRqWbs6GQYrMO2zhZ7B"/>
+<div class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary shadow-[0_0_6px_rgba(231,195,85,0.8)]"></div>
+</div>
+<div class="px-1">
+<span class="font-label-sm text-label-sm text-tertiary uppercase flex items-center gap-1"><span class="text-[9px]">✧</span> Beden &amp; Canlılık</span>
+<p class="font-headline-md text-headline-md text-on-surface italic text-[15px] leading-snug">Hafif ve Canlı</p>
+<div class="mt-1 flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[13px] text-secondary">check_circle</span>
+<span class="truncate">Su &amp; Güneş Döngüsü</span>
+</div>
+</div>
+</div>
+<!-- Polaroid 2: Spiritual Balance -->
+<div class="relative group bg-surface-container-low/95 rounded-xl p-2.5 pb-4 shadow-lg backdrop-blur-lg transform rotate-2 hover:rotate-0 transition-all duration-300 cursor-pointer border border-outline-variant/50 hover:border-tertiary/45 hover:shadow-[0_0_20px_rgba(123,208,255,0.18)]" id="card-ruhsal" onclick="openVisionCardModal('ruhsal')">
+<!-- Dynamic Celestial Golden Check Badge Placeholder -->
+<div class="hidden absolute top-2 right-2 z-30 golden-completed-badge items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-[#ffe089] via-[#e7c355] to-[#ffe089] text-[#241a00] font-semibold text-[10px] shadow-[0_0_15px_rgba(245,208,97,0.45)] border border-[#F5D061]" id="badge-ruhsal">
+<span class="material-symbols-outlined text-[13px] font-bold leading-none">check</span>
+<span class="">15 Dk Tamam</span>
+<span class="text-[8px]">✦</span>
+</div>
+<div class="absolute -top-1.5 right-4 w-3.5 h-3.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(231,195,85,0.6)] flex items-center justify-center z-10 pointer-events-none">
+<div class="w-1.5 h-1.5 rounded-full bg-on-secondary"></div>
+</div>
+<div class="w-full h-44 rounded-lg overflow-hidden mb-2 relative border border-tertiary/20">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Introspective meditation silhouette sitting beneath a breathtaking starry night sky filled with the Milky Way, subtle ethereal purple and deep celestial blue glowing nebulae, cinematic atmosphere, silent sanctuary mood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8zcj_tDwxb-h-VG7OJ3BkNo35Zag0-OACSraUDgfU__n64tRMZPz8Dwhz43D55OpeHiXypNQ6oVZVpXY3cOz0eAwRLLwQrmT3rgqG_siz1bGXlK0yCYBAzrbpxh5TnB9hTnlVcrmSWS9dd1LlHG_O4rYPlWtDKQqpbyxQ0RGz3LW_ANQRrNyuxOYjb5GWtutePteMjiqtMMtOdjhUlzUGqlNVIUQaBTeUKwnVFAbbBX-k6jKb5XBI"/>
+<div class="absolute top-2 right-2 w-2 h-2 rounded-full bg-tertiary shadow-[0_0_6px_rgba(123,208,255,0.8)]"></div>
+</div>
+<div class="px-1">
+<span class="font-label-sm text-label-sm text-tertiary-fixed-dim uppercase flex items-center gap-1"><span class="text-[9px]">✧</span> Ruhsal Denge</span>
+<p class="font-headline-md text-headline-md text-on-surface italic text-[15px] leading-snug">Sonsuz Dinginlik</p>
+<div class="mt-1 flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[13px] text-tertiary">graphic_eq</span>
+<span class="truncate">432Hz Zihin Hali</span>
+</div>
+</div>
+</div>
+<!-- Polaroid 3: New Horizons -->
+<div class="relative group bg-surface-container-low/95 rounded-xl p-2.5 pb-4 shadow-lg backdrop-blur-lg transform rotate-1 hover:rotate-0 transition-all duration-300 cursor-pointer border border-outline-variant/50 hover:border-secondary/45 hover:shadow-[0_0_20px_rgba(231,195,85,0.18)]" id="card-ufuklar" onclick="openVisionCardModal('ufuklar')">
+<!-- Dynamic Celestial Golden Check Badge Placeholder -->
+<div class="hidden absolute top-2 right-2 z-30 golden-completed-badge items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-[#ffe089] via-[#e7c355] to-[#ffe089] text-[#241a00] font-semibold text-[10px] shadow-[0_0_15px_rgba(245,208,97,0.45)] border border-[#F5D061]" id="badge-ufuklar">
+<span class="material-symbols-outlined text-[13px] font-bold leading-none">check</span>
+<span class="">15 Dk Tamam</span>
+<span class="text-[8px]">✦</span>
+</div>
+<div class="absolute -top-2 left-1/2 -translate-x-1/2 w-10 h-3.5 bg-secondary/35 rounded backdrop-blur-sm z-10 pointer-events-none border-t border-b border-secondary/40"></div>
+<div class="w-full h-44 rounded-lg overflow-hidden mb-2 relative border border-secondary/20">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Scenic rolling hills of Tuscany Italy with cypress trees lined along a gravel path during sunset, golden hour light, vintage convertible car in distance, high-end travel magazine aesthetic, deep moody shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA21TG6YgFASTLo4Rv03v7DGD-DXE-hhtUvBYecfGJX9tOqB81-6I9mE0F570_38cnJWLSdjSp292dXQxL5zJ4qYzvIByimdK0mi-P5nnrWOIztWoqW0f6I2IAbpb6IvScOKcSEHIK7GkekdWRJm9K4dsfeTK6A-vJUxmsaR-oN8ss3fjFrEMSmOGYrA4Cd0W-F-wAhqCrAVCPc0jiB3RWcQTjl1jtnl7qMsqHlkd_zlBcTZpJzPxPS"/>
+<div class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary shadow-[0_0_6px_rgba(231,195,85,0.8)]"></div>
+</div>
+<div class="px-1">
+<span class="font-label-sm text-label-sm text-secondary uppercase flex items-center gap-1"><span class="text-[9px]">✧</span> Yeni Ufuklar</span>
+<p class="font-headline-md text-headline-md text-on-surface italic text-[15px] leading-snug">Özgür Rotalar</p>
+<div class="mt-1 flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[13px] text-secondary">explore</span>
+<span class="truncate">Seyahat Haritası</span>
+</div>
+</div>
+</div>
+<!-- Polaroid 4: Love & Sanctuary -->
+<div class="relative group bg-surface-container-low/95 rounded-xl p-2.5 pb-4 shadow-lg backdrop-blur-lg transform -rotate-1 hover:rotate-0 transition-all duration-300 cursor-pointer border border-outline-variant/50 hover:border-primary/45 hover:shadow-[0_0_20px_rgba(192,193,255,0.18)]" id="card-ask" onclick="openVisionCardModal('ask')">
+<!-- Dynamic Celestial Golden Check Badge Placeholder -->
+<div class="hidden absolute top-2 right-2 z-30 golden-completed-badge items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-[#ffe089] via-[#e7c355] to-[#ffe089] text-[#241a00] font-semibold text-[10px] shadow-[0_0_15px_rgba(245,208,97,0.45)] border border-[#F5D061]" id="badge-ask">
+<span class="material-symbols-outlined text-[13px] font-bold leading-none">check</span>
+<span class="">15 Dk Tamam</span>
+<span class="text-[8px]">✦</span>
+</div>
+<div class="absolute -top-1.5 left-4 w-3.5 h-3.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(231,195,85,0.6)] flex items-center justify-center z-10 pointer-events-none">
+<div class="w-1.5 h-1.5 rounded-full bg-on-secondary"></div>
+</div>
+<div class="w-full h-44 rounded-lg overflow-hidden mb-2 relative border border-primary/20">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Candid intimate moment of two lovers sharing a cup of artisanal tea on a rustic wooden balcony overlooking warm golden sunset, soft candlelight, gentle linen blankets, warm emotional harmony" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmaJjlnVKQJ7vsASVuIjdfI7By4EdYmEH0zDnei3T5-8L6xcYk53GjuNsU0iMdP5BG0WUUcoz-C0A7T5MYR8k6vOf6xMt86BfcfPaBnRgIvYh5rAPuM10LpJqGEVjqbKIUVIyH-qroDf2egoFdhd7ejFGOwLeWmcNETl915rcR2lu8quqZ7qCE18rpVoO1xbAM3JUb6jHSZLXw44hYoDo7g2HoVpVqTN8-2AxbFEpW5pSHcZv1UGgJ"/>
+<div class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary shadow-[0_0_6px_rgba(231,195,85,0.8)]"></div>
+</div>
+<div class="px-1">
+<span class="font-label-sm text-label-sm text-primary uppercase flex items-center gap-1"><span class="text-[9px]">✧</span> Aşk &amp; Aile</span>
+<p class="font-headline-md text-headline-md text-on-surface italic text-[15px] leading-snug">Sıcak Güven</p>
+<div class="mt-1 flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[13px] text-error">favorite</span>
+<span class="truncate">Kalp Bağı</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Editorial Clipping: Creativity & Craft (Full-Width Asymmetric Magazine Style) -->
+<div class="relative bg-surface-container-high/80 rounded-2xl p-4 shadow-xl backdrop-blur-xl flex flex-col gap-space-sm cursor-pointer hover:bg-surface-container-high transition-colors border border-outline-variant/50" id="card-yaraticilik" onclick="openVisionCardModal('yaraticilik')">
+<!-- Dynamic Celestial Golden Check Badge Placeholder -->
+<div class="hidden absolute top-3.5 right-4 z-30 golden-completed-badge items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#ffe089] via-[#e7c355] to-[#ffe089] text-[#241a00] font-semibold text-[11px] shadow-[0_0_15px_rgba(245,208,97,0.45)] border border-[#F5D061]" id="badge-yaraticilik">
+<span class="material-symbols-outlined text-[14px] font-bold leading-none">check</span>
+<span class="">15 Dk Tamamlandı</span>
+<span class="text-[9px]">✦</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider font-semibold">Yaratıcılık &amp; Tasarım</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Kupür #06</span>
+</div>
+<div class="grid grid-cols-3 gap-2 h-28">
+<div class="col-span-2 rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Modern architectural atelier studio workspace, minimalist drafting desk, aesthetic moodboard wall, natural linen texture, soft dramatic side lighting, indigo and stone palette, architectural design digest style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoPhuaguon2gPgl-0sjOzgjogJ23hdA6OcY3qc2IljWxHRzQeORlHEinAAj9goGIHIC6sTkNK4YQsfmvo3RswlT2cTXpVf5uAVScrk55szOS_XlSHiD07aXtXjtFsjPC7GFLAB3ekOejuXS4_l8OtBqd2W1tsDuT_smtzhc0BqlO_6hT0ecr_46ZG-_JM7NcckaimLoc9mRByFRYEdSHn9iY-BuNSLIdRXsE1jyfSy0GCswp4g0Fcn"/>
+</div>
+<div class="bg-surface-container-low rounded-xl p-2.5 flex flex-col justify-between">
+<span class="material-symbols-outlined text-secondary text-[20px]">architecture</span>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Niyet:</p>
+<p class="font-headline-md text-headline-md text-[13px] leading-tight text-on-surface">Özgün İz Bırak</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty 12th Focus Slot Invitation (Delight Micro-interaction) -->
+<button class="w-full p-4 rounded-2xl bg-surface-container-low/60 hover:bg-surface-container-high/60 transition-all flex items-center justify-between group active:scale-[0.98]" id="addTwelfthSlotBtn" onclick="handleTwelfthSlotClick()"><div class="flex items-center gap-space-sm min-w-0"><div class="w-10 h-10 rounded-full bg-secondary/15 flex items-center justify-center text-secondary flex-shrink-0"><span class="material-symbols-outlined text-[20px] group-hover:rotate-90 transition-transform">add</span></div><div class="text-left min-w-0"><div class="flex items-center gap-1.5 flex-wrap"><span class="font-title-md text-title-md text-on-surface font-semibold leading-snug">12. Kutsal Niyeti Ekle</span><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-secondary-container/40 text-secondary-fixed">Son Yuva</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-snug mt-0.5 truncate">Tam 12 odakla zihinsel çekim alanını kilitle.</p></div></div><span class="material-symbols-outlined text-secondary flex-shrink-0 text-[18px] group-hover:translate-x-0.5 transition-transform">arrow_forward_ios</span></button>
+</div>
+<!-- Micro-Hint Note Banner -->
+<div class="px-space-sm py-2 rounded-xl bg-surface-container-lowest/70 backdrop-blur-md flex items-center gap-2 mt-2 mb-3">
+<span class="material-symbols-outlined text-secondary text-[16px] flex-shrink-0">lightbulb</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+      Görsellere dokunarak bağlı 15 dakikalık günlük görevi açabilir veya yönlendirebilirsiniz.
+    </p>
+</div>
+<!-- Section 3: Floating Bottom Glassmorphic Editing Toolbar -->
+<div class="fixed bottom-24 left-0 right-0 px-margin z-40 pointer-events-none pb-safe"><div class="relative max-w-md mx-auto w-full bg-surface-container-high/90 backdrop-blur-2xl rounded-full p-1.5 shadow-[0_4px_30px_rgba(0,0,0,0.5),0_0_15px_rgba(231,195,85,0.15)] flex items-center justify-between pointer-events-auto border border-secondary/35">
+<!-- Subtle Shimmer Line Accent -->
+<div class="absolute -top-px left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-secondary/60 to-transparent pointer-events-none"></div>
+<button class="flex flex-col items-center justify-center w-12 h-12 rounded-full hover:bg-surface-variant/60 active:scale-95 transition-all text-on-surface" onclick="handleToolAction('Medya Yükle')" title="Fotoğraf Ekle">
+<span class="material-symbols-outlined text-[20px] text-secondary">add_photo_alternate</span>
+<span class="font-label-sm text-[10px] mt-0.5">Ekle</span>
+</button>
+<button class="flex flex-col items-center justify-center w-12 h-12 rounded-full hover:bg-surface-variant/60 active:scale-95 transition-all text-on-surface" onclick="handleToolAction('Şablon Menüsü')" title="Şablonlar">
+<span class="material-symbols-outlined text-[20px] text-tertiary">palette</span>
+<span class="font-label-sm text-[10px] mt-0.5">Şablon</span>
+</button>
+<button class="relative flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-tr from-secondary via-primary-container to-secondary text-on-primary shadow-lg shadow-secondary/30 active:scale-90 transition-transform group border border-secondary/40" onclick="handleToolAction('Yapay Zeka Arka Plan Silme')" title="Arka Plan Temizle">
+<span class="material-symbols-outlined text-[22px] text-on-secondary">auto_fix_high</span>
+<span class="absolute -top-1 -right-0.5 text-[8px] text-secondary animate-pulse">✦</span>
+</button>
+<button class="flex flex-col items-center justify-center w-12 h-12 rounded-full hover:bg-surface-variant/60 active:scale-95 transition-all text-on-surface" onclick="handleToolAction('Afirmasyon Kartı')" title="Afirmasyon Ekle">
+<span class="material-symbols-outlined text-[20px] text-secondary">format_quote</span>
+<span class="font-label-sm text-[10px] mt-0.5">Olumlama</span>
+</button>
+<button class="flex flex-col items-center justify-center w-12 h-12 rounded-full hover:bg-surface-variant/60 active:scale-95 transition-all text-on-surface" onclick="handleToolAction('Katman Sıralaması')" title="Katman Düzeni">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">layers</span>
+<span class="font-label-sm text-[10px] mt-0.5">Katman</span>
+</button>
+</div></div>
+<!-- Interactive Slide-Up Micro-Action Drawer Modal (Full Celestial Nocturnal Bottom Sheet) -->
+<div class="fixed inset-0 z-50 bg-surface-container-lowest/80 backdrop-blur-md flex items-end justify-center transition-opacity duration-250 opacity-0 pointer-events-none p-0 sm:p-4" id="microActionModal" onclick="handleBackdropClick(event)">
+<div class="w-full max-w-lg bg-surface-container-high/95 backdrop-blur-2xl rounded-t-3xl sm:rounded-3xl border-t sm:border border-secondary/40 shadow-[0_-10px_40px_rgba(0,0,0,0.8),0_0_30px_rgba(231,195,85,0.15)] flex flex-col gap-3 p-5 pb-8 sm:pb-6 transform translate-y-full will-change-transform relative overflow-hidden" id="modalDrawerSheet">
+<!-- Celestial Ambient Accent Glow inside Sheet -->
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-secondary/15 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute -bottom-10 -left-10 w-44 h-44 bg-tertiary/10 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Drag Handle Indicator -->
+<div class="w-12 h-1.5 bg-outline-variant/60 rounded-full mx-auto mb-1"></div>
+<!-- Header: Category + Badges + Close Button -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-secondary select-none animate-pulse">✦</span>
+<span class="font-label-md text-label-md text-secondary font-semibold uppercase tracking-wider" id="modalCategory">Kariyer &amp; Bolluk</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/40 text-secondary-fixed font-label-sm text-[11px] border border-secondary/30" id="modalStatusBadge">Aktif Odak</span>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors" onclick="closeMicroAction()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Card Preview Hero Header -->
+<div class="flex items-center gap-3 p-2.5 rounded-2xl bg-surface-container-low/90 border border-outline-variant/40">
+<div class="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 relative border border-secondary/30 shadow-md">
+<img alt="Kart Görseli" class="w-full h-full object-cover" id="modalCardThumb" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3fB8QyhFc4jX2PjFo2_LSmk63_k15OuOT6EZHlgQv5exfiiurV8MWeR5QwI6Cxf5xrFT9qCNJmYLV0zwxQcFn_V1VZjMq5b0IzX9akGLEtoHRTRSSG1S4F7au9-IV_8QnRXoYvueeeoDT2xD0muAfWhO1t1Hulq-Ftggy2_072d4MsdIg0Dx5XJphDbRUNsGjty3ARPlnOyn147uYFTnKVBTdQp_rg3g5RvrsIPz4g9Yhy-Svu5sC"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/40 to-transparent"></div>
+</div>
+<div class="min-w-0 flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface italic font-medium leading-tight truncate" id="modalTitle">Bolluk &amp; Bağımsızlık</h3>
+<!-- Emotional Anchor ("Why") Sentence -->
+<p class="font-body-sm text-[12px] text-secondary/90 italic mt-0.5 line-clamp-2" id="modalWhy">
+          "Como Gölü kıyısında uzaktan çalışırken aileme özgür ve dingin bir yaşam sunmak..."
+        </p>
+</div>
+</div>
+<!-- 15-Minute Micro-Action Box with AI Minimize Button -->
+<div class="p-3.5 rounded-2xl bg-surface-container-lowest/80 border border-secondary/25 flex flex-col gap-2 relative">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[17px]">bolt</span>
+<span class="font-label-sm text-[11px] uppercase tracking-wider font-semibold">Günün 15 Dk Tek Mikro-Eylemi</span>
+</div>
+<!-- AI Shrink Button (⚡ 5 Dk Yap) -->
+<button class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container/30 hover:bg-secondary-container/50 text-secondary border border-secondary/40 text-[11px] font-label-sm font-semibold active:scale-95 transition-all shadow-sm" id="aiShrinkBtn" onclick="shrinkTaskWithAI()">
+<span class="">⚡</span>
+<span class="">5 Dk Yap</span>
+<span class="text-[9px] opacity-75">AI</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-snug" id="modalTaskDesc">
+        İtalyanca çalışma portföyünden 1 vize başvuru yazısını incele ve 3 anahtar kelimeyi not al.
+      </p>
+<!-- Timer & Reward Indicator -->
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant/30 text-[12px]">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-body-sm">
+<span class="material-symbols-outlined text-tertiary text-[16px]">schedule</span>
+<span class="" id="modalTimerText">Hedef Süre: 15 Dakika</span>
+</div>
+<div class="flex items-center gap-1 text-secondary font-semibold font-label-sm">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+<span class="" id="modalStreakCount">Seri: 7 Gün ✦</span>
+</div>
+</div>
+</div>
+<!-- Completion & Action Trigger Buttons -->
+<div class="flex flex-col gap-2 mt-1">
+<!-- 15 Dakikayı Tamamladım Button (Check-in) with Stardust Burst -->
+<button class="relative group w-full py-3 rounded-full bg-gradient-to-r from-secondary via-secondary-fixed to-secondary text-on-secondary font-label-lg text-label-lg font-bold shadow-lg shadow-secondary/25 hover:shadow-secondary/45 active:scale-98 transition-all flex items-center justify-center gap-2 overflow-hidden border border-secondary/50" id="completeActionBtn" onclick="completeMicroAction()">
+<span class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 pointer-events-none"></span>
+<span class="material-symbols-outlined text-[20px] text-on-secondary" id="completeIcon">check_circle</span>
+<span class="" id="completeBtnText">Bugünkü 15 Dakikayı Tamamladım</span>
+<span class="text-xs">✦</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="flex-1 py-2 rounded-full bg-surface-container-low hover:bg-surface-variant/40 text-on-surface font-label-md text-label-md transition-colors flex items-center justify-center gap-1.5" onclick="startFocusTimer()">
+<span class="material-symbols-outlined text-tertiary text-[17px]">play_circle</span>
+<span class="">Zamanlayıcıyı Başlat</span>
+</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-low hover:bg-surface-variant/40 text-on-surface-variant font-label-md text-label-md transition-colors" onclick="closeMicroAction()">
+          Kapat
+        </button>
+</div>
+</div>
+<!-- Micro Particle Container for Confetti/Stardust -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden" id="stardustContainer"></div>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- 12/12 CELESTIAL STARDUST & CONFETTI ENGINE -->
+<!-- Fullscreen Overlay Layer for Confetti Burst -->
+<!-- ========================================== -->
+<div class="fixed inset-0 pointer-events-none z-[999] overflow-hidden" id="celestialCelebrationOverlay">
+<!-- Dynamic Confetti / Stardust Particles spawn here -->
+</div>
+<!-- Lüks Altın Tebrik Afişi (12/12 Zirve Vizyon Kilitlendi) -->
+<div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1000] w-[90%] max-w-sm pointer-events-none opacity-0 transition-all duration-500 scale-90" id="zenithCelebrationCard">
+<div class="relative overflow-hidden rounded-3xl bg-surface-container-high/95 backdrop-blur-2xl p-6 border-2 border-secondary/80 shadow-[0_0_50px_rgba(245,208,97,0.45),0_20px_50px_rgba(0,0,0,0.85)] text-center flex flex-col items-center gap-3">
+<!-- Animated Shimmer Layer across Banner -->
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-secondary/20 to-transparent banner-shimmer pointer-events-none"></div>
+<div class="absolute -top-10 -right-10 w-36 h-36 bg-secondary/30 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute -bottom-10 -left-10 w-36 h-36 bg-tertiary/20 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Radiant Crown Badge -->
+<div class="relative w-16 h-16 rounded-full bg-gradient-to-tr from-[#ffe089] via-[#e7c355] to-[#f5d061] flex items-center justify-center text-[#241a00] shadow-[0_0_25px_rgba(245,208,97,0.7)] border-2 border-white/60 mb-1">
+<span class="material-symbols-outlined text-[34px]">workspace_premium</span>
+<span class="absolute -top-1.5 -right-1 text-secondary text-sm animate-ping">✦</span>
+</div>
+<!-- Title & Tagline -->
+<div class="flex flex-col items-center gap-1">
+<div class="flex items-center gap-1 text-[11px] font-semibold text-secondary tracking-widest uppercase">
+<span>✧</span>
+<span>12 / 12 Zirve Odağı Tamamlandı</span>
+<span>✧</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight leading-tight">
+        2027 Zirve Vizyonun Kilitlendi!
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 leading-snug max-w-[270px]">
+        Zihinsel nöronların ve evrensel çekim alanın en berrak frekansa ulaştı. ✦
+      </p>
+</div>
+<!-- Gold Accent Tag with Micro Sparkles -->
+<div class="mt-1 flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/20 border border-secondary/50 text-secondary font-label-md text-label-md font-semibold shadow-inner">
+<span class="text-[14px]">✦</span>
+<span>Kutsal Vizyon Portalı Kilitlendi</span>
+<span class="text-[14px]">✦</span>
+</div>
+</div>
+</div>
+<!-- Toast Notification Helper -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-surface-container-high/95 text-on-surface backdrop-blur-xl shadow-xl font-label-md text-label-md flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-300 border border-secondary/30" id="toastMessage">
+<span class="material-symbols-outlined text-secondary text-[18px]">auto_awesome</span>
+<span class="" id="toastText">İşlem başarıyla yapıldı</span>
+</div>
+</div>
+<script>
+  // Vision Cards Dynamic Data Store with Completed State
+  const visionCardsData = {
+    como: {
+      category: 'Kariyer & Bolluk',
+      title: 'Bolluk & Bağımsızlık',
+      badge: '★ Ana Niyet Yıldızı',
+      why: 'Como Gölü kıyısında uzaktan çalışırken aileme tam bağımsız, huzurlu bir yaşam sunmak.',
+      task: 'İtalyanca çalışma portföyünden 1 vize başvuru yazısını incele ve 3 anahtar kelimeyi not al.',
+      shrunkTask: '⚡ 5 Dakikalık Dirençsiz Adım: Sadece başvuru dokümanını aç ve ilk paragrafı gözden geçir.',
+      imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC3fB8QyhFc4jX2PjFo2_LSmk63_k15OuOT6EZHlgQv5exfiiurV8MWeR5QwI6Cxf5xrFT9qCNJmYLV0zwxQcFn_V1VZjMq5b0IzX9akGLEtoHRTRSSG1S4F7au9-IV_8QnRXoYvueeeoDT2xD0muAfWhO1t1Hulq-Ftggy2_072d4MsdIg0Dx5XJphDbRUNsGjty3ARPlnOyn147uYFTnKVBTdQp_rg3g5RvrsIPz4g9Yhy-Svu5sC',
+      streak: 8,
+      completedToday: false
+    },
+    beden: {
+      category: 'Beden & Canlılık',
+      title: 'Hafif ve Canlı',
+      badge: 'Beden Ritmi',
+      why: 'Bedenimi her sabah berrak, dingin ve yüksek enerjili bir kutsal mabet gibi hissetmek.',
+      task: '10 dakika sabah güneş ışığı eşliğinde derin diyafram nefesi ve nazik omurga esnemesi yap.',
+      shrunkTask: '⚡ 5 Dakikalık Dirençsiz Adım: Pencereyi açıp 5 derin nefes al ve 1 bardak limonlu ılık su iç.',
+      imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD5wqvFkYMG_rCFNRaDtKu4_52RWTW8Ek3vBz0v1-pcmi5C9ko35z5umwVIPn5oEQFr50x1mZxNTAr4UG7fnttb6ECY0aPK5AiOLBA6Ek32BRsJI3VlcWjOnQcsurml02fzK3N8AojjbD3Hzw4ROFb0QGOSUu44hVVEMkb8YzQjT11xZvqmDGr5ZryuThInojxVGJdRViMEr31kKTpz3swEwwrhSV3N2_pHFTRqWbs6GQYrMO2zhZ7B',
+      streak: 14,
+      completedToday: true
+    },
+    ruhsal: {
+      category: 'Ruhsal Denge',
+      title: 'Sonsuz Dinginlik',
+      badge: '432Hz Frekans',
+      why: 'Gürültülü dünyada kendi içsel sessizliğime ve göksel bilincime her gün yeniden köklenmek.',
+      task: 'Kulaklığı tak, 432Hz delta dalgası frekansında 15 dakika düşünceleri yargılamadan izle.',
+      shrunkTask: '⚡ 5 Dakikalık Dirençsiz Adım: Gözlerini kapa, 3 kez omuzlarını indir ve 3 dk sessizliği dinle.',
+      imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC8zcj_tDwxb-h-VG7OJ3BkNo35Zag0-OACSraUDgfU__n64tRMZPz8Dwhz43D55OpeHiXypNQ6oVZVpXY3cOz0eAwRLLwQrmT3rgqG_siz1bGXlK0yCYBAzrbpxh5TnB9hTnlVcrmSWS9dd1LlHG_O4rYPlWtDKQqpbyxQ0RGz3LW_ANQRrNyuxOYjb5GWtutePteMjiqtMMtOdjhUlzUGqlNVIUQaBTeUKwnVFAbbBX-k6jKb5XBI',
+      streak: 21,
+      completedToday: true
+    },
+    ufuklar: {
+      category: 'Yeni Ufuklar',
+      title: 'Özgür Rotalar',
+      badge: 'Keşif Alanı',
+      why: 'Farklı coğrafyaların ve antik yolların zihnimi genişletmesine izin vererek yaşamak.',
+      task: 'Toskana bağ rotasındaki 2 konaklama yerini haritada işaretle ve 1 İtalyanca selamlama öğren.',
+      shrunkTask: '⚡ 5 Dakikalık Dirençsiz Adım: Haritada gitmek istediğin sadece 1 kasabanın fotoğraflarına bak.',
+      imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA21TG6YgFASTLo4Rv03v7DGD-DXE-hhtUvBYecfGJX9tOqB81-6I9mE0F570_38cnJWLSdjSp292dXQxL5zJ4qYzvIByimdK0mi-P5nnrWOIztWoqW0f6I2IAbpb6IvScOKcSEHIK7GkekdWRJm9K4dsfeTK6A-vJUxmsaR-oN8ss3fjFrEMSmOGYrA4Cd0W-F-wAhqCrAVCPc0jiB3RWcQTjl1jtnl7qMsqHlkd_zlBcTZpJzPxPS',
+      streak: 5,
+      completedToday: true
+    },
+    ask: {
+      category: 'Aşk & Aile',
+      title: 'Sıcak Güven',
+      badge: 'Kalp Bağı',
+      why: 'Sevdiğim insanlarla yargısız, şefkatli ve koşulsuz bir güven alanı inşa etmek.',
+      task: 'Birlikte geçireceğiniz akşam için telefonları kapalı tutarak 15 dakika günün en güzel anını paylaş.',
+      shrunkTask: '⚡ 5 Dakikalık Dirençsiz Adım: Kalpten gelen 1 cümlelik şükran ve sevgi mesajı gönder.',
+      imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAmaJjlnVKQJ7vsASVuIjdfI7By4EdYmEH0zDnei3T5-8L6xcYk53GjuNsU0iMdP5BG0WUUcoz-C0A7T5MYR8k6vOf6xMt86BfcfPaBnRgIvYh5rAPuM10LpJqGEVjqbKIUVIyH-qroDf2egoFdhd7ejFGOwLeWmcNETl915rcR2lu8quqZ7qCE18rpVoO1xbAM3JUb6jHSZLXw44hYoDo7g2HoVpVqTN8-2AxbFEpW5pSHcZv1UGgJ',
+      streak: 11,
+      completedToday: true
+    },
+    yaraticilik: {
+      category: 'Yaratıcılık & Tasarım',
+      title: 'Özgün İz Bırak',
+      badge: 'Atölye Kupürü',
+      why: 'İçimdeki estetik vizyonu somut eserlere dönüştürerek dünyaya zarif bir miras sunmak.',
+      task: 'Eskiz defterinde yeni ürün konsepti için 1 sayfa karalama yap ve ana renk paletini belirle.',
+      shrunkTask: '⚡ 5 Dakikalık Dirençsiz Adım: Sadece 1 eskiz çizgisi veya 3 ilham kelimesi yaz.',
+      imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBoPhuaguon2gPgl-0sjOzgjogJ23hdA6OcY3qc2IljWxHRzQeORlHEinAAj9goGIHIC6sTkNK4YQsfmvo3RswlT2cTXpVf5uAVScrk55szOS_XlSHiD07aXtXjtFsjPC7GFLAB3ekOejuXS4_l8OtBqd2W1tsDuT_smtzhc0BqlO_6hT0ecr_46ZG-_JM7NcckaimLoc9mRByFRYEdSHn9iY-BuNSLIdRXsE1jyfSy0GCswp4g0Fcn',
+      streak: 4,
+      completedToday: true
+    }
+  };
+
+  // Base background completed = 6. With beden, ruhsal, ufuklar, ask, yaraticilik = 5 completed -> 11/12 initially!
+  // Como is incomplete (0). When Como is completed -> 12/12!
+  const BASE_BACKGROUND_COMPLETED = 6;
+  let currentActiveCardKey = 'como';
+  let isTaskShrunk = false;
+
+  function showToast(text) {
+    const toast = document.getElementById('toastMessage');
+    const toastText = document.getElementById('toastText');
+    if (!toast || !toastText) return;
+    toastText.innerText = text;
+    toast.classList.remove('opacity-0', 'pointer-events-none');
+    toast.classList.add('opacity-100');
+    setTimeout(() => {
+      toast.classList.remove('opacity-100');
+      toast.classList.add('opacity-0', 'pointer-events-none');
+    }, 2800);
+  }
+
+  function handleToolAction(name) {
+    showToast(name + ' aracı hazırlandı ✨');
+  }
+
+  function updateCardBadgeUI(cardKey) {
+    const data = visionCardsData[cardKey];
+    if (!data) return;
+    const badgeEl = document.getElementById('badge-' + cardKey);
+    const cardEl = document.getElementById('card-' + cardKey);
+    if (!badgeEl || !cardEl) return;
+
+    if (data.completedToday) {
+      badgeEl.classList.remove('hidden');
+      badgeEl.classList.add('flex');
+      cardEl.classList.add('card-completed-state');
+    } else {
+      badgeEl.classList.add('hidden');
+      badgeEl.classList.remove('flex');
+      cardEl.classList.remove('card-completed-state');
+    }
+  }
+
+  function getActiveBoardCompletedCount() {
+    let c = 0;
+    Object.keys(visionCardsData).forEach(k => {
+      if (visionCardsData[k].completedToday) c++;
+    });
+    return c;
+  }
+
+  // ==========================================
+  // CELESTIAL STARDUST & CONFETTI ENGINE (12/12)
+  // ==========================================
+  let isCelebrationRunning = false;
+
+  function trigger12Of12Celebration() {
+    const overlay = document.getElementById('celestialCelebrationOverlay');
+    const banner = document.getElementById('zenithCelebrationCard');
+    if (!overlay) return;
+
+    // Clear any existing particles
+    overlay.innerHTML = '';
+
+    // Play Banner entrance
+    if (banner) {
+      banner.classList.remove('opacity-0', 'pointer-events-none', 'scale-90');
+      banner.classList.add('zenithBannerEntrance');
+      banner.style.opacity = '1';
+      banner.style.transform = 'translate(-50%, -50%) scale(1)';
+    }
+
+    const goldColors = ['#F5D061', '#FFE089', '#FDF4DC', '#E5B93B', '#FFF9E6', '#C0C1FF', '#7BD0FF'];
+    const starGlyphs = ['✦', '✧', '⋆', '★', '⚡'];
+    const totalParticles = 75;
+
+    for (let i = 0; i < totalParticles; i++) {
+      const p = document.createElement('div');
+      p.className = 'confetti-foil-particle';
+
+      const isStar = Math.random() > 0.45;
+      const color = goldColors[Math.floor(Math.random() * goldColors.length)];
+
+      // Positioning: emit across top width + center fountain
+      const startX = Math.random() * window.innerWidth;
+      const startY = -20 - (Math.random() * 80);
+      const driftX = (Math.random() - 0.5) * 220; // gentle horizontal drift
+      const fallDist = window.innerHeight + 120 + Math.random() * 150;
+      const rot = (Math.random() * 720 - 360) + 'deg';
+      const duration = (2.2 + Math.random() * 2.3) + 's';
+      const delay = (Math.random() * 0.9) + 's';
+
+      p.style.setProperty('--start-x', `${startX}px`);
+      p.style.setProperty('--start-y', `${startY}px`);
+      p.style.setProperty('--drift-x', `${driftX}px`);
+      p.style.setProperty('--fall-dist', `${fallDist}px`);
+      p.style.setProperty('--rot', rot);
+      p.style.setProperty('--duration', duration);
+      p.style.animationDelay = delay;
+
+      if (isStar) {
+        // Celestial Star Particle
+        p.innerText = starGlyphs[Math.floor(Math.random() * starGlyphs.length)];
+        p.style.color = color;
+        p.style.fontSize = (12 + Math.random() * 18) + 'px';
+        p.style.fontWeight = 'bold';
+        p.style.textShadow = `0 0 10px ${color}`;
+      } else {
+        // Foil Confetti Shape (rectangle / diamond)
+        const w = (7 + Math.random() * 9);
+        const h = (10 + Math.random() * 14);
+        p.style.width = w + 'px';
+        p.style.height = h + 'px';
+        p.style.backgroundColor = color;
+        p.style.borderRadius = Math.random() > 0.5 ? '2px' : '999px';
+        p.style.boxShadow = `0 0 12px ${color}`;
+        if (Math.random() > 0.5) {
+          p.style.transform = 'rotate(45deg)';
+        }
+      }
+
+      overlay.appendChild(p);
+    }
+
+    // Secondary Center Fountain Burst for 3D depth
+    for (let j = 0; j < 35; j++) {
+      const sp = document.createElement('div');
+      sp.className = 'confetti-foil-particle';
+      const angle = (j / 35) * Math.PI * 2;
+      const velocity = 80 + Math.random() * 160;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight * 0.42;
+      const color = goldColors[Math.floor(Math.random() * goldColors.length)];
+
+      sp.innerText = starGlyphs[Math.floor(Math.random() * starGlyphs.length)];
+      sp.style.color = color;
+      sp.style.fontSize = (14 + Math.random() * 16) + 'px';
+      sp.style.textShadow = `0 0 14px ${color}`;
+
+      sp.style.setProperty('--start-x', `${centerX}px`);
+      sp.style.setProperty('--start-y', `${centerY}px`);
+      sp.style.setProperty('--drift-x', `${Math.cos(angle) * velocity}px`);
+      sp.style.setProperty('--fall-dist', `${Math.sin(angle) * velocity + window.innerHeight * 0.65}px`);
+      sp.style.setProperty('--rot', (Math.random() * 540) + 'deg');
+      sp.style.setProperty('--duration', (2.5 + Math.random() * 1.5) + 's');
+      sp.style.animationDelay = (0.1 + Math.random() * 0.3) + 's';
+
+      overlay.appendChild(sp);
+    }
+
+    // Auto dismiss the banner after a sweet breath (~3.6s)
+    setTimeout(() => {
+      if (banner) {
+        banner.style.transition = 'opacity 700ms ease, transform 700ms ease';
+        banner.style.opacity = '0';
+        banner.style.transform = 'translate(-50%, -42%) scale(0.92)';
+        setTimeout(() => {
+          banner.classList.add('opacity-0', 'pointer-events-none');
+        }, 750);
+      }
+    }, 3800);
+
+    // Clean up particles
+    setTimeout(() => {
+      overlay.innerHTML = '';
+    }, 5500);
+  }
+
+  window.refreshFocusProgressUI = function(animateCelebration) {
+    const boardCompleted = getActiveBoardCompletedCount();
+    const totalCompleted = Math.min(12, BASE_BACKGROUND_COMPLETED + boardCompleted);
+    const totalTarget = 12;
+    const percent = Math.round((totalCompleted / totalTarget) * 100);
+
+    const countLabel = document.getElementById('focusCountLabel');
+    const statusLabel = document.getElementById('focusStatusLabel');
+    const statusDot = document.getElementById('focusStatusDot');
+    const circleStroke = document.getElementById('progressCircleStroke');
+    const percentText = document.getElementById('progressPercentageText');
+    const cardContainer = document.getElementById('focusProgressCard');
+    const iconWrapper = document.getElementById('focusProgressIconWrapper');
+    const icon = document.getElementById('focusProgressIcon');
+    const subtitle = document.getElementById('focusSubtitle');
+
+    if (!countLabel || !circleStroke || !percentText) return;
+
+    // Circumference 2 * PI * 14 = 88
+    const totalDash = 88;
+    const offset = totalDash - (totalDash * (percent / 100));
+    circleStroke.style.strokeDashoffset = offset;
+    percentText.innerText = percent + '%';
+    countLabel.innerText = `${totalCompleted} / ${totalTarget} Odak Kuralı`;
+
+    if (totalCompleted === 12) {
+      statusLabel.innerText = '12/12 Zirve Kilitlendi! 🏆';
+      statusLabel.className = 'font-label-sm text-label-sm text-secondary font-bold animate-pulse';
+      statusDot.className = 'w-1.5 h-1.5 rounded-full bg-secondary animate-ping';
+      subtitle.innerText = 'Tebrikler! 12 niyetin tamamı berrak frekansta kilitlendi. (Dokun & Yeniden Kutla)';
+      if (cardContainer) {
+        cardContainer.classList.add('border-secondary/60', 'shadow-[0_0_28px_rgba(231,195,85,0.4)]', 'bg-surface-container-high/95');
+        cardContainer.classList.remove('border-transparent');
+      }
+      if (iconWrapper) {
+        iconWrapper.classList.add('bg-secondary', 'text-on-secondary', 'scale-110');
+      }
+      if (icon) {
+        icon.className = 'material-symbols-outlined text-on-secondary text-[20px]';
+        icon.innerText = 'workspace_premium';
+      }
+
+      if (animateCelebration) {
+        trigger12Of12Celebration();
+        showToast('🏆 12/12 Zirve Vizyonun Kilitlendi! Göksel altın yıldızlar parıldıyor.');
+      }
+    } else if (totalCompleted === 11) {
+      statusLabel.innerText = 'Zirveye 1 Adım ✨';
+      statusLabel.className = 'font-label-sm text-label-sm text-secondary font-semibold';
+      statusDot.className = 'w-1.5 h-1.5 rounded-full bg-secondary';
+      subtitle.innerText = 'Dokunarak 12/12 Zirve Altın Patlamasını kutlayın.';
+      if (cardContainer) {
+        cardContainer.classList.remove('border-secondary/60', 'shadow-[0_0_28px_rgba(231,195,85,0.4)]');
+        cardContainer.classList.add('border-transparent');
+      }
+      if (iconWrapper) {
+        iconWrapper.classList.remove('bg-secondary', 'text-on-secondary', 'scale-110');
+      }
+      if (icon) {
+        icon.className = 'material-symbols-outlined text-secondary text-[20px]';
+        icon.innerText = 'verified';
+      }
+    } else {
+      statusLabel.innerText = 'Yüksek Odak ✨';
+      statusLabel.className = 'font-label-sm text-label-sm text-tertiary font-semibold';
+      statusDot.className = 'w-1.5 h-1.5 rounded-full bg-tertiary';
+      subtitle.innerText = 'Her 15 dakikalık mikro-eylem vizyonunu gerçeğe yaklaştırır.';
+      if (cardContainer) {
+        cardContainer.classList.remove('border-secondary/60', 'shadow-[0_0_28px_rgba(231,195,85,0.4)]');
+        cardContainer.classList.add('border-transparent');
+      }
+      if (iconWrapper) {
+        iconWrapper.classList.remove('bg-secondary', 'text-on-secondary', 'scale-110');
+      }
+      if (icon) {
+        icon.className = 'material-symbols-outlined text-secondary text-[20px]';
+        icon.innerText = 'verified';
+      }
+    }
+  };
+
+  // Click on the top progress card to trigger or replay 12/12 celebration
+  function handleFocusProgressClick() {
+    if (!visionCardsData.como.completedToday) {
+      // Mark Como as complete to reach 12/12 naturally!
+      visionCardsData.como.completedToday = true;
+      visionCardsData.como.streak += 1;
+      updateCardBadgeUI('como');
+      window.refreshFocusProgressUI(true);
+    } else {
+      // Already 12/12 -> Replay celebration burst!
+      trigger12Of12Celebration();
+      showToast('✦ 12/12 Zirve Kutlaması Yeniden Parıldıyor! ✦');
+    }
+  }
+
+  function handleTwelfthSlotClick() {
+    // 12th slot invite also lets user achieve or replay the 12/12 celebration
+    if (!visionCardsData.como.completedToday) {
+      visionCardsData.como.completedToday = true;
+      visionCardsData.como.streak += 1;
+      updateCardBadgeUI('como');
+      window.refreshFocusProgressUI(true);
+    } else {
+      trigger12Of12Celebration();
+      showToast('12. Kutsal Niyet Zirvesi aktif! Çekim alanı mühürlendi ✦');
+    }
+  }
+
+  function openVisionCardModal(cardKey) {
+    const data = visionCardsData[cardKey] || visionCardsData['como'];
+    currentActiveCardKey = cardKey;
+    isTaskShrunk = false;
+
+    // Populate data
+    document.getElementById('modalCategory').innerText = data.category;
+    document.getElementById('modalStatusBadge').innerText = data.completedToday ? 'Tamamlandı ✦' : data.badge;
+    document.getElementById('modalTitle').innerText = data.title;
+    document.getElementById('modalWhy').innerText = `"${data.why}"`;
+    document.getElementById('modalTaskDesc').innerText = data.task;
+    document.getElementById('modalCardThumb').src = data.imgSrc;
+    document.getElementById('modalTimerText').innerText = 'Hedef Süre: 15 Dakika';
+    document.getElementById('modalStreakCount').innerText = `Seri: ${data.streak} Gün ✦`;
+
+    // Reset button states based on completion
+    const completeBtn = document.getElementById('completeActionBtn');
+    const completeBtnText = document.getElementById('completeBtnText');
+    const completeIcon = document.getElementById('completeIcon');
+
+    if (data.completedToday) {
+      completeBtn.className = 'relative group w-full py-3 rounded-full bg-gradient-to-r from-emerald-500 via-secondary to-emerald-400 text-on-secondary font-label-lg text-label-lg font-bold shadow-lg shadow-secondary/30 active:scale-98 transition-all flex items-center justify-center gap-2 overflow-hidden border border-secondary';
+      completeBtnText.innerText = 'Tamamlandı (Geri Almak İçin Dokun)';
+      completeIcon.innerText = 'verified';
+    } else {
+      completeBtn.className = 'relative group w-full py-3 rounded-full bg-gradient-to-r from-secondary via-secondary-fixed to-secondary text-on-secondary font-label-lg text-label-lg font-bold shadow-lg shadow-secondary/25 hover:shadow-secondary/45 active:scale-98 transition-all flex items-center justify-center gap-2 overflow-hidden border border-secondary/50';
+      completeBtnText.innerText = 'Bugünkü 15 Dakikayı Tamamladım';
+      completeIcon.innerText = 'check_circle';
+    }
+
+    // Show modal with elastic spring animation
+    const modal = document.getElementById('microActionModal');
+    const sheet = document.getElementById('modalDrawerSheet');
+    if (!modal || !sheet) return;
+
+    modal.style.transition = 'opacity 250ms ease-out';
+    sheet.style.transition = 'transform 480ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 250ms ease-out';
+    sheet.style.opacity = '1';
+
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modal.classList.add('opacity-100');
+    
+    requestAnimationFrame(() => {
+      sheet.classList.remove('translate-y-full');
+      sheet.classList.add('translate-y-0');
+    });
+  }
+
+  function triggerCardReturnEffect(cardKey) {
+    const cardEl = document.getElementById('card-' + cardKey);
+    if (!cardEl) return;
+
+    if (getComputedStyle(cardEl).position === 'static') {
+      cardEl.style.position = 'relative';
+    }
+
+    // 1. Golden Aura Ripple Ring
+    const ripple = document.createElement('div');
+    ripple.className = 'golden-card-ripple';
+    cardEl.appendChild(ripple);
+
+    // 2. Golden border flash & nocturnal return
+    cardEl.classList.add('card-golden-flash');
+    setTimeout(() => {
+      cardEl.classList.remove('card-golden-flash');
+    }, 750);
+
+    // 3. Emit tiny celestial stardust sparkles from the card center
+    const stars = ['✦', '✧', '★', '⚡'];
+    for (let i = 0; i < 7; i++) {
+      const sp = document.createElement('span');
+      sp.className = 'return-sparkle font-bold text-secondary';
+      sp.innerText = stars[Math.floor(Math.random() * stars.length)];
+      sp.style.left = '50%';
+      sp.style.top = '50%';
+      const angle = (i / 7) * 2 * Math.PI + (Math.random() * 0.4 - 0.2);
+      const distance = 40 + Math.random() * 55;
+      const tx = Math.cos(angle) * distance;
+      const ty = Math.sin(angle) * distance;
+      sp.style.setProperty('--tx', `${tx}px`);
+      sp.style.setProperty('--ty', `${ty}px`);
+      sp.style.fontSize = (11 + Math.random() * 8) + 'px';
+      sp.style.animationDelay = (i * 45) + 'ms';
+      cardEl.appendChild(sp);
+
+      setTimeout(() => {
+        sp.remove();
+      }, 900);
+    }
+
+    setTimeout(() => {
+      ripple.remove();
+    }, 900);
+  }
+
+  function closeMicroAction() {
+    const modal = document.getElementById('microActionModal');
+    const sheet = document.getElementById('modalDrawerSheet');
+    if (!modal || !sheet) return;
+
+    if (currentActiveCardKey) {
+      triggerCardReturnEffect(currentActiveCardKey);
+      updateCardBadgeUI(currentActiveCardKey);
+    }
+
+    modal.style.transition = 'opacity 200ms ease-out';
+    sheet.style.transition = 'transform 200ms cubic-bezier(0.32, 0, 0.67, 0), opacity 180ms ease-out';
+
+    sheet.classList.remove('translate-y-0');
+    sheet.classList.add('translate-y-full');
+    sheet.style.opacity = '0';
+    modal.classList.remove('opacity-100');
+    modal.classList.add('opacity-0');
+
+    setTimeout(() => {
+      modal.classList.add('pointer-events-none');
+    }, 200);
+  }
+
+  function handleBackdropClick(e) {
+    if (e.target.id === 'microActionModal') {
+      closeMicroAction();
+    }
+  }
+
+  function shrinkTaskWithAI() {
+    const data = visionCardsData[currentActiveCardKey];
+    if (!data) return;
+
+    const taskDesc = document.getElementById('modalTaskDesc');
+    const timerText = document.getElementById('modalTimerText');
+    const shrinkBtn = document.getElementById('aiShrinkBtn');
+
+    if (!isTaskShrunk) {
+      taskDesc.innerText = data.shrunkTask;
+      timerText.innerText = 'Hedef Süre: ⚡ 5 Dakika (Dirençsiz Adım)';
+      shrinkBtn.classList.add('bg-secondary', 'text-on-secondary');
+      shrinkBtn.innerHTML = '<span>✦</span><span>5 Dk Aktif</span>';
+      isTaskShrunk = true;
+      showToast('Yapay Zeka eylemi 5 dakikalık dirençsiz adıma indirgedi! ✨');
+    } else {
+      taskDesc.innerText = data.task;
+      timerText.innerText = 'Hedef Süre: 15 Dakika';
+      shrinkBtn.classList.remove('bg-secondary', 'text-on-secondary');
+      shrinkBtn.innerHTML = '<span>⚡</span><span>5 Dk Yap</span><span class="text-[9px] opacity-75">AI</span>';
+      isTaskShrunk = false;
+      showToast('15 dakikalık tam odak adımına dönüldü.');
+    }
+  }
+
+  function completeMicroAction() {
+    const data = visionCardsData[currentActiveCardKey];
+    if (!data) return;
+
+    const completeBtn = document.getElementById('completeActionBtn');
+    const completeBtnText = document.getElementById('completeBtnText');
+    const completeIcon = document.getElementById('completeIcon');
+
+    if (!data.completedToday) {
+      // Mark card completed
+      data.completedToday = true;
+      data.streak += 1;
+      document.getElementById('modalStreakCount').innerText = `Seri: ${data.streak} Gün ✦ (+1)`;
+      document.getElementById('modalStatusBadge').innerText = 'Tamamlandı ✦';
+
+      completeBtnText.innerText = 'Tamamlandı! +25 Niyet Puanı ✨';
+      completeIcon.innerText = 'verified';
+      completeBtn.classList.remove('from-secondary', 'via-secondary-fixed', 'to-secondary');
+      completeBtn.classList.add('from-emerald-400', 'via-secondary', 'to-emerald-400');
+
+      triggerStardustBurst();
+      updateCardBadgeUI(currentActiveCardKey);
+
+      // Check if this achievement unlocks 12/12
+      const boardCount = getActiveBoardCompletedCount();
+      const total = BASE_BACKGROUND_COMPLETED + boardCount;
+
+      setTimeout(() => {
+        closeMicroAction();
+        // Trigger 12/12 grand celebration if reached 12
+        window.refreshFocusProgressUI(total >= 12);
+      }, 1200);
+    } else {
+      // Toggle back to incomplete
+      data.completedToday = false;
+      data.streak = Math.max(0, data.streak - 1);
+      document.getElementById('modalStreakCount').innerText = `Seri: ${data.streak} Gün ✦`;
+      document.getElementById('modalStatusBadge').innerText = data.badge;
+
+      completeBtnText.innerText = 'Bugünkü 15 Dakikayı Tamamladım';
+      completeIcon.innerText = 'check_circle';
+      completeBtn.classList.remove('from-emerald-400', 'via-secondary', 'to-emerald-400');
+      completeBtn.classList.add('from-secondary', 'via-secondary-fixed', 'to-secondary');
+
+      updateCardBadgeUI(currentActiveCardKey);
+      window.refreshFocusProgressUI(false);
+      showToast('Görev tamamlanmadı olarak güncellendi.');
+    }
+  }
+
+  function startFocusTimer() {
+    closeMicroAction();
+    showToast('15 dakikalık kutsal odak sayacı başladı. Akıştasınız.');
+  }
+
+  function triggerStardustBurst() {
+    const container = document.getElementById('stardustContainer');
+    if (!container) return;
+
+    const emojis = ['✦', '✧', '★', '✨', '⚡', '🌟'];
+    for (let i = 0; i < 22; i++) {
+      const p = document.createElement('span');
+      p.className = 'stardust-particle text-secondary font-bold';
+      p.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      p.style.left = (15 + Math.random() * 70) + '%';
+      p.style.bottom = '45px';
+      p.style.fontSize = (12 + Math.random() * 18) + 'px';
+      p.style.animationDelay = (Math.random() * 0.25) + 's';
+      container.appendChild(p);
+
+      setTimeout(() => {
+        p.remove();
+      }, 1400);
+    }
+  }
+
+  function openMicroAction(category, description) {
+    openVisionCardModal('como');
+  }
+
+  document.getElementById('downloadWallpaperBtn')?.addEventListener('click', () => {
+    showToast('4K Kilit Ekranı Duvar Kağıdı render ediliyor...');
+  });
+
+  // Initial State Setup
+  document.addEventListener('DOMContentLoaded', () => {
+    ['como', 'beden', 'ruhsal', 'ufuklar', 'ask', 'yaraticilik'].forEach(k => updateCardBadgeUI(k));
+    window.refreshFocusProgressUI(false);
+  });
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-secondary scale-105 font-bold"><div class="h-20 px-gutter flex items-center justify-between"><a class="flex flex-col items-center justify-center w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant transition-all hover:text-on-surface" data-path="home" href="#"><span class="material-symbols-outlined text-[24px]">auto_awesome</span><span class="font-label-sm text-label-sm mt-space-xs tracking-tight">Bugün</span></a><a aria-current="page" class="flex flex-col items-center justify-center w-14 h-14 min-w-[44px] min-h-[44px] transition-all text-secondary scale-105 font-bold" data-path="vision-board" href="#"><span class="material-symbols-outlined text-[24px]">grid_view</span><span class="font-label-sm text-label-sm mt-space-xs tracking-tight">Vizyon</span></a><a class="flex flex-col items-center justify-center w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant transition-all hover:text-on-surface" data-path="manifest" href="#"><span class="material-symbols-outlined text-[24px]">graphic_eq</span><span class="font-label-sm text-label-sm mt-space-xs tracking-tight">432Hz</span></a><a class="flex flex-col items-center justify-center w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant transition-all hover:text-on-surface" data-path="goals" href="#"><span class="material-symbols-outlined text-[24px]">track_changes</span><span class="font-label-sm text-label-sm mt-space-xs tracking-tight">Hedefler</span></a><a class="flex flex-col items-center justify-center w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant transition-all hover:text-on-surface" data-path="settings" href="#"><span class="material-symbols-outlined text-[24px]">tune</span><span class="font-label-sm text-label-sm mt-space-xs tracking-tight">Ayarlar</span></a></div></nav>
+</body></html>

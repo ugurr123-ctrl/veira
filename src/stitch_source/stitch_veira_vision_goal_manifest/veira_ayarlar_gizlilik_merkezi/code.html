@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>Veira</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'background': '#0e1228', 'on-primary': '#1000a9', 'on-error-container': '#ffdad6', 'on-tertiary-container': '#002d40', 'on-primary-fixed': '#07006c', 'on-secondary-fixed-variant': '#574500', 'surface-container': '#1a1e35', 'on-primary-fixed-variant': '#2f2ebe', 'tertiary': '#7bd0ff', 'on-tertiary-fixed-variant': '#004c69', 'tertiary-container': '#009bd1', 'surface-variant': '#2f334b', 'on-tertiary': '#00354a', 'inverse-primary': '#494bd6', 'secondary': '#e7c355', 'on-background': '#dee0ff', 'surface-container-high': '#252840', 'primary-fixed-dim': '#c0c1ff', 'tertiary-fixed-dim': '#7bd0ff', 'primary-fixed': '#e1e0ff', 'on-error': '#690005', 'on-primary-container': '#0d0096', 'secondary-fixed-dim': '#e7c355', 'tertiary-fixed': '#c4e7ff', 'surface-container-low': '#161a30', 'on-surface': '#dee0ff', 'secondary-fixed': '#ffe089', 'surface-bright': '#343850', 'outline-variant': '#464554', 'surface': '#0e1228', 'inverse-surface': '#dee0ff', 'error-container': '#93000a', 'surface-container-highest': '#2f334b', 'outline': '#908fa0', 'primary-container': '#8083ff', 'surface-dim': '#0e1228', 'primary': '#c0c1ff', 'on-surface-variant': '#c7c4d7', 'surface-tint': '#c0c1ff', 'error': '#ffb4ab', 'on-secondary': '#3d2f00', 'surface-container-lowest': '#080c22', 'on-secondary-container': '#fffbff', 'inverse-on-surface': '#2b2f46', 'on-tertiary-fixed': '#001e2c', 'secondary-container': '#8e7100' }, borderRadius: { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, spacing: { 'space-md': '1rem', 'gutter': '1rem', 'margin-lg': '1.5rem', 'space-lg': '1.5rem', 'space-xs': '0.25rem', 'margin': '1.25rem', 'space-sm': '0.5rem', 'gutter-sm': '0.75rem', 'space-xl': '2rem' }, fontFamily: { 'body-md': ['Inter'], 'label-md': ['Inter'], 'headline-md': ['Playfair Display'], 'title-lg': ['Inter'], 'title-md': ['Inter'], 'display-sm': ['Playfair Display'], 'headline-lg-mobile': ['Playfair Display'], 'headline-lg': ['Playfair Display'], 'display-lg': ['Playfair Display'], 'body-lg': ['Inter'], 'label-lg': ['Inter'], 'label-sm': ['Inter'], 'body-sm': ['Inter'] }, fontSize: { 'body-md': ['14px', { 'lineHeight': '20px', 'fontWeight': '400' }], 'label-md': ['12px', { 'lineHeight': '16px', 'letterSpacing': '0.02em', 'fontWeight': '500' }], 'headline-md': ['20px', { 'lineHeight': '28px', 'fontWeight': '500' }], 'title-lg': ['18px', { 'lineHeight': '24px', 'letterSpacing': '-0.01em', 'fontWeight': '600' }], 'title-md': ['16px', { 'lineHeight': '22px', 'fontWeight': '600' }], 'display-sm': ['32px', { 'lineHeight': '40px', 'letterSpacing': '-0.01em', 'fontWeight': '600' }], 'headline-lg-mobile': ['24px', { 'lineHeight': '32px', 'letterSpacing': '-0.01em', 'fontWeight': '500' }], 'headline-lg': ['28px', { 'lineHeight': '36px', 'letterSpacing': '-0.01em', 'fontWeight': '500' }], 'display-lg': ['40px', { 'lineHeight': '48px', 'letterSpacing': '-0.02em', 'fontWeight': '600' }], 'body-lg': ['16px', { 'lineHeight': '24px', 'fontWeight': '400' }], 'label-lg': ['14px', { 'lineHeight': '20px', 'letterSpacing': '0.01em', 'fontWeight': '500' }], 'label-sm': ['11px', { 'lineHeight': '14px', 'letterSpacing': '0.04em', 'fontWeight': '600' }], 'body-sm': ['12px', { 'lineHeight': '16px', 'fontWeight': '400' }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#080c22;color:#dee0ff;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Veira Celestial Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChst6p9MJzfQQfrA_4McOfjT1GNsc9_OFu0oIXpJ8knn6bGLrsIuMb2L94hQPra2UE17rHqpC10UmmXSYamqYwP2Y1vMWguKTbNWar5lqMn8Dq0b2jLXUiXxtybLILZ3wgEol1ao3yCWnSsDhM2XoHDx-xRFpDq5fUeAf84RezGbeOTPzjs_x5Tc6j5q6aELtJVAanqXFKTx3GOKXjDnPGiElCvR_UtjjSWqPBYeOXXcYLUs7Pejls"/><span class="font-headline-md text-headline-md text-secondary tracking-tight">Veira</span></div><div class="flex items-center gap-space-sm"><span class="font-title-md text-title-md text-on-surface text-center px-space-xs truncate max-w-[170px]">Veira   Ayarlar &amp; Gizlilik Merkezi</span></div><div class="flex items-center gap-space-sm"><a class="w-11 h-11 flex items-center justify-center rounded-full transition-transform active:scale-95 ring-1 ring-secondary/20" data-path="veira---ayarlar-&amp;-gizlilik-merkezi" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi3a-psaNJ_QU-72Xk020WcxXT0weHKVr0dxtketi3AfYdGjQE0pkeV1TxmQm84hVhT0dDYaR1K3Vn7ar1Vow9SCF_CzgefPXCrNnOXcCjwHeklD47ZVj8Szf5GaDskIOBEcZn5UQKJGj4wtMBLcJXvks2x9qZc2WAz3X8IE2W-LHjlqmq2AKvrUa2zYibLT77AjUqNtzdsFtgZh2JvTDD3mZD5GPHtnkbRFBoO4t1P2LSK3m2QjJ3"/></a></div></div></header><main class="flex-1 flex flex-col relative w-full px-margin pt-16 pb-24 bg-surface"><div class="flex flex-col w-full pb-8 space-y-space-lg">
+<!-- Ambient Glow Effects (Non-intrusive nocturnal nebula) -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute -top-10 -left-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-20 -right-12 w-52 h-52 bg-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
+<!-- 1. Top Profile & Soul Rhythm Card -->
+<div class="relative w-full bg-surface-container/70 backdrop-blur-xl rounded-xl p-space-md shadow-xl">
+<div class="flex items-center gap-space-md">
+<!-- Avatar with Celestial Aura Ring -->
+<div class="relative flex-shrink-0">
+<div class="absolute -inset-1 rounded-full bg-gradient-to-tr from-secondary/40 via-primary-container/30 to-secondary/10 blur-[2px]"></div>
+<img class="relative w-16 h-16 rounded-full object-cover shadow-md" data-alt="Close up aesthetic portrait of a serene young woman named Selin with subtle glowing warm starlight reflections on cheekbones, deep midnight blue background, cinematic peaceful ambiance, filmic luxury editorial portrait." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0YhLuWFSpt_1wiEx2TvcfHJOrdV4HuEHh2iRBBNI_lcd8mpfvVZO_Tl0W4ia35fHcqeYhC9tYrCh5b7bCwvDPUldNwcQKZurJjykbKc0DgxSPcSxXxFfbPr7G0dRABKnorw6qi92pGcRrMjt_GvNKyHkxEhi0ZC4dkrYb45OsFJsVkE6GLo_cNB7n38iP__-qFoNVFaV5Rk0djst_iZe4s6owmwpM63umJWoK9YJ9Bl2kLElP1PMO"/>
+<div class="absolute -bottom-1 -right-1 bg-surface-container-lowest w-5 h-5 rounded-full flex items-center justify-center shadow">
+<span class="material-symbols-outlined text-[13px] text-secondary" style="font-variation-settings: 'FILL' 1;">arrow_back_ios_new</span>
+</div>
+</div>
+<!-- Identity & Vision -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-xs">
+<h2 class="font-headline-md text-headline-md text-on-surface truncate">Selin</h2>
+<!-- Streak Flame Badge -->
+<div class="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-secondary/20 to-error/20">
+<span class="text-xs">🔥</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">14 Gün Seri</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-secondary">explore</span>
+<span class="truncate">2027 Büyük Vizyonu</span>
+</p>
+<!-- Spiritual Status Pill -->
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 mt-2 rounded-full bg-surface-container-high/80 text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-secondary tracking-wide">Zihinsel Disiplin Akışında ✨</span>
+</div>
+</div>
+</div>
+<!-- Quick Soul Rhythm Mini Bar -->
+<div class="mt-space-md pt-space-sm bg-surface-container-lowest/60 rounded-lg p-2.5 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">bedtime</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Ay Döngüsü: İlk Dördün</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Büyüme &amp; Manifestasyon</span>
+</div>
+</div>
+</div>
+<!-- 2. Veira Premium & Transparent Subscription Card (Anti-Dark Pattern) -->
+<div class="relative w-full bg-surface-container/80 backdrop-blur-xl rounded-xl p-space-md shadow-xl overflow-hidden">
+<div class="absolute -right-8 -bottom-8 w-32 h-32 bg-secondary/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-secondary-container/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<span class="font-title-md text-title-md text-on-surface">Veira Premium</span>
+<span class="font-label-sm text-label-sm text-secondary ml-1">• Yıllık Plan</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary/15 text-secondary">Aktif</span>
+</div>
+<!-- Renewal Info -->
+<div class="bg-surface-container-low/70 rounded-lg p-space-sm mb-space-sm flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sonraki Yenileme:</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">18 Ekim 2026 ($29.99/yıl)</span>
+</div>
+<!-- Trust Guarantee Banner (Anti-Dark Pattern) -->
+<div class="bg-surface-container-high/50 rounded-lg p- space-sm p-3 mb-space-md flex items-start gap-2.5">
+<span class="material-symbols-outlined text-tertiary text-[18px] flex-shrink-0 mt-0.5">verified_user</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+<strong class="text-on-surface font-medium">7 Günlük Deneme Güvencesi:</strong> Asla habersiz çekim yapılmaz. Dilediğiniz an tek dokunuşla ve ek soru sorulmadan App Store üzerinden iptal edebilirsiniz.
+      </p>
+</div>
+<!-- Actions Row -->
+<div class="grid grid-cols-2 gap-space-sm">
+<button class="w-full py-2.5 px-3 rounded-full bg-surface-container-high/90 hover:bg-surface-bright active:scale-95 transition-all text-center font-label-md text-label-md text-on-surface" type="button">
+        Aboneliği Yönet
+      </button>
+<button class="w-full py-2.5 px-3 rounded-full bg-surface-container-lowest/80 hover:bg-surface-container-high active:scale-95 transition-all text-center font-label-md text-label-md text-secondary" type="button">
+        Satın Alımları Geri Yükle
+      </button>
+</div>
+</div>
+<!-- 3. Akıllı Bildirimler & Nöral Hatırlatıcılar -->
+<div class="w-full bg-surface-container/70 backdrop-blur-xl rounded-xl p-space-md shadow-xl space-y-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">notifications_active</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Nöral Hatırlatıcılar</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant -mt-1">
+      iOS 64-bildirim kısıtlamasına uyumlu, zihinsel frekansınızı yükselten optimize kayan döngü.
+    </p>
+<!-- Daily Frequency Selector Chips -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2">Günlük Frekans</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="frequency-chip py-2 px-1 rounded-full text-center font-label-sm text-label-sm bg-surface-container-lowest/80 text-on-surface-variant active:scale-95 transition-all hover:bg-surface-container-high" type="button">
+          1 Kez
+        </button>
+<button class="frequency-chip py-2 px-1 rounded-full text-center font-label-sm text-label-sm bg-primary/20 text-primary font-semibold ring-1 ring-primary/40 active:scale-95 transition-all" type="button">
+          3 Kez (Önerilen)
+        </button>
+<button class="frequency-chip py-2 px-1 rounded-full text-center font-label-sm text-label-sm bg-surface-container-lowest/80 text-on-surface-variant active:scale-95 transition-all hover:bg-surface-container-high" type="button">
+          5 Kez
+        </button>
+</div>
+</div>
+<!-- Motivation Coach Tone Selector Chips -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2">Motivasyon Koçu Tonu</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2.5 px-3 rounded-xl text-left bg-primary/20 text-on-surface flex items-center justify-between active:scale-95 transition-all" type="button">
+<div>
+<span class="font-label-md text-label-md block font-medium">Nazik &amp; Şefkatli</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[10px]">İçsel şefkat</span>
+</div>
+<span class="material-symbols-outlined text-primary text-[16px]">check</span>
+</button>
+<button class="py-2.5 px-3 rounded-xl text-left bg-surface-container-lowest/80 text-on-surface-variant flex items-center justify-between active:scale-95 transition-all hover:bg-surface-container-high" type="button">
+<div>
+<span class="font-label-md text-label-md block font-medium">Sakin &amp; Bilge</span>
+<span class="font-body-sm text-body-sm text-outline text-[10px]">Stoik dinginlik</span>
+</div>
+</button>
+<button class="py-2.5 px-3 rounded-xl text-left bg-surface-container-lowest/80 text-on-surface-variant flex items-center justify-between active:scale-95 transition-all hover:bg-surface-container-high" type="button">
+<div>
+<span class="font-label-md text-label-md block font-medium">Enerjik</span>
+<span class="font-body-sm text-body-sm text-outline text-[10px]">Yüksek tempo</span>
+</div>
+</button>
+<button class="py-2.5 px-3 rounded-xl text-left bg-surface-container-lowest/80 text-on-surface-variant flex items-center justify-between active:scale-95 transition-all hover:bg-surface-container-high" type="button">
+<div>
+<span class="font-label-md text-label-md block font-medium">Kararlı Koç</span>
+<span class="font-body-sm text-body-sm text-outline text-[10px]">Net disiplin</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Quiet Hours (Sessiz Saatler) Toggle -->
+<div class="pt-2">
+<div class="bg-surface-container-low/90 rounded-xl p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[18px]">bedtime_off</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block font-semibold">Sessiz Saatler (Gece Huzuru)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">23:00 — 07:00</span>
+</div>
+</div>
+<!-- Toggle Button Active -->
+<button aria-label="Sessiz Saatleri Aç/Kapa" class="w-12 h-6 bg-primary rounded-full relative transition-colors focus:outline-none p-0.5" id="toggle-quiet" type="button">
+<span class="w-5 h-5 bg-on-primary rounded-full block transform translate-x-6 transition-transform shadow-sm"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- 4. Nöro-Akustik & Dil Tercihleri -->
+<div class="w-full bg-surface-container/70 backdrop-blur-xl rounded-xl p-space-md shadow-xl space-y-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[20px]">graphic_eq</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Nöro-Akustik &amp; Dil</h3>
+</div>
+<!-- Default Frequency Selector -->
+<div>
+<div class="flex items-center justify-between mb-2">
+<label class="font-label-md text-label-md text-on-surface">Varsayılan Çalma Frekansı</label>
+<span class="material-symbols-outlined text-tertiary text-[16px]">info</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2.5 px-3 rounded-xl text-center bg-primary/20 text-primary font-semibold ring-1 ring-primary/40 active:scale-95 transition-all" type="button">
+<span class="font-title-md text-title-md block">432 Hz</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Hücresel Uyum</span>
+</button>
+<button class="py-2.5 px-3 rounded-xl text-center bg-surface-container-lowest/80 text-on-surface-variant active:scale-95 transition-all hover:bg-surface-container-high" type="button">
+<span class="font-title-md text-title-md block">528 Hz</span>
+<span class="font-body-sm text-body-sm text-outline text-[11px]">Mucize &amp; Dönüşüm</span>
+</button>
+</div>
+</div>
+<!-- Language Selector (i18n) -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2">Uygulama Dili (Language)</label>
+<div class="flex items-center p-1 bg-surface-container-lowest/90 rounded-full">
+<button class="flex-1 py-1.5 rounded-full bg-surface-container-high text-secondary font-label-md text-label-md text-center shadow-sm" type="button">
+          Türkçe (TR)
+        </button>
+<button class="flex-1 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md text-center transition-colors" type="button">
+          English (EN)
+        </button>
+</div>
+</div>
+</div>
+<!-- 5. Cihaz İçi Kutsal Gizlilik Merkezi (%100 On-Device Privacy) -->
+<div class="w-full bg-surface-container/70 backdrop-blur-xl rounded-xl p-space-md shadow-xl space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Kutsal Gizlilik Alanı</h3>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-container/30 text-secondary">%100 On-Device</span>
+</div>
+<!-- Privacy Shield Statement Card -->
+<div class="bg-surface-container-low/80 rounded-xl p-3.5 flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+        Vizyon panonuzdaki hayalleriniz, fotoğraflarınız ve hedefleriniz <strong class="text-on-surface font-medium">asla sunucularımıza yüklenmez</strong>; yalnızca cihazınızın Secure Enclave donanım korumalı alanında saklanır.
+      </p>
+</div>
+<!-- Biometric Lock Toggle -->
+<div class="bg-surface-container-low/90 rounded-xl p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[18px]">fingerprint</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block font-semibold">Biyometrik Kilit</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Face ID / Parmak İzi ile Panomu Koru</span>
+</div>
+</div>
+<!-- Toggle Button Active -->
+<button aria-label="Biyometrik Kilidi Aç/Kapa" class="w-12 h-6 bg-primary rounded-full relative transition-colors focus:outline-none p-0.5" id="toggle-bio" type="button">
+<span class="w-5 h-5 bg-on-primary rounded-full block transform translate-x-6 transition-transform shadow-sm"></span>
+</button>
+</div>
+<!-- Export Action Item -->
+<button class="w-full py-3 px-space-md rounded-xl bg-surface-container-lowest/80 hover:bg-surface-container-high flex items-center justify-between active:scale-[0.99] transition-all" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-tertiary text-[18px]">file_download</span>
+<div class="text-left">
+<span class="font-label-md text-label-md text-on-surface block font-medium">Verilerimi Dışa Aktar</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Şifreli JSON / HD PDF Yedek</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">chevron_right</span>
+</button>
+</div>
+<!-- 6. Kırmızı Bölge / Hesap Silme (Apple & Google Yönerge Uyumu) -->
+<div class="w-full bg-surface-container/50 backdrop-blur-xl rounded-xl p-space-md shadow-lg space-y-space-sm">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-error text-[18px]">warning</span>
+<h4 class="font-label-lg text-label-lg text-error font-medium">Kritik Bölge</h4>
+</div>
+<div class="space-y-2">
+<!-- Reset Board Data -->
+<button class="w-full py-2.5 px-space-md rounded-lg bg-surface-container-lowest/70 hover:bg-surface-container-high text-left flex items-center justify-between active:scale-[0.99] transition-all" type="button">
+<span class="font-label-md text-label-md text-on-surface-variant">Tüm Vizyon Verilerini Sıfırla</span>
+<span class="material-symbols-outlined text-outline text-[16px]">restart_alt</span>
+</button>
+<!-- Permanent Delete (Compliant) -->
+<button class="w-full py-2.5 px-space-md rounded-lg bg-error-container/20 hover:bg-error-container/30 text-left flex items-center justify-between active:scale-[0.99] transition-all" type="button">
+<span class="font-label-md text-label-md text-error font-medium">Hesabımı ve Tüm Verilerimi Kalıcı Olarak Sil</span>
+<span class="material-symbols-outlined text-error text-[16px]">delete_forever</span>
+</button>
+</div>
+</div>
+<!-- Footer & Version Info -->
+<div class="text-center pt-2 pb-4">
+<p class="font-headline-md text-headline-md text-secondary/70 italic text-[14px]">
+      "Evren, zihnin dinginleştikçe seninle konuşur."
+    </p>
+<p class="font-body-sm text-body-sm text-outline mt-1 tracking-wider">
+      Veira v1.0.4 • Mindful Vision Architecture
+    </p>
+</div>
+</div>
+<script>
+  // Simple micro-interactions for toggles
+  document.querySelectorAll('#toggle-quiet, #toggle-bio').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const circle = btn.querySelector('span');
+      const isChecked = circle.classList.contains('translate-x-6');
+      if (isChecked) {
+        circle.classList.remove('translate-x-6');
+        circle.classList.add('translate-x-0');
+        btn.classList.remove('bg-primary');
+        btn.classList.add('bg-surface-variant');
+      } else {
+        circle.classList.add('translate-x-6');
+        circle.classList.remove('translate-x-0');
+        btn.classList.add('bg-primary');
+        btn.classList.remove('bg-surface-variant');
+      }
+    });
+  });
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-secondary scale-105 font-bold">
+<div class="h-20 px-gutter flex items-center justify-around">
+<a class="flex flex-col items-center justify-center w-16 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant transition-all hover:text-on-surface" data-path="veira---ana-sayfa-dashboard" href="#">
+<span class="material-symbols-outlined text-[24px]">auto_awesome</span>
+<span class="font-label-sm text-label-sm mt-space-xs tracking-tight">Bugün</span>
+</a>
+<a class="flex flex-col items-center justify-center w-16 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant transition-all hover:text-on-surface" data-path="veira---panom-vision-board" href="#">
+<span class="material-symbols-outlined text-[24px]">grid_view</span>
+<span class="font-label-sm text-label-sm mt-space-xs tracking-tight">Panom</span>
+</a>
+<a class="flex flex-col items-center justify-center w-16 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant transition-all hover:text-on-surface" data-path="veira---manifest-audio-player" href="#">
+<span class="material-symbols-outlined text-[24px]">graphic_eq</span>
+<span class="font-label-sm text-label-sm mt-space-xs tracking-tight">Manifest</span>
+</a>
+<a aria-current="page" class="flex flex-col items-center justify-center w-16 h-14 min-w-[44px] min-h-[44px] transition-all text-secondary scale-105 font-bold" data-path="veira---ayarlar-&amp;-gizlilik-merkezi" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="font-label-sm text-label-sm mt-space-xs tracking-tight">Ayarlar</span>
+</a>
+</div>
+</nav>
+</body></html>

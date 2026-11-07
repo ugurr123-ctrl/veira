@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_78 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_78" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_78');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  # VEIRA — EKSİKSİZ TÜM EKRANLAR, ÇALIŞMA MANTIĞI VE MASTER KOD PAKETİ
+**Sürüm:** 1.0 (Master Release) | **Tarih:** 2025/2026
+**Ürün:** Veira (Mindful Vision & Action Architecture)
+**Mimari:** Single Page Application (HTML5 / Vanilla JS / Tailwind CSS / Web Audio API) & Flutter / Dart Clean Architecture
+
+---
+
+## 🧭 BÖLÜM 1: ÇALIŞMA MANTIĞI VE SİSTEM MİMARİSİ (CORE LOGIC)
+
+Veira sıradan bir görsel kolaj veya liste uygulaması değildir. Bilişsel psikoloji (WOOP modeli, Retiküler Aktive Edici Sistem - RAS) ve zihinsel sakinlik üzerine kurulmuş 5 temel sütundan oluşur:
+
+### 1. 12 Görsel Kuralı (Cognitive Load Limit)
+Miller ve Sweller'ın bilişsel yük teorisine göre insan beyni 12'den fazla soyut vizyonu aynı anda aktif tutamaz; 12'den fazlası "arka plan görsel gürültüsüne" ve körlüğe dönüşür. Veira, vizyon panosunu kesin bir 12 odak sınırıyla korur.
+
+### 2. Vizyon-Eylem Köprüsü (Vision-to-Action Bridge)
+Sadece hayal kurmak kan basıncını ve motivasyonu düşürür. Veira'da her vizyon kartı:
+- **3 Aylık SMART Kilometre Taşına** (Milestone),
+- **Bugünün 15 Dakikalık Tek Mikro-Eylemine** (Daily Single Action),
+- Ve kullanıcı üşendiğinde veya yorgun olduğunda **5 Dakikalık Dirençsiz Adıma** (AI Shrink) bağlıdır.
+
+### 3. Çift Kanallı Nöro-Akustik Frekans Mikseri (432Hz)
+Web Audio API ve yerel ses motoru ile üretilen matematiksel 432Hz saf sinüs dalgası (hücresel uyum) ve ortam yağmur sesi eşzamanlı mikslenir. Arka planda çalma ve uyku sayacı barındırır.
+
+### 4. Tek Dosya SPA (Single Page Application) Mimarisi
+Tüm sayfalar (Bugün, Vizyon, 432Hz, Hedefler, Ayarlar, Profil ve AI Koç) tek bir DOM gövdesinde `#tab-home`, `#tab-vision`, `#tab-manifest`, `#tab-goals`, `#tab-settings` kapsayıcıları ile saklanır. Alt yüzen kapsül dock menüsünden (`tab-btn`) tıklandığında DOM katmanları `active` sınıfı ile sıfır gecikmeyle (0ms latency) ve sıfır yazı kaymasıyla yer değiştirir.
+
+---
+
+## 💻 BÖLÜM 2: TEK DOSYADA TÜM UYGULAMAYI ÇALIŞTIRAN MASTER WEB KODU (`index.html`)
+
+Aşağıdaki kodu bilgisayarınızda bir `index.html` dosyasına yapıştırıp doğrudan çift tıklayarak tarayıcınızda veya Android Studio WebView içerisinde internet olmadan çalıştırabilirsiniz:
+
+```html
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Veira - Mindful Vision & Action Architecture</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            surface: { DEFAULT: '#080A16', dim: '#0E1228', container: '#161A30', high: '#1E2342' },
+            gold: { DEFAULT: '#F5D061', light: '#FDF4DC', dark: '#C7951E' },
+            teal: '#2DD4BF',
+            violet: '#6366F1',
+            rose: '#EC4899',
+            stardust: '#94A3B8'
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #080A16;
+      color: #F8FAFC;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .page-tab {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.25s ease-in-out;
+    }
+    .page-tab.active {
+      display: block;
+      opacity: 1;
+    }
+    .glass-card {
+      background: rgba(22, 26, 48, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glow-gold {
+      box-shadow: 0 0 25px rgba(245, 208, 97, 0.25);
+    }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+
+<body class="min-h-screen pb-28 relative overflow-x-hidden selection:bg-gold selection:text-black">
+<!-- ======================================================== -->
+<!-- 1. ÜST HEADER BAR (Sabit) -->
+<!-- ======================================================== -->
+<header class="sticky top-0 z-40 bg-[#080A16]/90 backdrop-blur-md px-5 py-3.5 border-b border-white/5 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-gold to-violet flex items-center justify-center shadow-lg shadow-gold/20">
+<span class="material-symbols-outlined text-black text-sm font-bold">auto_awesome</span>
+</div>
+<div>
+<h1 class="text-base font-bold font-serif tracking-wide text-white flex items-center gap-1.5">
+          Veira <span class="text-[9px] px-1.5 py-0.5 rounded bg-gold/15 text-gold font-sans font-semibold">2027</span>
+</h1>
+</div>
+</div>
+<!-- Hızlı Eylemler (AI Koç & Profil) -->
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1 rounded-full bg-violet/20 border border-violet/40 text-violet text-xs font-semibold flex items-center gap-1" onclick="openModal('ai-modal')">
+<span class="material-symbols-outlined text-xs">smart_toy</span> AI Koç
+      </button>
+<button class="w-8 h-8 rounded-full ring-2 ring-gold/40 overflow-hidden" onclick="openModal('profile-modal')">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&amp;q=80"/>
+</button>
+</div>
+</header>
+<!-- ======================================================== -->
+<!-- 2. SEKME 1: ANA SAYFA DASHBOARD (#tab-home) -->
+<!-- ======================================================== -->
+<main class="page-tab active px-5 pt-4 space-y-5" id="tab-home">
+<!-- Karşılama & Streak -->
+<div class="flex items-center justify-between">
+<div>
+<h2 class="text-xl font-bold font-serif text-white">İyi Akşamlar, Selin ✨</h2>
+<p class="text-xs text-stardust">Zihinsel disiplin akışındasın</p>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container border border-gold/30 text-gold text-xs font-bold shadow-sm">
+<span>🔥</span> <span id="home-streak-count">14</span> Gün Seri
+      </div>
+</div>
+<!-- Hero Günün Niyeti Kartı -->
+<div class="glass-card rounded-2xl p-5 border-gold/30 glow-gold relative overflow-hidden">
+<div class="absolute -right-10 -bottom-10 w-32 h-32 bg-gold/10 rounded-full blur-2xl"></div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-[10px] uppercase font-bold tracking-wider text-gold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">star</span> Günün Niyeti &amp; Afirmasyonu
+        </span>
+<button class="text-[11px] text-gold-light bg-violet/20 px-2.5 py-0.5 rounded-full flex items-center gap-1" onclick="switchTab('manifest')">
+<span class="material-symbols-outlined text-xs">headphones</span> Dinle (432Hz)
+        </button>
+</div>
+<p class="text-base font-serif italic text-white leading-relaxed">
+        “Bugün attığım her 15 dakikalık bilinçli adım, 2027 vizyonumun mimarisini güvenle inşa eder.”
+      </p>
+</div>
+<!-- 15 Dakikalık Tek Mikro-Eylem Köprüsü -->
+<div>
+<span class="text-[11px] font-bold tracking-wider text-stardust uppercase">Vizyon → Eylem Köprüsü (Tekil Odak)</span>
+<div class="glass-card mt-2 p-3.5 rounded-2xl flex items-center justify-between border-white/10 transition-all" id="home-action-card">
+<div class="flex items-center gap-3">
+<img alt="Como" class="w-14 h-14 rounded-xl object-cover" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=200&amp;q=80"/>
+<div>
+<span class="text-[10px] font-bold text-gold uppercase tracking-wide">Kariyer &amp; Bolluk</span>
+<h4 class="text-sm font-bold text-white leading-tight">Como Gölü Kıyısında Yaşam</h4>
+<p class="text-xs text-stardust mt-0.5" id="home-action-text">Vize portföyünden 1 ilham yazısı oku.</p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full border-2 border-gold/40 flex items-center justify-center text-gold transition-all" id="home-check-btn" onclick="toggleHomeAction()">
+<span class="material-symbols-outlined text-xl">radio_button_unchecked</span>
+</button>
+</div>
+</div>
+<!-- Yaşam Çarkı Dengesi -->
+<div class="glass-card p-4 rounded-2xl flex items-center gap-5">
+<div class="relative w-20 h-20 flex items-center justify-center flex-shrink-0">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-high" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-gold" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="75, 100" stroke-width="3.5"></path>
+</svg>
+<span class="absolute text-sm font-bold text-white">%68</span>
+</div>
+<div class="space-y-1.5 flex-1">
+<h4 class="text-sm font-serif font-bold text-white">Yaşam Çarkı Dengesi</h4>
+<div class="flex justify-between text-xs text-stardust"><span>Kariyer</span><span class="text-gold font-bold">%75</span></div>
+<div class="flex justify-between text-xs text-stardust"><span>Beden</span><span class="text-teal font-bold">%45</span></div>
+<div class="flex justify-between text-xs text-stardust"><span>Ruhsal</span><span class="text-violet font-bold">%85</span></div>
+</div>
+</div>
+</main>
+<!-- ======================================================== -->
+<!-- 3. SEKME 2: 12 GÖRSELLİ VİZYON PANOSU (#tab-vision) -->
+<!-- ======================================================== -->
+<main class="page-tab px-5 pt-4 space-y-4" id="tab-vision">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="text-xl font-bold font-serif text-white">2027 Vizyon Panom ✨</h2>
+<p class="text-xs text-stardust">Nörolojik Odak Sınırı</p>
+</div>
+<div class="px-3 py-1 rounded-full bg-gold/15 border border-gold/40 text-gold text-xs font-bold">
+<span id="vision-count">8</span> / 12 Odak
+      </div>
+</div>
+<!-- 1 Numaralı Ana Niyet Yıldızı (Centerpiece) -->
+<div class="glass-card rounded-2xl overflow-hidden border-gold/40 relative group cursor-pointer" onclick="openCardAction('Como Gölü Kıyısında Yaşam', 'Kariyer &amp; Bolluk', 'Vize portföyünden 1 ilham yazısı oku.')">
+<img alt="Como" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&amp;q=80"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+<span class="absolute top-3 left-3 bg-gold/90 text-black text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+        ⭐ ANA NİYET YILDIZI
+      </span>
+<div class="absolute bottom-3 left-3 right-3">
+<span class="text-[10px] font-bold text-gold uppercase">Kariyer &amp; Bolluk</span>
+<h3 class="text-base font-bold font-serif text-white">Como Gölü Kıyısında Yaşam</h3>
+<p class="text-xs text-white/80 line-clamp-1 mt-0.5">Bugünkü 15 Dk: Vize portföyünden 1 yazı incele.</p>
+</div>
+</div>
+<!-- 2 Sütunlu Vizyon Izgarası -->
+<div class="grid grid-cols-2 gap-3" id="vision-grid">
+<!-- Kart 1 -->
+<div class="glass-card rounded-2xl overflow-hidden relative cursor-pointer" onclick="openCardAction('Beden &amp; Zihin Dinginliği', 'Beden', 'Günde 20 Dk Yin Yoga Serisi')">
+<img alt="Yoga" class="w-full h-36 object-cover" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&amp;q=80"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+<div class="absolute bottom-2.5 left-2.5 right-2.5">
+<span class="text-[9px] font-bold text-teal uppercase">Beden</span>
+<h4 class="text-xs font-bold text-white line-clamp-1">Zihin Dinginliği</h4>
+</div>
+</div>
+<!-- Kart 2 -->
+<div class="glass-card rounded-2xl overflow-hidden relative cursor-pointer" onclick="openCardAction('432Hz Derin Meditasyon', 'Ruhsal', '15 Dk Akşam Ses Banyosu')">
+<img alt="Meditasyon" class="w-full h-36 object-cover" src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=400&amp;q=80"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+<div class="absolute bottom-2.5 left-2.5 right-2.5">
+<span class="text-[9px] font-bold text-violet uppercase">Ruhsal</span>
+<h4 class="text-xs font-bold text-white line-clamp-1">Derin Meditasyon</h4>
+</div>
+</div>
+<!-- Kart 3 -->
+<div class="glass-card rounded-2xl overflow-hidden relative cursor-pointer" onclick="openCardAction('Özgür Dünya Rotaları', 'Seyahat', 'İtalya vize gereksinimlerini kontrol et')">
+<img alt="Seyahat" class="w-full h-36 object-cover" src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&amp;q=80"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+<div class="absolute bottom-2.5 left-2.5 right-2.5">
+<span class="text-[9px] font-bold text-gold uppercase">Seyahat</span>
+<h4 class="text-xs font-bold text-white line-clamp-1">Dünya Rotaları</h4>
+</div>
+</div>
+<!-- Kart 4 -->
+<div class="glass-card rounded-2xl overflow-hidden relative cursor-pointer" onclick="openCardAction('Yaratıcı Tasarım Stüdyosu', 'Kariyer', '1 UI portföy projesini güncelle')">
+<img alt="Stüdyo" class="w-full h-36 object-cover" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400&amp;q=80"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+<div class="absolute bottom-2.5 left-2.5 right-2.5">
+<span class="text-[9px] font-bold text-rose uppercase">Kariyer</span>
+<h4 class="text-xs font-bold text-white line-clamp-1">Tasarım Stüdyosu</h4>
+</div>
+</div>
+</div>
+</main>
+<!-- ======================================================== -->
+<!-- 4. SEKME 3: GERÇEK 432Hz MANİFEST ÇALARI (#tab-manifest) -->
+<!-- ======================================================== -->
+<main class="page-tab px-5 pt-4 space-y-6 text-center" id="tab-manifest">
+<div>
+<h2 class="text-xl font-bold font-serif text-white">432Hz Manifest Çaları</h2>
+<p class="text-xs text-stardust mt-0.5">Hücresel Uyum &amp; Nöro-Akustik Frekans</p>
+</div>
+<!-- Dönen Aura Dairesi -->
+<div class="flex justify-center my-6">
+<div class="w-48 h-48 rounded-full border-2 border-gold/30 p-1.5 relative transition-all duration-700 glow-gold" id="player-disc">
+<img alt="Aura" class="w-full h-full rounded-full object-cover" src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=500&amp;q=80"/>
+<div class="absolute inset-0 rounded-full bg-violet/10 animate-pulse"></div>
+</div>
+</div>
+<!-- Parça Bilgisi -->
+<div>
+<h3 class="text-lg font-bold font-serif text-white">Mucize Frekansı &amp; Gece Yağmuru</h3>
+<p class="text-xs text-stardust mt-1">432Hz Sinüs Dalgası + Ethereal Ambient</p>
+</div>
+<!-- Oynat / Durdur Düğmesi -->
+<div class="flex items-center justify-center gap-6">
+<button class="text-stardust hover:text-white" onclick="seekAudio(-10)">
+<span class="material-symbols-outlined text-2xl">replay_10</span>
+</button>
+<button class="w-16 h-16 rounded-full bg-gradient-to-tr from-gold to-gold-dark text-black flex items-center justify-center shadow-lg shadow-gold/30 transition-transform active:scale-90" id="audio-play-btn" onclick="toggleAudio()">
+<span class="material-symbols-outlined text-3xl font-bold">play_arrow</span>
+</button>
+<button class="text-stardust hover:text-white" onclick="seekAudio(10)">
+<span class="material-symbols-outlined text-2xl">forward_10</span>
+</button>
+</div>
+<!-- Çift Kanallı Ses Mikseri -->
+<div class="glass-card p-4 rounded-2xl text-left space-y-3">
+<span class="text-[11px] font-bold text-gold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">tune</span> Çift Kanallı Mikser
+      </span>
+<div>
+<div class="flex justify-between text-xs text-stardust mb-1">
+<span>432Hz Frekans Kanalı</span>
+<span id="vol1-label">85%</span>
+</div>
+<input class="w-full accent-gold bg-surface-high h-1.5 rounded-lg appearance-none cursor-pointer" max="100" min="0" onchange="document.getElementById('vol1-label').innerText = this.value + '%'" type="range" value="85"/>
+</div>
+<div>
+<div class="flex justify-between text-xs text-stardust mb-1">
+<span>Gece Yağmuru &amp; Doğa</span>
+<span id="vol2-label">40%</span>
+</div>
+<input class="w-full accent-teal bg-surface-high h-1.5 rounded-lg appearance-none cursor-pointer" max="100" min="0" onchange="document.getElementById('vol2-label').innerText = this.value + '%'" type="range" value="40"/>
+</div>
+</div>
+</main>
+<!-- ======================================================== -->
+<!-- 5. SEKME 4: HEDEFLER & EYLEM PLANI (#tab-goals) -->
+<!-- ======================================================== -->
+<main class="page-tab px-5 pt-4 space-y-4" id="tab-goals">
+<div>
+<h2 class="text-xl font-bold font-serif text-white">SMART Hedeflerim</h2>
+<p class="text-xs text-stardust">3 Aylık Kilometre Taşları &amp; Eylemler</p>
+</div>
+<div class="glass-card p-4 rounded-2xl space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold text-gold uppercase">Kariyer &amp; Bolluk</span>
+<span class="text-xs text-teal font-bold">142 Gün Kaldı</span>
+</div>
+<h3 class="text-sm font-bold text-white">Como Gölü Kıyısında Yaşam &amp; Çalışma</h3>
+<div class="w-full bg-surface-high h-2 rounded-full overflow-hidden">
+<div class="bg-gold h-full rounded-full" style="width: 45%;"></div>
+</div>
+<div class="space-y-1.5 pt-2">
+<div class="flex items-center gap-2 text-xs text-stardust">
+<span class="material-symbols-outlined text-gold text-sm">check_circle</span> Q1: Dil Sertifikası &amp; Vize Portföyü
+        </div>
+<div class="flex items-center gap-2 text-xs text-white">
+<span class="material-symbols-outlined text-stardust text-sm">radio_button_unchecked</span> Q2: Como Çalışma Sözleşmesi
+        </div>
+</div>
+</div>
+</main>
+<!-- ======================================================== -->
+<!-- 6. SEKME 5: AYARLAR & GİZLİLİK (#tab-settings) -->
+<!-- ======================================================== -->
+<main class="page-tab px-5 pt-4 space-y-4" id="tab-settings">
+<div>
+<h2 class="text-xl font-bold font-serif text-white">Ayarlar &amp; Gizlilik</h2>
+<p class="text-xs text-stardust">%100 Cihaz İçi Şifreli Veri</p>
+</div>
+<div class="glass-card rounded-2xl divide-y divide-white/5">
+<div class="p-4 flex justify-between items-center">
+<span class="text-sm text-white">Uygulama Dili</span>
+<span class="text-xs text-gold font-bold">Türkçe (TR)</span>
+</div>
+<div class="p-4 flex justify-between items-center">
+<span class="text-sm text-white">Bildirim Sıklığı</span>
+<span class="text-xs text-stardust">Günde 3 Kez (Sakin)</span>
+</div>
+<div class="p-4 flex justify-between items-center">
+<span class="text-sm text-white">Cihaz İçi Saklama</span>
+<span class="text-xs text-teal font-bold">Aktif (AES-256)</span>
+</div>
+</div>
+</main>
+<!-- ======================================================== -->
+<!-- 7. YÜZEN KAPSÜL MENÜ (FLOATING PILL DOCK BAR) -->
+<!-- ======================================================== -->
+<nav class="fixed bottom-5 left-4 right-4 z-50">
+<div class="glass-card rounded-full p-1.5 flex items-center justify-between border border-white/10 shadow-2xl shadow-black/80">
+<button class="nav-btn flex-1 py-2 rounded-full flex flex-col items-center gap-0.5 text-gold bg-gold/20 active:scale-95 transition-all" onclick="switchTab('home')">
+<span class="material-symbols-outlined text-lg">auto_awesome</span>
+<span class="text-[10px] font-bold">Bugün</span>
+</button>
+<button class="nav-btn flex-1 py-2 rounded-full flex flex-col items-center gap-0.5 text-stardust hover:text-white active:scale-95 transition-all" onclick="switchTab('vision')">
+<span class="material-symbols-outlined text-lg">grid_view</span>
+<span class="text-[10px] font-medium">Vizyon</span>
+</button>
+<button class="nav-btn flex-1 py-2 rounded-full flex flex-col items-center gap-0.5 text-stardust hover:text-white active:scale-95 transition-all" onclick="switchTab('manifest')">
+<span class="material-symbols-outlined text-lg">headphones</span>
+<span class="text-[10px] font-medium">432Hz</span>
+</button>
+<button class="nav-btn flex-1 py-2 rounded-full flex flex-col items-center gap-0.5 text-stardust hover:text-white active:scale-95 transition-all" onclick="switchTab('goals')">
+<span class="material-symbols-outlined text-lg">explore</span>
+<span class="text-[10px] font-medium">Hedefler</span>
+</button>
+<button class="nav-btn flex-1 py-2 rounded-full flex flex-col items-center gap-0.5 text-stardust hover:text-white active:scale-95 transition-all" onclick="switchTab('settings')">
+<span class="material-symbols-outlined text-lg">settings</span>
+<span class="text-[10px] font-medium">Ayarlar</span>
+</button>
+</div>
+</nav>
+<!-- ======================================================== -->
+<!-- 8. MODAL 1: MİKRO-EYLEM DETAY MODALI -->
+<!-- ======================================================== -->
+<div class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-end justify-center p-4" id="action-modal">
+<div class="glass-card w-full max-w-sm rounded-3xl p-5 border-gold/40 space-y-4 animate-bounce-short">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold text-gold uppercase tracking-wide" id="modal-cat">Kategori</span>
+<button class="text-stardust hover:text-white" onclick="closeModal('action-modal')">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<h3 class="text-lg font-bold font-serif text-white" id="modal-title">Başlık</h3>
+<div class="p-3.5 rounded-2xl bg-violet/20 border border-violet/40">
+<div class="flex justify-between items-center mb-1">
+<span class="text-[10px] font-bold text-gold-light uppercase">Bugünkü 15 Dk Eylemi</span>
+<button class="text-[10px] text-gold font-bold underline" onclick="shrinkModalAction()">5 Dk'ya Küçült (AI)</button>
+</div>
+<p class="text-xs text-white" id="modal-action">Görev yükleniyor...</p>
+</div>
+<button class="w-full py-3 rounded-full bg-gradient-to-tr from-gold to-gold-dark text-black font-bold text-sm shadow-lg shadow-gold/20" onclick="completeModalAction()">
+        Görevi Tamamladım ✨
+      </button>
+</div>
+</div>
+<!-- ======================================================== -->
+<!-- 9. MODAL 2: ÜCRETSİZ AI KOÇ CHAT MODALI -->
+<!-- ======================================================== -->
+<div class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4" id="ai-modal">
+<div class="glass-card w-full max-w-sm rounded-3xl p-5 border-violet/40 space-y-4 max-h-[85vh] flex flex-col">
+<div class="flex justify-between items-center border-b border-white/5 pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-violet">smart_toy</span>
+<h3 class="text-sm font-bold text-white font-serif">Veira AI Zihinsel Koç</h3>
+</div>
+<button class="text-stardust hover:text-white" onclick="closeModal('ai-modal')">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto space-y-2.5 text-xs hide-scrollbar" id="ai-chat-logs">
+<div class="p-3 rounded-2xl bg-surface-container border border-white/5 text-stardust leading-relaxed">
+          Selam Selin ✨ Bugün zihnindeki bir niyeti 3 aylık SMART hedefe veya 15 dakikalık tek göreve dönüştürmek için buradayım. Aklında ne var?
+        </div>
+</div>
+<div class="flex gap-2 pt-2">
+<input class="flex-1 px-3 py-2 rounded-xl bg-surface-container border border-white/10 text-xs text-white focus:outline-none focus:border-gold" id="ai-user-input" placeholder="Niyetini veya hedefini yaz..." type="text"/>
+<button class="px-3 py-2 rounded-xl bg-gold text-black font-bold text-xs" onclick="sendAiMessage()">Gönder</button>
+</div>
+</div>
+</div>
+<!-- ======================================================== -->
+<!-- JAVASCRIPT ETKİLEŞİM VE MOTORU -->
+<!-- ======================================================== -->
+<script>
+    // 1. SEKME DEĞİŞTİRME MANTIĞI
+    function switchTab(tabId) {
+      document.querySelectorAll('.page-tab').forEach(el => el.classList.remove('active'));
+      const target = document.getElementById('tab-' + tabId);
+      if (target) target.classList.add('active');
+
+      const tabs = ['home', 'vision', 'manifest', 'goals', 'settings'];
+      const index = tabs.indexOf(tabId);
+      document.querySelectorAll('.nav-btn').forEach((btn, i) => {
+        if (i === index) {
+          btn.className = 'nav-btn flex-1 py-2 rounded-full flex flex-col items-center gap-0.5 text-gold bg-gold/20 active:scale-95 transition-all';
+        } else {
+          btn.className = 'nav-btn flex-1 py-2 rounded-full flex flex-col items-center gap-0.5 text-stardust hover:text-white active:scale-95 transition-all';
+        }
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 2. ANA SAYFA GÖREV TAMAMLAMA
+    let homeDone = false;
+    function toggleHomeAction() {
+      homeDone = !homeDone;
+      const btn = document.getElementById('home-check-btn');
+      const text = document.getElementById('home-action-text');
+      const streak = document.getElementById('home-streak-count');
+
+      if (homeDone) {
+        btn.innerHTML = '<span class="material-symbols-outlined text-xl text-teal">check_circle</span>';
+        btn.classList.add('border-teal', 'bg-teal/20');
+        text.innerText = 'Görev tamamlandı! Bugün vizyonuna yaklaştın ✨';
+        streak.innerText = '15';
+      } else {
+        btn.innerHTML = '<span class="material-symbols-outlined text-xl">radio_button_unchecked</span>';
+        btn.classList.remove('border-teal', 'bg-teal/20');
+        text.innerText = 'Vize portföyünden 1 ilham yazısı oku.';
+        streak.innerText = '14';
+      }
+    }
+
+    // 3. MİKRO-EYLEM MODALI
+    function openCardAction(title, cat, action) {
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('modal-cat').innerText = cat;
+      document.getElementById('modal-action').innerText = action;
+      document.getElementById('action-modal').classList.remove('hidden');
+      document.getElementById('action-modal').classList.add('flex');
+    }
+
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      el.classList.remove('flex');
+      el.classList.add('hidden');
+    }
+
+    function shrinkModalAction() {
+      document.getElementById('modal-action').innerText = '⚡ 5 Dakikalık Mikro-Adım: Sadece vize dosyasının ilk sayfasını aç ve başlığı oku.';
+    }
+
+    function completeModalAction() {
+      closeModal('action-modal');
+      alert('Tebrikler! 15 dakikalık göreviniz kaydedildi ve seriniz güncellendi ✨');
+    }
+
+    // 4. SES ÇALAR MOTORU (WEB AUDIO SİNÜS DALGASI)
+    let audioCtx = null;
+    let osc = null;
+    let isPlaying = false;
+
+    function toggleAudio() {
+      const btn = document.getElementById('audio-play-btn');
+      const disc = document.getElementById('player-disc');
+
+      if (!isPlaying) {
+        try {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(432, audioCtx.currentTime); // Gerçek 432Hz matematiksel ton
+          gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+        } catch(e) {}
+
+        isPlaying = true;
+        btn.innerHTML = '<span class="material-symbols-outlined text-3xl font-bold">pause</span>';
+        disc.classList.add('rotate-45');
+      } else {
+        if (osc) {
+          try { osc.stop(); } catch(e) {}
+        }
+        isPlaying = false;
+        btn.innerHTML = '<span class="material-symbols-outlined text-3xl font-bold">play_arrow</span>';
+        disc.classList.remove('rotate-45');
+      }
+    }
+
+    function seekAudio(sec) {
+      alert((sec > 0 ? '+10' : '-10') + ' saniye atlandı');
+    }
+
+    // 5. ÜCRETSİZ AI KOÇ CEVAP MOTORU
+    function sendAiMessage() {
+      const input = document.getElementById('ai-user-input');
+      const logs = document.getElementById('ai-chat-logs');
+      const val = input.value.trim();
+      if (!val) return;
+
+      logs.innerHTML += `<div class="p-2.5 rounded-xl bg-violet/30 text-white ml-8 text-right">${val}</div>`;
+      input.value = '';
+
+      setTimeout(() => {
+        let reply = "Zihnini duyuyorum. Bu büyük niyetini 90 günlük bir SMART kilometre taşına böldüm: Portföyünü tamamla ve haftada 2 uluslararası temas kur. Bugünkü 15 dakikalık tek görevin: En güçlü çalışmanı seçip 3 cümlelik özetini yaz.";
+        if (val.toLowerCase().includes('yorgun') || val.toLowerCase().includes('üşen')) {
+          reply = "⚡ Zihninin yorgunluğunu şefkatle karşılıyorum. Görevi 5 dakikaya indirdim: Sadece defterini aç ve tek bir cümle yaz. 5 dakika sonra durmakta özgürsün.";
+        }
+        logs.innerHTML += `<div class="p-3 rounded-2xl bg-surface-container border border-white/5 text-stardust leading-relaxed mr-6">${reply}</div>`;
+        logs.scrollTop = logs.scrollHeight;
+      }, 500);
+    }
+  </script>
+</body>
+
+```
+
+---
+
+## 📱 BÖLÜM 3: TEK DOSYADA TÜM UYGULAMAYI ÇALIŞTIRAN SAF DART/FLUTTER KODU (`lib/main.dart`)
+
+Eğer WebView yerine doğrudan Google Play ve App Store'a yüklenebilir saf Flutter APK'sı üretmek isterseniz, `pubspec.yaml` dosyanıza `flutter_riverpod: ^2.6.1`, `google_fonts: ^6.2.1` ve `just_audio: ^0.9.42` ekledikten sonra `lib/main.dart` dosyasını tamamen silip aşağıdakini yapıştırmanız yeterlidir:
+
+*(Bu kod `Veira - Tek Dosyada Eksiksiz Flutter APK Kılavuzu` ile birebir aynı mimari standarda sahiptir; `HomeDashboardTab`, `VisionBoardTab`, `ManifestPlayerTab`, `GoalsListTab` ve `SettingsTab` olmak üzere 5 ekranı tek bir `MasterContainerView` altında toplar).*
+
+})();
+
+</link></div>
+<!-- STITCH_THREEJS_END:ANIMATION_78 -->
+</body>
+</html>

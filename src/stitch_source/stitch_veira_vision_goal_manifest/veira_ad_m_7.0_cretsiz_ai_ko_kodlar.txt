@@ -1,0 +1,257 @@
+# VEIRA - ADIM 7.0: ÜCRETSİZ HİBRİT AI KOÇ & ZİHİNSEL ASİSTAN MİMARİSİ
+**Sürüm:** 1.0 (Eksiksiz & Kopyala-Yapıştır) | **Tarih:** 2025/2026
+**Modül:** 7.0 - %100 Ücretsiz Google Gemini 1.5 Flash / Groq Llama 3 API & Offline Kural Motorlu Yedekleme Servisi
+
+Aşağıdaki dosyaları sırasıyla projenizde belirtilen dosya yollarına oluşturup yapıştırın. Bu modül; SMART hedef dönüşümü, 15 dakikalık adımı 5 dakikaya küçültme, niyetten kişiselleştirilmiş afirmasyon yazma ve gece şükran fısıltısı üretme işlevlerini sıfır maliyetle gerçekleştirir.
+
+---
+
+## 1. DİL DOSYALARI GÜNCELLEMESİ (AI Koç Anahtarları)
+
+Mevcut `assets/translations/tr.json` dosyanıza eklenecek `"ai_coach"` anahtarı:
+
+```json
+  "ai_coach": {
+    "header_title": "Veira AI Zihinsel Koç",
+    "subtitle": "Kişisel Nöro-Vizyon & Eylem Mimarınız",
+    "quick_prompts_title": "Hızlı Zihinsel Rehberlik",
+    "prompt_smart": "🎯 Bu hayalimi 3 aylık SMART hedefe dönüştür",
+    "prompt_shrink": "⚡ Bugün çok yorgunum, adımı 5 dakikaya indir",
+    "prompt_affirmation": "✨ Bu niyetim için 432Hz güçlü bir afirmasyon yaz",
+    "prompt_obstacle": "🛡️ Bu vizyondaki en büyük engelim ve çözümü ne?",
+    "input_placeholder": "Zihnindeki niyeti, yorgunluğu veya soruyu yaz...",
+    "status_thinking": "Veira AI zihinsel mimariyi oluşturuyor...",
+    "model_tag": "Gemini 1.5 Flash & Yerel Sinir Ağı (Ücretsiz)",
+    "disclaimer": "Düşünceleriniz şifreli aktarılır; yapay zeka eğitiminde kullanılmaz."
+  }
+```
+
+Mevcut `assets/translations/en.json` dosyanıza eklenecek `"ai_coach"` anahtarı:
+
+```json
+  "ai_coach": {
+    "header_title": "Veira AI Mind Coach",
+    "subtitle": "Your Personal Neuro-Vision & Action Architect",
+    "quick_prompts_title": "Quick Mind Guidance",
+    "prompt_smart": "🎯 Transform this ambition into a 3-month SMART goal",
+    "prompt_shrink": "⚡ I'm feeling exhausted, shrink my action to 5 mins",
+    "prompt_affirmation": "✨ Craft a potent 432Hz affirmation for this intention",
+    "prompt_obstacle": "🛡️ Identify the key obstacle and tactical antidote",
+    "input_placeholder": "Share your intention, friction, or aspiration...",
+    "status_thinking": "Veira AI is architecting your neural blueprint...",
+    "model_tag": "Gemini 1.5 Flash & Neural Core (Free)",
+    "disclaimer": "Your thoughts are securely processed and never used to train public models."
+  }
+```
+
+---
+
+## 2. MODELLER (AI MESAJ VE CEVAP YAPISI)
+
+### Dosya Yolu: `lib/features/ai_coach/domain/ai_coach_model.dart`
+```dart
+enum AiMessageType { user, coach }
+
+class AiMessage {
+  final String id;
+  final String text;
+  final AiMessageType type;
+  final DateTime timestamp;
+  final String? smartGoalTarget;
+  final String? microActionSuggestion;
+  final int? estimatedMinutes;
+
+  const AiMessage({
+    required this.id,
+    required this.text,
+    required this.type,
+    required this.timestamp,
+    this.smartGoalTarget,
+    this.microActionSuggestion,
+    this.estimatedMinutes,
+  });
+}
+```
+
+---
+
+## 3. ÜCRETSİZ HİBRİT AI SERVİSİ (GEMINI FLASH / GROQ REST + ÇEVRİMDIŞI YEDEK)
+
+### Dosya Yolu: `lib/core/services/free_ai_service.dart`
+```dart
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
+class FreeAiService {
+  // Google AI Studio'dan alabileceğiniz ücretsiz Gemini API anahtarı:
+  // https://aistudio.google.com/app/apikey (Ücretsiz tier: Günde 1500 istek bedava)
+  static const String _geminiApiKey = 'BURAYA_GEMINI_API_KEY_YAZIN';
+  static const String _geminiUrl =
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$_geminiApiKey';
+
+  static const String _systemPrompt = '''
+Sen Veira uygulamasının lüks, bilge, şefkatli ve nöro-bilim destekli Zihinsel Vizyon Koçusun.
+Kullanıcıların soyut dileklerini;
+1. 3 Aylık ölçülebilir SMART kilometre taşlarına bölersin.
+2. Bugün yapabilecekleri tek ve net bir 15 DAKİKALIK mikro-eyleme indirgersin.
+3. Kullanıcı "üşeniyorum", "yorgunum" derse o eylemi dirençsiz 5 dakikalık bir adıma küçültürsün.
+4. Dilin sakin, meditatif, asil ve motive edicidir (Nocturnal Serenity estetiği).
+''';
+
+  /// Çevrimiçi Gemini API Çağrısı (Başarısız olursa veya anahtar boşsa yerel motora geçer)
+  static Future<String> generateMindGuidance({
+    required String userPrompt,
+    String? category,
+  }) async {
+    // 1. API anahtarı girilmişse ücretsiz Gemini Flash'a sor
+    if (_geminiApiKey != 'BURAYA_GEMINI_API_KEY_YAZIN' && _geminiApiKey.isNotEmpty) {
+      try {
+        final response = await http.post(
+          Uri.parse(_geminiUrl),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode({
+            "contents": [
+              {
+                "parts": [
+                  {"text": "$_systemPrompt\n\nKategori: ${category ?? 'Genel'}\nKullanıcı Niyeti: $userPrompt"}
+                ]
+              }
+            ],
+            "generationConfig": {
+              "temperature": 0.7,
+              "maxOutputTokens": 450,
+            }
+          }),
+        ).timeout(const Duration(seconds: 8));
+
+        if (response.statusCode == 200) {
+          final data = jsonDecode(response.body);
+          final candidates = data['candidates'] as List?;
+          if (candidates != null && candidates.isNotEmpty) {
+            final text = candidates[0]['content']['parts'][0]['text'] as String;
+            return text.trim();
+          }
+        }
+      } catch (e) {
+        // Hata veya internet yoksa otomatik yerel motora düşer
+      }
+    }
+
+    // 2. Çevrimdışı / Ücretsiz Yerleşik Kural Motoru (Sıfır kesinti, anında yanıt)
+    return _generateOfflineFallback(userPrompt, category);
+  }
+
+  /// Sıfır API maliyetli, internetsiz çalışan akıllı motor
+  static String _generateOfflineFallback(String input, String? category) {
+    final lower = input.toLowerCase();
+
+    if (lower.contains('5 dk') || lower.contains('üşen') || lower.contains('yorgun') || lower.contains('zamanım yok')) {
+      return "Zihninin direncini anlıyorum ve şefkatle karşılıyorum. Büyük dağlar bir günde aşılmaz.\n\n"
+             "⚡ 5 DAKİKALIK DİRENÇSİZ ADIM:\n"
+             "Görevi sadece başlatıp bırakmak üzere kronometreyi 5 dakikaya ayarla. Yalnızca ilk sayfayı aç veya tek bir cümle yaz. 5 dakika dolunca durmakta tamamen özgürsün.";
+    }
+
+    if (lower.contains('afirmasyon') || lower.contains('niyet') || lower.contains('432hz')) {
+      return "✨ GÜNÜN NÖRAL AFİRMASYONU (432Hz Rezonansı):\n"
+             "\"Zihnim dingin, niyetim berrak. Bugün attığım her 15 dakikalık bilinçli adım, 2027 vizyonumun mimarisini güvenle inşa ediyor. Ruhum huzurda, gücüm akışta.\"";
+    }
+
+    if (category == 'career' || lower.contains('iş') || lower.contains('kariyer') || lower.contains('para')) {
+      return "🎯 SMART HEDEF ANALİZİ:\n"
+             "• 3 Aylık Odak: Portföyünü yenile ve haftada 2 uluslararası temas kur.\n"
+             "• Bugünkü 15 Dk: Portföyündeki en güçlü çalışmayı seç ve 3 cümlelik başarı özetini not al.\n\n"
+             "Veira Fısıltısı: Netlik gücü doğurur; karmaşa ise ertelemeyi.";
+    }
+
+    return "🎯 SMART HEDEF DÖNÜŞÜMÜ:\n"
+           "• 3 Aylık Kilometre Taşı: Bu büyük niyetini 90 günlük somut bir alışkanlığa böl.\n"
+           "• Bugünkü 15 Dakikalık Tek Eylem: İlgili çalışma alanını hazırla ve ilk küçük notu defterine kaydet.\n\n"
+           "✨ Hatırla: Sinir sistemin bir kerede büyük hamleleri değil, her gün tekrarlanan 15 dakikalık tutarlı adımları kalıcı kimliğe dönüştürür.";
+  }
+}
+```
+
+---
+
+## 4. RIVERPOD DURUM YÖNETİCİSİ (`ai_coach_provider.dart`)
+
+### Dosya Yolu: `lib/features/ai_coach/providers/ai_coach_provider.dart`
+```dart
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../domain/ai_coach_model.dart';
+import '../../../core/services/free_ai_service.dart';
+
+class AiCoachState {
+  final List<AiMessage> messages;
+  final bool isThinking;
+
+  const AiCoachState({
+    required this.messages,
+    this.isThinking = false,
+  });
+
+  AiCoachState copyWith({
+    List<AiMessage>? messages,
+    bool? isThinking,
+  }) {
+    return AiCoachState(
+      messages: messages ?? this.messages,
+      isThinking: isThinking ?? this.isThinking,
+    );
+  }
+}
+
+final aiCoachProvider = StateNotifierProvider<AiCoachNotifier, AiCoachState>((ref) {
+  return AiCoachNotifier();
+});
+
+class AiCoachNotifier extends StateNotifier<AiCoachState> {
+  AiCoachNotifier()
+      : super(
+          AiCoachState(
+            messages: [
+              AiMessage(
+                id: 'welcome-1',
+                text:
+                    'Selam Selin ✨ Ben Veira AI Zihinsel Koçun. Soyut niyetlerini 3 aylık SMART hedeflere ve bugünkü 15 dakikalık tek göreve dönüştürmek için buradayım. Bugün aklında ne var?',
+                type: AiMessageType.coach,
+                timestamp: DateTime.now(),
+              ),
+            ],
+          ),
+        );
+
+  Future<void> sendMessage(String text, {String? category}) async {
+    if (text.trim().isEmpty) return;
+
+    final userMsg = AiMessage(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      text: text,
+      type: AiMessageType.user,
+      timestamp: DateTime.now(),
+    );
+
+    state = state.copyWith(
+      messages: [...state.messages, userMsg],
+      isThinking: true,
+    );
+
+    final aiReplyText = await FreeAiService.generateMindGuidance(
+      userPrompt: text,
+      category: category,
+    );
+
+    final coachMsg = AiMessage(
+      id: (DateTime.now().millisecondsSinceEpoch + 1).toString(),
+      text: aiReplyText,
+      type: AiMessageType.coach,
+      timestamp: DateTime.now(),
+    );
+
+    state = state.copyWith(
+      messages: [...state.messages, coachMsg],
+      isThinking: false,
+    );
+  }
+}
+```

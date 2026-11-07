@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "secondary-fixed-dim": "#ddb7ff", "tertiary-container": "#006b71", "error": "#ffb4ab", "on-background": "#e6dff5", "on-primary-container": "#e6d4ff", "primary-fixed-dim": "#d5baff", "on-tertiary": "#00373a", "surface-container-low": "#1c1a29", "on-surface": "#e6dff5", "on-secondary-fixed": "#2c0051", "on-tertiary-container": "#04f2fe", "secondary": "#ddb7ff", "inverse-surface": "#e6dff5", "tertiary": "#00dce6", "on-primary-fixed-variant": "#5e00c1", "on-secondary-container": "#d6a9ff", "outline-variant": "#4b4356", "secondary-container": "#6f00be", "on-secondary": "#490080", "on-tertiary-fixed": "#002022", "on-primary": "#42008a", "on-secondary-fixed-variant": "#6900b3", "primary": "#d5baff", "surface": "#141120", "inverse-primary": "#7d00fa", "surface-dim": "#141120", "on-error": "#690005", "inverse-on-surface": "#312e3f", "surface-container-highest": "#363343", "on-error-container": "#ffdad6", "surface-bright": "#3a3748", "surface-variant": "#363343", "on-surface-variant": "#cdc2da", "surface-container-lowest": "#0f0c1b", "primary-container": "#7f00ff", "background": "#141120", "secondary-fixed": "#f0dbff", "surface-container": "#201e2d", "on-primary-fixed": "#270057", "on-tertiary-fixed-variant": "#004f53", "error-container": "#93000a", "outline": "#978da3", "tertiary-fixed": "#6ff6ff", "surface-container-high": "#2b2838", "surface-tint": "#d5baff", "tertiary-fixed-dim": "#00dce6", "primary-fixed": "#ecdcff" }, borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" }, spacing: { "space-md": "1.25rem", "space-lg": "2rem", "margin-lg": "4rem", "space-sm": "0.75rem", "gutter": "1.5rem", "margin": "2rem", "gutter-sm": "1rem", "margin-sm": "1.25rem", "space-xl": "3.5rem", "gutter-lg": "2.5rem", "space-xs": "0.375rem" }, fontFamily: { "body-lg": ["Manrope"], "headline-lg": ["EB Garamond"], "headline-xl-mobile": ["EB Garamond"], "headline-sm": ["EB Garamond"], "headline-md": ["EB Garamond"], "body-xl": ["Manrope"], "body-md": ["Manrope"], "display-lg-mobile": ["EB Garamond"], "body-sm": ["Manrope"], "label-lg": ["Manrope"], "label-sm": ["Manrope"], "display-lg": ["EB Garamond"], "label-md": ["Manrope"], "headline-xl": ["EB Garamond"] }, fontSize: { "body-lg": ["1.125rem", { lineHeight: "1.75rem", letterSpacing: "0em", fontWeight: "400" }], "headline-lg": ["2.25rem", { lineHeight: "2.75rem", letterSpacing: "0em", fontWeight: "500" }], "headline-xl-mobile": ["2.25rem", { lineHeight: "2.625rem", letterSpacing: "-0.01em", fontWeight: "400" }], "headline-sm": ["1.375rem", { lineHeight: "1.875rem", letterSpacing: "0.01em", fontWeight: "600" }], "headline-md": ["1.75rem", { lineHeight: "2.25rem", letterSpacing: "0em", fontWeight: "500" }], "body-xl": ["1.25rem", { lineHeight: "1.875rem", letterSpacing: "-0.01em", fontWeight: "400" }], "body-md": ["1rem", { lineHeight: "1.5rem", letterSpacing: "0em", fontWeight: "400" }], "display-lg-mobile": ["2.75rem", { lineHeight: "3.125rem", letterSpacing: "-0.01em", fontWeight: "400" }], "body-sm": ["0.875rem", { lineHeight: "1.25rem", letterSpacing: "0.005em", fontWeight: "400" }], "label-lg": ["0.875rem", { lineHeight: "1.125rem", letterSpacing: "0.04em", fontWeight: "600" }], "label-sm": ["0.6875rem", { lineHeight: "0.875rem", letterSpacing: "0.12em", fontWeight: "700" }], "display-lg": ["4.5rem", { lineHeight: "4.75rem", letterSpacing: "-0.02em", fontWeight: "400" }], "label-md": ["0.75rem", { lineHeight: "1rem", letterSpacing: "0.08em", fontWeight: "600" }], "headline-xl": ["3.25rem", { lineHeight: "3.625rem", letterSpacing: "-0.015em", fontWeight: "400" }] } } } };</script><style>@layer base{*,::before,::after{box-sizing:border-box;}html,body{width:100%;margin:0;padding:0;background-color:#141120;overflow-x:hidden;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+    @keyframes spinClockwise {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes spinCounter {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    @keyframes celestialBreathingCore {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 20px rgba(0, 220, 230, 0.45), 0 0 40px rgba(127, 0, 255, 0.35), inset 0 0 14px rgba(255, 224, 92, 0.3);
+        border-color: rgba(0, 242, 254, 0.85);
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.05);
+        box-shadow: 0 0 38px rgba(255, 224, 92, 0.65), 0 0 60px rgba(221, 183, 255, 0.5), inset 0 0 22px rgba(0, 242, 254, 0.45);
+        border-color: rgba(255, 224, 92, 0.95);
+      }
+    }
+    @keyframes orbitStarsRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes starTwinkleGlow {
+      0%, 100% { transform: scale(0.85); opacity: 0.6; }
+      50% { transform: scale(1.25); opacity: 1; filter: drop-shadow(0 0 6px #ffe05c); }
+    }
+    @keyframes laserPulse {
+      0%, 100% { opacity: 0.75; stroke-width: 1.5px; }
+      50% { opacity: 1; stroke-width: 2.4px; filter: drop-shadow(0 0 8px #00f0fc); }
+    }
+    @keyframes shimmerGold {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    @keyframes eqWave {
+      0%, 100% { height: 4px; }
+      50% { height: 26px; }
+    }
+    .anim-spin-cw { animation: spinClockwise 54s linear infinite; }
+    .anim-spin-ccw { animation: spinCounter 40s linear infinite; }
+    .anim-core-breathe { animation: celestialBreathingCore 3.6s ease-in-out infinite; }
+    .anim-orbit-stars { animation: orbitStarsRotate 22s linear infinite; }
+    .anim-star-twinkle { animation: starTwinkleGlow 2.4s ease-in-out infinite; }
+    .laser-line-anim { animation: laserPulse 2.8s ease-in-out infinite; }
+    .gold-shimmer {
+      background: linear-gradient(90deg, transparent, rgba(255, 224, 92, 0.35), transparent);
+      background-size: 200% 100%;
+      animation: shimmerGold 3s infinite linear;
+    }
+    .playing .eq-bar:nth-child(1) { animation: eqWave 0.7s infinite ease-in-out; }
+    .playing .eq-bar:nth-child(2) { animation: eqWave 0.9s infinite ease-in-out 0.1s; }
+    .playing .eq-bar:nth-child(3) { animation: eqWave 0.6s infinite ease-in-out 0.2s; }
+    .playing .eq-bar:nth-child(4) { animation: eqWave 1.1s infinite ease-in-out 0.15s; }
+    .playing .eq-bar:nth-child(5) { animation: eqWave 0.8s infinite ease-in-out 0.25s; }
+    .playing .eq-bar:nth-child(6) { animation: eqWave 1.2s infinite ease-in-out 0.05s; }
+    .playing .eq-bar:nth-child(7) { animation: eqWave 0.65s infinite ease-in-out 0.3s; }
+    .playing .eq-bar:nth-child(8) { animation: eqWave 1.0s infinite ease-in-out 0.18s; }
+    .playing .eq-bar:nth-child(9) { animation: eqWave 0.75s infinite ease-in-out 0.12s; }
+    .playing .eq-bar:nth-child(10) { animation: eqWave 1.15s infinite ease-in-out 0.28s; }
+    .playing .eq-bar:nth-child(11) { animation: eqWave 0.85s infinite ease-in-out 0.08s; }
+    .playing .eq-bar:nth-child(12) { animation: eqWave 0.95s infinite ease-in-out 0.22s; }
+    .stardust-particle {
+      position: absolute;
+      pointer-events: none;
+      border-radius: 9999px;
+      animation: flyParticle 1.2s forwards ease-out;
+    }
+    @keyframes flyParticle {
+      0% { transform: translate(0, 0) scale(1); opacity: 1; }
+      100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+    }
+  </style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style></head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen antialiased selection:bg-primary selection:text-on-primary relative overflow-x-hidden w-full"><!-- 1. ARKA PLAN VE CANLI SHADER KATMANI (ANIMATION_124) --><div class="fixed inset-0 bg-[#0a0715]/75 backdrop-blur-[1px] pointer-events-none -z-10"></div><!-- 2. ÜST BAR & KOZMİK İKLİM BİLGİSİ --><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-2xl border-b border-primary/15 shadow-[0_4px_30px_rgba(0,0,0,0.65)]"><div class="max-w-[420px] mx-auto h-16 px-3 sm:px-4 flex items-center justify-between"><div class="flex items-center gap-2 min-w-0"><button aria-label="Celestial Observatory" class="w-9 h-9 shrink-0 flex items-center justify-center rounded-full bg-secondary-container/50 text-secondary border border-secondary/30 shadow-[0_0_14px_rgba(221,183,255,0.35)] transition-transform active:scale-95"><span class="material-symbols-outlined text-[20px] text-[#ffe05c]" style="text-shadow: 0 0 10px rgba(255,224,92,0.8);">auto_awesome</span></button><div class="flex flex-col min-w-0"><div class="flex items-center gap-1.5"><span class="font-headline-sm text-base text-on-surface font-semibold tracking-wide truncate">Astro-Vizyon</span><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse shadow-[0_0_8px_#00dce6] shrink-0"></span></div><span class="font-label-sm text-[9px] uppercase tracking-widest text-[#ffd369]/90 font-semibold truncate">Veira Cosmos Telemetrisi</span></div></div><div class="flex items-center gap-2 shrink-0"><div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high/90 border border-secondary/25 shadow-inner"><span class="text-xs">🌖</span><div class="flex flex-col text-left leading-tight"><span class="font-label-sm text-[9.5px] text-on-surface font-medium whitespace-nowrap">Büyüyen Hilal</span><span class="font-label-sm text-[8.5px] text-[#00f2fe] font-semibold whitespace-nowrap">Boğa %38 • 528Hz</span></div></div><div class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#ffe05c] via-secondary to-primary p-0.5 shadow-[0_0_14px_rgba(255,224,92,0.45)] cursor-pointer active:scale-95 transition-transform shrink-0"><div class="w-full h-full rounded-full bg-surface-container-lowest flex items-center justify-center overflow-hidden"><span class="material-symbols-outlined text-primary text-[17px]">account_circle</span></div></div></div></div></header><main class="flex-1 flex flex-col items-center relative w-full pt-20 pb-28 min-h-screen"><div class="flex flex-col w-full max-w-[420px] mx-auto px-3.5 space-y-3.5 pb-6">
+<!-- Kozmik İklim Dokunulabilir Telemetri Paneli (Taşma Çözüldü) -->
+<div class="w-full rounded-xl bg-surface-container-low/85 border border-primary/25 backdrop-blur-xl p-3 shadow-[0_12px_36px_rgba(0,0,0,0.65)] relative overflow-hidden transition-all duration-300" id="cosmic-climate-card">
+<div class="flex items-center justify-between gap-2">
+<div class="flex items-center gap-2 min-w-0 flex-1">
+<span class="relative flex h-2.5 w-2.5 shrink-0">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00f2fe] opacity-80"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00f2fe] shadow-[0_0_8px_#00f2fe]"></span>
+</span>
+<span class="font-label-sm text-[10.5px] uppercase tracking-wider text-[#ffd369] font-bold truncate">Kozmik İklim: %98 Hizalanma</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-container/50 text-[#00f2fe] font-label-sm text-[9px] tracking-wider font-bold border border-tertiary/30 shadow-[0_0_10px_rgba(0,220,230,0.25)] shrink-0 uppercase">CANLI TELEMETRİ</span>
+</div>
+<div class="mt-2.5 grid grid-cols-3 gap-1.5 pt-2 border-t border-outline-variant/30 text-center">
+<div class="p-1.5 rounded-lg bg-surface-container/70 border border-secondary/15 hover:border-[#ffd369]/50 transition-all cursor-pointer">
+<span class="font-label-sm text-[9px] text-[#ffd369] block uppercase tracking-wider font-semibold truncate">Güneş (10. Ev)</span>
+<span class="font-label-md text-xs font-bold text-on-surface">Boğa ♉︎</span>
+</div>
+<div class="p-1.5 rounded-lg bg-surface-container/70 border border-tertiary/15 hover:border-tertiary/50 transition-all cursor-pointer">
+<span class="font-label-sm text-[9px] text-tertiary block uppercase tracking-wider font-semibold truncate">Ay (4. Ev)</span>
+<span class="font-label-md text-xs font-bold text-on-surface">Balık ♓︎</span>
+</div>
+<div class="p-1.5 rounded-lg bg-surface-container/70 border border-primary/15 hover:border-primary/50 transition-all cursor-pointer">
+<span class="font-label-sm text-[9px] text-primary block uppercase tracking-wider font-semibold truncate">Yükselen (1. Ev)</span>
+<span class="font-label-md text-xs font-bold text-on-surface">Akrep ♏︎</span>
+</div>
+</div>
+</div>
+<!-- 3. HAREKETLİ VE İNTERAKTİF ASTROLOJİK JİROSKOP & ZODYAK ÇARKI (ASTROLABE) -->
+<div class="w-full rounded-2xl bg-surface-container/85 border border-secondary/30 backdrop-blur-2xl p-3.5 shadow-[0_24px_56px_-8px_rgba(5,2,14,0.95)] relative overflow-hidden flex flex-col items-center">
+<div class="absolute -top-20 left-1/2 -translate-x-1/2 w-72 h-72 bg-gradient-to-b from-[#7f00ff]/30 via-[#006b71]/15 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+<!-- Temiz, Lüks ve Kusursuz Başlık Alanı (ASTRO_O Karmaşası Kaldırıldı) -->
+<div class="w-full flex items-center justify-between mb-2 z-10 px-0.5">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-[20px] text-[#ffe05c] drop-shadow-[0_0_8px_rgba(255,224,92,0.6)] shrink-0">explore</span>
+<div class="flex flex-col min-w-0">
+<h2 class="font-headline-sm text-sm text-on-surface font-semibold tracking-wide truncate">Astrolojik Jiroskop</h2>
+<span class="font-label-sm text-[9px] text-[#ffe05c]/90 uppercase tracking-widest font-semibold truncate">Veira Kozmik Pusula</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<button class="px-2.5 py-1 rounded-full bg-secondary-container/50 border border-secondary/40 text-secondary font-label-sm text-[10px] font-semibold hover:bg-secondary-container active:scale-95 transition-all shadow-[0_0_10px_rgba(221,183,255,0.2)] flex items-center gap-1 cursor-pointer" id="astrolabe-spin-step-btn"><span class="text-[11px]">↻</span> 30° Döndür</button>
+<span class="px-2 py-0.5 rounded-full bg-[#ffe05c]/10 text-[#ffe05c] font-label-sm text-[9.5px] font-bold border border-[#ffe05c]/35 shadow-[0_0_8px_rgba(255,224,92,0.2)] uppercase">360° Aktif</span>
+</div>
+</div>
+<!-- Astrolabe 360 SVG Container & Hipnotik Çekirdek -->
+<div class="relative w-[292px] h-[292px] sm:w-[310px] sm:h-[310px] flex items-center justify-center my-1 select-none" id="astrolabe-viewport">
+<div class="absolute inset-0 rounded-full border border-dashed border-[#ffe05c]/30 anim-spin-cw pointer-events-none shadow-[0_0_24px_rgba(255,224,92,0.15)]"></div>
+<div class="absolute inset-2.5 rounded-full border border-dotted border-tertiary/35 anim-spin-ccw pointer-events-none"></div>
+<div class="absolute inset-6 rounded-full border border-primary/20 anim-spin-cw pointer-events-none" style="animation-duration: 72s;"></div>
+<svg class="w-full h-full cursor-grab active:cursor-grabbing select-none" id="astrolabe-svg" viewbox="0 0 320 320">
+<defs>
+<radialgradient cx="50%" cy="50%" id="celestialCoreDark" r="50%">
+<stop offset="0%" stop-color="#2c0051" stop-opacity="0.98"></stop>
+<stop offset="65%" stop-color="#141120" stop-opacity="0.95"></stop>
+<stop offset="100%" stop-color="#070510" stop-opacity="1"></stop>
+</radialgradient>
+<lineargradient id="laserTrineGold" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#ffe05c" stop-opacity="0.95"></stop>
+<stop offset="50%" stop-color="#00f2fe" stop-opacity="0.85"></stop>
+<stop offset="100%" stop-color="#7f00ff" stop-opacity="0.75"></stop>
+</lineargradient>
+<lineargradient id="laserSextileCyan" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#00f2fe" stop-opacity="0.95"></stop>
+<stop offset="100%" stop-color="#ddb7ff" stop-opacity="0.4"></stop>
+</lineargradient>
+<filter id="glowGoldNode">
+<fegaussianblur result="coloredBlur" stddeviation="3"></fegaussianblur>
+<femerge>
+<femergenode in="coloredBlur"></femergenode>
+<femergenode in="coloredBlur"></femergenode>
+<femergenode in="SourceGraphic"></femergenode>
+</femerge>
+</filter>
+<filter id="glowCyanLaser">
+<fegaussianblur result="blur" stddeviation="2.5"></fegaussianblur>
+<femerge>
+<femergenode in="blur"></femergenode>
+<femergenode in="SourceGraphic"></femergenode>
+</femerge>
+</filter>
+</defs>
+<circle cx="160" cy="160" fill="none" opacity="0.45" r="156" stroke="#ffe05c" stroke-dasharray="2,6" stroke-width="1.2"></circle>
+<circle cx="160" cy="160" fill="none" opacity="0.75" r="144" stroke="#ddb7ff" stroke-width="1.4"></circle>
+<circle cx="160" cy="160" fill="url(#celestialCoreDark)" r="128"></circle>
+<circle cx="160" cy="160" fill="none" opacity="0.6" r="128" stroke="#00f2fe" stroke-width="1"></circle>
+<g class="transition-transform duration-700 ease-out" id="astrolabe-rotor" style="transform-origin: 160px 160px;">
+<g opacity="0.32" stroke="#ddb7ff" stroke-width="0.9">
+<line x1="160" x2="160" y1="16" y2="304"></line>
+<line x1="16" x2="304" y1="160" y2="160"></line>
+<line x1="58" x2="262" y1="58" y2="262"></line>
+<line x1="58" x2="262" y1="262" y2="58"></line>
+<line x1="32" x2="288" y1="107" y2="213"></line>
+<line x1="32" x2="288" y1="213" y2="107"></line>
+</g>
+<polygon class="laser-line-anim" fill="#00dce6" fill-opacity="0.12" filter="url(#glowCyanLaser)" id="laser-polygon-trine" points="160,42 250,230 70,225" stroke="url(#laserTrineGold)" stroke-width="2.2"></polygon>
+<polygon fill="none" opacity="0.45" points="160,278 70,95 250,95" stroke="#ddb7ff" stroke-dasharray="3,3" stroke-width="1.2"></polygon>
+<line class="laser-line-anim" id="laser-sun-ray" stroke="url(#laserSextileCyan)" stroke-dasharray="4,3" stroke-width="1.8" x1="160" x2="260" y1="42" y2="160"></line>
+<line class="laser-line-anim" id="laser-moon-ray" opacity="0.9" stroke="#00f2fe" stroke-width="1.5" x1="70" x2="260" y1="120" y2="160"></line>
+<line class="laser-line-anim" id="laser-rising-ray" opacity="0.9" stroke="#ffe05c" stroke-width="1.8" x1="160" x2="160" y1="160" y2="272"></line>
+<text fill="#ffd369" font-family="EB Garamond" font-size="14" font-weight="bold" id="glyph-taurus" text-anchor="middle" x="160" y="30">♉︎</text>
+<text fill="#cdc2da" font-size="11" text-anchor="middle" x="226" y="49">♊︎</text>
+<text fill="#cdc2da" font-size="11" text-anchor="middle" x="276" y="98">♋︎</text>
+<text fill="#ddb7ff" font-size="11" text-anchor="middle" x="295" y="165">♌︎</text>
+<text fill="#cdc2da" font-size="11" text-anchor="middle" x="276" y="232">♍︎</text>
+<text fill="#cdc2da" font-size="11" text-anchor="middle" x="226" y="282">♎︎</text>
+<text fill="#00dce6" font-family="EB Garamond" font-size="14" font-weight="bold" id="glyph-scorpio" text-anchor="middle" x="160" y="299">♏︎</text>
+<text fill="#cdc2da" font-size="11" text-anchor="middle" x="94" y="282">♐︎</text>
+<text fill="#cdc2da" font-size="11" text-anchor="middle" x="44" y="232">♑︎</text>
+<text fill="#cdc2da" font-size="11" text-anchor="middle" x="25" y="165">♒︎</text>
+<text fill="#00f2fe" font-family="EB Garamond" font-size="14" font-weight="bold" id="glyph-pisces" text-anchor="middle" x="44" y="98">♓︎</text>
+<text fill="#cdc2da" font-size="11" text-anchor="middle" x="94" y="49">♈︎</text>
+<g class="cursor-pointer" id="node-sun"><circle cx="160" cy="42" fill="#ffd369" filter="url(#glowGoldNode)" r="9" stroke="#7f00ff" stroke-width="2.5"></circle><text fill="#270057" font-size="10" font-weight="bold" text-anchor="middle" x="160" y="45.5">☉</text></g>
+<g class="cursor-pointer" id="node-moon"><circle cx="70" cy="115" fill="#04f2fe" filter="url(#glowCyanLaser)" r="8" stroke="#00373a" stroke-width="2"></circle><text fill="#002022" font-size="9" font-weight="bold" text-anchor="middle" x="70" y="118">☽</text></g>
+<g class="cursor-pointer" id="node-rising"><circle cx="160" cy="272" fill="#d5baff" filter="url(#glowGoldNode)" r="8.5" stroke="#42008a" stroke-width="2.2"></circle><text fill="#2c0051" font-size="9.5" font-weight="bold" text-anchor="middle" x="160" y="275.5">🏹</text></g>
+<circle cx="250" cy="120" fill="#f0dbff" r="5.5" stroke="#ddb7ff" stroke-width="1.4"></circle>
+<text fill="#2c0051" font-size="7.5" font-weight="bold" text-anchor="middle" x="250" y="123">♀</text>
+</g>
+<circle cx="160" cy="160" fill="none" opacity="0.6" r="54" stroke="#ffd369" stroke-dasharray="3,3" stroke-width="1.2"></circle>
+<circle cx="160" cy="160" fill="none" opacity="0.5" r="44" stroke="#00dce6" stroke-width="1"></circle>
+</svg>
+<!-- Geliştirilmiş ve Hipnotik Nefes Alan Doğum Çekirdeği & Yörüngesel Yıldızlar -->
+<div class="absolute left-1/2 top-1/2 w-[148px] h-[148px] pointer-events-none anim-orbit-stars -translate-x-1/2 -translate-y-1/2 z-20">
+<span class="absolute top-0 left-1/2 -translate-x-1/2 text-[#ffe05c] anim-star-twinkle text-[11px] drop-shadow-[0_0_6px_#ffe05c]">✦</span>
+<span class="absolute bottom-0 left-1/2 -translate-x-1/2 text-[#00f2fe] anim-star-twinkle text-[10px] drop-shadow-[0_0_6px_#00f2fe]" style="animation-delay: 0.8s;">✦</span>
+<span class="absolute left-0 top-1/2 -translate-y-1/2 text-[#ffffff] anim-star-twinkle text-[9px] drop-shadow-[0_0_5px_#ffffff]" style="animation-delay: 1.4s;">✧</span>
+<span class="absolute right-0 top-1/2 -translate-y-1/2 text-[#ddb7ff] anim-star-twinkle text-[10px] drop-shadow-[0_0_6px_#ddb7ff]" style="animation-delay: 0.4s;">✦</span>
+</div>
+<button aria-label="Doğum Çekirdeği Zirve Pencere" class="absolute left-1/2 top-1/2 w-[98px] h-[98px] rounded-full flex flex-col items-center justify-center p-1 text-center bg-gradient-to-tr from-[#2c0051]/95 via-[#1c1a29]/95 to-[#00373a]/90 border-2 border-[#00f2fe] backdrop-blur-md anim-core-breathe active:scale-95 transition-transform z-30 cursor-pointer shadow-[0_0_25px_rgba(0,220,230,0.5)]" id="core-orbit-btn">
+<span class="font-label-sm text-[7.5px] uppercase tracking-widest text-[#ffe05c] font-black drop-shadow block leading-none">DOĞUM ÇEKİRDEĞİ</span>
+<span class="font-headline-sm text-[12px] leading-tight text-on-surface font-extrabold my-0.5 tracking-tight block">14:00 - 16:30</span>
+<span class="font-label-sm text-[7.5px] text-[#00f2fe] uppercase tracking-wider font-extrabold leading-none block">ZİRVE PENCERE</span>
+</button>
+</div>
+<div class="flex items-center gap-1.5 mb-2.5 text-on-surface-variant font-label-sm text-xs">
+<span class="material-symbols-outlined text-[15px] text-[#ffe05c] animate-pulse">swipe</span>
+<span class="truncate">Çarkı çevirerek açıları ve transitleri senkronize et</span>
+</div>
+<!-- 3 Büyük Burç İnteraktif Sekme Kartları -->
+<div class="w-full grid grid-cols-1 gap-2 pt-1" id="big-three-tabs">
+<!-- Tab 1: Güneş Boğa (Aktif Altın Çerçeveli) -->
+<div class="big-three-item relative overflow-hidden w-full rounded-DEFAULT bg-surface-container-highest/90 border-2 border-[#ffe05c] p-2.5 flex items-center justify-between cursor-pointer shadow-[0_0_20px_rgba(255,224,92,0.35)] transition-all duration-300" data-target="sun">
+<div class="absolute inset-0 gold-shimmer pointer-events-none opacity-40"></div>
+<div class="flex items-center gap-2.5 relative z-10 min-w-0">
+<div class="w-9 h-9 shrink-0 rounded-full bg-secondary-container/50 border border-[#ffe05c]/60 flex items-center justify-center text-[#ffe05c] shadow-[0_0_12px_rgba(255,224,92,0.4)]">
+<span class="font-headline-sm text-base leading-none font-bold">☉</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-xs font-bold text-on-surface truncate">Güneş: Boğa</span>
+<span class="px-1.5 py-0.2 rounded-full bg-secondary-container font-label-sm text-[9px] text-on-secondary-container font-semibold shrink-0">10. Ev</span>
+<span class="w-1.5 h-1.5 rounded-full bg-[#ffe05c] shadow-[0_0_6px_#ffe05c] shrink-0"></span>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant truncate">Como Gölü Kariyer &amp; Egemenlik Manifestasyonu</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[#ffe05c] text-[18px] item-arrow relative z-10 shrink-0">arrow_forward_ios</span>
+</div>
+<!-- Tab 2: Ay Balık -->
+<div class="big-three-item relative overflow-hidden w-full rounded-DEFAULT bg-surface-container-high/60 border border-outline-variant/30 p-2.5 flex items-center justify-between cursor-pointer hover:border-tertiary transition-all duration-300 shadow-sm" data-target="moon">
+<div class="flex items-center gap-2.5 relative z-10 min-w-0">
+<div class="w-9 h-9 shrink-0 rounded-full bg-tertiary-container/40 border border-tertiary/40 flex items-center justify-center text-[#00f2fe] shadow-[0_0_10px_rgba(0,242,254,0.3)]">
+<span class="font-headline-sm text-base leading-none font-bold">☽</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-xs font-bold text-on-surface truncate">Ay: Balık</span>
+<span class="px-1.5 py-0.2 rounded-full bg-tertiary-container/60 font-label-sm text-[9px] text-[#00f2fe] font-semibold shrink-0">4. Ev</span>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant truncate">432Hz Derin Dinginlik &amp; Duygusal Sığınak</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] item-arrow relative z-10 shrink-0">arrow_forward_ios</span>
+</div>
+<!-- Tab 3: Yükselen Akrep -->
+<div class="big-three-item relative overflow-hidden w-full rounded-DEFAULT bg-surface-container-high/60 border border-outline-variant/30 p-2.5 flex items-center justify-between cursor-pointer hover:border-primary transition-all duration-300 shadow-sm" data-target="rising">
+<div class="flex items-center gap-2.5 relative z-10 min-w-0">
+<div class="w-9 h-9 shrink-0 rounded-full bg-primary-container/40 border border-primary/40 flex items-center justify-center text-primary shadow-[0_0_10px_rgba(213,186,255,0.3)]">
+<span class="font-headline-sm text-base leading-none font-bold">🏹</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-xs font-bold text-on-surface truncate">Yükselen: Akrep</span>
+<span class="px-1.5 py-0.2 rounded-full bg-primary-container/60 font-label-sm text-[9px] text-on-primary-container font-semibold shrink-0">1. Ev</span>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant truncate">Nöral Dönüşüm &amp; 15 Dk Çelik İrade</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] item-arrow relative z-10 shrink-0">arrow_forward_ios</span>
+</div>
+</div>
+<!-- Seçilen Gezegen Aktif Telemetri Detayı -->
+<div class="w-full mt-2.5 p-3 rounded-xl bg-surface-container-lowest/85 border border-[#ffd369]/30 flex items-center justify-between shadow-[0_4px_16px_rgba(0,0,0,0.5)] transition-all" id="planet-detail-strip">
+<div class="flex items-center gap-2 min-w-0 flex-1 mr-2">
+<span class="material-symbols-outlined text-[#ffe05c] text-[19px] drop-shadow shrink-0" id="detail-icon">flare</span>
+<div class="text-left leading-tight min-w-0 flex-1">
+<span class="font-label-sm text-[10px] font-bold text-[#ffd369] block truncate uppercase" id="detail-title">GÜNEŞ ETKİLEŞİMİ AKTİF: BOĞA 10. EV</span>
+<p class="font-body-sm text-[9.5px] text-on-surface-variant mt-0.5 line-clamp-2" id="detail-sub">Zodyak lazeri 10. tepe noktası Midheaven ile rezonansta. Como Gölü Kariyer manifestasyonu tetiklendi.</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-[#ffd369]/15 font-label-sm text-[8.5px] text-[#ffe05c] font-extrabold border border-[#ffd369]/30 shadow-sm shrink-0 whitespace-nowrap" id="detail-badge">100% REZONANS</span>
+</div>
+</div>
+<!-- 5. GÜNÜN 15 DAKİKALIK GÖKSEL MİKRO-EYLEMİ (VISUS-ACTION KÖPRÜSÜ) -->
+<div class="w-full rounded-2xl bg-gradient-to-b from-surface-container-high via-surface-container to-surface-container-low border border-secondary/35 p-3.5 shadow-[0_16px_40px_rgba(111,0,190,0.35)] relative overflow-hidden" id="micro-action-card">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2 min-w-0 flex-1 mr-2">
+<span class="w-2 h-2 rounded-full bg-[#ffe05c] animate-ping shrink-0"></span>
+<span class="font-label-sm text-[11px] text-[#ffd369] uppercase tracking-wider font-extrabold truncate">Günün 15 Dakikalık Göksel Adımı</span>
+</div>
+<div class="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-highest border border-tertiary/40 shadow-inner shrink-0">
+<span class="material-symbols-outlined text-[13px] text-[#00f2fe] animate-spin" style="animation-duration: 8s;">timer</span>
+<span class="font-mono text-[11px] font-bold text-[#00f2fe] tracking-wider" id="countdown-timer">14:42</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-xs text-secondary-fixed-dim font-semibold mb-1">
+<span class="material-symbols-outlined text-[14px] text-[#00f2fe]">satellite_alt</span>
+<span class="truncate">Mars &amp; Boğa Hizalanması</span>
+</div>
+<h3 class="font-headline-sm text-base text-on-surface font-semibold mb-1.5">
+      İtalyanca Vize Portföyünü Mühürle
+</h3>
+<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed mb-3.5">
+      Merkür retrosu gölgesine girmeden önceki en berrak zihinsel frekans aralığı. Como Gölü vizyon panosu ve İsviçre portföyü için niyet mektubunun son paragrafını onaylayın.
+</p>
+<div class="relative w-full" id="seal-btn-wrapper">
+<button class="w-full h-11 rounded-full bg-gradient-to-r from-secondary-container via-primary-container to-secondary flex items-center justify-center gap-2 text-on-primary font-label-lg text-xs font-bold shadow-[0_0_24px_rgba(221,183,255,0.45)] active:scale-95 hover:brightness-110 transition-all cursor-pointer relative overflow-hidden" id="seal-cosmic-btn">
+<span class="material-symbols-outlined text-[18px]" id="seal-btn-icon">verified</span>
+<span class="tracking-wide" id="seal-btn-text">✦ Göksel Hizalanmayı Mühürle ✦</span>
+</button>
+</div>
+</div>
+<!-- 4. 12 EV NÖRO-KÖPRÜSÜ -->
+<div class="w-full space-y-2">
+<div class="flex items-center justify-between px-1">
+<div>
+<h3 class="font-headline-sm text-base text-on-surface font-semibold">12 Ev Nöro-Köprüsü</h3>
+<p class="font-body-sm text-[11px] text-on-surface-variant">Doğum haritasından Veira vizyon tahtasına akış</p>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high border border-secondary/25 font-label-sm text-[10px] text-[#ffd369] font-bold shadow-sm">
+        3 Aktif Kapı
+</span>
+</div>
+<div class="space-y-2 pt-0.5">
+<!-- Kart 1: 2. Ev -->
+<div class="house-neuro-card w-full rounded-xl bg-surface-container/80 border border-primary/20 backdrop-blur-xl p-2.5 flex items-center gap-3 shadow-md hover:border-[#ffe05c]/60 transition-all cursor-pointer">
+<div class="w-14 h-14 rounded-DEFAULT bg-surface-container-high shrink-0 overflow-hidden relative shadow-inner">
+<img alt="Como Gölü Mülkü Vizyon Panosu" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" data-alt="Cinematic luxury villa over Lake Como Italy during golden hour twilight with deep velvet amethyst reflections and misty mountains in background, 8k hyper-detailed editorial photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByPw1SPYrS7Z8OkvJW_0mj5jbh-asSI0Ar7J5P_cv2GzaWrgGQ2ZMcAyevrWnktM9m1QenvfC3_0LYDT-iCUqrlCvmImHXuf2hgKw_UU21X0YvkGwLvzJAR2tSewuGcseuoxO7co0AFcn3E8s59u4C3kKQo7FpS1DkoEtjxU5-QN1Sk9mm9__QE6yyPM3tz2ZMJmlZY-AXZ0MYOBSzf7HSTsBcWaHLud7qPbdEoAc"/>
+<span class="absolute bottom-1 right-1 font-label-sm text-[9px] bg-surface/90 px-1 py-0.2 rounded text-[#ffd369] font-bold shadow">2. Ev</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-xs text-secondary font-bold truncate">Bolluk &amp; Değerler</span>
+<span class="font-label-sm text-[10px] text-[#00f2fe] font-semibold shrink-0">Boğa Stelyumu</span>
+</div>
+<p class="font-body-md text-xs text-on-surface font-medium truncate mt-0.5">
+            Como Gölü Mülkü &amp; İsviçre Portföyü
+</p>
+<div class="flex items-center justify-between text-[10px] text-on-surface-variant mt-1.5 mb-1">
+<span>Vizyon Panosu Eşleşmesi</span>
+<span class="text-[#ffe05c] font-bold">%85 Uyum</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-gradient-to-r from-primary-container via-secondary to-[#ffe05c] h-1.5 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<!-- Kart 2: 6. Ev -->
+<div class="house-neuro-card w-full rounded-xl bg-surface-container/80 border border-tertiary/20 backdrop-blur-xl p-2.5 flex items-center gap-3 shadow-md hover:border-[#00f2fe]/60 transition-all cursor-pointer">
+<div class="w-14 h-14 rounded-DEFAULT bg-surface-container-high shrink-0 overflow-hidden relative shadow-inner">
+<img alt="528Hz Şafak Ritüeli Vizyon Panosu" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" data-alt="High aesthetic crystal singing bowl meditation space with pure dawn light filtering through sheer curtains, deep purple velvet aura and cyan acoustic frequency patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8mLHdpKhEs3N45kMM63lpyvVHMc2lNm5xUFw4ENQn2q0gZH3_zj5LmRomy3kh9V-i217XlnXSk8v2KUG7UfjdxXS3nXJSk800kgqxdA7bCnzpB5nXSgTKOfGgK3jRxkmpa66EvbvDmmZlYepZmpuzW0RgXM84nzAaPIxc2-Lit9WW_A5W5NYEYOFvOgKLYsg5VV-3ossDGfgYtvER88ZjzivpwrBbzTUFURINfwg"/>
+<span class="absolute bottom-1 right-1 font-label-sm text-[9px] bg-surface/90 px-1 py-0.2 rounded text-[#00f2fe] font-bold shadow">6. Ev</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-xs text-tertiary font-bold truncate">Hücresel Canlılık</span>
+<span class="px-1.5 py-0.2 rounded-full bg-tertiary-container/40 text-[#00f2fe] font-label-sm text-[9px] font-bold shrink-0">Aktif Faz</span>
+</div>
+<p class="font-body-md text-xs text-on-surface font-medium truncate mt-0.5">
+            528Hz Şafak Ritüeli &amp; Oruç Disiplini
+</p>
+<div class="flex items-center justify-between text-[10px] text-on-surface-variant mt-1.5 mb-1">
+<span>Koç Marsı Biyo-Uyum</span>
+<span class="text-[#00f2fe] font-bold">%92 Tamamlandı</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-gradient-to-r from-tertiary-container to-[#00f2fe] h-1.5 rounded-full" style="width: 92%"></div>
+</div>
+</div>
+</div>
+<!-- Kart 3: 10. Ev -->
+<div class="house-neuro-card w-full rounded-xl bg-surface-container/80 border border-primary/20 backdrop-blur-xl p-2.5 flex items-center gap-3 shadow-md hover:border-primary/60 transition-all cursor-pointer">
+<div class="w-14 h-14 rounded-DEFAULT bg-surface-container-high shrink-0 overflow-hidden relative shadow-inner">
+<img alt="Global Nöro-Teknoloji Zirvesi Lansmanı" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" data-alt="Futuristic architectural neuro-technology auditorium keynote stage with holographic celestial graphics, deep obsidian dark theme with violet ambient spotlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmjjPwagQM0UXPnqyhd4wfopjua6rc_z_D6tUYSY-y4co71qOcCBdnt10dRixdx2bOYz4Z2xpCVEPRZUh8mBSm11fzQnRc6rBYyddtZbJhsuT9jwo3GlYVKupHrmhQYLLtw79G3HkukL8bGVfQs6cg024HQQ2_FnvuBEJ2-gm9-C0kh2_FHzZ3G6bQh5MmYF_eXHNULwNxUSq7HR5dRIBb0NZo8przdzhw8FgePqI"/>
+<span class="absolute bottom-1 right-1 font-label-sm text-[9px] bg-surface/90 px-1 py-0.2 rounded text-primary font-bold shadow">10. Ev</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-xs text-primary font-bold truncate">Kariyer Tepe Noktası</span>
+<span class="font-label-sm text-[10px] text-[#ffd369] font-semibold shrink-0">Midheaven MC</span>
+</div>
+<p class="font-body-md text-xs text-on-surface font-medium truncate mt-0.5">
+            Global Nöro-Teknoloji Zirvesi Lansmanı
+</p>
+<div class="flex items-center justify-between text-[10px] text-on-surface-variant mt-1.5 mb-1">
+<span>Egemenlik Manifestasyonu</span>
+<span class="text-primary font-bold">%94 Uyum</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-gradient-to-r from-secondary-container via-primary-container to-[#ffe05c] h-1.5 rounded-full" style="width: 94%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 6. CANLI GEZEGEN TRANSİTLERİ & SOLFEGGIO FREKANSI KONSOLU -->
+<div class="w-full space-y-2">
+<div class="flex items-center justify-between px-1">
+<div>
+<h3 class="font-headline-sm text-base text-on-surface font-semibold">Gezegen Transitleri &amp; Frekans Konsolu</h3>
+<p class="font-body-sm text-[11px] text-on-surface-variant">Anlık göksel pencereler ve Solfeggio titreşimleri</p>
+</div>
+<span class="material-symbols-outlined text-[#ffe05c] text-[20px]" style="text-shadow: 0 0 10px rgba(255,224,92,0.8);">graphic_eq</span>
+</div>
+<!-- Canlı 12-Bant Solfeggio Frekans Konsolu -->
+<div class="w-full rounded-xl bg-surface-container-highest/80 border border-tertiary/30 p-3 flex items-center justify-between backdrop-blur-md shadow-lg" id="frequency-console">
+<div class="flex items-center gap-2.5 min-w-0 flex-1 mr-2">
+<div class="flex items-end gap-0.5 h-6 px-1.5 py-0.5 bg-surface-container-lowest/80 rounded-lg border border-secondary/20 shrink-0" id="audio-eq-container">
+<span class="eq-bar w-0.5 h-2 bg-[#00f2fe] rounded-full"></span>
+<span class="eq-bar w-0.5 h-3 bg-secondary rounded-full"></span>
+<span class="eq-bar w-0.5 h-1 bg-[#ffe05c] rounded-full"></span>
+<span class="eq-bar w-0.5 h-4 bg-[#00f2fe] rounded-full"></span>
+<span class="eq-bar w-0.5 h-2 bg-primary rounded-full"></span>
+<span class="eq-bar w-0.5 h-5 bg-[#ffe05c] rounded-full"></span>
+<span class="eq-bar w-0.5 h-3.5 bg-[#00f2fe] rounded-full"></span>
+<span class="eq-bar w-0.5 h-2 bg-secondary rounded-full"></span>
+<span class="eq-bar w-0.5 h-4.5 bg-[#ffe05c] rounded-full"></span>
+<span class="eq-bar w-0.5 h-2.5 bg-primary rounded-full"></span>
+<span class="eq-bar w-0.5 h-1 bg-[#00f2fe] rounded-full"></span>
+<span class="eq-bar w-0.5 h-3.5 bg-secondary rounded-full"></span>
+</div>
+<div class="min-w-0">
+<span class="font-label-sm text-[11px] font-bold text-on-surface block truncate" id="freq-status-title">Aktif Solfeggio Rezonansı</span>
+<span class="font-label-sm text-[9.5px] text-[#00f2fe] font-medium block truncate" id="freq-status-subtitle">432Hz (Dinginlik) ⇄ 528Hz (Dönüşüm)</span>
+</div>
+</div>
+<button class="px-3 py-1 rounded-full bg-tertiary-container/60 border border-tertiary/50 text-[#00f2fe] font-label-sm text-[11px] font-extrabold active:scale-95 transition-all shadow-[0_0_12px_rgba(0,220,230,0.3)] hover:brightness-110 cursor-pointer flex items-center gap-1 shrink-0" id="listen-frequency-btn">
+<span class="material-symbols-outlined text-[14px]" id="listen-btn-icon">play_arrow</span>
+<span id="listen-btn-label">Dinle</span>
+</button>
+</div>
+<div class="grid grid-cols-1 gap-2">
+<!-- Transit 1: Venüs Trine Jüpiter -->
+<div class="w-full rounded-xl bg-surface-container/80 border border-primary/20 p-3 flex flex-col justify-between backdrop-blur-md hover:border-[#ffd369]/40 transition-all">
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center gap-1.5">
+<span class="w-7 h-7 rounded-full bg-secondary-container/50 border border-secondary/30 flex items-center justify-center font-headline-sm text-xs text-[#ffe05c] font-bold shadow-[0_0_8px_rgba(255,224,92,0.3)]">♀△♃</span>
+<span class="font-label-md text-xs font-bold text-on-surface">Venüs Trine Jüpiter</span>
+</div>
+<span class="px-2 py-0.2 rounded-full bg-tertiary-container/30 text-[#00f2fe] font-label-sm text-[10px] font-bold border border-tertiary/30">%99 Uyum</span>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant mb-1.5">
+          Bolluk, lüks anlaşmalar ve sanat çalışmaları için zirve frekans penceresi.
+</p>
+<div class="flex items-center justify-between pt-1 text-secondary font-label-sm text-[10px] border-t border-outline-variant/20">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-[#ffe05c]">hourglass_top</span>
+            14:00 - 16:30
+</span>
+<span class="text-[#00f2fe] uppercase tracking-wider font-extrabold">AKTİF FAZ</span>
+</div>
+</div>
+<!-- Transit 2: Satürn 5. Evde -->
+<div class="w-full rounded-xl bg-surface-container/80 border border-outline-variant/30 p-3 flex flex-col justify-between backdrop-blur-md hover:border-primary/40 transition-all">
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center gap-1.5">
+<span class="w-7 h-7 rounded-full bg-surface-container-highest border border-outline/30 flex items-center justify-center font-headline-sm text-xs text-primary font-bold">♄ 5</span>
+<span class="font-label-md text-xs font-bold text-on-surface">Satürn 5. Evde</span>
+</div>
+<span class="px-2 py-0.2 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-[10px] font-semibold">Yapılandırıcı Odak</span>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant mb-1.5">
+          Disiplinli yaratıcılık: Kaotik fikirleri Como vizyonuna somut şaheserlerle nakşetme.
+</p>
+<div class="flex items-center justify-between pt-1 text-on-surface-variant font-label-sm text-[10px] border-t border-outline-variant/20">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary">psychology</span>
+            Derin Odaklanma Modu
+</span>
+<span class="text-primary font-semibold">Uzun Dönem Transit</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function initAstroMasterpiece() {
+    // 1. Canlı ve İnteraktif Zodyak Jiroskopu Dönüş Mekaniği
+    const rotor = document.getElementById('astrolabe-rotor');
+    const spinStepBtn = document.getElementById('astrolabe-spin-step-btn');
+    const coreBtn = document.getElementById('core-orbit-btn');
+    let currentAngle = 0;
+
+    function applyRotation(deg, smooth = true) {
+      currentAngle += deg;
+      if (rotor) {
+        rotor.style.transition = smooth ? 'transform 0.85s cubic-bezier(0.16, 1, 0.3, 1)' : 'none';
+        rotor.style.transform = `rotate(${currentAngle}deg)`;
+      }
+    }
+
+    if (spinStepBtn) {
+      spinStepBtn.addEventListener('click', () => applyRotation(30));
+    }
+    if (coreBtn) {
+      coreBtn.addEventListener('click', () => applyRotation(45));
+    }
+
+    // Dokunmatik Kaydırma (Touch Swipe) ile Zodyak Çarkı Etkileşimi
+    const svgChart = document.getElementById('astrolabe-svg');
+    if (svgChart) {
+      let startX = 0;
+      svgChart.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+
+      svgChart.addEventListener('touchmove', (e) => {
+        const diffX = e.touches[0].clientX - startX;
+        if (Math.abs(diffX) > 28) {
+          applyRotation(diffX > 0 ? 15 : -15);
+          startX = e.touches[0].clientX;
+        }
+      }, { passive: true });
+    }
+
+    // 2. Büyük Üçlü İnteraktif Kartlar & Analiz Panosu Senkronizasyonu
+    const tabs = document.querySelectorAll('.big-three-item');
+    const detailTitle = document.getElementById('detail-title');
+    const detailSub = document.getElementById('detail-sub');
+    const detailIcon = document.getElementById('detail-icon');
+    const detailBadge = document.getElementById('detail-badge');
+    const laserTrine = document.getElementById('laser-polygon-trine');
+
+    const telemetryData = {
+      sun: {
+        title: "GÜNEŞ ETKİLEŞİMİ AKTİF: BOĞA 10. EV",
+        sub: "Zodyak lazeri 10. tepe noktası Midheaven ile rezonansta. Como Gölü Kariyer manifestasyonu tetiklendi.",
+        icon: "flare",
+        badge: "100% REZONANS",
+        stroke: "#ffe05c"
+      },
+      moon: {
+        title: "AY ETKİLEŞİMİ AKTİF: BALIK 4. EV",
+        sub: "432Hz Frekans köprüsü devrede. Duygusal sığınak ve içsel Como dinginliği dengeleniyor.",
+        icon: "bedtime",
+        badge: "96% UYUM",
+        stroke: "#00f2fe"
+      },
+      rising: {
+        title: "YÜKSELEN ETKİLEŞİMİ AKTİF: AKREP 1. EV",
+        sub: "1. Ev nöral dönüşüm kapısı açık. 15 Dakikalık çelik irade mikro eylemi hizalandı.",
+        icon: "change_circle",
+        badge: "98% BİYO-HİZALANMA",
+        stroke: "#d5baff"
+      }
+    };
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.getAttribute('data-target');
+        
+        tabs.forEach(t => {
+          t.classList.remove('border-2', 'border-[#ffe05c]', 'shadow-[0_0_20px_rgba(255,224,92,0.35)]', 'bg-surface-container-highest/90');
+          t.classList.add('border', 'border-outline-variant/30', 'bg-surface-container-high/60');
+          const shimmer = t.querySelector('.gold-shimmer');
+          if (shimmer) shimmer.remove();
+          const arrow = t.querySelector('.item-arrow');
+          if (arrow) {
+            arrow.classList.remove('text-[#ffe05c]', 'text-[#00f2fe]', 'text-primary');
+            arrow.classList.add('text-on-surface-variant');
+          }
+        });
+
+        tab.classList.remove('border', 'border-outline-variant/30', 'bg-surface-container-high/60');
+        tab.classList.add('border-2', 'border-[#ffe05c]', 'shadow-[0_0_20px_rgba(255,224,92,0.35)]', 'bg-surface-container-highest/90');
+        
+        const shimmerEl = document.createElement('div');
+        shimmerEl.className = 'absolute inset-0 gold-shimmer pointer-events-none opacity-40';
+        tab.prepend(shimmerEl);
+
+        const arrow = tab.querySelector('.item-arrow');
+        if (arrow) {
+          arrow.classList.remove('text-on-surface-variant');
+          arrow.classList.add('text-[#ffe05c]');
+        }
+
+        const data = telemetryData[target];
+        if (data && detailTitle && detailSub && detailIcon) {
+          detailTitle.textContent = data.title;
+          detailSub.textContent = data.sub;
+          detailIcon.textContent = data.icon;
+          if (detailBadge) detailBadge.textContent = data.badge;
+
+          if (laserTrine) {
+            laserTrine.setAttribute('stroke', data.stroke);
+            laserTrine.style.filter = `drop-shadow(0 0 10px ${data.stroke})`;
+          }
+          applyRotation(30);
+        }
+      });
+    });
+
+    // 3. Günün 15 Dakikalık Görevi: Yıldız Tozu Parçacık Patlaması & Mühürleme
+    const sealBtn = document.getElementById('seal-cosmic-btn');
+    const sealBtnWrapper = document.getElementById('seal-btn-wrapper');
+    const sealIcon = document.getElementById('seal-btn-icon');
+    const sealText = document.getElementById('seal-btn-text');
+    let isSealed = false;
+
+    function triggerCosmicStardust(x, y) {
+      if (!sealBtnWrapper) return;
+      const colors = ['#ffe05c', '#00f2fe', '#ffffff', '#ddb7ff', '#ffd369'];
+      for (let i = 0; i < 28; i++) {
+        const particle = document.createElement('span');
+        particle.className = 'stardust-particle';
+        const size = Math.random() * 5 + 3;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.boxShadow = `0 0 8px ${particle.style.backgroundColor}`;
+        particle.style.left = (x || sealBtnWrapper.clientWidth / 2) + 'px';
+        particle.style.top = (y || 22) + 'px';
+
+        const angle = Math.random() * Math.PI * 2;
+        const dist = Math.random() * 100 + 35;
+        const tx = Math.cos(angle) * dist + 'px';
+        const ty = Math.sin(angle) * dist + 'px';
+        particle.style.setProperty('--tx', tx);
+        particle.style.setProperty('--ty', ty);
+
+        sealBtnWrapper.appendChild(particle);
+        setTimeout(() => particle.remove(), 1200);
+      }
+    }
+
+    if (sealBtn) {
+      sealBtn.addEventListener('click', (e) => {
+        const rect = sealBtn.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const clickY = e.clientY - rect.top;
+
+        if (!isSealed) {
+          isSealed = true;
+          triggerCosmicStardust(clickX, clickY);
+          sealBtn.classList.remove('from-secondary-container', 'via-primary-container', 'to-secondary');
+          sealBtn.classList.add('bg-gradient-to-r', 'from-[#006b71]', 'via-[#00dce6]', 'to-[#04f2fe]', 'text-[#002022]');
+          sealIcon.textContent = 'task_alt';
+          sealText.textContent = '✓ Hizalanma Mühürlendi';
+          sealBtn.style.boxShadow = '0 0 34px rgba(4, 242, 254, 0.8), 0 0 16px rgba(255, 224, 92, 0.6)';
+        } else {
+          isSealed = false;
+          sealBtn.classList.remove('from-[#006b71]', 'via-[#00dce6]', 'to-[#04f2fe]', 'text-[#002022]');
+          sealBtn.classList.add('from-secondary-container', 'via-primary-container', 'to-secondary', 'text-on-primary');
+          sealIcon.textContent = 'verified';
+          sealText.textContent = '✦ Göksel Hizalanmayı Mühürle ✦';
+          sealBtn.style.boxShadow = '0 0 24px rgba(221, 183, 255, 0.45)';
+        }
+      });
+    }
+
+    // 4. Canlı Geri Sayım Sayacı
+    const timerElem = document.getElementById('countdown-timer');
+    let totalSeconds = 14 * 60 + 42;
+    if (timerElem) {
+      setInterval(() => {
+        if (totalSeconds > 0) {
+          totalSeconds--;
+          const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+          const s = (totalSeconds % 60).toString().padStart(2, '0');
+          timerElem.textContent = `${m}:${s}`;
+        }
+      }, 1000);
+    }
+
+    // 5. 12-Bant Canlı Solfeggio Frekans Oynatıcısı & Ekolayzır
+    const listenBtn = document.getElementById('listen-frequency-btn');
+    const listenIcon = document.getElementById('listen-btn-icon');
+    const listenLabel = document.getElementById('listen-btn-label');
+    const eqContainer = document.getElementById('audio-eq-container');
+    const freqSubtitle = document.getElementById('freq-status-subtitle');
+    let isPlaying = false;
+
+    if (listenBtn && eqContainer) {
+      listenBtn.addEventListener('click', () => {
+        isPlaying = !isPlaying;
+        if (isPlaying) {
+          eqContainer.classList.add('playing');
+          listenIcon.textContent = 'pause';
+          listenLabel.textContent = 'Durdur';
+          listenBtn.classList.add('bg-[#00f2fe]', 'text-[#002022]');
+          if (freqSubtitle) freqSubtitle.textContent = '● Canlı Rezonans: 528Hz DNA Onarımı & Sevgi Frekansı';
+        } else {
+          eqContainer.classList.remove('playing');
+          listenIcon.textContent = 'play_arrow';
+          listenLabel.textContent = 'Dinle';
+          listenBtn.classList.remove('bg-[#00f2fe]', 'text-[#002022]');
+          if (freqSubtitle) freqSubtitle.textContent = '432Hz (Dinginlik) ⇄ 528Hz (Dönüşüm)';
+        }
+      });
+    }
+
+    // 6. Dock Menü Etkileşimi
+    const dockLinks = document.querySelectorAll('nav a');
+    dockLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        dockLinks.forEach(l => {
+          l.classList.remove('bg-secondary-container/60', 'border', 'border-[#ffe05c]/60', 'text-[#ffe05c]', 'shadow-[0_0_20px_rgba(255,224,92,0.45)]', 'scale-105');
+          l.classList.add('text-on-surface-variant');
+        });
+        link.classList.remove('text-on-surface-variant');
+        link.classList.add('bg-secondary-container/60', 'border', 'border-[#ffe05c]/60', 'text-[#ffe05c]', 'shadow-[0_0_20px_rgba(255,224,92,0.45)]', 'scale-105');
+      });
+    });
+  })();
+</script></main><!-- 7. YÜZEN KAPSÜL MENÜ (FLOATING PILL DOCK) --><nav class="fixed bottom-3 left-1/2 -translate-x-1/2 w-[92%] max-w-[400px] z-50 rounded-full bg-surface/90 border border-[#ffe05c]/35 backdrop-blur-2xl shadow-[0_12px_40px_rgba(4,2,12,0.9)] p-1"><div class="grid grid-cols-6 items-center text-center"><a class="flex flex-col items-center justify-center py-1 text-on-surface-variant hover:text-on-surface transition-all rounded-full" data-path="cosmos" href="#"><span class="material-symbols-outlined text-[18px]">stars</span><span class="font-label-sm text-[8px] tracking-wider uppercase font-semibold mt-0.5">Cosmos</span></a><!-- Astro (Aktif Altın Kapsül ve Işıltılı) --><a aria-current="page" class="relative flex flex-col items-center justify-center py-1 text-[#ffe05c] font-extrabold rounded-full bg-secondary-container/60 border border-[#ffe05c]/60 shadow-[0_0_18px_rgba(255,224,92,0.45)] scale-105 transition-all" data-path="astro" href="#"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1; filter: drop-shadow(0 0 6px #ffe05c);">planet</span><span class="font-label-sm text-[8px] tracking-wider uppercase mt-0.5">Astro</span></a><a class="flex flex-col items-center justify-center py-1 text-on-surface-variant hover:text-on-surface transition-all rounded-full" data-path="vizyon" href="#"><span class="material-symbols-outlined text-[18px]">visibility</span><span class="font-label-sm text-[8px] tracking-wider uppercase font-semibold mt-0.5">Vizyon</span></a><a class="flex flex-col items-center justify-center py-1 text-on-surface-variant hover:text-on-surface transition-all rounded-full" data-path="432hz" href="#"><span class="material-symbols-outlined text-[18px]">equalizer</span><span class="font-label-sm text-[8px] tracking-wider uppercase font-semibold mt-0.5">432Hz</span></a><a class="flex flex-col items-center justify-center py-1 text-on-surface-variant hover:text-on-surface transition-all rounded-full" data-path="hedefler" href="#"><span class="material-symbols-outlined text-[18px]">flag</span><span class="font-label-sm text-[8px] tracking-wider uppercase font-semibold mt-0.5">Hedefler</span></a><a class="flex flex-col items-center justify-center py-1 text-on-surface-variant hover:text-on-surface transition-all rounded-full" data-path="ayarlar" href="#"><span class="material-symbols-outlined text-[18px]">tune</span><span class="font-label-sm text-[8px] tracking-wider uppercase font-semibold mt-0.5">Ayarlar</span></a></div></nav></body></html>

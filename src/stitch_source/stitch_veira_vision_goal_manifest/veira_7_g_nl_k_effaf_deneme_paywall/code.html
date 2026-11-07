@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-error-container": "#ffdad6", "primary-container": "#8083ff", "surface-container-lowest": "#080c22", "surface-bright": "#343850", "on-tertiary": "#00354a", "error": "#ffb4ab", "on-primary": "#1000a9", "inverse-primary": "#494bd6", "secondary": "#e7c355", "secondary-fixed": "#ffe089", "primary-fixed": "#e1e0ff", "surface-container-low": "#161a30", "primary-fixed-dim": "#c0c1ff", "on-error": "#690005", "outline": "#908fa0", "background": "#0e1228", "surface-dim": "#0e1228", "on-secondary-fixed-variant": "#574500", "tertiary-container": "#009bd1", "on-tertiary-fixed": "#001e2c", "inverse-surface": "#dee0ff", "on-background": "#dee0ff", "inverse-on-surface": "#2b2f46", "on-primary-fixed": "#07006c", "surface-container-highest": "#2f334b", "secondary-fixed-dim": "#e7c355", "tertiary-fixed-dim": "#7bd0ff", "surface-tint": "#c0c1ff", "secondary-container": "#8e7100", "surface": "#0e1228", "on-surface": "#dee0ff", "on-secondary": "#3d2f00", "on-surface-variant": "#c7c4d7", "tertiary-fixed": "#c4e7ff", "on-secondary-fixed": "#241a00", "tertiary": "#7bd0ff", "surface-container": "#1a1e35", "on-primary-fixed-variant": "#2f2ebe", "surface-variant": "#2f334b", "outline-variant": "#464554", "on-tertiary-fixed-variant": "#004c69", "primary": "#c0c1ff", "on-primary-container": "#0d0096", "surface-container-high": "#252840", "error-container": "#93000a", "on-tertiary-container": "#002d40", "on-secondary-container": "#fffbff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-sm": "0.5rem", "margin": "1.25rem", "gutter-sm": "0.75rem", "space-md": "1rem", "margin-lg": "1.5rem", "space-xs": "0.25rem", "gutter": "1rem", "space-lg": "1.5rem", "space-xl": "2rem" }, "fontFamily": { "display-sm": ["Playfair Display"], "body-md": ["Inter"], "body-sm": ["Inter"], "title-lg": ["Inter"], "headline-lg-mobile": ["Playfair Display"], "headline-md": ["Playfair Display"], "label-md": ["Inter"], "display-lg": ["Playfair Display"], "headline-lg": ["Playfair Display"], "body-lg": ["Inter"], "label-lg": ["Inter"], "label-sm": ["Inter"], "title-md": ["Inter"] }, "fontSize": { "display-sm": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}], "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}], "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}], "title-lg": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}], "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "500"}], "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "500"}], "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}], "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}], "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500"}], "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}], "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}], "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}], "title-md": ["16px", {"lineHeight": "22px", "fontWeight": "600"}] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased min-h-screen relative flex flex-col selection:bg-primary-container selection:text-on-primary-container"><div class="fixed inset-0 pointer-events-none z-0 overflow-hidden"><div class="absolute -top-[20%] left-1/2 -translate-x-1/2 w-[140%] h-[60%] rounded-full bg-primary/10 blur-[100px]"></div><div class="absolute top-[40%] -right-[20%] w-[80%] h-[50%] rounded-full bg-tertiary-container/10 blur-[120px]"></div><div class="absolute -bottom-[10%] -left-[20%] w-[90%] h-[50%] rounded-full bg-secondary-container/10 blur-[110px]"></div></div><header class="fixed top-0 inset-x-0 z-50 pt-safe bg-surface/70 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.12)]"><div class="h-16 px-margin flex items-center justify-between"><button aria-label="Dismiss modal" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/40 transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[22px]">close</span></button><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary text-[20px]">auto_awesome</span><span class="font-headline-md text-headline-md text-on-surface tracking-tight">Veira Premium</span></div><div class="w-11 h-11 flex items-center justify-center"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 px-margin pb-safe bg-surface/0 z-10"><div class="flex flex-col w-full pb-10">
+<!-- Ambient Micro-Star Particles Header Glow -->
+<div class="relative w-full flex flex-col items-center text-center pt-2 pb-6 px-1">
+<!-- Editorial Celestial Crown Badge -->
+<div class="inline-flex items-center gap-space-xs px-3.5 py-1.5 rounded-full bg-secondary/10 shadow-[0_0_16px_rgba(231,195,85,0.15)] mb-4">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Veira Premium</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+</div>
+<!-- Editorial Headline -->
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2 font-display-sm tracking-tight px-2">
+      Zihinsel Vizyonunu <br/><span class="italic text-secondary font-normal">Günlük Eyleme</span> Dönüştür
+    </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs leading-relaxed">
+      12 Görselli sınırsız vizyon panosu, 432Hz meditatif mikser ve nöro-akustik rehberlik ile zihnini odakla.
+    </p>
+<!-- Visual Anchor: Atmospheric Vision Canvas Preview -->
+<div class="relative w-full mt-5 rounded-xl overflow-hidden bg-surface-container-low shadow-xl">
+<div class="h-28 w-full bg-cover bg-center opacity-60 mix-blend-luminosity hover:opacity-80 transition-opacity duration-700" data-alt="Minimalist cinematic aesthetic nocturnal bedroom at dusk with moonbeams, glowing starry constellation vision board artwork leaning against dark deep indigo wooden walls, warm gold candle flicker, tranquil editorial architecture photo." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD3ZN7RV5c8uqOGiKFzOacvGztz1t-EDGPwHAu70qomdMo1q6CukT5jkSz-gZxxVE19aO6XfR67mKAV-qJ1J2M1pWKIU7Cvu_eAJ6jciydWoG1QuIkdRVUAstRRik084h8yEXIOz43ZByj8jU_yMPOsA8zHLvaZn5hhyu_5awn70Lxf3Ja5sI1TmTU_23xoDbIcKpPCxcStuTG8-gZ63GtafM_YuLXOFvrSOe2q8dhHA-JPnBk95qMw')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent"></div>
+<div class="absolute bottom-2.5 inset-x-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-secondary/20 flex items-center justify-center shadow-[0_0_12px_rgba(231,195,85,0.3)]">
+<span class="material-symbols-outlined text-secondary text-[16px]">graphic_eq</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Theta Dalgaları • 432Hz Gece Modu</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest/80 font-label-sm text-[10px] text-tertiary">4K KİLİT EKRANI</span>
+</div>
+</div>
+</div>
+<!-- Anti-Dark Pattern: Zaman Çizelgesi Güvencesi (Timeline of Trust) -->
+<div class="w-full mb-6">
+<div class="bg-surface-container/70 backdrop-blur-xl rounded-xl p-space-md shadow-[0_8px_32px_rgba(0,0,0,0.36)] relative overflow-hidden">
+<!-- Top Subtle Aura Accent -->
+<div class="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-tertiary/10 blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[20px]">verified_user</span>
+<h2 class="font-title-md text-title-md text-on-surface">Zaman Çizelgesi Güvencesi</h2>
+</div>
+<span class="font-label-sm text-[11px] text-secondary font-medium tracking-wide uppercase bg-secondary/10 px-2 py-0.5 rounded-full">Sıfır Risk</span>
+</div>
+<!-- Vertical Stepper Steps -->
+<div class="relative pl-6 space-y-5">
+<!-- Vertical Connector Line -->
+<div class="absolute left-[11px] top-2 bottom-3 w-[2px] bg-gradient-to-b from-secondary via-primary to-surface-variant"></div>
+<!-- Step 1 -->
+<div class="relative flex flex-col items-start text-left">
+<div class="absolute -left-[23px] top-0.5 w-[18px] h-[18px] rounded-full bg-surface flex items-center justify-center shadow-[0_0_8px_rgba(231,195,85,0.8)]">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary"></div>
+</div>
+<div class="flex items-center justify-between w-full">
+<span class="font-label-lg text-label-lg font-semibold text-secondary">Bugün: 7 Günlük Denemen Başlar</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary/20 text-secondary font-semibold">0 TL</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Tüm lüks özelliklere, HD dışa aktarmaya ve 432Hz çift kanallı mikserlere anında tam ve kısıtlamasız erişim.
+          </p>
+</div>
+<!-- Step 2 -->
+<div class="relative flex flex-col items-start text-left">
+<div class="absolute -left-[23px] top-0.5 w-[18px] h-[18px] rounded-full bg-surface flex items-center justify-center shadow-[0_0_6px_rgba(192,193,255,0.6)]">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+<div class="flex items-center justify-between w-full">
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">5. Gün: Hatırlatma Bildirimi</span>
+<span class="material-symbols-outlined text-primary text-[18px]">notifications_active</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Deneme sürenizin bitmesine 2 gün kala iOS/Android yerel bildirimi gönderilir. Dilediğiniz an tek tıkla iptal edebilirsiniz.
+          </p>
+</div>
+<!-- Step 3 -->
+<div class="relative flex flex-col items-start text-left">
+<div class="absolute -left-[23px] top-0.5 w-[18px] h-[18px] rounded-full bg-surface flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-outline"></div>
+</div>
+<div class="flex items-center justify-between w-full">
+<span class="font-label-lg text-label-lg font-semibold text-on-surface-variant">7. Gün: Yıllık Üyelik Başlar</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">$2.50 / Ay</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant/80 mt-0.5">
+            İptal edilmezse yılda $29.99 olarak devam eder. App Store veya Google Play abonelik ayarlarından tek dokunuşla durdurulabilir.
+          </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Premium Avantajlar Kartı (Glassmorphic Bento Features) -->
+<div class="w-full mb-6">
+<div class="text-left mb-2.5 px-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Ayrıcalıklar</span>
+<h3 class="font-title-md text-title-md text-on-surface">Premium ile Açılacak Kapılar</h3>
+</div>
+<div class="space-y-2.5">
+<!-- Perk 1 -->
+<div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-surface-container-low/90 backdrop-blur-md">
+<div class="w-9 h-9 rounded-lg bg-secondary/15 flex items-center justify-center shrink-0 mt-0.5 text-secondary">
+<span class="material-symbols-outlined text-[20px]">wallpaper</span>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-title-md text-body-lg font-medium text-on-surface leading-tight">12 Görselli Sınırsız HD Duvar Kağıdı</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Filigransız, kristal berraklığında 4K / 9:16 oranında kilit ekranı çıktısı.</p>
+</div>
+</div>
+<!-- Perk 2 -->
+<div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-surface-container-low/90 backdrop-blur-md">
+<div class="w-9 h-9 rounded-lg bg-tertiary/15 flex items-center justify-center shrink-0 mt-0.5 text-tertiary">
+<span class="material-symbols-outlined text-[20px]">headphones</span>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-title-md text-body-lg font-medium text-on-surface leading-tight">Çevrimdışı 432Hz &amp; 528Hz Ses Mikseri</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Kilit ekranında asla kesilmeyen, internet gerektirmeyen çift kanallı ambient frekanslar.</p>
+</div>
+</div>
+<!-- Perk 3 -->
+<div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-surface-container-low/90 backdrop-blur-md">
+<div class="w-9 h-9 rounded-lg bg-primary/15 flex items-center justify-center shrink-0 mt-0.5 text-primary">
+<span class="material-symbols-outlined text-[20px]">neurology</span>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-title-md text-body-lg font-medium text-on-surface leading-tight">AI Destekli SMART Eylem &amp; Mikro Koç</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Büyük hedefleri ertelemesi imkansız 15 dakikalık günlük mikro adımlara böler.</p>
+</div>
+</div>
+<!-- Perk 4 -->
+<div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-surface-container-low/90 backdrop-blur-md">
+<div class="w-9 h-9 rounded-lg bg-secondary/15 flex items-center justify-center shrink-0 mt-0.5 text-secondary">
+<span class="material-symbols-outlined text-[20px]">lock_person</span>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-title-md text-body-lg font-medium text-on-surface leading-tight">%100 Cihaz İçi Kutsal Gizlilik</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Hayalleriniz ve fotoğraflarınız asla bir buluta yüklenmez, cihazınızda donanımsal şifrelenir.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Fiyatlandırma Seçenekleri (Selectable Plan Cards) -->
+<div class="w-full mb-6">
+<div class="text-left mb-2.5 px-1 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Planını Seç</span>
+<span class="font-label-sm text-label-sm text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bolt</span> Anında İptal Edilebilir
+      </span>
+</div>
+<div class="grid grid-cols-1 gap-3">
+<!-- Plan A (Önerilen & Seçili) -->
+<div class="relative rounded-xl p-4 bg-surface-container-high transition-all duration-300 cursor-pointer shadow-[0_4px_24px_rgba(231,195,85,0.18)]" id="plan-annual" onclick="selectPlan('annual')">
+<!-- Gold Glow Ribbon / Chip -->
+<div class="absolute -top-2.5 right-4 px-2.5 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-[10px] font-bold tracking-wide shadow-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+          EN ÇOK SEÇİLEN • %60 TASARRUF
+        </div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-5 h-5 rounded-full bg-secondary flex items-center justify-center text-on-secondary" id="radio-annual">
+<span class="material-symbols-outlined text-[14px] font-bold">check</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-surface font-semibold flex items-center gap-1.5">
+                Yıllık Plan
+                <span class="text-secondary text-label-sm font-normal">(7 Gün Ücretsiz)</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Yılda $29.99 faturalandırılır</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-headline-md text-headline-md text-secondary font-display-sm font-semibold">$2.50</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">/ ay</div>
+</div>
+</div>
+</div>
+<!-- Plan B (Aylık) -->
+<div class="relative rounded-xl p-4 bg-surface-container-low transition-all duration-300 cursor-pointer" id="plan-monthly" onclick="selectPlan('monthly')">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center text-transparent" id="radio-monthly">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-surface font-semibold">Aylık Plan</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Deneme süresi içermez, esnek üyelik</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-headline-md text-headline-md text-on-surface font-display-sm font-semibold">$4.99</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">/ ay</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Action & Interactive Confirmation -->
+<div class="w-full flex flex-col items-center mb-6">
+<!-- Tactile Golden Pill CTA Button -->
+<button class="w-full py-4 px-6 rounded-full bg-gradient-to-r from-[#F5D061] via-[#E7C355] to-[#D4AF37] text-on-secondary font-label-lg text-label-lg font-bold tracking-wide uppercase shadow-[0_0_24px_rgba(245,208,97,0.45)] hover:shadow-[0_0_32px_rgba(245,208,97,0.6)] active:scale-[0.98] transition-all flex items-center justify-center gap-2" id="cta-button" onclick="triggerTrial()" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span id="cta-text">7 Günlük Ücretsiz Denemeyi Başlat</span>
+</button>
+<!-- Peace-of-Mind Microcopy -->
+<div class="flex items-center gap-1.5 mt-3 text-center px-4">
+<span class="material-symbols-outlined text-secondary text-[16px]">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+        Asla habersiz çekim yapılmaz. 7 gün boyunca dilediğin zaman tek dokunuşla iptal et.
+      </span>
+</div>
+</div>
+<!-- Feedback Toast Container (DOM-injected via script) -->
+<div class="hidden mb-4 p-3 rounded-xl bg-surface-container-highest text-on-surface text-center font-body-sm transition-all duration-300" id="status-toast">
+</div>
+<!-- Footer Legal, Restore & Trust Seals -->
+<div class="w-full pt-4 space-y-3 text-center">
+<!-- Restore Purchases Button -->
+<button class="font-label-md text-label-md text-primary hover:text-primary-fixed underline tracking-wide transition-colors" onclick="restorePurchases()" type="button">
+      Satın Alımları Geri Yükle (Restore)
+    </button>
+<!-- Legal Links -->
+<div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-label-sm text-[11px] text-outline">
+<a class="hover:text-on-surface transition-colors" href="#terms">Kullanım Koşulları</a>
+<span>•</span>
+<a class="hover:text-on-surface transition-colors" href="#privacy">Gizlilik Politikası</a>
+<span>•</span>
+<a class="hover:text-on-surface transition-colors" href="#sub-terms">Abonelik Şartları</a>
+</div>
+<!-- Official Store Disclosure -->
+<p class="font-body-sm text-[10px] text-outline leading-tight max-w-xs mx-auto">
+      Ödeme onay ile Apple App Store / Google Play hesabınızdan tahsil edilir. Abonelik, dönem bitiminden en az 24 saat önce iptal edilmediği takdirde otomatik olarak yenilenir.
+    </p>
+</div>
+</div>
+<!-- Client Micro-Interactions Script -->
+<script>
+  let selectedPlanType = 'annual';
+
+  function selectPlan(plan) {
+    selectedPlanType = plan;
+    const planAnnual = document.getElementById('plan-annual');
+    const planMonthly = document.getElementById('plan-monthly');
+    const radioAnnual = document.getElementById('radio-annual');
+    const radioMonthly = document.getElementById('radio-monthly');
+    const ctaText = document.getElementById('cta-text');
+
+    if (plan === 'annual') {
+      planAnnual.classList.add('bg-surface-container-high', 'shadow-[0_4px_24px_rgba(231,195,85,0.18)]');
+      planAnnual.classList.remove('bg-surface-container-low');
+
+      planMonthly.classList.remove('bg-surface-container-high', 'shadow-[0_4px_24px_rgba(231,195,85,0.18)]');
+      planMonthly.classList.add('bg-surface-container-low');
+
+      radioAnnual.className = 'w-5 h-5 rounded-full bg-secondary flex items-center justify-center text-on-secondary';
+      radioMonthly.className = 'w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center text-transparent';
+
+      ctaText.innerText = '7 Günlük Ücretsiz Denemeyi Başlat';
+    } else {
+      planMonthly.classList.add('bg-surface-container-high', 'shadow-[0_4px_24px_rgba(192,193,255,0.15)]');
+      planMonthly.classList.remove('bg-surface-container-low');
+
+      planAnnual.classList.remove('bg-surface-container-high', 'shadow-[0_4px_24px_rgba(231,195,85,0.18)]');
+      planAnnual.classList.add('bg-surface-container-low');
+
+      radioMonthly.className = 'w-5 h-5 rounded-full bg-primary flex items-center justify-center text-on-primary';
+      radioAnnual.className = 'w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center text-transparent';
+
+      ctaText.innerText = 'Aylık Planı Başlat ($4.99 / Ay)';
+    }
+  }
+
+  function triggerTrial() {
+    const toast = document.getElementById('status-toast');
+    toast.classList.remove('hidden');
+    toast.innerHTML = selectedPlanType === 'annual' 
+      ? '<span class="text-secondary font-medium">✨ Tebrikler!</span> 7 Günlük ücretsiz denemeniz Apple ID / Google Play ile güvenle aktifleştiriliyor...'
+      : '<span class="text-primary font-medium">✨ Harika!</span> Aylık Veira Premium üyeliğiniz başlatılıyor...';
+    setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 4000);
+  }
+
+  function restorePurchases() {
+    const toast = document.getElementById('status-toast');
+    toast.classList.remove('hidden');
+    toast.innerHTML = '<span class="text-tertiary">Geçmiş satın alımlar kontrol ediliyor...</span> Aktif abonelik bulunursa hesabınıza bağlanacaktır.';
+    setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 3500);
+  }
+</script></main></body></html>

@@ -1,0 +1,112 @@
+# 🚀 VEIRA — GITHUB REPO OLUŞTURMA VE PROJEYİ YÜKLEME REHBERİ (ADIM ADIM)
+
+Bu kılavuz, Veira projenizi (Flutter kaynak kodları, Android Studio WebView APK dosyaları veya web prototipini) GitHub'a yükleyerek hem güvenle yedeklemenizi hem de istediğiniz cihazdan derleyebilmenizi sağlar.
+
+---
+
+## 📋 ADIM 1: GITHUB'DA YENİ BİR DEPO (REPOSITORY) AÇMA
+
+1. [github.com](https://github.com) adresine gidin ve hesabınıza giriş yapın.
+2. Sağ üst köşedeki **`+`** simgesine tıklayıp **"New repository"** seçin.
+3. Ayarları şu şekilde yapın:
+   - **Repository name:** `veira`
+   - **Description:** `Veira - Mindful Vision & Action Architecture`
+   - **Public / Private:** Tercihinize göre (Kodlarınızı sadece siz görmek istiyorsanız **Private** seçin).
+   - **Initialize with README:** İşareti **kaldırın** (boş kalsın).
+4. En alttaki yeşil **"Create repository"** butonuna basın.
+5. Sayfada size verilen GitHub bağlantı adresini kopyalayın (Örnek: `https://github.com/KULLANICI_ADINIZ/veira.git`).
+
+---
+
+## 💻 ADIM 2: BİLGİSAYARINIZDA GITHUB'A YÜKLEME KOMUTLARI
+
+Bilgisayarınızda proje klasörünün içindeyken (örneğin `C:\Users\beyza\veira` klasöründe):
+Klasörün içine sağ tıklayıp **"Open in Terminal"** veya **"Git Bash Here"** deyin (veya PowerShell'de `cd veira` yapın).
+
+Sırasıyla şu 5 komutu girin:
+
+```bash
+# 1. Klasörü yerel bir Git deposu yapın
+git init
+
+# 2. Tüm dosyaları Git takibine ekleyin
+git add .
+
+# 3. İlk sürüm kaydını oluşturun
+git commit -m "feat: Veira initial commit (Flutter & WebView APK setup)"
+
+# 4. Ana dalı 'main' olarak adlandırın
+git branch -M main
+
+# 5. Kendi GitHub linkinizi bağlayın (KULLANICI_ADINIZ ve REPO_ADI kısmını kendinize göre güncelleyin)
+git remote add origin https://github.com/KULLANICI_ADINIZ/veira.git
+
+# 6. Kodları GitHub'a gönderin (Push)
+git push -u origin main
+```
+
+> **Not:** Son komuttan sonra GitHub sizden kullanıcı adı ve şifre (veya Personal Access Token) isteyebilir. Ekranda beliren tarayıcı onayını (Sign in with your browser) onaylamanız yeterlidir.
+
+---
+
+## ⚡ ADIM 3: GITHUB DESKTOP İLE (KOMUTSUZ, TEK TIKLA YÜKLEME)
+
+Eğer terminal komutlarıyla uğraşmak istemiyorsanız:
+
+1. [desktop.github.com](https://desktop.github.com) adresinden ücretsiz **GitHub Desktop** uygulamasını indirin ve kurun.
+2. GitHub hesabınızla giriş yapın.
+3. **File > Add Local Repository...** seçeneğine tıklayın.
+4. Bilgisayarınızdaki `veira` klasörünü seçin.
+5. Sol alttaki kutuya `İlk Yükleme` yazıp **"Commit to main"** butonuna basın.
+6. Üst bardaki **"Publish repository"** butonuna basarak tek tıkla GitHub'a yükleyin!
+
+---
+
+## 🤖 BONUS: GITHUB ACTIONS İLE OTOMATİK APK DERLEME (BULUTTA APK ÜRETME)
+
+Kodlarınızı GitHub'a attıktan sonra bilgisayarınızda hiçbir program (Android Studio vb.) kurulu olmasa bile, GitHub'ın kendi sunucularında APK üretmesini sağlayabilirsiniz!
+
+Bunun için projenizin içinde şu dosyayı oluşturup içine aşağıdaki kodu yapıştırmanız yeterlidir:
+Dosya Yolu: `.github/workflows/build_apk.yml`
+
+```yaml
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+
+      - name: Get Dependencies
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: veira-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+```
+
+Bu sayede her `git push` yaptığınızda GitHub sizin yerinize otomatik olarak APK'yı derler ve **Actions** sekmesinden telefonunuza indirmenizi sağlar!

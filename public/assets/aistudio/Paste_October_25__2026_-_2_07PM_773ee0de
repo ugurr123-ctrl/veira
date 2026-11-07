@@ -1,0 +1,554 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><title>Veira</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;1,400&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'background': '#0e1228', 'on-primary': '#1000a9', 'on-error-container': '#ffdad6', 'on-tertiary-container': '#002d40', 'on-primary-fixed': '#07006c', 'on-secondary-fixed-variant': '#574500', 'surface-container': '#1a1e35', 'on-primary-fixed-variant': '#2f2ebe', 'tertiary': '#7bd0ff', 'on-tertiary-fixed-variant': '#004c69', 'tertiary-container': '#009bd1', 'surface-variant': '#2f334b', 'on-tertiary': '#00354a', 'inverse-primary': '#494bd6', 'secondary': '#e7c355', 'on-background': '#dee0ff', 'surface-container-high': '#252840', 'primary-fixed-dim': '#c0c1ff', 'tertiary-fixed-dim': '#7bd0ff', 'primary-fixed': '#e1e0ff', 'on-error': '#690005', 'on-primary-container': '#0d0096', 'secondary-fixed-dim': '#e7c355', 'tertiary-fixed': '#c4e7ff', 'surface-container-low': '#161a30', 'on-surface': '#dee0ff', 'secondary-fixed': '#ffe089', 'surface-bright': '#343850', 'outline-variant': '#464554', 'surface': '#0e1228', 'inverse-surface': '#dee0ff', 'error-container': '#93000a', 'surface-container-highest': '#2f334b', 'outline': '#908fa0', 'primary-container': '#8083ff', 'surface-dim': '#0e1228', 'primary': '#c0c1ff', 'on-surface-variant': '#c7c4d7', 'surface-tint': '#c0c1ff', 'error': '#ffb4ab', 'on-secondary': '#3d2f00', 'surface-container-lowest': '#080c22', 'on-secondary-container': '#fffbff', 'inverse-on-surface': '#2b2f46', 'on-tertiary-fixed': '#001e2c', 'secondary-container': '#8e7100' }, borderRadius: { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, spacing: { 'space-md': '1rem', 'gutter': '1rem', 'margin-lg': '1.5rem', 'space-lg': '1.5rem', 'space-xs': '0.25rem', 'margin': '1.25rem', 'space-sm': '0.5rem', 'gutter-sm': '0.75rem', 'space-xl': '2rem' }, fontFamily: { 'body-md': ['Inter'], 'label-md': ['Inter'], 'headline-md': ['Playfair Display'], 'title-lg': ['Inter'], 'title-md': ['Inter'], 'display-sm': ['Playfair Display'], 'headline-lg-mobile': ['Playfair Display'], 'headline-lg': ['Playfair Display'], 'display-lg': ['Playfair Display'], 'body-lg': ['Inter'], 'label-lg': ['Inter'], 'label-sm': ['Inter'], 'body-sm': ['Inter'] }, fontSize: { 'body-md': ['14px', { 'lineHeight': '20px', 'fontWeight': '400' }], 'label-md': ['12px', { 'lineHeight': '16px', 'letterSpacing': '0.02em', 'fontWeight': '500' }], 'headline-md': ['20px', { 'lineHeight': '28px', 'fontWeight': '500' }], 'title-lg': ['18px', { 'lineHeight': '24px', 'letterSpacing': '-0.01em', 'fontWeight': '600' }], 'title-md': ['16px', { 'lineHeight': '22px', 'fontWeight': '600' }], 'display-sm': ['32px', { 'lineHeight': '40px', 'letterSpacing': '-0.01em', 'fontWeight': '600' }], 'headline-lg-mobile': ['24px', { 'lineHeight': '32px', 'letterSpacing': '-0.01em', 'fontWeight': '500' }], 'headline-lg': ['28px', { 'lineHeight': '36px', 'letterSpacing': '-0.01em', 'fontWeight': '500' }], 'display-lg': ['40px', { 'lineHeight': '48px', 'letterSpacing': '-0.02em', 'fontWeight': '600' }], 'body-lg': ['16px', { 'lineHeight': '24px', 'fontWeight': '400' }], 'label-lg': ['14px', { 'lineHeight': '20px', 'letterSpacing': '0.01em', 'fontWeight': '500' }], 'label-sm': ['11px', { 'lineHeight': '14px', 'letterSpacing': '0.04em', 'fontWeight': '600' }], 'body-sm': ['12px', { 'lineHeight': '16px', 'fontWeight': '400' }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#080c22;color:#dee0ff;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Veira Celestial Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChst6p9MJzfQQfrA_4McOfjT1GNsc9_OFu0oIXpJ8knn6bGLrsIuMb2L94hQPra2UE17rHqpC10UmmXSYamqYwP2Y1vMWguKTbNWar5lqMn8Dq0b2jLXUiXxtybLILZ3wgEol1ao3yCWnSsDhM2XoHDx-xRFpDq5fUeAf84RezGbeOTPzjs_x5Tc6j5q6aELtJVAanqXFKTx3GOKXjDnPGiElCvR_UtjjSWqPBYeOXXcYLUs7Pejls"><span class="font-headline-md text-headline-md text-secondary tracking-tight">Veira</span></div><div class="flex items-center gap-space-sm"><span class="font-title-md text-title-md text-on-surface text-center px-space-xs truncate max-w-[130px]">Vision Board</span></div><div class="flex items-center gap-space-sm"><a class="w-11 h-11 flex items-center justify-center rounded-full transition-transform active:scale-95" data-path="settings" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi3a-psaNJ_QU-72Xk020WcxXT0weHKVr0dxtketi3AfYdGjQE0pkeV1TxmQm84hVhT0dDYaR1K3Vn7ar1Vow9SCF_CzgefPXCrNnOXcCjwHeklD47ZVj8Szf5GaDskIOBEcZn5UQKJGj4wtMBLcJXvks2x9qZc2WAz3X8IE2W-LHjlqmq2AKvrUa2zYibLT77AjUqNtzdsFtgZh2JvTDD3mZD5GPHtnkbRFBoO4t1P2LSK3m2QjJ3"></a></div></div></header><main class="flex-1 flex flex-col relative w-full px-margin pt-16 bg-surface pb-28"><div class="flex flex-col w-full relative pb-10">
+<!-- Ambient Celestial Background Effects (Contained & Non-Bleeding) -->
+<div class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 w-80 h-80 bg-primary-container/15 rounded-full blur-[90px] -z-10"></div>
+<div class="pointer-events-none absolute top-96 -right-16 w-64 h-64 bg-secondary/10 rounded-full blur-[80px] -z-10"></div>
+<div class="pointer-events-none absolute bottom-40 -left-12 w-72 h-72 bg-tertiary-container/10 rounded-full blur-[100px] -z-10"></div>
+<!-- Section 1: Year Selector & Board Controls Bar -->
+<div class="flex flex-col gap-space-sm w-full mb-space-md">
+<div class="flex items-center justify-between">
+<!-- Year Switcher Pill Dropdown -->
+<button class="flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container-high/80 backdrop-blur-md shadow-sm active:scale-95 transition-transform text-left" id="yearSelectorBtn">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-headline-md text-headline-md text-secondary tracking-tight">2027 Vizyon Panom</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">expand_more</span>
+</button>
+<!-- Miller's 12-Item Focus Gauge Badge -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low/90 shadow-sm">
+<div class="relative w-4 h-4 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="4.5"></path>
+<path class="text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="66, 100" stroke-linecap="round" stroke-width="4.5"></path>
+</svg>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface"><strong class="text-secondary font-semibold" id="cardCountDisplay">8</strong>/12 Odak</span>
+</div>
+</div>
+<!-- Quick Action Bar (Wallpapers & Add Card) -->
+<div class="grid grid-cols-2 gap-space-sm w-full pt-space-xs">
+<button class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full bg-surface-container-high/70 backdrop-blur-lg active:scale-[0.98] transition-all shadow-sm" id="wallpaperExportBtn">
+<span class="material-symbols-outlined text-[18px] text-secondary">wallpaper</span>
+<span class="font-label-md text-label-md text-on-surface truncate">HD Duvar Kağıdı</span>
+</button>
+<button class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full bg-secondary text-on-secondary font-semibold shadow-md active:scale-[0.98] transition-all" id="addVisionCardBtn">
+<span class="material-symbols-outlined text-[19px]">add_circle</span>
+<span class="font-label-md text-label-md truncate">+ Görsel Ekle</span>
+</button>
+</div>
+</div>
+<!-- Notification Toast (Hidden by default) -->
+<div class="hidden fixed top-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-surface-container-highest/95 backdrop-blur-xl shadow-xl flex items-center gap-2 transition-all duration-300" id="toastMessage">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+<span class="font-label-md text-label-md text-on-surface" id="toastText">İşlem başarıyla tamamlandı.</span>
+</div>
+<!-- Section 2: Category Filter Carousel Pills -->
+<div class="w-full overflow-x-auto no-scrollbar py-1 mb-space-md">
+<div class="flex items-center gap-space-xs whitespace-nowrap min-w-max">
+<button class="category-filter-btn px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-all active:scale-95 bg-secondary text-on-secondary shadow-sm font-semibold" data-category="all">
+        Tümü (8)
+      </button>
+<button class="category-filter-btn px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-all active:scale-95 bg-surface-container-high/80 text-on-surface-variant hover:text-on-surface" data-category="career">
+        Kariyer &amp; Bolluk (3)
+      </button>
+<button class="category-filter-btn px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-all active:scale-95 bg-surface-container-high/80 text-on-surface-variant hover:text-on-surface" data-category="wellness">
+        Beden &amp; Canlılık (2)
+      </button>
+<button class="category-filter-btn px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-all active:scale-95 bg-surface-container-high/80 text-on-surface-variant hover:text-on-surface" data-category="spirit">
+        Ruhsal Denge (2)
+      </button>
+<button class="category-filter-btn px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-all active:scale-95 bg-surface-container-high/80 text-on-surface-variant hover:text-on-surface" data-category="travel">
+        Seyahat (1)
+      </button>
+</div>
+</div>
+<!-- Section 3: Interactive Vision Board Layout -->
+<div class="flex flex-col gap-space-md w-full" id="cardsContainer">
+<!-- Centerpiece Star Card: 1 Numaralı Ana Niyet Yıldızı -->
+<div class="vision-card group relative w-full rounded-xl bg-surface-container-high/80 backdrop-blur-2xl shadow-xl overflow-hidden cursor-pointer active:scale-[0.99] transition-all" data-card-id="1" data-category-item="career">
+<div class="relative w-full h-52 overflow-hidden">
+<img class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Breathtaking architectural villa overlooking pristine Lake Como at golden hour with minimalist warm oak interior workspace, panoramic terrace, serene reflections, cinematic soft lighting and luxurious tranquil atmosphere in dark deep celestial hues" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYlhU-0NgSW87u0HG48qUwVmlcXUyPWvOsd3WFu6MLH3jO5AmSglc8M8poJ_bgLAPQlYYABbnFcKM_8KmkWGFbtOF_0Wzo5c7w35uNX6txxXLApGAdlzuIGTrozIHTh1oS0t4_TZxKgGXqVOZLrjiihiqZh9Z5wiOppkr8qqiX0KHvQuwprqkrgG2-8Ox8ym4J-GNRqgrZddFEGm2uqI4w8lQvl4raSwpF3ENMwiU">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high via-surface-container-high/30 to-transparent"></div>
+<!-- Celestial Pin & Badge -->
+<div class="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-lowest/85 backdrop-blur-md shadow-md">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">Ana Niyet Yıldızı</span>
+</div>
+<button class="check-action-btn absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center transition-all active:scale-90 shadow-md" data-check-trigger="1">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant status-icon">radio_button_unchecked</span>
+</button>
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-surface-variant/90 text-on-surface-variant font-label-sm text-label-sm tracking-wider uppercase">Kariyer &amp; Bolluk</span>
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">touch_app</span> Detay
+          </span>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-snug">Como Gölü Kıyısında Yaşam &amp; Çalışma</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Huzurlu, ilham verici ve yaratıcı üretimle harmanlanmış bağımsız bir hayat standardı.</p>
+<!-- Micro-Action Trigger Chip -->
+<div class="mt-space-xs pt-2 flex items-center justify-between rounded-lg bg-surface-container/70 p-2.5">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-[18px] text-secondary shrink-0">bolt</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Günün 15 Dk Eylemi</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">Vize portföyünden 1 ilham yazısı oku</span>
+</div>
+</div>
+<button class="shrink-0 ml-2 px-2.5 py-1 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold active:scale-95 transition-transform" data-open-modal="1">
+            Uygula
+          </button>
+</div>
+</div>
+</div>
+<!-- 2-Column Staggered Masonry-Style Cards -->
+<div class="grid grid-cols-2 gap-space-sm w-full">
+<!-- Card 2: Beden & Canlılık -->
+<div class="vision-card group flex flex-col rounded-xl bg-surface-container-high/80 backdrop-blur-xl shadow-md overflow-hidden cursor-pointer active:scale-[0.98] transition-all" data-card-id="2" data-category-item="wellness">
+<div class="relative w-full h-36 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Silhouette of a peaceful person practicing mindful yoga on a rocky cliff overlooking calm midnight indigo ocean waves under radiant starry night sky with ethereal magenta aurora highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHI8ddkGh9CycfOyFQAFJ5iXzAjBbOhhLQ9A05ba7i6BKsaeYW3GeMMWFIVsiYxW_i0O_559VOdDNsZcKKrUN_WuE3pMw_XRynSlRdtRrjGi8cPN678pBImX8zROKZ2jh8sRzGJBxAWxLiitJDoepeUZp-Awx5A3jUIZLQZAmKexQQL7X0CYBReoFD5F40592IMQynuSI7Iq_0neByQukwZEixHBzeC6mhphORHGo">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high/90 via-transparent to-transparent"></div>
+<button class="check-action-btn absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center transition-all active:scale-90" data-check-trigger="2">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant status-icon">radio_button_unchecked</span>
+</button>
+<span class="absolute bottom-2 left-2 px-1.5 py-0.5 rounded-full bg-surface-container-lowest/80 text-tertiary font-label-sm text-label-sm">Beden</span>
+</div>
+<div class="p-2.5 flex flex-col justify-between flex-1 gap-2">
+<h4 class="font-title-md text-title-md text-on-surface leading-tight line-clamp-2">Beden &amp; Zihin Dinginliği</h4>
+<div class="flex items-center justify-between pt-1 rounded-lg bg-surface-container/60 p-1.5">
+<div class="flex items-center gap-1 min-w-0">
+<span class="material-symbols-outlined text-[14px] text-secondary shrink-0">spa</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Günde 20 Dk Yin Yoga</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: 432Hz Derin Meditasyon -->
+<div class="vision-card group flex flex-col rounded-xl bg-surface-container-high/80 backdrop-blur-xl shadow-md overflow-hidden cursor-pointer active:scale-[0.98] transition-all" data-card-id="3" data-category-item="spirit">
+<div class="relative w-full h-44 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Tibetan frosted crystal sound bowl in dark atmospheric space surrounded by warm glowing candle flame, rising harmonic mist and soft celestial sparkles in serene gold and deep indigo colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxLXF8ZssfZsU_LOHlF0_tiqJ3MKQqzKzAKGV3FrrfjkdVAdBvkkovwMQwNiuGPK556VNNRAtlIF2Np4f2ff4vilxdPrKTUh6020m-ON30hYBoAF7CQYsn6oOO8zO8B0ke3ttXidfZ91XkciAxT20lccoTfLiCB3hLDG4tDrnrAhgMl-OiTtJs1v2bhGVw7xyU93scFG-CgztLYomyxXbEaEJskd5oIl2ArXrwO2Y">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high/90 via-transparent to-transparent"></div>
+<button class="check-action-btn absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center transition-all active:scale-90" data-check-trigger="3">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant status-icon">radio_button_unchecked</span>
+</button>
+<span class="absolute bottom-2 left-2 px-1.5 py-0.5 rounded-full bg-surface-container-lowest/80 text-secondary font-label-sm text-label-sm">Ruhsal Denge</span>
+</div>
+<div class="p-2.5 flex flex-col justify-between flex-1 gap-2">
+<h4 class="font-title-md text-title-md text-on-surface leading-tight line-clamp-2">432Hz Derin Meditasyon</h4>
+<div class="flex items-center justify-between pt-1 rounded-lg bg-surface-container/60 p-1.5">
+<div class="flex items-center gap-1 min-w-0">
+<span class="material-symbols-outlined text-[14px] text-secondary shrink-0">graphic_eq</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">15 Dk Ses Banyosu</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4: Özgür Dünya Rotaları -->
+<div class="vision-card group flex flex-col rounded-xl bg-surface-container-high/80 backdrop-blur-xl shadow-md overflow-hidden cursor-pointer active:scale-[0.98] transition-all" data-card-id="4" data-category-item="travel">
+<div class="relative w-full h-44 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Scenic vintage convertible parked on a cliffside coastal route in Dolomites Italy during sunrise, crisp mountain peaks, soft mist and celestial golden light reflecting on polished curves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2JiohiaOR0ZC7crkGJ1OI86fMT2yE8WVyqClwznOTYn7mYwFvqAuyHO69G3wUaJYAPK150yvWjoG6Ud1UMNGn1D7mlYmn6SE4VX9C5of0_RouxhYB9QZhWIcHq5X3P6qFK7m74DbcMaVvk9TJF8DezS5KHDjmk65Sq_p--BBWv0jB9RiASl-q_vKQ_xwZIinCALUoAqqc_j8gVXmcpXclFWTyMYVr-RxIZ83uDDk">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high/90 via-transparent to-transparent"></div>
+<button class="check-action-btn absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center transition-all active:scale-90" data-check-trigger="4">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant status-icon">radio_button_unchecked</span>
+</button>
+<span class="absolute bottom-2 left-2 px-1.5 py-0.5 rounded-full bg-surface-container-lowest/80 text-primary font-label-sm text-label-sm">Seyahat</span>
+</div>
+<div class="p-2.5 flex flex-col justify-between flex-1 gap-2">
+<h4 class="font-title-md text-title-md text-on-surface leading-tight line-clamp-2">Özgür Dünya Rotaları</h4>
+<div class="flex items-center justify-between pt-1 rounded-lg bg-surface-container/60 p-1.5">
+<div class="flex items-center gap-1 min-w-0">
+<span class="material-symbols-outlined text-[14px] text-secondary shrink-0">flight_takeoff</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Uçuş biletlerini tara</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 5: Yaratıcı Tasarım Stüdyosu -->
+<div class="vision-card group flex flex-col rounded-xl bg-surface-container-high/80 backdrop-blur-xl shadow-md overflow-hidden cursor-pointer active:scale-[0.98] transition-all" data-card-id="5" data-category-item="career">
+<div class="relative w-full h-36 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High-end architect design studio with drafting desk, bespoke typography books, ceramic tea bowl and floor to ceiling window opening to tranquil nocturnal bamboo garden" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrHNnvLvhfmm44bvYDoozsasL8pDZhv0_KnIKdzusqbytwo6aYrMj45GvgOrFiUTPjvMkbzWSjDcLxmXD1xTZ_V67hqenc4hRsGeGjJmBPFamDuSR_uaajxCGm_DmFmtaudWcrOOnY2P403PUUqoalA7S_venpXk9Kk1ea1-JE4gr6R7lIBj7-Qr5NpRV3hZhi_Ck2AujTz4HZYu0Ei7ygr3H9x_LDpSeRohkk7Ko">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high/90 via-transparent to-transparent"></div>
+<button class="check-action-btn absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center transition-all active:scale-90" data-check-trigger="5">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant status-icon">radio_button_unchecked</span>
+</button>
+<span class="absolute bottom-2 left-2 px-1.5 py-0.5 rounded-full bg-surface-container-lowest/80 text-secondary font-label-sm text-label-sm">Kariyer</span>
+</div>
+<div class="p-2.5 flex flex-col justify-between flex-1 gap-2">
+<h4 class="font-title-md text-title-md text-on-surface leading-tight line-clamp-2">Tasarım Stüdyosu</h4>
+<div class="flex items-center justify-between pt-1 rounded-lg bg-surface-container/60 p-1.5">
+<div class="flex items-center gap-1 min-w-0">
+<span class="material-symbols-outlined text-[14px] text-secondary shrink-0">draw</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">1 vaka analizi ekle</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 6: Sıcak Sevgi & Aile Bağı -->
+<div class="vision-card group flex flex-col rounded-xl bg-surface-container-high/80 backdrop-blur-xl shadow-md overflow-hidden cursor-pointer active:scale-[0.98] transition-all" data-card-id="6" data-category-item="spirit">
+<div class="relative w-full h-36 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Warm intimate family dinner under starlight lantern glow on an Italian terrace with joyous laughter, golden wine glasses, natural linen textures and comforting loving warmth" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjDDbOGzs4zQW0SYH4qArgX6ZTGBsc-LqaLJ5DxW4SNY5zSzVxwyZjzbZSqrYn7iMQE2qHH2zylevCgw-Kw1dZDIaG7INijSpyWzPMteZyV3EbaeuAQt5QnhEhFanfttZJtPHJshTcx4a28kXBSNyuSCz5JHscIaAtcsFnWQtP98D4AQ9lRP9T9-eQwWrSFT1THnISDCIuFGlXF3eYW0ULppaWuFIE7aJZCt7xnb8">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high/90 via-transparent to-transparent"></div>
+<button class="check-action-btn absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center transition-all active:scale-90" data-check-trigger="6">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant status-icon">radio_button_unchecked</span>
+</button>
+<span class="absolute bottom-2 left-2 px-1.5 py-0.5 rounded-full bg-surface-container-lowest/80 text-secondary font-label-sm text-label-sm">Ruhsal</span>
+</div>
+<div class="p-2.5 flex flex-col justify-between flex-1 gap-2">
+<h4 class="font-title-md text-title-md text-on-surface leading-tight line-clamp-2">Sevgi &amp; Aile Bağı</h4>
+<div class="flex items-center justify-between pt-1 rounded-lg bg-surface-container/60 p-1.5">
+<div class="flex items-center gap-1 min-w-0">
+<span class="material-symbols-outlined text-[14px] text-secondary shrink-0">favorite</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Haftalık şükran araması</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 7: Finansal Özgürlük & Bolluk -->
+<div class="vision-card group flex flex-col rounded-xl bg-surface-container-high/80 backdrop-blur-xl shadow-md overflow-hidden cursor-pointer active:scale-[0.98] transition-all" data-card-id="7" data-category-item="career">
+<div class="relative w-full h-44 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist luxury desk with clean financial analytics tablet, fountain pen, gold coin paperweight, espresso cup and quiet confidence in ambient indigo light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUnCIACg8yVWhwEvYKvXczQ5MHqoPlbItfd0Gccm1JwE159dBhHen3_4gK7ylZCnXfGlfLUt9pBY5K6dvvqoeX0Ia4ZIb7kv67kSqt2LtiX4szmVWKSfsyuylul2X17JfTxRP48SYA5FxaPQ0XYKQ5ShdU1CsJnxe6DTJDalr4NITRMN8xkvY_UTxHxq8EKirARiIQEfyyYSAvlWIkw9eqAB2AiPePL1DIPodvfMc">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high/90 via-transparent to-transparent"></div>
+<button class="check-action-btn absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center transition-all active:scale-90" data-check-trigger="7">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant status-icon">radio_button_unchecked</span>
+</button>
+<span class="absolute bottom-2 left-2 px-1.5 py-0.5 rounded-full bg-surface-container-lowest/80 text-secondary font-label-sm text-label-sm">Kariyer</span>
+</div>
+<div class="p-2.5 flex flex-col justify-between flex-1 gap-2">
+<h4 class="font-title-md text-title-md text-on-surface leading-tight line-clamp-2">Finansal Bolluk</h4>
+<div class="flex items-center justify-between pt-1 rounded-lg bg-surface-container/60 p-1.5">
+<div class="flex items-center gap-1 min-w-0">
+<span class="material-symbols-outlined text-[14px] text-secondary shrink-0">savings</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Sepeti gözden geçir</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 8: Sanatsal Üretim & Yazarlık -->
+<div class="col-span-2 vision-card group flex flex-col rounded-xl bg-surface-container-high/80 backdrop-blur-xl shadow-md overflow-hidden cursor-pointer active:scale-[0.99] transition-all" data-card-id="8" data-category-item="wellness">
+<div class="relative w-full h-36 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Vintage handcrafted leather journal open with lyrical cursive ink notes, bronze reading lamp, wild lavender sprig in quiet night study overlooking moonlit hills" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxlHJJjvdlJJhsfota5_K5aFa__Nda0kvnEl62qCH1h2b5CdwvMmg0PMB01YVSvf85rwroR7gx-aMS_qtYVsA-xl_wrFXPJqUMcNTO5RjOPrlRC-vqILZPOvZ2vyicvGAOmxud4YSLi5o8aJ-JcYF1uJaznrLWgcngpTFpDqXJXMWDV5FZlKSQEeig2WKkWTWWQarQNLawH0674h3lXWF5C6_6VbDRDOa2wqjrS6M">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high via-surface-container-high/30 to-transparent"></div>
+<button class="check-action-btn absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center transition-all active:scale-90" data-check-trigger="8">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant status-icon">radio_button_unchecked</span>
+</button>
+<span class="absolute bottom-3 left-3 px-2 py-0.5 rounded-full bg-surface-container-lowest/80 text-secondary font-label-sm text-label-sm">Beden &amp; Zihin</span>
+</div>
+<div class="p-space-sm flex items-center justify-between gap-space-sm">
+<div class="flex flex-col min-w-0">
+<h4 class="font-title-md text-title-md text-on-surface truncate">Sanatsal Üretim &amp; Yazarlık</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Günlük 2 sayfa serbest akış günlüğü</span>
+</div>
+<button class="shrink-0 px-3 py-1.5 rounded-full bg-surface-variant text-on-surface font-label-sm text-label-sm hover:bg-secondary hover:text-on-secondary transition-colors" data-open-modal="8">
+            Aksiyon Al
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 4: Interactive Micro-Action Modal / Bottom Sheet -->
+<div class="fixed inset-0 z-50 flex flex-col justify-end bg-background/70 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300" id="actionBottomSheet">
+<div class="w-full max-w-lg mx-auto bg-surface-container-high/95 backdrop-blur-2xl rounded-t-3xl shadow-2xl p-space-lg flex flex-col gap-space-md transform translate-y-full transition-transform duration-300" id="modalSheetContent">
+<!-- Drag Handle & Close -->
+<div class="flex items-center justify-between w-full">
+<div class="w-12 h-1 rounded-full bg-outline/40 mx-auto -mr-6"></div>
+<button class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface active:scale-90 transition-transform" id="closeModalBtn">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Modal Card Header -->
+<div class="flex items-center gap-space-md">
+<div class="w-16 h-16 rounded-xl overflow-hidden shadow-md shrink-0 bg-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="Atmospheric celestial vision thumbnail reflecting calmness and abundance in nocturnal indigo palette" id="modalThumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSwh1CmuVtWeh4Bc0cg7CZc5jcBwZxQcRPfhp8Has9pg-YSgVQsT-yMSyqmLe2fkEdYENdZv6CqbWoxQNhZNWhO7dkH8Dvecwj1DFxkRoFnYjPg_WMVyE8s-Av1IS2VOrfMQKzkIodYfThIiDLJApIJBPMRWAxvHibqAwy92hsJgrqA4fFqCPJ8OFfhxdFvhFw_KusR7ZAFtY2IRsWXpWFpnCrNSxIHvHPwiCKbS8">
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase font-semibold" id="modalCategory">Kariyer &amp; Bolluk</span>
+<h3 class="font-title-lg text-title-lg text-on-surface truncate" id="modalTitle">Como Gölü Kıyısında Yaşam</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Vizyon Odak Kartı #1</span>
+</div>
+</div>
+<!-- Emotional Why / Duygusal Çapa -->
+<div class="rounded-xl bg-surface-container-low/90 p-space-md flex flex-col gap-1 shadow-sm">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[17px]">psychology_alt</span>
+<span class="font-label-md text-label-md font-semibold">Duygusal Çapa (Emotional Why)</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic" id="modalWhy">
+          “Aileme ve kendime özgür, zaman kısıtlamalarından arınmış ve ilham veren dingin bir yaşam alanı sunmak.”
+        </p>
+</div>
+<!-- Daily 15-Minute Action Box -->
+<div class="rounded-xl bg-surface-container/90 p-space-md flex flex-col gap-space-xs shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-secondary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">timer</span> Bugünkü 15 Dakikalık Eylem
+          </span>
+<button class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-variant text-primary font-label-sm text-label-sm active:scale-95 transition-all" id="shrinkAiBtn">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+<span class="">5 Dk'ya Küçült (AI)</span>
+</button>
+</div>
+<p class="font-title-md text-title-md text-on-surface pt-1" id="modalActionText">
+          İtalya vize gereksinimleri ve Como bölgesindeki çalışma mekanları listesinden 1 makale oku.
+        </p>
+</div>
+<!-- Action Completion Button -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<button class="w-full py-3.5 px-4 rounded-full bg-secondary text-on-secondary font-semibold font-label-lg text-label-lg shadow-lg active:scale-[0.98] transition-transform flex items-center justify-center gap-2" id="completeModalActionBtn">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="">Görevi Tamamladım &amp; Yıldızı Yak</span>
+</button>
+<p class="font-body-sm text-body-sm text-center text-on-surface-variant">Tamamlandığında frekans seviyeniz 432Hz dengesine taşınır.</p>
+</div>
+</div>
+</div>
+<!-- Interactive Vision Board Script -->
+<script>
+    (function initVisionBoard() {
+      // Data registry for cards
+      const visionDetails = {
+        '1': {
+          title: 'Como Gölü Kıyısında Yaşam & Çalışma',
+          category: 'Kariyer & Bolluk',
+          why: 'Aileme ve kendime özgür, zaman kısıtlamalarından arınmış dingin bir yaşam alanı sunmak.',
+          action: 'Vize gereksinimleri ve Como bölgesindeki sakin çalışma mekanları listesinden 1 makale oku.',
+          shortAction: 'Como çalışma rehberine hızlıca 5 dk göz at ve 1 not al.'
+        },
+        '2': {
+          title: 'Beden & Zihin Dinginliği',
+          category: 'Beden & Canlılık',
+          why: 'Fiziksel gerginliklerden arınarak her güne yüksek hücresel enerjiyle başlamak.',
+          action: 'Akşam yatmadan önce 20 dakika omurga açıcı sakin Yin Yoga akışını tamamla.',
+          shortAction: '3 derin nefes egzersizi ve 5 dk omuz esnetmesi yap.'
+        },
+        '3': {
+          title: '432Hz Derin Meditasyon & Şifa',
+          category: 'Ruhsal Denge',
+          why: 'Zihinsel gevezeliği susturmak ve içsel sezgileri berraklaştırmak.',
+          action: 'Kulaklıkları tak, 432Hz kristal kase frekansını aç ve 15 dk sessizce nefesine odaklan.',
+          shortAction: '5 dakika boyunca gözlerini kapatıp 432Hz akorunu hisset.'
+        },
+        '4': {
+          title: 'Özgür Dünya Rotaları',
+          category: 'Seyahat',
+          why: 'Yeni coğrafyaların ve kültürlerin vizyonumu ve ufkumu genişletmesine alan açmak.',
+          action: 'İtalya veya İsviçre tren güzergahları için 1 rota taslağını kaydet.',
+          shortAction: 'Görmek istediğin 1 göl kenarı kasabasını haritaya iğnele.'
+        },
+        '5': {
+          title: 'Yaratıcı Tasarım Stüdyosu',
+          category: 'Kariyer & Bolluk',
+          why: 'Kendi vizyonumu yansıtan estetik ve derin projeler inşa etmek.',
+          action: 'Kişisel portföyüne en güvendiğin 1 projeyi ekle veya metnini güncelle.',
+          shortAction: 'Portföy başlığını ve anahtar niyet cümleni yeniden yaz.'
+        },
+        '6': {
+          title: 'Sıcak Sevgi & Aile Bağı',
+          category: 'Ruhsal Denge',
+          why: 'En büyük gücümün ve huzurumun sevdiklerimle paylaşılan anlardan beslendiğini hatırlamak.',
+          action: 'Ailenden ya da değer verdiğin bir dostundan birine samimi bir şükran mesajı gönder.',
+          shortAction: 'Sevdiğin birine seni düşündüm mesajı at.'
+        },
+        '7': {
+          title: 'Finansal Özgürlük & Bolluk',
+          category: 'Kariyer & Bolluk',
+          why: 'Para stresinden uzaklaşarak niyetlerimi hayata geçirecek maddi güvenceyi büyütmek.',
+          action: 'Bu ayki pasif gelir ve birikim dağılımını 15 dakika boyunca çizelgene işle.',
+          shortAction: 'Bugünkü harcamalarını kaydet ve bütçeni kontrol et.'
+        },
+        '8': {
+          title: 'Sanatsal Üretim & Yazarlık',
+          category: 'Beden & Canlılık',
+          why: 'Duygularımı ve fikirlerimi kalıcı birer esere dönüştürmenin hazzını yaşamak.',
+          action: 'Herhangi bir filtre uygulamadan 2 tam sayfa serbest bilinç akışı günlüğü yaz.',
+          shortAction: 'Bugün hissettiğin en güçlü duyguyu 3 cümleyle özetle.'
+        }
+      };
+
+      let activeCardId = '1';
+
+      // Elements
+      const sheet = document.getElementById('actionBottomSheet');
+      const sheetContent = document.getElementById('modalSheetContent');
+      const closeBtn = document.getElementById('closeModalBtn');
+      const completeBtn = document.getElementById('completeModalActionBtn');
+      const shrinkBtn = document.getElementById('shrinkAiBtn');
+      const toast = document.getElementById('toastMessage');
+      const toastText = document.getElementById('toastText');
+
+      function showToast(msg) {
+        if (!toast) return;
+        toastText.textContent = msg;
+        toast.classList.remove('hidden');
+        setTimeout(() => {
+          toast.classList.add('hidden');
+        }, 2400);
+      }
+
+      function openModal(id) {
+        activeCardId = id;
+        const data = visionDetails[id] || visionDetails['1'];
+        document.getElementById('modalTitle').textContent = data.title;
+        document.getElementById('modalCategory').textContent = data.category;
+        document.getElementById('modalWhy').innerHTML = '&ldquo;' + data.why + '&rdquo;';
+        document.getElementById('modalActionText').textContent = data.action;
+
+        sheet.classList.remove('opacity-0', 'pointer-events-none');
+        sheetContent.classList.remove('translate-y-full');
+      }
+
+      function closeModal() {
+        sheetContent.classList.add('translate-y-full');
+        sheet.classList.add('opacity-0', 'pointer-events-none');
+      }
+
+      // Filter handling
+      const filterBtns = document.querySelectorAll('.category-filter-btn');
+      const cards = document.querySelectorAll('[data-category-item]');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const cat = btn.getAttribute('data-category');
+          
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-secondary', 'text-on-secondary', 'font-semibold');
+            b.classList.add('bg-surface-container-high/80', 'text-on-surface-variant');
+          });
+          btn.classList.add('bg-secondary', 'text-on-secondary', 'font-semibold');
+          btn.classList.remove('bg-surface-container-high/80', 'text-on-surface-variant');
+
+          cards.forEach(card => {
+            const itemCat = card.getAttribute('data-category-item');
+            if (cat === 'all' || itemCat === cat) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Card click opens modal
+      document.querySelectorAll('.vision-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+          // If clicked directly on the check button, don't open modal
+          if (e.target.closest('.check-action-btn')) return;
+          const id = card.getAttribute('data-card-id');
+          if (id) openModal(id);
+        });
+      });
+
+      // Explicit modal triggers
+      document.querySelectorAll('[data-open-modal]').forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const id = trigger.getAttribute('data-open-modal');
+          openModal(id);
+        });
+      });
+
+      // Checkbox click toggle
+      document.querySelectorAll('.check-action-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const id = btn.getAttribute('data-check-trigger');
+          toggleCheck(id, btn);
+        });
+      });
+
+      function toggleCheck(id, btnElement) {
+        const icon = btnElement.querySelector('.status-icon');
+        const isDone = btnElement.classList.contains('bg-secondary');
+
+        if (!isDone) {
+          btnElement.classList.remove('bg-surface-container-lowest/80');
+          btnElement.classList.add('bg-secondary');
+          if (icon) {
+            icon.textContent = 'check_circle';
+            icon.classList.remove('text-on-surface-variant');
+            icon.classList.add('text-on-secondary');
+          }
+          showToast('Tebrikler! Günlük niyet eylemi tamamlandı ✨');
+        } else {
+          btnElement.classList.add('bg-surface-container-lowest/80');
+          btnElement.classList.remove('bg-secondary');
+          if (icon) {
+            icon.textContent = 'radio_button_unchecked';
+            icon.classList.add('text-on-surface-variant');
+            icon.classList.remove('text-on-secondary');
+          }
+        }
+      }
+
+      // Modal completion button
+      if (completeBtn) {
+        completeBtn.addEventListener('click', () => {
+          const targetBtn = document.querySelector(`[data-check-trigger="${activeCardId}"]`);
+          if (targetBtn) {
+            targetBtn.classList.remove('bg-surface-container-lowest/80');
+            targetBtn.classList.add('bg-secondary');
+            const icon = targetBtn.querySelector('.status-icon');
+            if (icon) {
+              icon.textContent = 'check_circle';
+              icon.classList.remove('text-on-surface-variant');
+              icon.classList.add('text-on-secondary');
+            }
+          }
+          closeModal();
+          showToast('15 Dakikalık eylem tamamlandı. Yıldız parıldıyor!');
+        });
+      }
+
+      // AI Shrink micro-action
+      if (shrinkBtn) {
+        shrinkBtn.addEventListener('click', () => {
+          const data = visionDetails[activeCardId];
+          if (data && data.shortAction) {
+            document.getElementById('modalActionText').textContent = data.shortAction;
+            showToast('AI eylemi 5 dakikaya sadeleştirdi ⚡');
+          }
+        });
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (sheet) {
+        sheet.addEventListener('click', (e) => {
+          if (e.target === sheet) closeModal();
+        });
+      }
+
+      // Wallpaper export button
+      const wallpaperBtn = document.getElementById('wallpaperExportBtn');
+      if (wallpaperBtn) {
+        wallpaperBtn.addEventListener('click', () => {
+          showToast('4K Kilit Ekranı Duvar Kağıdı Hazırlanıyor... 📱');
+        });
+      }
+
+      // Add Vision Card button
+      const addCardBtn = document.getElementById('addVisionCardBtn');
+      if (addCardBtn) {
+        addCardBtn.addEventListener('click', () => {
+          showToast('Maksimum 12 görsel sınırında 8/12 alandasınız.');
+        });
+      }
+
+      // Year selector prompt
+      const yearBtn = document.getElementById('yearSelectorBtn');
+      if (yearBtn) {
+        yearBtn.addEventListener('click', () => {
+          showToast('2027 Vizyon döngüsü aktif.');
+        });
+      }
+
+    })();
+  </script>
+</div></main><nav class="fixed bottom-5 left-4 right-4 z-50 mx-auto max-w-sm bg-surface-container-low/90 backdrop-blur-xl border border-white/10 rounded-full px-2.5 py-1.5 shadow-2xl flex items-center justify-between pointer-events-auto" data-active-classes="text-secondary scale-105 font-bold"><a class="flex flex-col items-center justify-center p-2 rounded-full text-on-surface-variant hover:text-on-surface transition-all active:scale-90" data-path="home" href="#"><span class="material-symbols-outlined text-[20px]">auto_awesome</span><span class="font-label-sm text-[10px] mt-0.5 tracking-tight">Bugün</span></a><a class="bg-secondary text-on-secondary font-bold shadow-[0_0_15px_rgba(245,208,97,0.35)] rounded-full px-3.5 py-1.5 flex items-center gap-1.5 transition-all active:scale-95" data-path="vision-board" href="#"><span class="material-symbols-outlined text-[19px]" style="font-variation-settings: 'FILL' 1;">grid_view</span><span class="font-label-sm text-[12px] font-semibold tracking-tight">Vizyon</span></a><a class="flex flex-col items-center justify-center p-2 rounded-full text-on-surface-variant hover:text-on-surface transition-all active:scale-90" data-path="manifest" href="#"><span class="material-symbols-outlined text-[20px]">graphic_eq</span><span class="font-label-sm text-[10px] mt-0.5 tracking-tight">432Hz</span></a><a class="flex flex-col items-center justify-center p-2 rounded-full text-on-surface-variant hover:text-on-surface transition-all active:scale-90" data-path="goals" href="#"><span class="material-symbols-outlined text-[20px]">track_changes</span><span class="font-label-sm text-[10px] mt-0.5 tracking-tight">Hedefler</span></a><a class="flex flex-col items-center justify-center p-2 rounded-full text-on-surface-variant hover:text-on-surface transition-all active:scale-90" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span class="font-label-sm text-[10px] mt-0.5 tracking-tight">Ayarlar</span></a></nav>
+
+
+</body></html>

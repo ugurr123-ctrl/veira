@@ -1,0 +1,558 @@
+# VEIRA - ADIM 6.3: HEDEF DETAYI VE MİKRO-EYLEM PLANI KODLARI (VISION-TO-ACTION)
+**Sürüm:** 1.0 (Eksiksiz & Kopyala-Yapıştır) | **Tarih:** 2025/2026
+**Modül:** 6.3 - Hedef Detay Görünümü, Duygusal Neden ("Why"), 3 Aylık Milestones, Bugünün 15 Dakikalık Tek Eylemi ve AI Mikro-Adım Küçültücü
+
+Aşağıdaki dosyaları sırasıyla projenizde belirtilen dosya yollarına oluşturup içeriklerini birebir yapıştırın. Hiçbir fonksiyon veya kod kısaltılmamıştır.
+
+---
+
+## 1. DİL DOSYALARI GÜNCELLEMESİ (Hedef Detay Anahtarları)
+
+Mevcut `assets/translations/tr.json` dosyanıza `"goal_detail"` anahtarını ekleyin:
+
+```json
+  "goal_detail": {
+    "header_title": "Hedef & Vizyon Köprüsü",
+    "emotional_why_title": "Duygusal Çapa (Neden Önemli?)",
+    "smart_analysis_title": "SMART Hedef Analizi",
+    "progress_label": "Vizyon İlerlemesi",
+    "days_left": "{days} Gün Kaldı",
+    "priority_high": "Yüksek Öncelik",
+    "priority_medium": "Dengeli",
+    "milestones_title": "3 Aylık Kilometre Taşları (Q1-Q3)",
+    "today_micro_title": "Bugünkü 15 Dakikalık Görev",
+    "shrink_action_button": "Adımı Küçült (5 Dk Yap)",
+    "action_done_button": "Bugünkü 15 Dakikayı Tamamladım",
+    "action_completed_badge": "Harika! Bugün vizyonuna 15 dakika yaklaştın ✨",
+    "ai_shrinking": "Veira AI eylemi 5 dakikalık mikro-adıma indiriyor..."
+  }
+```
+
+Mevcut `assets/translations/en.json` dosyanıza eklenecek kısım:
+
+```json
+  "goal_detail": {
+    "header_title": "Vision-to-Action Bridge",
+    "emotional_why_title": "Emotional Anchor (Why It Matters?)",
+    "smart_analysis_title": "SMART Goal Analysis",
+    "progress_label": "Vision Progress",
+    "days_left": "{days} Days Left",
+    "priority_high": "High Priority",
+    "priority_medium": "Balanced",
+    "milestones_title": "3-Month Milestones (Q1-Q3)",
+    "today_micro_title": "Today's 15-Minute Action",
+    "shrink_action_button": "Make It Smaller (5 Min)",
+    "action_done_button": "I Finished Today's 15 Minutes",
+    "action_completed_badge": "Splendid! You stepped closer to your vision today ✨",
+    "ai_shrinking": "Veira AI is refining this down to a 5-min step..."
+  }
+```
+
+---
+
+## 2. MODELLER (HEDEF VE KİLOMETRE TAŞI)
+
+### Dosya Yolu: `lib/features/goals/domain/goal_detail_model.dart`
+```dart
+class MilestoneItem {
+  final String id;
+  final String title;
+  final String quarter; // Q1, Q2, Q3
+  final bool isCompleted;
+
+  const MilestoneItem({
+    required this.id,
+    required this.title,
+    required this.quarter,
+    this.isCompleted = false,
+  });
+
+  MilestoneItem copyWith({
+    String? id,
+    String? title,
+    String? quarter,
+    bool? isCompleted,
+  }) {
+    return MilestoneItem(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      quarter: quarter ?? this.quarter,
+      isCompleted: isCompleted ?? this.isCompleted,
+    );
+  }
+}
+
+class GoalDetailModel {
+  final String id;
+  final String title;
+  final String category;
+  final String emotionalWhy;
+  final String imageUrl;
+  final int daysLeft;
+  final double progress; // 0.0 - 1.0
+  final String priority;
+  final List<MilestoneItem> milestones;
+  final String todaysMicroAction;
+  final int estimatedMinutes;
+  final bool isActionDone;
+  final bool isShrinkingAi;
+
+  const GoalDetailModel({
+    required this.id,
+    required this.title,
+    required this.category,
+    required this.emotionalWhy,
+    required this.imageUrl,
+    required this.daysLeft,
+    required this.progress,
+    required this.priority,
+    required this.milestones,
+    required this.todaysMicroAction,
+    this.estimatedMinutes = 15,
+    this.isActionDone = false,
+    this.isShrinkingAi = false,
+  });
+
+  GoalDetailModel copyWith({
+    String? id,
+    String? title,
+    String? category,
+    String? emotionalWhy,
+    String? imageUrl,
+    int? daysLeft,
+    double? progress,
+    String? priority,
+    List<MilestoneItem>? milestones,
+    String? todaysMicroAction,
+    int? estimatedMinutes,
+    bool? isActionDone,
+    bool? isShrinkingAi,
+  }) {
+    return GoalDetailModel(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      category: category ?? this.category,
+      emotionalWhy: emotionalWhy ?? this.emotionalWhy,
+      imageUrl: imageUrl ?? this.imageUrl,
+      daysLeft: daysLeft ?? this.daysLeft,
+      progress: progress ?? this.progress,
+      priority: priority ?? this.priority,
+      milestones: milestones ?? this.milestones,
+      todaysMicroAction: todaysMicroAction ?? this.todaysMicroAction,
+      estimatedMinutes: estimatedMinutes ?? this.estimatedMinutes,
+      isActionDone: isActionDone ?? this.isActionDone,
+      isShrinkingAi: isShrinkingAi ?? this.isShrinkingAi,
+    );
+  }
+}
+```
+
+---
+
+## 3. RIVERPOD DURUM YÖNETİCİSİ
+
+### Dosya Yolu: `lib/features/goals/providers/goal_detail_provider.dart`
+```dart
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../domain/goal_detail_model.dart';
+
+final goalDetailProvider = StateNotifierProvider<GoalDetailNotifier, GoalDetailModel>((ref) {
+  return GoalDetailNotifier();
+});
+
+class GoalDetailNotifier extends StateNotifier<GoalDetailModel> {
+  GoalDetailNotifier()
+      : super(
+          const GoalDetailModel(
+            id: 'goal-1',
+            title: 'Como Gölü Kıyısında Yaşam & Çalışma',
+            category: 'Kariyer & Bolluk',
+            emotionalWhy:
+                'Aileme özgür ve huzurlu bir yaşam alanı sunmak, sabahları doğaya uyanıp kendi potansiyelimi en yüksek seviyede gerçekleştirmek.',
+            imageUrl:
+                'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80',
+            daysLeft: 142,
+            progress: 0.45,
+            priority: 'Yüksek Öncelik',
+            milestones: [
+              MilestoneItem(
+                id: 'm1',
+                title: 'Q1: İtalyanca B1 Dil Sertifikası & Vize Portföyü',
+                quarter: 'Q1',
+                isCompleted: true,
+              ),
+              MilestoneItem(
+                id: 'm2',
+                title: 'Q2: Como/Milano Çalışma Sözleşmesi & Şirket Evrakları',
+                quarter: 'Q2',
+                isCompleted: false,
+              ),
+              MilestoneItem(
+                id: 'm3',
+                title: 'Q3: Ev Kiralama, Uçak Bileti ve Yerleşim',
+                quarter: 'Q3',
+                isCompleted: false,
+              ),
+            ],
+            todaysMicroAction:
+                'İtalyanca çalışma portföyünden 1 vize başvuru yazısını incele ve 3 anahtar kelimeyi not al.',
+            estimatedMinutes: 15,
+            isActionDone: false,
+          ),
+        );
+
+  void toggleAction() {
+    state = state.copyWith(isActionDone: !state.isActionDone);
+  }
+
+  void toggleMilestone(String milestoneId) {
+    final updated = state.milestones.map((m) {
+      if (m.id == milestoneId) {
+        return m.copyWith(isCompleted: !m.isCompleted);
+      }
+      return m;
+    }).toList();
+
+    // Yeni ilerleme yüzdesini hesapla
+    final completedCount = updated.where((m) => m.isCompleted).length;
+    final newProgress = completedCount / updated.length;
+
+    state = state.copyWith(
+      milestones: updated,
+      progress: newProgress,
+    );
+  }
+
+  // Kullanıcı "Üşeniyorum / Zamanım Yok" dediğinde adımı 5 dakikaya indiren AI kuralı
+  Future<void> shrinkAction() async {
+    state = state.copyWith(isShrinkingAi: true);
+    await Future.delayed(const Duration(milliseconds: 600));
+
+    state = state.copyWith(
+      todaysMicroAction:
+          '5 Dakikalık Mikro-Adım: Sadece vize formunun ilk sayfasını aç ve başlığını oku.',
+      estimatedMinutes: 5,
+      isShrinkingAi: false,
+    );
+  }
+}
+```
+
+---
+
+## 4. HEDEF DETAY EKRANI GÖRÜNÜMÜ (`goal_detail_view.dart`)
+
+### Dosya Yolu: `lib/features/goals/presentation/goal_detail_view.dart`
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_typography.dart';
+import '../../../core/services/localization_service.dart';
+import '../../../core/widgets/glass_card.dart';
+import '../../../core/widgets/golden_button.dart';
+import '../providers/goal_detail_provider.dart';
+
+class GoalDetailView extends ConsumerWidget {
+  const GoalDetailView({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final translationsAsync = ref.watch(translationsProvider);
+    final goal = ref.watch(goalDetailProvider);
+    final notifier = ref.read(goalDetailProvider.notifier);
+
+    return Scaffold(
+      backgroundColor: AppColors.spaceDeepNavy,
+      body: translationsAsync.when(
+        loading: () => const Center(
+          child: CircularProgressIndicator(color: AppColors.celestialGold),
+        ),
+        error: (err, _) => Center(
+          child: Text('Hata: $err', style: AppTypography.bodyMedium()),
+        ),
+        data: (t) {
+          return CustomScrollView(
+            slivers: [
+              // 1. GENİŞLETİLEBİLİR SLIVER APPBAR (Vizyon Görseli + Duygusal Çapa Başlığı)
+              SliverAppBar(
+                expandedHeight: 280,
+                pinned: true,
+                backgroundColor: AppColors.spaceDarkSurface,
+                leading: IconButton(
+                  icon: const Icon(Icons.arrow_back_ios_new, color: AppColors.pureMoonWhite, size: 20),
+                  onPressed: () => Navigator.pop(context),
+                ),
+                flexibleSpace: FlexibleSpaceBar(
+                  background: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.network(
+                        goal.imageUrl,
+                        fit: BoxFit.cover,
+                      ),
+                      // Lüks Gece Karartma Gradyanı
+                      Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.transparent,
+                              AppColors.spaceDarkSurface.withOpacity(0.6),
+                              AppColors.spaceDeepNavy,
+                            ],
+                            stops: const [0.3, 0.7, 1.0],
+                          ),
+                        ),
+                      ),
+                      // Görsel Üstü Kategori Rozeti ve Başlık
+                      Positioned(
+                        bottom: 16,
+                        left: 20,
+                        right: 20,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: AppColors.celestialGold.withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(color: AppColors.celestialGold.withOpacity(0.4)),
+                              ),
+                              child: Text(
+                                goal.category.toUpperCase(),
+                                style: AppTypography.caption(color: AppColors.celestialGold, isBold: true),
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              goal.title,
+                              style: AppTypography.displayH1(),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              // 2. İÇERİK BÖLÜMÜ
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // DUYGUSAL ÇAPA ("Neden Önemli?")
+                      GlassCard(
+                        borderRadius: 20,
+                        backgroundColor: const Color(0x2B161A30),
+                        border: Border.all(color: AppColors.celestialGold.withOpacity(0.3)),
+                        padding: const EdgeInsets.all(18),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text('💎', style: TextStyle(fontSize: 22)),
+                            const SizedBox(width: 14),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    t.tr('goal_detail.emotional_why_title').toUpperCase(),
+                                    style: AppTypography.caption(color: AppColors.celestialGold, isBold: true),
+                                  ),
+                                  const SizedBox(height: 6),
+                                  Text(
+                                    '"${goal.emotionalWhy}"',
+                                    style: AppTypography.bodyLarge(color: AppColors.pureMoonWhite),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      // İLERLEME VE KALAN GÜN SAYACI
+                      Row(
+                        children: [
+                          Expanded(
+                            child: GlassCard(
+                              borderRadius: 16,
+                              padding: const EdgeInsets.all(16),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    t.tr('goal_detail.progress_label'),
+                                    style: AppTypography.caption(color: AppColors.stardustMuted),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Text(
+                                    '%${(goal.progress * 100).toInt()}',
+                                    style: AppTypography.displayH2(color: AppColors.celestialGold),
+                                  ),
+                                  const SizedBox(height: 6),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(4),
+                                    child: LinearProgressIndicator(
+                                      value: goal.progress,
+                                      backgroundColor: AppColors.containerMid,
+                                      valueColor: const AlwaysStoppedAnimation<Color>(AppColors.celestialGold),
+                                      minHeight: 6,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 14),
+                          Expanded(
+                            child: GlassCard(
+                              borderRadius: 16,
+                              padding: const EdgeInsets.all(16),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    t.tr('goal_detail.days_left', params: {'days': '${goal.daysLeft}'}),
+                                    style: AppTypography.caption(color: AppColors.stardustMuted),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Text(
+                                    '${goal.daysLeft} Gün',
+                                    style: AppTypography.displayH2(color: AppColors.etherealTeal),
+                                  ),
+                                  const SizedBox(height: 6),
+                                  Text(
+                                    t.tr('goal_detail.priority_high'),
+                                    style: AppTypography.caption(color: AppColors.celestialGold, isBold: true),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 24),
+
+                      // 3 AYILIK KİLOMETRE TAŞLARI (Q1, Q2, Q3)
+                      Text(
+                        t.tr('goal_detail.milestones_title'),
+                        style: AppTypography.displayH3(color: AppColors.pureMoonWhite),
+                      ),
+                      const SizedBox(height: 12),
+
+                      ...goal.milestones.map((m) {
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 10.0),
+                          child: GlassCard(
+                            borderRadius: 16,
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                            onTap: () => notifier.toggleMilestone(m.id),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  m.isCompleted ? Icons.check_circle_rounded : Icons.radio_button_unchecked,
+                                  color: m.isCompleted ? AppColors.celestialGold : AppColors.stardustMuted,
+                                  size: 22,
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: Text(
+                                    m.title,
+                                    style: AppTypography.bodyMedium(
+                                      color: m.isCompleted ? AppColors.stardustMuted : AppColors.pureMoonWhite,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      }),
+
+                      const SizedBox(height: 24),
+
+                      // BUGÜNKÜ 15 DAKİKALIK MİKRO-EYLEM KARTI (VISUS-ACTION KÖPRÜSÜ)
+                      Text(
+                        t.tr('goal_detail.today_micro_title'),
+                        style: AppTypography.displayH3(color: AppColors.starlightChampagne),
+                      ),
+                      const SizedBox(height: 10),
+
+                      GlassCard(
+                        borderRadius: 20,
+                        backgroundColor: goal.isActionDone ? const Color(0x1F2DD4BF) : const Color(0x336366F1),
+                        border: Border.all(
+                          color: goal.isActionDone ? AppColors.etherealTeal : AppColors.mysticViolet.withOpacity(0.6),
+                          width: 1.2,
+                        ),
+                        padding: const EdgeInsets.all(18),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.celestialGold,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Text(
+                                    '${goal.estimatedMinutes} DAKİKA',
+                                    style: AppTypography.caption(color: const Color(0xFF1F1600), isBold: true),
+                                  ),
+                                ),
+                                const Spacer(),
+                                if (!goal.isActionDone)
+                                  TextButton.icon(
+                                    onPressed: goal.isShrinkingAi ? null : () => notifier.shrinkAction(),
+                                    icon: const Icon(Icons.compress_rounded, size: 16, color: AppColors.celestialGold),
+                                    label: Text(
+                                      t.tr('goal_detail.shrink_action_button'),
+                                      style: AppTypography.caption(color: AppColors.celestialGold),
+                                    ),
+                                  ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              goal.todaysMicroAction,
+                              style: AppTypography.bodyLarge(color: AppColors.pureMoonWhite),
+                            ),
+                            const SizedBox(height: 16),
+
+                            // Tamamla Butonu
+                            GoldenButton(
+                              text: goal.isActionDone
+                                  ? t.tr('goal_detail.action_completed_badge')
+                                  : t.tr('goal_detail.action_done_button'),
+                              icon: goal.isActionDone ? Icons.done_all : Icons.check_circle_outline,
+                              onPressed: () => notifier.toggleAction(),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      const SizedBox(height: 30),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+}
+```

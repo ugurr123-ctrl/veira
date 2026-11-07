@@ -1,0 +1,209 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><title>Veira</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;1,400&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'background': '#0e1228', 'on-primary': '#1000a9', 'on-error-container': '#ffdad6', 'on-tertiary-container': '#002d40', 'on-primary-fixed': '#07006c', 'on-secondary-fixed-variant': '#574500', 'surface-container': '#1a1e35', 'on-primary-fixed-variant': '#2f2ebe', 'tertiary': '#7bd0ff', 'on-tertiary-fixed-variant': '#004c69', 'tertiary-container': '#009bd1', 'surface-variant': '#2f334b', 'on-tertiary': '#00354a', 'inverse-primary': '#494bd6', 'secondary': '#e7c355', 'on-background': '#dee0ff', 'surface-container-high': '#252840', 'primary-fixed-dim': '#c0c1ff', 'tertiary-fixed-dim': '#7bd0ff', 'primary-fixed': '#e1e0ff', 'on-error': '#690005', 'on-primary-container': '#0d0096', 'secondary-fixed-dim': '#e7c355', 'tertiary-fixed': '#c4e7ff', 'surface-container-low': '#161a30', 'on-surface': '#dee0ff', 'secondary-fixed': '#ffe089', 'surface-bright': '#343850', 'outline-variant': '#464554', 'surface': '#0e1228', 'inverse-surface': '#dee0ff', 'error-container': '#93000a', 'surface-container-highest': '#2f334b', 'outline': '#908fa0', 'primary-container': '#8083ff', 'surface-dim': '#0e1228', 'primary': '#c0c1ff', 'on-surface-variant': '#c7c4d7', 'surface-tint': '#c0c1ff', 'error': '#ffb4ab', 'on-secondary': '#3d2f00', 'surface-container-lowest': '#080c22', 'on-secondary-container': '#fffbff', 'inverse-on-surface': '#2b2f46', 'on-tertiary-fixed': '#001e2c', 'secondary-container': '#8e7100' }, borderRadius: { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, spacing: { 'space-md': '1rem', 'gutter': '1rem', 'margin-lg': '1.5rem', 'space-lg': '1.5rem', 'space-xs': '0.25rem', 'margin': '1.25rem', 'space-sm': '0.5rem', 'gutter-sm': '0.75rem', 'space-xl': '2rem' }, fontFamily: { 'body-md': ['Inter'], 'label-md': ['Inter'], 'headline-md': ['Playfair Display'], 'title-lg': ['Inter'], 'title-md': ['Inter'], 'display-sm': ['Playfair Display'], 'headline-lg-mobile': ['Playfair Display'], 'headline-lg': ['Playfair Display'], 'display-lg': ['Playfair Display'], 'body-lg': ['Inter'], 'label-lg': ['Inter'], 'label-sm': ['Inter'], 'body-sm': ['Inter'] }, fontSize: { 'body-md': ['14px', { 'lineHeight': '20px', 'fontWeight': '400' }], 'label-md': ['12px', { 'lineHeight': '16px', 'letterSpacing': '0.02em', 'fontWeight': '500' }], 'headline-md': ['20px', { 'lineHeight': '28px', 'fontWeight': '500' }], 'title-lg': ['18px', { 'lineHeight': '24px', 'letterSpacing': '-0.01em', 'fontWeight': '600' }], 'title-md': ['16px', { 'lineHeight': '22px', 'fontWeight': '600' }], 'display-sm': ['32px', { 'lineHeight': '40px', 'letterSpacing': '-0.01em', 'fontWeight': '600' }], 'headline-lg-mobile': ['24px', { 'lineHeight': '32px', 'letterSpacing': '-0.01em', 'fontWeight': '500' }], 'headline-lg': ['28px', { 'lineHeight': '36px', 'letterSpacing': '-0.01em', 'fontWeight': '500' }], 'display-lg': ['40px', { 'lineHeight': '48px', 'letterSpacing': '-0.02em', 'fontWeight': '600' }], 'body-lg': ['16px', { 'lineHeight': '24px', 'fontWeight': '400' }], 'label-lg': ['14px', { 'lineHeight': '20px', 'letterSpacing': '0.01em', 'fontWeight': '500' }], 'label-sm': ['11px', { 'lineHeight': '14px', 'letterSpacing': '0.04em', 'fontWeight': '600' }], 'body-sm': ['12px', { 'lineHeight': '16px', 'fontWeight': '400' }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#080c22;color:#dee0ff;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Veira Celestial Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChst6p9MJzfQQfrA_4McOfjT1GNsc9_OFu0oIXpJ8knn6bGLrsIuMb2L94hQPra2UE17rHqpC10UmmXSYamqYwP2Y1vMWguKTbNWar5lqMn8Dq0b2jLXUiXxtybLILZ3wgEol1ao3yCWnSsDhM2XoHDx-xRFpDq5fUeAf84RezGbeOTPzjs_x5Tc6j5q6aELtJVAanqXFKTx3GOKXjDnPGiElCvR_UtjjSWqPBYeOXXcYLUs7Pejls"><span class="font-headline-md text-headline-md text-secondary tracking-tight">Veira</span></div><div class="flex items-center gap-space-sm"><span class="font-title-md text-title-md text-on-surface text-center px-space-xs truncate max-w-[130px]">Manifest</span></div><div class="flex items-center gap-space-sm"><a class="w-11 h-11 flex items-center justify-center rounded-full transition-transform active:scale-95" data-path="settings" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi3a-psaNJ_QU-72Xk020WcxXT0weHKVr0dxtketi3AfYdGjQE0pkeV1TxmQm84hVhT0dDYaR1K3Vn7ar1Vow9SCF_CzgefPXCrNnOXcCjwHeklD47ZVj8Szf5GaDskIOBEcZn5UQKJGj4wtMBLcJXvks2x9qZc2WAz3X8IE2W-LHjlqmq2AKvrUa2zYibLT77AjUqNtzdsFtgZh2JvTDD3mZD5GPHtnkbRFBoO4t1P2LSK3m2QjJ3"></a></div></div></header><main class="flex-1 flex flex-col relative w-full px-margin pt-16 pb-24 bg-surface"><div class="flex flex-col w-full relative select-none">
+<!-- Dynamic Ambient Glow Layer -->
+<div class="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-primary-container/20 blur-[100px]"></div>
+<div class="pointer-events-none absolute top-48 right-0 w-64 h-64 rounded-full bg-secondary/15 blur-[90px]"></div>
+<div class="pointer-events-none absolute bottom-32 left-[-20px] w-72 h-72 rounded-full bg-tertiary-container/20 blur-[110px]"></div>
+<!-- Top Action Bar (Utility Controls) -->
+<div class="w-full flex items-center justify-between z-20 mb-space-md">
+<div class="flex items-center gap-space-xs bg-surface-container/70 backdrop-blur-xl px-space-md py-1.5 rounded-full shadow-sm">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm tracking-widest uppercase text-secondary">Nöro-Akış Aktif</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<!-- Fullscreen visual toggle -->
+<button aria-label="Görsel Modu" class="w-10 h-10 rounded-full bg-surface-container-high/80 backdrop-blur-md flex items-center justify-center text-on-surface hover:text-secondary active:scale-95 transition-all shadow-md" id="toggle-visual-mode">
+<span class="material-symbols-outlined text-[20px]">aspect_ratio</span>
+</button>
+<!-- Close / Exit immersive view -->
+<button aria-label="Kapat" class="w-10 h-10 rounded-full bg-surface-container-high/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-on-surface active:scale-95 transition-all shadow-md">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</div>
+<!-- Section 1: Vision Screen (Cinematic Portal + Ken Burns effect) -->
+<div class="relative w-full rounded-3xl overflow-hidden shadow-2xl bg-surface-container-lowest group min-h-[390px] flex flex-col justify-between p-space-lg">
+<!-- Visual background with Ken Burns scale and subtle aurora glow -->
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-[12000ms] ease-out scale-105 group-hover:scale-110" data-alt="Lake Como serene sunrise at golden hour, still glassy azure waters reflecting mist-covered mountains, ethereal soft pastel violet and golden starlight glow, tranquil hyper-realistic cinematic atmosphere, quiet mindful paradise for deep meditation and clarity" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBZNEUFiJnJNYRfAaQBSQ69FyCEb0XWJElleeITn-Hw-QM79hliOrIdmPSN1iBQBPu2NkBnzHt7qiJms6_XTttbJKWetLA_vDdOMtrtUvf3qYk698iJu3K_Ohz4gqDzHrvpXb6yuS0GzrB7vCSOMXC8V3h9oWuUrr3hUdv4Scan8Beni-9sL9lbVXmdo4pN_Ci7DZlNGD5rc_SgeMox9TAZQGbHY2m19gDDQpYfHaZGzXjdmT0ttYb0')">
+</div>
+<!-- Multi-layered Atmospheric Scrims -->
+<div class="absolute inset-0 bg-gradient-to-b from-surface-container-lowest/70 via-surface-container-lowest/30 to-surface-container-lowest/95 backdrop-blur-[1px]"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-primary/10 mix-blend-screen pointer-events-none"></div>
+<!-- Vision Board Label & Anchor -->
+<div class="relative z-10 flex items-center justify-between">
+<div class="flex items-center gap-space-xs px-3 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md">
+<span class="material-symbols-outlined text-secondary text-[16px]">visibility</span>
+<span class="font-label-sm text-label-sm text-secondary tracking-wide uppercase">Vizyon 2027</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-lowest/60 backdrop-blur-md px-2.5 py-1 rounded-full">Como Gölü • İtalya</span>
+</div>
+<!-- Centerpiece Golden Affirmation & Breathing Anchor -->
+<div class="relative z-10 my-auto text-center flex flex-col items-center justify-center py-space-md"></div>
+<!-- Dynamic Audio Waveform Visualizer -->
+<div class="relative z-10 w-full flex flex-col items-center gap-1.5 pt-space-xs"><div class="flex items-center justify-between w-full px-1 mb-1"><span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1.5 font-mono tracking-wide"><span class="material-symbols-outlined text-[14px] text-tertiary">graphic_eq</span>432 Hz Nöral Rezonans</span><span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase font-mono">Alfa / Teta Senk.</span></div><div class="w-full h-9 flex items-end justify-between gap-1 px-1 py-1 bg-surface-container-lowest/40 backdrop-blur-md rounded-xl" id="visualizer-container"><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 45%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 70%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 30%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 90%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 60%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 100%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 85%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 50%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 75%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 40%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 80%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 95%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 65%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 35%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 55%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 88%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 40%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 70%;"></div><div class="w-full bg-gradient-to-t from-tertiary/70 to-secondary rounded-full transition-all duration-300" style="height: 25%;"></div></div></div>
+</div>
+<!-- Section 2: Player Controls & Mindful Focus Timer -->
+<div class="w-full mt-space-md p-space-md bg-surface-container/70 backdrop-blur-2xl rounded-2xl shadow-xl flex flex-col gap-space-sm">
+<!-- Timer & Automation Status Bar -->
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[18px]">hourglass_top</span>
+<span class="font-label-md text-label-md text-on-surface">15 Dk Odaklanma</span>
+<span class="font-label-sm text-label-sm text-tertiary font-mono bg-tertiary-container/30 px-2 py-0.5 rounded-full">Kalan 11:24</span>
+</div>
+<!-- Auto Fade Out Badge -->
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high/90">
+<span class="material-symbols-outlined text-secondary text-[14px]">bedtime</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Otomatik Kapanma</span>
+</div>
+</div>
+<!-- Interactive Track Progress Slider -->
+<div class="w-full flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">03:36</span>
+<div class="relative flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden cursor-pointer group">
+<div class="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-primary to-secondary rounded-full" style="width: 24%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">15:00</span>
+</div>
+<!-- Playback Navigation Controls -->
+<div class="flex items-center justify-center gap-space-xl pt-space-xs"><button aria-label="10 saniye geri" class="w-11 h-11 rounded-full flex flex-col items-center justify-center text-on-surface-variant hover:text-on-surface active:scale-90 transition-all"><span class="material-symbols-outlined text-[26px]">replay_10</span><span class="font-label-sm text-[10px] -mt-1 font-mono">Geri</span></button><button aria-label="Oynat veya Duraklat" class="w-16 h-16 rounded-full bg-gradient-to-tr from-secondary-container via-secondary to-secondary-fixed text-on-secondary flex items-center justify-center shadow-[0_0_28px_rgba(231,195,85,0.45)] active:scale-95 transition-transform" id="master-play-toggle"><span class="material-symbols-outlined text-[36px]" id="play-icon" style="font-variation-settings: 'FILL' 1;">pause</span></button><button aria-label="10 saniye ileri" class="w-11 h-11 rounded-full flex flex-col items-center justify-center text-on-surface-variant hover:text-on-surface active:scale-90 transition-all"><span class="material-symbols-outlined text-[26px]">forward_10</span><span class="font-label-sm text-[10px] -mt-1 font-mono">İleri</span></button></div>
+</div>
+<!-- Section 3: Dual Acoustic Mixer Panel -->
+<div class="w-full mt-space-md p-space-lg bg-surface-container/60 backdrop-blur-2xl rounded-2xl shadow-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">tune</span>
+<h3 class="font-title-md text-title-md text-on-surface">Çift Kanallı Akustik Mikser</h3>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">432Hz Harmonik Eşleme</span>
+</div>
+<!-- Channel 1: Binaural Frequency -->
+<div class="flex flex-col gap-space-xs bg-surface-container-high/60 p-space-md rounded-xl">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-lg bg-primary/20 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">piano</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">432Hz Mucize Tonu &amp; Meditasyon Piyanosu</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Rejeneratif Hücre Rezonansı</span>
+</div>
+</div>
+<span class="font-label-md text-label-md text-primary font-mono ml-space-sm shrink-0" id="vol-ch1-label">80%</span>
+</div>
+<!-- Slider Channel 1 -->
+<div class="relative w-full py-1">
+<input class="w-full h-2 bg-surface-container-lowest rounded-lg appearance-none cursor-pointer accent-primary focus:outline-none" id="vol-ch1" max="100" min="0" type="range" value="80">
+</div>
+</div>
+<!-- Channel 2: Organic Nature Ambience -->
+<div class="flex flex-col gap-space-xs bg-surface-container-high/60 p-space-md rounded-xl">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-lg bg-tertiary-container/30 text-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">rainy</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Gece Yağmuru &amp; Şömine Çatırtısı</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sakinleştirici Doğal Beyaz Gürültü</span>
+</div>
+</div>
+<span class="font-label-md text-label-md text-tertiary font-mono ml-space-sm shrink-0" id="vol-ch2-label">40%</span>
+</div>
+<!-- Slider Channel 2 -->
+<div class="relative w-full py-1">
+<input class="w-full h-2 bg-surface-container-lowest rounded-lg appearance-none cursor-pointer accent-tertiary focus:outline-none" id="vol-ch2" max="100" min="0" type="range" value="40">
+</div>
+</div>
+<!-- Quick Preset Buttons -->
+<div class="flex items-center justify-between gap-space-sm pt-space-xs">
+<button class="flex-1 py-2 px-space-xs rounded-full bg-surface-container-lowest/80 text-on-surface-variant hover:text-on-surface text-center font-label-sm text-label-sm active:scale-95 transition-all">
+        Sadece Frekans
+      </button>
+<button class="flex-1 py-2 px-space-xs rounded-full bg-secondary/15 text-secondary text-center font-label-sm text-label-sm active:scale-95 transition-all font-semibold shadow-sm">
+        Derin Denge
+      </button>
+<button class="flex-1 py-2 px-space-xs rounded-full bg-surface-container-lowest/80 text-on-surface-variant hover:text-on-surface text-center font-label-sm text-label-sm active:scale-95 transition-all">
+        Gece Uyku Modu
+      </button>
+</div>
+</div>
+</div>
+<script>
+  // Dynamic Waveform Audio Simulation
+  (function initWaveform() {
+    const bars = document.querySelectorAll('#visualizer-container > div');
+    let isPlaying = true;
+    let waveInterval;
+
+    function randomizeBars() {
+      if (!isPlaying) return;
+      bars.forEach(bar => {
+        const height = Math.floor(Math.random() * 85) + 15;
+        bar.style.height = height + '%';
+      });
+    }
+
+    waveInterval = setInterval(randomizeBars, 320);
+
+    // Play/Pause Master Switch
+    const masterPlay = document.getElementById('master-play-toggle');
+    const playIcon = document.getElementById('play-icon');
+
+    if (masterPlay && playIcon) {
+      masterPlay.addEventListener('click', () => {
+        isPlaying = !isPlaying;
+        if (isPlaying) {
+          playIcon.innerText = 'pause';
+          waveInterval = setInterval(randomizeBars, 320);
+        } else {
+          playIcon.innerText = 'play_arrow';
+          clearInterval(waveInterval);
+          bars.forEach(bar => { bar.style.height = '12%'; });
+        }
+      });
+    }
+
+    // Mixer Range Bindings
+    const vol1 = document.getElementById('vol-ch1');
+    const vol1Label = document.getElementById('vol-ch1-label');
+    const vol2 = document.getElementById('vol-ch2');
+    const vol2Label = document.getElementById('vol-ch2-label');
+
+    if (vol1 && vol1Label) {
+      vol1.addEventListener('input', (e) => {
+        vol1Label.innerText = e.target.value + '%';
+      });
+    }
+
+    if (vol2 && vol2Label) {
+      vol2.addEventListener('input', (e) => {
+        vol2Label.innerText = e.target.value + '%';
+      });
+    }
+
+    // Dynamic 4-7-8 Breath Pacer Text
+    const breathText = document.getElementById('breath-text');
+    if (breathText) {
+      const breathSteps = [
+        'Nefes al... (4sn)',
+        'Vizyonu hisset, nefesi tut... (7sn)',
+        'Yavaşça serbest bırak... (8sn)'
+      ];
+      let stepIdx = 0;
+      setInterval(() => {
+        stepIdx = (stepIdx + 1) % breathSteps.length;
+        breathText.innerText = breathSteps[stepIdx];
+      }, 5000);
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-secondary scale-105 font-bold"><div class="h-20 px-gutter flex items-center justify-between"><a class="flex flex-col items-center justify-center w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant transition-all hover:text-on-surface" data-path="home" href="#"><span class="material-symbols-outlined text-[24px]">auto_awesome</span><span class="font-label-sm text-label-sm mt-space-xs tracking-tight">Bugün</span></a><a class="flex flex-col items-center justify-center w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant transition-all hover:text-on-surface" data-path="vision-board" href="#"><span class="material-symbols-outlined text-[24px]">grid_view</span><span class="font-label-sm text-label-sm mt-space-xs tracking-tight">Vizyon</span></a><a aria-current="page" class="flex flex-col items-center justify-center w-14 h-14 min-w-[44px] min-h-[44px] transition-all text-secondary scale-105 font-bold" data-path="manifest" href="#"><span class="material-symbols-outlined text-[24px]">graphic_eq</span><span class="font-label-sm text-label-sm mt-space-xs tracking-tight">432Hz</span></a><a class="flex flex-col items-center justify-center w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant transition-all hover:text-on-surface" data-path="goals" href="#"><span class="material-symbols-outlined text-[24px]">track_changes</span><span class="font-label-sm text-label-sm mt-space-xs tracking-tight">Hedefler</span></a><a class="flex flex-col items-center justify-center w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant transition-all hover:text-on-surface" data-path="settings" href="#"><span class="material-symbols-outlined text-[24px]">tune</span><span class="font-label-sm text-label-sm mt-space-xs tracking-tight">Ayarlar</span></a></div></nav>
+
+
+
+</body></html>

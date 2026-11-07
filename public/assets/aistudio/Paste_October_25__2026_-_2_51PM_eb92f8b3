@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-tint": "#c0c1ff", "on-primary": "#1000a9", "on-surface-variant": "#c7c4d7", "on-tertiary-container": "#002d40", "error": "#ffb4ab", "surface-container-highest": "#2f334b", "surface-dim": "#0e1228", "tertiary-fixed": "#c4e7ff", "secondary-container": "#8e7100", "on-tertiary": "#00354a", "tertiary": "#7bd0ff", "on-tertiary-fixed": "#001e2c", "on-tertiary-fixed-variant": "#004c69", "on-secondary": "#3d2f00", "primary-fixed": "#e1e0ff", "on-primary-fixed-variant": "#2f2ebe", "surface-container": "#1a1e35", "primary-fixed-dim": "#c0c1ff", "secondary-fixed": "#ffe089", "background": "#0e1228", "outline": "#908fa0", "on-secondary-fixed": "#241a00", "on-secondary-container": "#fffbff", "error-container": "#93000a", "primary-container": "#8083ff", "inverse-on-surface": "#2b2f46", "on-surface": "#dee0ff", "surface": "#0e1228", "on-secondary-fixed-variant": "#574500", "on-error": "#690005", "on-error-container": "#ffdad6", "outline-variant": "#464554", "surface-bright": "#343850", "on-primary-container": "#0d0096", "inverse-primary": "#494bd6", "secondary-fixed-dim": "#e7c355", "tertiary-container": "#009bd1", "surface-container-lowest": "#080c22", "surface-variant": "#2f334b", "on-primary-fixed": "#07006c", "tertiary-fixed-dim": "#7bd0ff", "on-background": "#dee0ff", "surface-container-low": "#161a30", "surface-container-high": "#252840", "primary": "#c0c1ff", "inverse-surface": "#dee0ff", "secondary": "#e7c355" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-lg": "1.5rem", "space-sm": "0.5rem", "space-md": "1rem", "margin-lg": "1.5rem", "gutter-sm": "0.75rem", "space-xl": "2rem", "space-xs": "0.25rem", "margin": "1.25rem", "gutter": "1rem" }, fontFamily: { "label-sm": ["Inter"], "title-lg": ["Inter"], "body-sm": ["Inter"], "label-md": ["Inter"], "label-lg": ["Inter"], "title-md": ["Inter"], "display-lg": ["Playfair Display"], "headline-md": ["Playfair Display"], "body-lg": ["Inter"], "headline-lg": ["Playfair Display"], "display-sm": ["Playfair Display"], "body-md": ["Inter"], "headline-lg-mobile": ["Playfair Display"] }, fontSize: { "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }], "title-lg": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }], "title-md": ["16px", { "lineHeight": "22px", "fontWeight": "600" }], "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "display-sm": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "500" }] } } } }</script><style>@layer base{html,body{width:100%;margin:0;padding:0;min-height:100vh;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 5rem);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen relative selection:bg-secondary/30 selection:text-secondary"><div class="fixed inset-0 pointer-events-none z-0 overflow-hidden"><div class="absolute -top-[20%] -left-[10%] w-[80vw] h-[80vw] rounded-full bg-primary-container/10 blur-[120px]"></div><div class="absolute top-[40%] -right-[20%] w-[90vw] h-[90vw] rounded-full bg-secondary-container/10 blur-[140px]"></div><div class="absolute -bottom-[20%] left-[10%] w-[70vw] h-[70vw] rounded-full bg-tertiary-container/10 blur-[120px]"></div></div><header class="fixed top-0 inset-x-0 z-50 bg-surface/70 backdrop-blur-2xl shadow-[0_1px_12px_rgba(0,0,0,0.3)] pt-safe"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-full bg-surface-container-high/80 flex items-center justify-center text-secondary shadow-[0_0_15px_rgba(231,195,85,0.15)]"><span class="material-symbols-outlined text-[20px]">all_inclusive</span></div><div class="flex flex-col"><span class="font-display-sm text-title-md tracking-tight text-on-surface">Veira</span><span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">Hedefler</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Ritual Bell" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span></button><button aria-label="Search" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors"><span class="material-symbols-outlined text-[22px]">search</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs shadow-[0_0_12px_rgba(192,193,255,0.35)]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-safe bg-surface z-10 px-margin"><div class="flex flex-col w-full pb-10">
+<!-- Section: Header with Micro-Delight Button -->
+<section class="flex flex-col gap-space-xs mt-space-sm mb-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs mb-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(231,195,85,0.8)] animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">Kozmik Manifest &amp; Eylem</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight">
+          SMART Hedeflerim <span class="text-secondary drop-shadow-[0_0_12px_rgba(231,195,85,0.4)]">✨</span>
+</h1>
+</div>
+<!-- Add Goal Pill Button -->
+<button aria-label="Yeni Hedef Ekle" class="relative group overflow-hidden rounded-full p-px bg-gradient-to-r from-secondary via-secondary-fixed to-secondary-container shadow-[0_0_16px_rgba(231,195,85,0.25)] active:scale-95 transition-transform duration-200">
+<span class="flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-container-high/90 backdrop-blur-md text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>Yeni Hedef</span>
+</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-[92%] leading-relaxed">
+      Vizyon → 3 Aylık Milestones &amp; Günlük 15 Dk Eylemler
+    </p>
+</section>
+<!-- Filter Pills (Scrollable Celestial Wheel) -->
+<div class="relative w-full mb-space-lg overflow-x-auto no-scrollbar -mx-margin px-margin flex items-center gap-space-xs scroll-smooth">
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded-full bg-secondary text-on-secondary font-label-md text-label-md shadow-[0_0_14px_rgba(231,195,85,0.35)] flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-on-secondary"></span>
+<span>Tümü</span>
+<span class="px-1.5 py-0.2 rounded-full bg-on-secondary/15 text-[10px] font-semibold">4</span>
+</button>
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded-full bg-surface-container-high/60 backdrop-blur-md text-on-surface-variant hover:text-secondary font-label-md text-label-md flex items-center gap-1.5 transition-colors">
+<span>Kariyer &amp; Bolluk</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-variant text-[10px]">2</span>
+</button>
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded-full bg-surface-container-high/60 backdrop-blur-md text-on-surface-variant hover:text-secondary font-label-md text-label-md flex items-center gap-1.5 transition-colors">
+<span>Beden &amp; Canlılık</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-variant text-[10px]">1</span>
+</button>
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded-full bg-surface-container-high/60 backdrop-blur-md text-on-surface-variant hover:text-secondary font-label-md text-label-md flex items-center gap-1.5 transition-colors">
+<span>Ruhsal Denge</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-variant text-[10px]">1</span>
+</button>
+</div>
+<!-- Hero Card: Active Priority #1 SMART Goal -->
+<div class="relative w-full rounded-2xl bg-surface-container-high/65 backdrop-blur-2xl p-space-lg shadow-[0_16px_36px_rgba(8,12,34,0.7)] overflow-hidden mb-space-xl">
+<!-- Atmospheric Ambient Glows Inside Glass -->
+<div class="absolute -top-12 -right-12 w-44 h-44 rounded-full bg-secondary/10 blur-[60px] pointer-events-none"></div>
+<div class="absolute -bottom-16 -left-12 w-48 h-48 rounded-full bg-primary-container/15 blur-[60px] pointer-events-none"></div>
+<!-- Header Meta & Countdown -->
+<div class="flex items-center justify-between gap-space-sm mb-space-sm relative z-10">
+<span class="px-2.5 py-1 rounded-full bg-secondary/15 text-secondary font-label-sm text-[10px] tracking-wider uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">arrow_back_ios_new</span>
+        Kariyer &amp; Bolluk
+      </span>
+<span class="px-2.5 py-1 rounded-full bg-tertiary-container/30 text-tertiary font-label-sm text-[11px] tracking-wide flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">timelapse</span>
+        142 Gün Kaldı
+      </span>
+</div>
+<!-- Goal Title & Vision Picture Placeholder -->
+<div class="relative z-10 mb-space-md">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-space-xs leading-snug">
+        Como Gölü Kıyısında Yaşam &amp; Bağımsız Çalışma
+      </h2>
+<!-- Visual Anchor: Vision Board Mood -->
+<div class="relative w-full h-32 rounded-xl overflow-hidden mb-space-sm shadow-md">
+<div class="w-full h-full bg-cover bg-center" data-alt="Serene Lake Como villa terrace at golden twilight, calm reflective blue water, Italian cypress trees, an open laptop and notebook on a warm rustic stone table with soft celestial candlelight, atmospheric, cinematic, luxurious calm editorial mood." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBor3Jtqkv0F1CUrF50UGvaB63m-9gFMii3ymkVdRNbbNN6pt4cob_fBubQBsWjtZpdGALpjVacBT_cGaX1Z8nLbu7eN8kdhiwFFswT4ApAW3Xj8bpHQ-70QT9d7AoGXfSw5pE42ovOKvEv5aKM2ovshGlgoqGQTvu7_xGaPrNbiXQBdWkAKalr_2tDDj_tVS_8RXWR5w3PQ7PyHHr3TUEQDN0Nl99Cd6yHM4ivw5s')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high via-surface-container-high/30 to-transparent"></div>
+<div class="absolute bottom-2 left-3 right-3 flex items-center justify-between">
+<span class="font-label-sm text-[10px] text-secondary tracking-widest uppercase">Görsel Çapa: Kuzey İtalya</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">pin_drop</span>
+</div>
+</div>
+<!-- Emotional Anchor: "Why" Statement -->
+<div class="rounded-xl bg-surface-container-lowest/50 p-space-sm flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">format_quote</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic leading-relaxed">
+          “Aileme dingin, doğayla iç içe özgür bir yaşam sunmak ve yaratıcı potansiyelimi en yüksek seviyede gerçekleştirmek.”
+        </p>
+</div>
+</div>
+<!-- Progress Tracker -->
+<div class="relative z-10 flex flex-col gap-1.5 mb-space-lg">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Genel Hedef İlerlemesi</span>
+<span class="font-display-sm text-title-md text-secondary tracking-tight">%45 Tamamlandı</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-lowest/80 overflow-hidden p-0.5">
+<div class="h-full rounded-full bg-gradient-to-r from-secondary-container via-secondary to-secondary-fixed shadow-[0_0_10px_rgba(231,195,85,0.7)] transition-all duration-500" style="width: 45%;"></div>
+</div>
+</div>
+<!-- 3-Month Milestones Horizon -->
+<div class="relative z-10 flex flex-col gap-space-xs mb-space-lg">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-on-surface tracking-wider uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary">flag</span>
+          3 Aylık Kilometre Taşları (Milestones)
+        </span>
+<span class="font-label-sm text-[11px] text-on-surface-variant">Q1 – Q3 2025</span>
+</div>
+<!-- Milestone 1: Done -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container/60 transition-colors">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-7 h-7 rounded-full bg-secondary/20 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Q1: İtalyanca B1 &amp; Vize Portföyü</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant line-through opacity-75">Resmi evraklar &amp; sertifika alındı</span>
+</div>
+</div>
+<span class="font-label-sm text-[10px] text-secondary bg-secondary/10 px-2 py-0.5 rounded-full uppercase shrink-0">Bitti</span>
+</div>
+<!-- Milestone 2: Active Glow -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-highest/80 shadow-[0_0_14px_rgba(231,195,85,0.12)]">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-7 h-7 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(231,195,85,0.5)]">
+<span class="material-symbols-outlined text-[16px] animate-spin" style="animation-duration: 6s;">autorenew</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-secondary truncate">Q2: Como/Milano Çalışma Sözleşmesi</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Şirket evrakları onay &amp; vergi kaydı</span>
+</div>
+</div>
+<span class="font-label-sm text-[10px] text-on-surface-variant bg-surface-variant px-2 py-0.5 rounded-full uppercase shrink-0">Aktif</span>
+</div>
+<!-- Milestone 3: Planned -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container/30 opacity-70">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-7 h-7 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Q3: Ev Kiralama &amp; Fiziksel Yerleşim</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Uçak bileti ve taşınma lojistiği</span>
+</div>
+</div>
+<span class="font-label-sm text-[10px] text-on-surface-variant bg-surface-variant px-2 py-0.5 rounded-full uppercase shrink-0">Planlandı</span>
+</div>
+</div>
+<!-- Daily 15-Minute Micro-Action Box (Delight Moment) -->
+<div class="relative z-10 rounded-xl bg-gradient-to-br from-primary-container/25 via-surface-container-high/90 to-primary-container/10 p-space-md shadow-[0_8px_24px_rgba(128,131,255,0.15)] overflow-hidden" id="micro-action-card">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">bolt</span>
+<span class="font-label-sm text-[11px] text-primary tracking-widest uppercase font-bold">Bugünkü Tek Mikro-Eylem</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary/20 text-primary-fixed font-label-sm text-[10px] tracking-wide">
+          15 DAKİKA
+        </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-space-md leading-relaxed">
+        İtalyanca çalışma portföyünden 1 vize başvuru yazısını incele ve 3 anahtar kelimeyi not al.
+      </p>
+<!-- Action CTA Buttons -->
+<div class="flex items-center gap-space-xs">
+<!-- Shrink to 5 Min (AI Relief Button) -->
+<button class="flex-1 py-2 px-3 rounded-full bg-surface-variant/80 hover:bg-surface-variant text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center justify-center gap-1 transition-all active:scale-95" id="shrink-btn" onclick="shrinkTask()">
+<span class="material-symbols-outlined text-[16px] text-tertiary">compress</span>
+<span id="shrink-text">⚡ 5 Dk'ya Küçült (AI)</span>
+</button>
+<!-- Complete Micro-Action Golden Button -->
+<button class="flex-1 py-2 px-3 rounded-full bg-gradient-to-r from-secondary-container via-secondary to-secondary-fixed text-on-secondary font-label-md text-label-md shadow-[0_0_16px_rgba(231,195,85,0.4)] flex items-center justify-center gap-1.5 transition-all active:scale-95" id="complete-btn" onclick="celebrateAction(this)">
+<span class="material-symbols-outlined text-[17px]">done_all</span>
+<span id="complete-text">Tamamladım ✨</span>
+</button>
+</div>
+<!-- Delight Celebration Toast (Hidden by default) -->
+<div class="hidden mt-3 p-2 rounded-lg bg-secondary/20 text-secondary text-center font-body-sm text-[12px] animate-fade-in flex items-center justify-center gap-1.5" id="delight-toast">
+<span class="material-symbols-outlined text-[16px]">celebration</span>
+<span>Harika! +25 Odak Puanı ve momentum kazanıldı.</span>
+</div>
+</div>
+</div>
+<!-- Section: Other SMART Goals (List of Contemplative Cards) -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between mb-space-xs">
+<h3 class="font-headline-md text-title-lg text-on-surface">
+        Diğer Aktif Vizyonlar
+      </h3>
+<span class="font-label-sm text-label-sm text-secondary tracking-wider uppercase">3 Hedef</span>
+</div>
+<!-- Goal 2: Beden & Canlılık -->
+<div class="rounded-xl bg-surface-container/70 backdrop-blur-md p-space-md shadow-md flex flex-col gap-space-sm hover:bg-surface-container-high/80 transition-all">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full bg-tertiary-container/20 text-tertiary font-label-sm text-[10px] uppercase tracking-wider">
+          Beden &amp; Canlılık
+        </span>
+<span class="font-body-sm text-[11px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">timer</span> 85 Gün Kaldı
+        </span>
+</div>
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col min-w-0">
+<h4 class="font-title-md text-title-md text-on-surface truncate">
+            Canlı, Esnek &amp; Dingin Bir Beden
+          </h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">
+            Q1 Yin Yoga serisi &amp; sabah hidrasyon ritüeli tamamlandı
+          </span>
+</div>
+<div class="shrink-0 flex flex-col items-end">
+<span class="font-display-sm text-label-lg text-secondary">%60</span>
+</div>
+</div>
+<!-- Progress Line -->
+<div class="w-full h-1.5 rounded-full bg-surface-container-lowest overflow-hidden">
+<div class="h-full rounded-full bg-secondary transition-all" style="width: 60%;"></div>
+</div>
+<!-- Today's Action Minimal Pill -->
+<div class="flex items-center justify-between rounded-lg bg-surface-container-lowest/60 px-space-sm py-2">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="material-symbols-outlined text-secondary text-[16px] shrink-0">spa</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant truncate">Bugün: 20 dk akşam restoratif esneme</span>
+</div>
+<button aria-label="Eylemi Tamamla" class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant hover:text-secondary shrink-0 transition-colors">
+<span class="material-symbols-outlined text-[15px]">check</span>
+</button>
+</div>
+</div>
+<!-- Goal 3: Ruhsal Denge -->
+<div class="rounded-xl bg-surface-container/70 backdrop-blur-md p-space-md shadow-md flex flex-col gap-space-sm hover:bg-surface-container-high/80 transition-all">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full bg-primary-container/20 text-primary-fixed-dim font-label-sm text-[10px] uppercase tracking-wider">
+          Ruhsal Denge
+        </span>
+<span class="font-body-sm text-[11px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">timer</span> 30 Gün Kaldı
+        </span>
+</div>
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col min-w-0">
+<h4 class="font-title-md text-title-md text-on-surface truncate">
+            432Hz Zihin Hali &amp; Derin Meditasyon
+          </h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">
+            Sabah alfa-dalga zihin boşaltımı &amp; nefes kontrolü
+          </span>
+</div>
+<div class="shrink-0 flex flex-col items-end">
+<span class="font-display-sm text-label-lg text-secondary">%85</span>
+</div>
+</div>
+<!-- Progress Line -->
+<div class="w-full h-1.5 rounded-full bg-surface-container-lowest overflow-hidden">
+<div class="h-full rounded-full bg-secondary transition-all" style="width: 85%;"></div>
+</div>
+<!-- Today's Action Minimal Pill -->
+<div class="flex items-center justify-between rounded-lg bg-surface-container-lowest/60 px-space-sm py-2">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="material-symbols-outlined text-secondary text-[16px] shrink-0">graphic_eq</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant truncate">Bugün: 15 dk 432Hz solfeggio ses banyosu</span>
+</div>
+<button aria-label="Eylemi Tamamla" class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant hover:text-secondary shrink-0 transition-colors">
+<span class="material-symbols-outlined text-[15px]">check</span>
+</button>
+</div>
+</div>
+<!-- Goal 4: Kariyer & Bolluk Studio -->
+<div class="rounded-xl bg-surface-container/70 backdrop-blur-md p-space-md shadow-md flex flex-col gap-space-sm hover:bg-surface-container-high/80 transition-all">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary/15 text-secondary font-label-sm text-[10px] uppercase tracking-wider">
+          Kariyer &amp; Bolluk
+        </span>
+<span class="font-body-sm text-[11px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">timer</span> 180 Gün Kaldı
+        </span>
+</div>
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col min-w-0">
+<h4 class="font-title-md text-title-md text-on-surface truncate">
+            Yaratıcı Dijital Tasarım Stüdyosu
+          </h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">
+            Global müşteri tabanı ve bağımsız ürün lansmanı
+          </span>
+</div>
+<div class="shrink-0 flex flex-col items-end">
+<span class="font-display-sm text-label-lg text-secondary">%35</span>
+</div>
+</div>
+<!-- Progress Line -->
+<div class="w-full h-1.5 rounded-full bg-surface-container-lowest overflow-hidden">
+<div class="h-full rounded-full bg-secondary transition-all" style="width: 35%;"></div>
+</div>
+<!-- Today's Action Minimal Pill -->
+<div class="flex items-center justify-between rounded-lg bg-surface-container-lowest/60 px-space-sm py-2">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="material-symbols-outlined text-secondary text-[16px] shrink-0">palette</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant truncate">Bugün: 1 portföy vaka analizi taslağı hazırla</span>
+</div>
+<button aria-label="Eylemi Tamamla" class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant hover:text-secondary shrink-0 transition-colors">
+<span class="material-symbols-outlined text-[15px]">check</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Interactive JavaScript for Tab Highlighting & Micro-Action Delight -->
+<script>
+    (function() {
+      // 1. Highlight 'Hedefler' in the Bottom Nav Shell
+      try {
+        const navLinks = document.querySelectorAll('nav a[data-path]');
+        navLinks.forEach(link => {
+          if (link.getAttribute('data-path') === 'hedefler') {
+            link.className = 'flex-1 min-w-[52px] h-11 rounded-full flex flex-col items-center justify-center gap-0.5 bg-secondary text-on-secondary shadow-[0_0_16px_rgba(231,195,85,0.35)] transition-all duration-300';
+            const icon = link.querySelector('.material-symbols-outlined');
+            if (icon) {
+              icon.style.fontVariationSettings = "'FILL' 1";
+            }
+          } else {
+            link.className = 'flex-1 min-w-[52px] h-11 rounded-full flex flex-col items-center justify-center gap-0.5 text-on-surface-variant hover:text-on-surface transition-all duration-300';
+          }
+        });
+      } catch(e) {}
+    })();
+
+    // 2. Micro-Action 5 Min Shrink Logic (AI Micro-Delight)
+    let isShrunk = false;
+    function shrinkTask() {
+      const card = document.getElementById('micro-action-card');
+      const textNode = card.querySelector('p');
+      const shrinkBtn = document.getElementById('shrink-btn');
+      const shrinkText = document.getElementById('shrink-text');
+
+      if (!isShrunk) {
+        textNode.innerHTML = '<span class="text-secondary font-medium">⚡ Mikro-Odak (5 Dk):</span> Başvuru mektubunun sadece ilk paragrafını aç ve 1 güçlü İtalyanca kelimeyi sarıya boya.';
+        shrinkText.innerText = "Geri Al (15 Dk)";
+        shrinkBtn.classList.add('bg-tertiary-container/30', 'text-tertiary');
+        isShrunk = true;
+      } else {
+        textNode.innerText = 'İtalyanca çalışma portföyünden 1 vize başvuru yazısını incele ve 3 anahtar kelimeyi not al.';
+        shrinkText.innerText = "⚡ 5 Dk'ya Küçült (AI)";
+        shrinkBtn.classList.remove('bg-tertiary-container/30', 'text-tertiary');
+        isShrunk = false;
+      }
+    }
+
+    // 3. Action Completion Delight Effect
+    function celebrateAction(btn) {
+      const toast = document.getElementById('delight-toast');
+      const completeText = document.getElementById('complete-text');
+      
+      btn.disabled = true;
+      btn.classList.remove('bg-gradient-to-r', 'from-secondary-container', 'via-secondary', 'to-secondary-fixed');
+      btn.classList.add('bg-secondary/40', 'cursor-default');
+      completeText.innerText = "Tamamlandı!";
+      
+      if (toast) {
+        toast.classList.remove('hidden');
+      }
+    }
+  </script>
+</div></main><div class="fixed bottom-0 inset-x-0 z-50 pointer-events-none pb-[calc(env(safe-area-inset-bottom,0px)+0.75rem)] px-margin"><nav class="pointer-events-auto mx-auto max-w-md bg-surface-container-high/80 backdrop-blur-2xl rounded-full p-space-xs shadow-[0_12px_36px_rgba(8,12,34,0.7)] flex items-center justify-between" data-active-classes="bg-secondary text-on-secondary shadow-[0_0_16px_rgba(231,195,85,0.35)]"><a class="flex-1 min-w-[52px] h-11 rounded-full flex flex-col items-center justify-center gap-0.5 text-on-surface-variant hover:text-on-surface transition-all duration-300" data-path="bugun" href="#"><span class="material-symbols-outlined text-[20px]">wb_twilight</span><span class="font-label-sm text-[10px] tracking-tight">Bugün</span></a><a class="flex-1 min-w-[52px] h-11 rounded-full flex flex-col items-center justify-center gap-0.5 text-on-surface-variant hover:text-on-surface transition-all duration-300" data-path="vizyon" href="#"><span class="material-symbols-outlined text-[20px]">visibility</span><span class="font-label-sm text-[10px] tracking-tight">Vizyon</span></a><a class="flex-1 min-w-[52px] h-11 rounded-full flex flex-col items-center justify-center gap-0.5 text-on-surface-variant hover:text-on-surface transition-all duration-300" data-path="432hz-soundscape" href="#"><span class="material-symbols-outlined text-[20px]">graphic_eq</span><span class="font-label-sm text-[10px] tracking-tight">432Hz</span></a><a aria-current="page" class="flex-1 min-w-[52px] h-11 rounded-full flex flex-col items-center justify-center gap-0.5 transition-all duration-300 bg-secondary text-on-secondary shadow-[0_0_16px_rgba(231,195,85,0.35)]" data-path="hedefler" href="#"><span class="material-symbols-outlined text-[20px]">track_changes</span><span class="font-label-sm text-[10px] tracking-tight">Hedefler</span></a><a class="flex-1 min-w-[52px] h-11 rounded-full flex flex-col items-center justify-center gap-0.5 text-on-surface-variant hover:text-on-surface transition-all duration-300" data-path="ayarlar" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span class="font-label-sm text-[10px] tracking-tight">Ayarlar</span></a></nav></div></body></html>

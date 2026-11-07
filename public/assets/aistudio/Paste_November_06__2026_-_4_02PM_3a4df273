@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-container": "#181427", "surface-dim": "#0a0715", "outline-variant": "#443b56", "primary-fixed-dim": "#d5baff", "on-secondary": "#490080", "inverse-primary": "#7d00fa", "on-primary-fixed": "#270057", "on-secondary-fixed-variant": "#6900b3", "background": "#080a16", "tertiary-container": "#006b71", "outline": "#978da3", "surface-tint": "#d5baff", "tertiary": "#00dce6", "on-background": "#e6dff5", "on-tertiary-fixed": "#002022", "surface-container-high": "#231e36", "on-primary-container": "#e6d4ff", "on-primary": "#42008a", "surface-container-low": "#120f20", "error": "#ffb4ab", "secondary-fixed": "#f0dbff", "on-primary-fixed-variant": "#5e00c1", "on-error": "#690005", "tertiary-fixed": "#6ff6ff", "secondary": "#ddb7ff", "surface-bright": "#332c4d", "on-tertiary-fixed-variant": "#004f53", "on-error-container": "#ffdad6", "inverse-surface": "#e6dff5", "on-surface": "#f2ecfd", "tertiary-fixed-dim": "#00dce6", "on-tertiary": "#00373a", "on-secondary-container": "#d6a9ff", "on-secondary-fixed": "#2c0051", "secondary-container": "#6f00be", "on-surface-variant": "#c9bfdc", "error-container": "#93000a", "secondary-fixed-dim": "#ddb7ff", "surface-variant": "#2b2540", "primary": "#d5baff", "surface": "#0d0a1b", "on-tertiary-container": "#04f2fe", "primary-container": "#7f00ff", "primary-fixed": "#ecdcff", "surface-container-highest": "#2e2747", "inverse-on-surface": "#312e3f", "surface-container-lowest": "#060411" }, borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" }, spacing: { "gutter-lg": "2.5rem", "space-xs": "0.375rem", "gutter-sm": "1rem", "margin": "2rem", "gutter": "1.5rem", "space-sm": "0.75rem", "margin-lg": "4rem", "space-xl": "3.5rem", "space-lg": "2rem", "margin-sm": "1.25rem", "space-md": "1.25rem" }, fontFamily: { "body-xl": ["Manrope"], "headline-md": ["EB Garamond"], "label-sm": ["Manrope"], "headline-xl-mobile": ["EB Garamond"], "headline-lg": ["EB Garamond"], "label-md": ["Manrope"], "label-lg": ["Manrope"], "body-sm": ["Manrope"], "display-lg": ["EB Garamond"], "body-md": ["Manrope"], "headline-xl": ["EB Garamond"], "display-lg-mobile": ["EB Garamond"], "headline-sm": ["EB Garamond"], "body-lg": ["Manrope"] }, fontSize: { "body-xl": ["1.25rem", { "lineHeight": "1.875rem", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-md": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "0em", "fontWeight": "500" }], "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.12em", "fontWeight": "700" }], "headline-xl-mobile": ["2.25rem", { "lineHeight": "2.625rem", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-lg": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "0em", "fontWeight": "500" }], "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.08em", "fontWeight": "600" }], "label-lg": ["0.875rem", { "lineHeight": "1.125rem", "letterSpacing": "0.04em", "fontWeight": "600" }], "body-sm": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.005em", "fontWeight": "400" }], "display-lg": ["4.5rem", { "lineHeight": "4.75rem", "letterSpacing": "-0.02em", "fontWeight": "400" }], "body-md": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }], "headline-xl": ["3.25rem", { "lineHeight": "3.625rem", "letterSpacing": "-0.015em", "fontWeight": "400" }], "display-lg-mobile": ["2.75rem", { "lineHeight": "3.125rem", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-sm": ["1.375rem", { "lineHeight": "1.875rem", "letterSpacing": "0.01em", "fontWeight": "600" }], "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "0em", "fontWeight": "400" }] } } } };</script><style>
+  @layer base{
+    html,body{width:100%;margin:0;padding:0;}
+    body{overscroll-behavior-y:none;}
+    .pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}
+    .pt-safe{padding-top:env(safe-area-inset-top,0px);}
+    main>:first-child{margin-top:0!important;}
+    main>:last-child{margin-bottom:0!important;}
+  }
+  ::-webkit-scrollbar{display:none;}
+  html { scroll-behavior: smooth; }
+  body { min-height: max(884px, 100dvh); }
+
+  /* Cosmic Aura & Living Glow Animations */
+  @keyframes nebulaDrift {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.45; }
+    50% { transform: translate(15px, -20px) scale(1.15); opacity: 0.7; }
+  }
+  @keyframes cosmicPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(127,0,255,0.3), inset 0 0 12px rgba(245,208,97,0.2); }
+    50% { transform: scale(1.03); box-shadow: 0 0 35px rgba(245,208,97,0.45), 0 0 60px rgba(127,0,255,0.4), inset 0 0 18px rgba(245,208,97,0.4); }
+  }
+  @keyframes auroraWave {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  @keyframes lightBeam {
+    0% { transform: translateX(-100%); }
+    50%, 100% { transform: translateX(200%); }
+  }
+  @keyframes zodiacOrbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes aspectGlow {
+    0%, 100% { opacity: 0.55; stroke-width: 1.5; filter: drop-shadow(0 0 2px rgba(245,208,97,0.4)); }
+    50% { opacity: 1; stroke-width: 2.2; filter: drop-shadow(0 0 6px rgba(245,208,97,0.9)); }
+  }
+  @keyframes astroNavPulse {
+    0%, 100% { box-shadow: 0 0 14px rgba(245,208,97,0.4), 0 0 28px rgba(127,0,255,0.3); }
+    50% { box-shadow: 0 0 24px rgba(245,208,97,0.7), 0 0 45px rgba(127,0,255,0.55); }
+  }
+
+  .aurora-bg {
+    background: linear-gradient(135deg, rgba(32, 23, 56, 0.95), rgba(18, 14, 32, 0.9), rgba(12, 32, 45, 0.85), rgba(46, 21, 68, 0.9));
+    background-size: 300% 300%;
+    animation: auroraWave 12s ease infinite;
+  }
+  .cosmic-shimmer-card {
+    position: relative;
+    overflow: hidden;
+  }
+  .cosmic-shimmer-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(105deg, transparent 20%, rgba(245,208,97,0.08) 45%, rgba(213,186,255,0.14) 50%, transparent 60%);
+    background-size: 200% 100%;
+    animation: lightBeam 6s infinite;
+    pointer-events: none;
+  }
+  .orbiting-ring {
+    transform-origin: 200px 200px;
+    animation: zodiacOrbit 160s linear infinite;
+  }
+  .aspect-shimmer {
+    animation: aspectGlow 3.5s ease-in-out infinite alternate;
+  }
+  .celestial-core-breath {
+    transform-origin: 200px 200px;
+    animation: cosmicPulse 4s ease-in-out infinite;
+  }
+  .element-bar-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .element-bar-shine::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: lightBeam 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+  .planet-card {
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .planet-card:active, .planet-card.expanded {
+    border-color: rgba(245, 208, 97, 0.45);
+    box-shadow: 0 4px 20px -2px rgba(127, 0, 255, 0.25), 0 0 15px rgba(245, 208, 97, 0.15);
+  }
+  .astro-tab-pulse {
+    animation: astroNavPulse 2.8s ease-in-out infinite;
+  }
+</style>
+</head><body class="bg-background text-on-background min-h-screen flex flex-col font-body-md text-body-md relative overflow-x-hidden selection:bg-primary-container selection:text-white">
+<!-- Cosmic Stardust Canvas & Nebulae Background -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<!-- Glowing Floating Nebulae -->
+<div class="absolute -top-24 -left-20 w-96 h-96 rounded-full bg-gradient-to-br from-primary-container/25 via-secondary-container/15 to-transparent blur-3xl" style="animation: nebulaDrift 16s ease-in-out infinite;"></div>
+<div class="absolute top-1/3 -right-24 w-80 h-80 rounded-full bg-gradient-to-bl from-tertiary/20 via-primary/10 to-transparent blur-3xl" style="animation: nebulaDrift 20s ease-in-out infinite reverse;"></div>
+<div class="absolute bottom-1/4 -left-20 w-88 h-88 rounded-full bg-gradient-to-tr from-[#f5d061]/15 via-primary-container/20 to-transparent blur-3xl" style="animation: nebulaDrift 24s ease-in-out infinite;"></div>
+<!-- Live Stardust Twinkle Canvas -->
+<canvas class="w-full h-full opacity-70" id="stardustCanvas"></canvas>
+</div>
+<!-- Header -->
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface-dim/85 backdrop-blur-2xl border-b border-outline-variant/30 shadow-[0_4px_25px_rgba(0,0,0,0.5)]">
+<div class="h-16 px-gutter-sm flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[#f5d061] text-[22px] drop-shadow-[0_0_8px_rgba(245,208,97,0.7)] animate-pulse">auto_awesome</span>
+<h1 class="font-headline-sm text-headline-sm text-on-surface tracking-wider font-semibold">Astro</h1>
+<span class="px-2 py-0.5 ml-1 rounded-full bg-primary/15 border border-primary/30 text-primary font-label-sm text-[10px] tracking-widest uppercase">Élite</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Notifications" class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:text-[#f5d061] hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-[#f5d061] p-[1.5px] shadow-[0_0_12px_rgba(213,186,255,0.4)]">
+<div class="w-full h-full rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[17px]">person</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col relative w-full pt-16 pb-32 bg-transparent z-10">
+<div class="flex flex-col w-full">
+<!-- Section Quick Jumper / Segment Navigation Pill Tabs -->
+<div class="sticky top-16 z-40 bg-surface-dim/90 backdrop-blur-2xl border-b border-outline-variant/30 py-2.5 px-gutter-sm shadow-md">
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth">
+<a class="px-3.5 py-1.5 rounded-full bg-[#f5d061]/15 text-[#f5d061] font-label-sm text-label-sm shrink-0 font-semibold border border-[#f5d061]/35 shadow-[0_0_12px_rgba(245,208,97,0.2)] active:scale-95 transition-transform" href="#bolum-gunluk">
+      1. Günlük Yorum
+    </a>
+<a class="px-3.5 py-1.5 rounded-full bg-surface-container/90 hover:bg-surface-bright text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm shrink-0 border border-outline-variant/30 active:scale-95 transition-all" href="#bolum-harita">
+      2. Doğum Haritası
+    </a>
+<a class="px-3.5 py-1.5 rounded-full bg-surface-container/90 hover:bg-surface-bright text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm shrink-0 border border-outline-variant/30 active:scale-95 transition-all" href="#bolum-element">
+      3. Element Dengesi
+    </a>
+<a class="px-3.5 py-1.5 rounded-full bg-surface-container/90 hover:bg-surface-bright text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm shrink-0 border border-outline-variant/30 active:scale-95 transition-all" href="#bolum-gezegenler">
+      4. Gezegenler
+    </a>
+<a class="px-3.5 py-1.5 rounded-full bg-surface-container/90 hover:bg-surface-bright text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm shrink-0 border border-outline-variant/30 active:scale-95 transition-all" href="#bolum-transitler">
+      5. Transitler
+    </a>
+</div>
+</div>
+<div class="px-gutter-sm space-y-9 pt-4 pb-6">
+<!-- User Profile Micro Capsule -->
+<div class="relative overflow-hidden p-3.5 rounded-DEFAULT bg-gradient-to-r from-surface-container-high/80 via-surface-container/90 to-surface-container-high/80 border border-outline-variant/40 shadow-[0_8px_24px_rgba(0,0,0,0.4)] backdrop-blur-md">
+<div class="absolute -right-8 -top-8 w-28 h-28 rounded-full bg-primary/10 blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between relative z-10">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-11 h-11 rounded-full bg-gradient-to-tr from-primary-container via-[#6f00be] to-[#f5d061] p-[2px] shadow-[0_0_18px_rgba(127,0,255,0.45)] shrink-0">
+<div class="w-full h-full rounded-full bg-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-[#f5d061] text-[20px] animate-pulse">auto_awesome</span>
+</div>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight truncate">Selin</span>
+<span class="px-2 py-0.5 rounded-full bg-[#f5d061]/15 text-[#f5d061] border border-[#f5d061]/30 font-label-sm text-[10px] font-bold uppercase tracking-wider">Natal V.IV</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">14 Mayıs 1998 • 14:45 • İstanbul, TR</p>
+</div>
+</div>
+<button aria-label="Haritayı Paylaş" class="h-9 w-9 rounded-full bg-surface-container hover:bg-surface-bright border border-outline-variant/40 flex items-center justify-center text-on-surface-variant hover:text-[#f5d061] transition-all shadow-sm shrink-0 active:scale-90">
+<span class="material-symbols-outlined text-[18px]">ios_share</span>
+</button>
+</div>
+</div>
+<!-- BÖLÜM 1: GÜNLÜK GÖKSEL REHBER -->
+<section class="space-y-3 scroll-mt-28" id="bolum-gunluk">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="px-2.5 py-0.5 rounded bg-gradient-to-r from-[#f5d061]/25 to-primary/20 text-[#f5d061] font-label-sm text-[11px] font-bold uppercase tracking-widest border border-[#f5d061]/40 shadow-[0_0_10px_rgba(245,208,97,0.25)]">Bölüm 01</span>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-wide">Günlük Göksel Rehber</h2>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-high/80 border border-outline-variant/30 text-primary font-label-sm text-label-sm font-medium">24 Ekim • Ay Boğa %42</span>
+</div>
+<!-- Main Horoscope Card with Aurora Shimmer -->
+<div class="rounded-xl aurora-bg cosmic-shimmer-card p-space-md shadow-[0_12px_36px_rgba(0,0,0,0.5)] border border-[#f5d061]/30 space-y-4">
+<div class="flex items-center gap-2 text-tertiary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] text-tertiary drop-shadow-[0_0_8px_rgba(0,220,230,0.6)]">nights_stay</span>
+<span class="font-semibold tracking-wide text-on-surface">Ay Boğa Burcunda • <span class="text-tertiary">Güneş Akrep Geçişi</span></span>
+</div>
+<p class="font-body-md text-body-md text-on-surface/95 leading-relaxed font-light">
+      Bugün gökyüzünde Venüs ile Neptün arasındaki uyumlu açı sezgilerini en yüksek oktava taşıyor. Boğa Güneşi'nin getirdiği sarsılmaz pratik zekâ, Balık Ayı'nın mistik duyarlılığıyla birleşerek önemli kararlarda iç sesine güvenmeni fısıldıyor.
+    </p>
+<!-- Editorial Astrological Stats Badges with Micro-bounce & Glowing Aura -->
+<div class="grid grid-cols-3 gap-2.5 pt-1">
+<div class="group p-3 rounded-DEFAULT bg-surface-container-low/80 hover:bg-surface-container-high/90 border border-primary/25 hover:border-primary/60 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(213,186,255,0.25)] flex flex-col items-center text-center cursor-pointer">
+<span class="text-[22px] mb-1 group-hover:scale-125 transition-transform duration-300">💖</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Aşk Uyumu</span>
+<span class="font-label-lg text-label-lg text-primary font-bold drop-shadow-[0_0_6px_rgba(213,186,255,0.5)]">%94</span>
+<span class="font-label-sm text-[11px] text-primary/80">Derin Bağlar</span>
+</div>
+<div class="group p-3 rounded-DEFAULT bg-surface-container-low/80 hover:bg-surface-container-high/90 border border-[#f5d061]/25 hover:border-[#f5d061]/65 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(245,208,97,0.25)] flex flex-col items-center text-center cursor-pointer">
+<span class="text-[22px] mb-1 group-hover:scale-125 transition-transform duration-300">✨</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Kariyer &amp; Para</span>
+<span class="font-label-lg text-label-lg text-[#f5d061] font-bold drop-shadow-[0_0_6px_rgba(245,208,97,0.6)]">%88</span>
+<span class="font-label-sm text-[11px] text-[#f5d061]/80">Venüs Desteği</span>
+</div>
+<div class="group p-3 rounded-DEFAULT bg-surface-container-low/80 hover:bg-surface-container-high/90 border border-tertiary/25 hover:border-tertiary/60 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,220,230,0.25)] flex flex-col items-center text-center cursor-pointer">
+<span class="text-[22px] mb-1 group-hover:scale-125 transition-transform duration-300">🔮</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Zihin &amp; Ruh</span>
+<span class="font-label-lg text-label-lg text-tertiary font-bold drop-shadow-[0_0_6px_rgba(0,220,230,0.5)]">%96</span>
+<span class="font-label-sm text-[11px] text-tertiary/80">Berraklık</span>
+</div>
+</div>
+<!-- Günün Kozmik Fısıltısı Banner -->
+<div class="p-3.5 rounded-DEFAULT bg-gradient-to-r from-primary-container/30 via-surface-container-high/50 to-primary-container/20 border border-primary/35 flex items-start gap-3 shadow-inner">
+<span class="material-symbols-outlined text-[#f5d061] text-[20px] shrink-0 mt-0.5 animate-spin" style="animation-duration: 9s;">auto_awesome</span>
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm text-[#f5d061] uppercase font-bold tracking-widest block">Günün Kozmik Fısıltısı</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Aceleci dürtülere kapılma; gökyüzü bugün sabırla ekilen tohumları ve sakin stratejileri cömertçe koruyor.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- BÖLÜM 2: BÜYÜK ÜÇLÜ & DOĞUM HARİTASI ÇARKI -->
+<section class="space-y-4 scroll-mt-28" id="bolum-harita">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="px-2.5 py-0.5 rounded bg-tertiary/20 text-tertiary font-label-sm text-[11px] font-bold uppercase tracking-widest border border-tertiary/35 shadow-[0_0_10px_rgba(0,220,230,0.2)]">Bölüm 02</span>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-wide">Büyük Üçlü &amp; 360° Çark</h2>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-high/80 border border-outline-variant/30 text-on-surface-variant font-label-sm text-label-sm uppercase font-semibold">Placidus</span>
+</div>
+<!-- The Big Three Cards -->
+<div class="grid grid-cols-3 gap-2.5">
+<!-- Sun -->
+<div class="p-3 rounded-DEFAULT bg-surface-container/90 border border-[#f5d061]/30 flex flex-col items-center justify-center text-center shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:border-[#f5d061]/60 transition-all">
+<div class="flex items-center gap-1 text-[#f5d061] mb-1">
+<span class="material-symbols-outlined text-[16px]">wb_sunny</span>
+<span class="font-label-sm text-[11px] uppercase tracking-wider text-on-surface-variant">Güneş</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Boğa</span>
+<span class="font-label-sm text-[11px] text-[#f5d061] mt-0.5 font-bold">23° • 10. Ev MC</span>
+<span class="text-[11px] text-on-surface-variant mt-1">Öz Benlik</span>
+</div>
+<!-- Moon -->
+<div class="p-3 rounded-DEFAULT bg-surface-container/90 border border-primary/30 flex flex-col items-center justify-center text-center shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:border-primary/60 transition-all">
+<div class="flex items-center gap-1 text-primary mb-1">
+<span class="material-symbols-outlined text-[16px]">bedtime</span>
+<span class="font-label-sm text-[11px] uppercase tracking-wider text-on-surface-variant">Ay</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Balık</span>
+<span class="font-label-sm text-[11px] text-primary mt-0.5 font-bold">11° • 4. Ev IC</span>
+<span class="text-[11px] text-on-surface-variant mt-1">Bilinçaltı</span>
+</div>
+<!-- Ascendant -->
+<div class="p-3 rounded-DEFAULT bg-surface-container/90 border border-tertiary/30 flex flex-col items-center justify-center text-center shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:border-tertiary/60 transition-all">
+<div class="flex items-center gap-1 text-tertiary mb-1">
+<span class="material-symbols-outlined text-[16px]">change_history</span>
+<span class="font-label-sm text-[11px] uppercase tracking-wider text-on-surface-variant">Yükselen</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Akrep</span>
+<span class="font-label-sm text-[11px] text-tertiary mt-0.5 font-bold">18° • 1. Ev ASC</span>
+<span class="text-[11px] text-on-surface-variant mt-1">Dış Aura</span>
+</div>
+</div>
+<!-- 360 Natal Chart Visual Wheel Container -->
+<div class="rounded-xl bg-surface-container/90 p-space-md shadow-[0_16px_40px_rgba(0,0,0,0.6)] border border-outline-variant/40 flex flex-col items-center relative overflow-hidden backdrop-blur-md">
+<!-- Radiant Cosmic Glow under Wheel -->
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(127,0,255,0.18)_0%,rgba(245,208,97,0.08)_45%,transparent_75%)] pointer-events-none"></div>
+<div class="relative w-full max-w-[330px] aspect-square flex items-center justify-center my-1 select-none">
+<div class="absolute inset-4 rounded-full bg-gradient-to-tr from-primary-container/25 via-[#f5d061]/10 to-tertiary/20 blur-2xl pointer-events-none"></div>
+<svg class="w-full h-full transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]" id="natalWheelSvg" viewbox="0 0 400 400">
+<defs>
+<radialgradient cx="50%" cy="50%" id="celestialCore" r="50%">
+<stop offset="0%" stop-color="#2a1d47" stop-opacity="0.95"></stop>
+<stop offset="65%" stop-color="#140f25" stop-opacity="0.98"></stop>
+<stop offset="100%" stop-color="#080a16" stop-opacity="1"></stop>
+</radialgradient>
+<lineargradient id="goldTrine" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#ffe484"></stop>
+<stop offset="100%" stop-color="#f5d061"></stop>
+</lineargradient>
+<lineargradient id="cyanOpp" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#00dce6"></stop>
+<stop offset="100%" stop-color="#9333ea"></stop>
+</lineargradient>
+<filter height="140%" id="glowGold" width="140%" x="-20%" y="-20%">
+<fegaussianblur result="blur" stddeviation="2.5"></fegaussianblur>
+<femerge>
+<femergenode in="blur"></femergenode>
+<femergenode in="SourceGraphic"></femergenode>
+</femerge>
+</filter>
+</defs>
+<!-- Base Outer Rings -->
+<circle cx="200" cy="200" fill="#0c0919" r="192"></circle>
+<circle cx="200" cy="200" fill="none" r="192" stroke="#4b4356" stroke-opacity="0.5" stroke-width="1.5"></circle>
+<circle cx="200" cy="200" fill="none" r="164" stroke="#7f00ff" stroke-opacity="0.55" stroke-width="1.2"></circle>
+<circle cx="200" cy="200" fill="none" r="126" stroke="#4b4356" stroke-dasharray="2 3" stroke-opacity="0.6" stroke-width="1"></circle>
+<!-- Constellation Orbiting Dynamic Ring with Zodiac Symbols -->
+<g class="orbiting-ring">
+<!-- Outer subtle tick marks -->
+<circle cx="200" cy="200" fill="none" r="182" stroke="#d5baff" stroke-dasharray="1 8" stroke-opacity="0.4" stroke-width="2"></circle>
+<!-- Zodiac Symbols -->
+<text fill="#e6dff5" font-size="13" font-weight="600" text-anchor="middle" x="285" y="45">♈</text>
+<text fill="#f5d061" filter="url(#glowGold)" font-size="15" font-weight="700" text-anchor="middle" x="348" y="105">♉</text>
+<text fill="#d5baff" font-size="13" font-weight="600" text-anchor="middle" x="375" y="180">♊</text>
+<text fill="#e6dff5" font-size="13" font-weight="600" text-anchor="middle" x="365" y="255">♋</text>
+<text fill="#e6dff5" font-size="13" font-weight="600" text-anchor="middle" x="320" y="325">♌</text>
+<text fill="#e6dff5" font-size="13" font-weight="600" text-anchor="middle" x="245" y="370">♍</text>
+<text fill="#e6dff5" font-size="13" font-weight="600" text-anchor="middle" x="160" y="375">♎</text>
+<text fill="#00dce6" font-size="15" font-weight="700" text-anchor="middle" x="85" y="335">♏</text>
+<text fill="#e6dff5" font-size="13" font-weight="600" text-anchor="middle" x="35" y="260">♐</text>
+<text fill="#e6dff5" font-size="13" font-weight="600" text-anchor="middle" x="25" y="180">♑</text>
+<text fill="#e6dff5" font-size="13" font-weight="600" text-anchor="middle" x="55" y="105">♒</text>
+<text fill="#d5baff" font-size="15" font-weight="700" text-anchor="middle" x="120" y="45">♓</text>
+</g>
+<!-- Static House Axis Lines -->
+<line stroke="#00dce6" stroke-opacity="0.85" stroke-width="2" x1="10" x2="390" y1="200" y2="200"></line>
+<line stroke="#f5d061" stroke-opacity="0.85" stroke-width="2" x1="200" x2="200" y1="10" y2="390"></line>
+<line stroke="#4b4356" stroke-opacity="0.45" stroke-width="0.8" x1="48" x2="352" y1="105" y2="295"></line>
+<line stroke="#4b4356" stroke-opacity="0.45" stroke-width="0.8" x1="105" x2="295" y1="48" y2="352"></line>
+<line stroke="#4b4356" stroke-opacity="0.45" stroke-width="0.8" x1="295" x2="105" y1="48" y2="352"></line>
+<line stroke="#4b4356" stroke-opacity="0.45" stroke-width="0.8" x1="352" x2="48" y1="105" y2="295"></line>
+<!-- House Cusp Markers -->
+<text fill="#978da3" font-family="Manrope" font-size="10" x="145" y="185">X</text>
+<text fill="#00dce6" font-family="Manrope" font-size="10" font-weight="700" x="110" y="215">I</text>
+<text fill="#978da3" font-family="Manrope" font-size="10" x="135" y="265">IV</text>
+<text fill="#978da3" font-family="Manrope" font-size="10" x="260" y="195">VII</text>
+<!-- Aspect Harmonic Polygons with Shimmering Glowing Aura -->
+<g class="aspect-shimmer" id="aspectLayer">
+<polygon fill="rgba(245, 208, 97, 0.05)" points="325,120 195,335 95,140" stroke="url(#goldTrine)" stroke-opacity="0.9" stroke-width="2"></polygon>
+<line stroke="url(#cyanOpp)" stroke-opacity="0.8" stroke-width="1.8" x1="330" x2="85" y1="125" y2="280"></line>
+<line stroke="#ddb7ff" stroke-dasharray="3 3" stroke-opacity="0.9" stroke-width="1.4" x1="315" x2="285" y1="95" y2="55"></line>
+</g>
+<!-- Center Cosmic Core with Breathing Pulse -->
+<circle cx="200" cy="200" fill="url(#celestialCore)" r="72" stroke="#d5baff" stroke-opacity="0.75" stroke-width="1.2"></circle>
+<g class="celestial-core-breath">
+<circle cx="200" cy="200" fill="#201e2d" r="32" stroke="#f5d061" stroke-opacity="0.6" stroke-width="1"></circle>
+<circle cx="200" cy="200" fill="#7f00ff" fill-opacity="0.45" r="18"></circle>
+<circle cx="200" cy="200" fill="#f5d061" filter="url(#glowGold)" r="5"></circle>
+<text fill="#f5d061" filter="url(#glowGold)" font-size="12" font-weight="700" text-anchor="middle" x="200" y="204">✦</text>
+</g>
+</svg>
+</div>
+<!-- Aspect Legend Badges -->
+<div class="flex items-center justify-center gap-4 w-full py-1 text-on-surface-variant font-label-sm text-label-sm border-t border-outline-variant/30 pt-3 mt-1">
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#f5d061] shadow-[0_0_8px_#f5d061]"></span> Üçgen (120°)</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-tertiary shadow-[0_0_8px_#00dce6]"></span> Karşıt (180°)</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-secondary shadow-[0_0_8px_#ddb7ff]"></span> Sekstil (60°)</span>
+</div>
+<!-- Interactive Wheel Controls -->
+<div class="flex items-center justify-center gap-2.5 w-full mt-3">
+<button class="flex-1 py-2.5 px-3 rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 border border-outline-variant/40 active:scale-95 transition-all shadow-sm group" id="rotateWheelBtn">
+<span class="material-symbols-outlined text-[17px] text-[#f5d061] group-hover:rotate-180 transition-transform duration-500">rotate_right</span>
+<span>Çarkı Döndür</span>
+</button>
+<button class="flex-1 py-2.5 px-3 rounded-full bg-primary-container/35 hover:bg-primary-container/55 text-primary-fixed font-label-md text-label-md flex items-center justify-center gap-1.5 border border-primary/30 active:scale-95 transition-all shadow-[0_0_15px_rgba(127,0,255,0.2)]" id="toggleAspectsBtn">
+<span class="material-symbols-outlined text-[17px]">all_inclusive</span>
+<span>Açıları Gizle/Göster</span>
+</button>
+</div>
+</div>
+</section>
+<!-- BÖLÜM 3: ELEMENT & MİZAÇ DENGESİ -->
+<section class="space-y-3 scroll-mt-28" id="bolum-element">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="px-2.5 py-0.5 rounded bg-primary/20 text-primary font-label-sm text-[11px] font-bold uppercase tracking-widest border border-primary/35 shadow-[0_0_10px_rgba(127,0,255,0.25)]">Bölüm 03</span>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-wide">Element &amp; Nitelik Dengesi</h2>
+</div>
+<span class="material-symbols-outlined text-[#f5d061] text-[20px] drop-shadow-[0_0_6px_rgba(245,208,97,0.5)]">pie_chart</span>
+</div>
+<div class="rounded-xl bg-surface-container/90 p-space-md shadow-[0_12px_32px_rgba(0,0,0,0.5)] border border-outline-variant/40 space-y-4 backdrop-blur-md">
+<!-- Progress Bars with Dynamic Glowing Light Stream -->
+<div class="space-y-3.5">
+<!-- Su -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="flex items-center gap-1.5 text-on-surface font-medium">
+<span>💧</span> Su (Sezgisellik &amp; Derinlik)
+          </span>
+<span class="font-bold text-tertiary drop-shadow-[0_0_6px_rgba(0,220,230,0.5)]">%40 • Balık &amp; Akrep</span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container-lowest overflow-hidden border border-tertiary/20">
+<div class="h-full rounded-full bg-gradient-to-r from-tertiary-container via-tertiary to-[#6ff6ff] element-bar-shine shadow-[0_0_10px_rgba(0,220,230,0.4)]" style="width: 40%"></div>
+</div>
+</div>
+<!-- Toprak -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="flex items-center gap-1.5 text-on-surface font-medium">
+<span>🌍</span> Toprak (Sarsılmaz Gerçekçilik)
+          </span>
+<span class="font-bold text-[#f5d061] drop-shadow-[0_0_6px_rgba(245,208,97,0.6)]">%35 • Boğa Güneşi</span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container-lowest overflow-hidden border border-[#f5d061]/20">
+<div class="h-full rounded-full bg-gradient-to-r from-[#b38600] via-[#f5d061] to-[#ffe484] element-bar-shine shadow-[0_0_10px_rgba(245,208,97,0.4)]" style="width: 35%"></div>
+</div>
+</div>
+<!-- Ateş -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="flex items-center gap-1.5 text-on-surface font-medium">
+<span>🔥</span> Ateş (Eylem Kıvılcımı)
+          </span>
+<span class="font-bold text-error drop-shadow-[0_0_6px_rgba(255,180,171,0.5)]">%15 • Koç Mars</span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container-lowest overflow-hidden border border-error/20">
+<div class="h-full rounded-full bg-gradient-to-r from-error-container via-error to-[#ffdad6] element-bar-shine shadow-[0_0_10px_rgba(255,180,171,0.3)]" style="width: 15%"></div>
+</div>
+</div>
+<!-- Hava -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="flex items-center gap-1.5 text-on-surface font-medium">
+<span>💨</span> Hava (Strateji &amp; Fikir)
+          </span>
+<span class="font-bold text-secondary drop-shadow-[0_0_6px_rgba(221,183,255,0.5)]">%10 • İkizler Merkür</span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container-lowest overflow-hidden border border-secondary/20">
+<div class="h-full rounded-full bg-gradient-to-r from-secondary-container via-secondary to-[#f0dbff] element-bar-shine shadow-[0_0_10px_rgba(221,183,255,0.3)]" style="width: 10%"></div>
+</div>
+</div>
+</div>
+<!-- Modalite Dağılımı -->
+<div class="pt-2 border-t border-outline-variant/30 grid grid-cols-3 gap-2.5 text-center">
+<div class="p-2.5 rounded-DEFAULT bg-surface-container-high/60 border border-outline-variant/20">
+<span class="font-label-sm text-[11px] text-on-surface-variant block uppercase font-medium">Öncü</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">%30</span>
+<span class="font-label-sm text-[11px] text-on-surface-variant block">Başlatıcı Güç</span>
+</div>
+<div class="p-2.5 rounded-DEFAULT bg-gradient-to-b from-primary-container/30 to-[#f5d061]/10 border border-[#f5d061]/40 shadow-[0_0_14px_rgba(245,208,97,0.15)]">
+<span class="font-label-sm text-[11px] text-[#f5d061] block uppercase font-bold tracking-wide">Sabit (Baskın)</span>
+<span class="font-headline-sm text-headline-sm text-[#f5d061] font-bold drop-shadow-[0_0_8px_rgba(245,208,97,0.4)]">%50</span>
+<span class="font-label-sm text-[11px] text-primary-fixed block font-medium">Kalıcı İrade</span>
+</div>
+<div class="p-2.5 rounded-DEFAULT bg-surface-container-high/60 border border-outline-variant/20">
+<span class="font-label-sm text-[11px] text-on-surface-variant block uppercase font-medium">Değişken</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">%20</span>
+<span class="font-label-sm text-[11px] text-on-surface-variant block">Esneklik</span>
+</div>
+</div>
+</div>
+</section>
+<!-- BÖLÜM 4: GEZEGEN YERLEŞİMLERİ & DERİN AÇILAR -->
+<section class="space-y-3 scroll-mt-28" id="bolum-gezegenler">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="px-2.5 py-0.5 rounded bg-secondary/20 text-secondary font-label-sm text-[11px] font-bold uppercase tracking-widest border border-secondary/35 shadow-[0_0_10px_rgba(221,183,255,0.25)]">Bölüm 04</span>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-wide">Gezegen Yerleşimleri</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">8 Gezegen + 2 Aks</span>
+</div>
+<!-- Clean Accordion Placements with Smooth Micro-Interaction -->
+<div class="space-y-2.5" id="planetAccordionGroup">
+<!-- Sun -->
+<div class="rounded-DEFAULT bg-surface-container/90 p-3.5 border border-outline-variant/30 hover:border-[#f5d061]/50 cursor-pointer planet-card select-none">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f5d061]/25 to-primary/20 flex items-center justify-center text-[#f5d061] border border-[#f5d061]/40 shadow-[0_0_12px_rgba(245,208,97,0.3)] shrink-0">
+<span class="font-headline-sm text-[20px]">☉</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-label-lg text-label-lg text-on-surface font-semibold">Güneş • Boğa</h4>
+<span class="px-2 py-0.5 rounded-full bg-[#f5d061]/15 text-[#f5d061] font-label-sm text-[11px] font-bold border border-[#f5d061]/30">10. Ev MC</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">23° Boğa Burcu • Yaşam Amacı &amp; Statü</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-300 chevron">expand_more</span>
+</div>
+<div class="mt-3 pt-3 border-t border-outline-variant/20 text-on-surface font-body-sm text-body-sm space-y-2 hidden planet-details">
+<p class="leading-relaxed">Kariyerde ve kamusal alanda sarsılmaz bir miras yaratma kudreti. Lüks, mimari estetik ve güven temelli liderlik odağı taşır.</p>
+<div class="flex items-center gap-1.5 text-[#f5d061] font-label-sm text-label-sm pt-0.5 font-medium">
+<span class="material-symbols-outlined text-[15px] animate-spin" style="animation-duration: 10s;">stars</span>
+<span>Kilit Tema: Dokunduğu projelere kalıcı maddi ve görsel değer katmak.</span>
+</div>
+</div>
+</div>
+<!-- Moon -->
+<div class="rounded-DEFAULT bg-surface-container/90 p-3.5 border border-outline-variant/30 hover:border-primary/50 cursor-pointer planet-card select-none">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary/25 to-secondary/20 flex items-center justify-center text-primary border border-primary/40 shadow-[0_0_12px_rgba(213,186,255,0.3)] shrink-0">
+<span class="font-headline-sm text-[20px]">☽</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-label-lg text-label-lg text-on-surface font-semibold">Ay • Balık</h4>
+<span class="px-2 py-0.5 rounded-full bg-primary/15 text-primary font-label-sm text-[11px] font-bold border border-primary/30">4. Ev IC</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">11° Balık Burcu • Duygusal Bilinçaltı &amp; Kökler</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-300 chevron">expand_more</span>
+</div>
+<div class="mt-3 pt-3 border-t border-outline-variant/20 text-on-surface font-body-sm text-body-sm space-y-2 hidden planet-details">
+<p class="leading-relaxed">Bilinçaltında sınırsız sanatsal düş gücü ve yüksek empati. Sezgilerin rehberliğinde iç huzur bulma ve rüyaların bilgeliğine güvenme kudreti.</p>
+<div class="flex items-center gap-1.5 text-primary font-label-sm text-label-sm pt-0.5 font-medium">
+<span class="material-symbols-outlined text-[15px]">bedtime</span>
+<span>Kilit Tema: Ruhsal dinginlik ve sezgisel koruma kalkanı.</span>
+</div>
+</div>
+</div>
+<!-- Ascendant -->
+<div class="rounded-DEFAULT bg-surface-container/90 p-3.5 border border-outline-variant/30 hover:border-tertiary/50 cursor-pointer planet-card select-none">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-tertiary/25 to-primary/20 flex items-center justify-center text-tertiary border border-tertiary/40 shadow-[0_0_12px_rgba(0,220,230,0.3)] shrink-0">
+<span class="material-symbols-outlined text-[18px]">change_history</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-label-lg text-label-lg text-on-surface font-semibold">Yükselen (ASC) • Akrep</h4>
+<span class="px-2 py-0.5 rounded-full bg-tertiary/15 text-tertiary font-label-sm text-[11px] font-bold border border-tertiary/30">1. Ev</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">18° Akrep Burcu • Aura &amp; İlk İzlenim</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-300 chevron">expand_more</span>
+</div>
+<div class="mt-3 pt-3 border-t border-outline-variant/20 text-on-surface font-body-sm text-body-sm space-y-2 hidden planet-details">
+<p class="leading-relaxed">Odaya girdiğinde hissedilen hipnotik ve sessiz otorite. Gizli motivasyonları zahmetsizce deşifre eden sezgisel bir gözlem kulesi.</p>
+</div>
+</div>
+<!-- Venus -->
+<div class="rounded-DEFAULT bg-surface-container/90 p-3.5 border border-outline-variant/30 hover:border-[#f5d061]/50 cursor-pointer planet-card select-none">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-secondary-container/50 to-[#f5d061]/25 flex items-center justify-center text-secondary border border-secondary/40 shadow-[0_0_12px_rgba(221,183,255,0.3)] shrink-0">
+<span class="font-headline-sm text-[20px]">♀</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-label-lg text-label-lg text-on-surface font-semibold">Venüs • Boğa</h4>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[11px] font-bold border border-secondary/35">Yönetici</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">28° Boğa • 10. Ev • Zarafet &amp; Varlık</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-300 chevron">expand_more</span>
+</div>
+<div class="mt-3 pt-3 border-t border-outline-variant/20 text-on-surface font-body-sm text-body-sm space-y-2 hidden planet-details">
+<p class="leading-relaxed">Kendi yönettiği burçta yerleşen Venüs; doğal tasarım ve estetik yeteneği, konfor aşkı ve güçlü varlık çekim alanı.</p>
+</div>
+</div>
+<!-- Mars -->
+<div class="rounded-DEFAULT bg-surface-container/90 p-3.5 border border-outline-variant/30 hover:border-error/50 cursor-pointer planet-card select-none">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-error/25 to-primary-container/20 flex items-center justify-center text-error border border-error/40 shadow-[0_0_12px_rgba(255,180,171,0.3)] shrink-0">
+<span class="font-headline-sm text-[20px]">♂</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-label-lg text-label-lg text-on-surface font-semibold">Mars • Koç</h4>
+<span class="px-2 py-0.5 rounded-full bg-error/15 text-error font-label-sm text-[11px] font-bold border border-error/30">6. Ev</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">04° Koç Burcu • İnisiyatif &amp; Çalışma Gücü</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-300 chevron">expand_more</span>
+</div>
+<div class="mt-3 pt-3 border-t border-outline-variant/20 text-on-surface font-body-sm text-body-sm space-y-2 hidden planet-details">
+<p class="leading-relaxed">Ateş elementinin saf eylem gücü. Karar anlarında doğrudan harekete geçebilme ve çalışma hayatında tükenmeyen fiziksel motivasyon.</p>
+</div>
+</div>
+<!-- Compact Jupiter & Saturn Row -->
+<div class="grid grid-cols-2 gap-2.5 pt-1">
+<div class="rounded-DEFAULT bg-surface-container/90 p-3 border border-outline-variant/30 hover:border-tertiary/40 transition-colors shadow-sm">
+<div class="flex items-center gap-2 text-tertiary mb-1">
+<span class="font-headline-sm text-[18px]">♃</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Jüpiter • Balık</span>
+</div>
+<span class="font-label-sm text-[11px] text-on-surface-variant block">5. Ev • Yaratıcı Şans &amp; Bolluk</span>
+</div>
+<div class="rounded-DEFAULT bg-surface-container/90 p-3 border border-outline-variant/30 hover:border-[#f5d061]/40 transition-colors shadow-sm">
+<div class="flex items-center gap-2 text-[#f5d061] mb-1">
+<span class="font-headline-sm text-[18px]">♄</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Satürn • Boğa</span>
+</div>
+<span class="font-label-sm text-[11px] text-on-surface-variant block">7. Ev • Sadık Ortaklıklar</span>
+</div>
+</div>
+</div>
+</section>
+<!-- BÖLÜM 5: GÜNÜN TRANSİTLERİ & BÜYÜK AÇILAR -->
+<section class="space-y-3 scroll-mt-28" id="bolum-transitler">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="px-2.5 py-0.5 rounded bg-tertiary/20 text-tertiary font-label-sm text-[11px] font-bold uppercase tracking-widest border border-tertiary/35 shadow-[0_0_10px_rgba(0,220,230,0.2)]">Bölüm 05</span>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-wide">Günün Transitleri &amp; Açılar</h2>
+</div>
+<span class="material-symbols-outlined text-tertiary text-[20px] drop-shadow-[0_0_8px_rgba(0,220,230,0.5)]">cloud</span>
+</div>
+<div class="rounded-xl bg-surface-container/90 p-space-md shadow-[0_12px_32px_rgba(0,0,0,0.5)] border border-outline-variant/40 space-y-3 backdrop-blur-md">
+<!-- Transit 1 -->
+<div class="p-3 rounded-DEFAULT bg-surface-container-high/70 hover:bg-surface-container-high border border-tertiary/20 flex items-center justify-between transition-colors">
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Venüs Üçgen Neptün</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary/15 text-tertiary font-label-sm text-[10px] font-bold border border-tertiary/30">Aktif Transit</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Boğa Güneşine estetik zenginlik ve ilham kanalı açıyor.</p>
+</div>
+<span class="text-[#f5d061] text-[20px] animate-pulse">✦</span>
+</div>
+<!-- Transit 2 -->
+<div class="p-3 rounded-DEFAULT bg-surface-container-high/70 hover:bg-surface-container-high border border-primary/20 flex items-center justify-between transition-colors">
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Merkür Düz Harekette</span>
+<span class="px-2 py-0.5 rounded-full bg-primary/15 text-primary font-label-sm text-[10px] font-bold border border-primary/30">Açık İletişim</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Anlaşmalar ve zihinsel akış için pürüzsüz hat.</p>
+</div>
+<span class="text-primary text-[20px]">☿</span>
+</div>
+<!-- Transit 3 -->
+<div class="p-3 rounded-DEFAULT bg-surface-container-high/70 hover:bg-surface-container-high border border-[#f5d061]/20 flex items-center justify-between transition-colors">
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Güneş Üçgen Satürn (120°)</span>
+<span class="px-2 py-0.5 rounded-full bg-[#f5d061]/15 text-[#f5d061] font-label-sm text-[10px] font-bold border border-[#f5d061]/30">Uyumlu</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sarsılmaz özdisiplin ve zamanı lehte kullanma yetisi.</p>
+</div>
+<span class="text-[#f5d061] text-[16px] font-bold">△</span>
+</div>
+</div>
+</section>
+<!-- Bottom Primary Action CTA with Celestial Sheen -->
+<div class="pt-2 pb-4">
+<button class="w-full py-4 px-6 rounded-full bg-gradient-to-r from-primary-container via-[#6f00be] to-[#f5d061] text-white font-label-lg text-label-lg flex items-center justify-center gap-2.5 shadow-[0_0_28px_rgba(127,0,255,0.45),0_0_15px_rgba(245,208,97,0.3)] active:scale-95 transition-all relative overflow-hidden group">
+<div class="absolute inset-0 bg-white/15 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+<span class="material-symbols-outlined text-[22px] text-[#ffe484]">headphones</span>
+<span class="font-semibold tracking-wide">Bugünün Göksel Niyetini Dinle &amp; Kozmik Rehberi Paylaş</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Nav Chrome -->
+<nav class="fixed bottom-0 w-full z-50 pb-safe px-gutter-sm pointer-events-none mb-space-sm">
+<div class="pointer-events-auto mx-auto max-w-md bg-surface-dim/90 backdrop-blur-2xl rounded-full px-space-xs py-1.5 flex items-center justify-between border border-outline-variant/35 shadow-[0_16px_40px_-8px_rgba(0,0,0,0.85),0_0_25px_-4px_rgba(127,0,255,0.35)]">
+<a class="flex-1 min-w-[44px] min-h-[44px] flex flex-col items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="cosmos" href="#">
+<span class="material-symbols-outlined text-[20px]">all_inclusive</span>
+<span class="font-label-sm text-[10px] tracking-wider uppercase scale-90">Cosmos</span>
+</a>
+<!-- Astro Tab with Pulsing Gold Living Glow & Stardust Trail -->
+<a aria-current="page" class="flex-1 min-w-[44px] min-h-[44px] flex flex-col items-center justify-center rounded-full transition-all py-1 text-[#f5d061] bg-gradient-to-t from-primary-container/40 to-[#f5d061]/20 border border-[#f5d061]/40 astro-tab-pulse" data-path="astro" href="#">
+<span class="material-symbols-outlined text-[20px] drop-shadow-[0_0_8px_rgba(245,208,97,0.8)]">stars</span>
+<span class="font-label-sm text-[10px] tracking-wider uppercase scale-90 font-bold">Astro</span>
+</a>
+<a class="flex-1 min-w-[44px] min-h-[44px] flex flex-col items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="vizyon" href="#">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+<span class="font-label-sm text-[10px] tracking-wider uppercase scale-90">Vizyon</span>
+</a>
+<a class="flex-1 min-w-[44px] min-h-[44px] flex flex-col items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="432hz" href="#">
+<span class="material-symbols-outlined text-[20px]">graphic_eq</span>
+<span class="font-label-sm text-[10px] tracking-wider uppercase scale-90">432Hz</span>
+</a>
+<a class="flex-1 min-w-[44px] min-h-[44px] flex flex-col items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="hedefler" href="#">
+<span class="material-symbols-outlined text-[20px]">crisis_alert</span>
+<span class="font-label-sm text-[10px] tracking-wider uppercase scale-90">Hedefler</span>
+</a>
+<a class="flex-1 min-w-[44px] min-h-[44px] flex flex-col items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="ayarlar" href="#">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+<span class="font-label-sm text-[10px] tracking-wider uppercase scale-90">Ayarlar</span>
+</a>
+</div>
+</nav>
+<!-- Stardust Particles & Chart Interactivity Script -->
+<script>
+  // 1. Cosmic Stardust Canvas Layer
+  (function initCosmicStardust() {
+    const canvas = document.getElementById('stardustCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    const colors = [
+      'rgba(245, 208, 97, ',  // Gold
+      'rgba(213, 186, 255, ', // Lavender
+      'rgba(0, 220, 230, ',   // Celestial Cyan
+      'rgba(255, 255, 255, '  // Silver
+    ];
+
+    for (let i = 0; i < 48; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 1.6 + 0.4,
+        colorPrefix: colors[Math.floor(Math.random() * colors.length)],
+        alpha: Math.random() * 0.7 + 0.2,
+        speedX: (Math.random() - 0.5) * 0.25,
+        speedY: (Math.random() - 0.5) * 0.25,
+        pulseSpeed: 0.015 + Math.random() * 0.02
+      });
+    }
+
+    function render() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        p.alpha += Math.sin(Date.now() * 0.002 * p.pulseSpeed) * 0.01;
+        let clampedAlpha = Math.max(0.15, Math.min(0.85, p.alpha));
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.colorPrefix + clampedAlpha + ')';
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = p.colorPrefix + '0.8)';
+        ctx.fill();
+      }
+      requestAnimationFrame(render);
+    }
+    render();
+  })();
+
+  // 2. Natal Chart & Accordion Interactive Controllers
+  (function initInteractions() {
+    let rotationDegree = 0;
+    const wheelSvg = document.getElementById('natalWheelSvg');
+    const rotateBtn = document.getElementById('rotateWheelBtn');
+    const toggleAspectsBtn = document.getElementById('toggleAspectsBtn');
+
+    if (rotateBtn && wheelSvg) {
+      rotateBtn.addEventListener('click', () => {
+        rotationDegree += 60;
+        wheelSvg.style.transform = `rotate(${rotationDegree}deg)`;
+      });
+    }
+
+    if (toggleAspectsBtn) {
+      let aspectsVisible = true;
+      const aspectLayer = document.getElementById('aspectLayer');
+      toggleAspectsBtn.addEventListener('click', () => {
+        aspectsVisible = !aspectsVisible;
+        if (aspectLayer) {
+          aspectLayer.style.display = aspectsVisible ? 'block' : 'none';
+        }
+        toggleAspectsBtn.classList.toggle('opacity-60');
+      });
+    }
+
+    // Accordions in Section 04
+    const cards = document.querySelectorAll('.planet-card');
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const details = card.querySelector('.planet-details');
+        const chevron = card.querySelector('.chevron');
+        const isExpanded = card.classList.contains('expanded');
+
+        if (isExpanded) {
+          card.classList.remove('expanded');
+          if (details) details.classList.add('hidden');
+          if (chevron) chevron.style.transform = 'rotate(0deg)';
+        } else {
+          card.classList.add('expanded');
+          if (details) details.classList.remove('hidden');
+          if (chevron) chevron.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+  })();
+</script>
+</body></html>

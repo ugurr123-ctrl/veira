@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-container": "#e6d4ff", "on-secondary-fixed": "#2c0051", "on-surface-variant": "#cdc2da", "background": "#141120", "on-surface": "#e6dff5", "primary-fixed-dim": "#d5baff", "on-primary": "#42008a", "outline-variant": "#4b4356", "on-error-container": "#ffdad6", "inverse-surface": "#e6dff5", "on-secondary": "#490080", "error-container": "#93000a", "on-primary-fixed-variant": "#5e00c1", "surface-dim": "#141120", "outline": "#978da3", "on-background": "#e6dff5", "secondary": "#ddb7ff", "surface-container-lowest": "#0f0c1b", "surface-bright": "#3a3748", "surface-container-high": "#2b2838", "surface-tint": "#d5baff", "surface-container-low": "#1c1a29", "on-tertiary-fixed-variant": "#004f53", "primary": "#d5baff", "inverse-primary": "#7d00fa", "tertiary-fixed-dim": "#00dce6", "on-tertiary-container": "#04f2fe", "surface": "#141120", "on-tertiary": "#00373a", "tertiary": "#00dce6", "surface-container-highest": "#363343", "error": "#ffb4ab", "surface-container": "#201e2d", "secondary-fixed": "#f0dbff", "on-primary-fixed": "#270057", "on-secondary-fixed-variant": "#6900b3", "primary-fixed": "#ecdcff", "surface-variant": "#363343", "secondary-fixed-dim": "#ddb7ff", "primary-container": "#7f00ff", "tertiary-fixed": "#6ff6ff", "on-tertiary-fixed": "#002022", "inverse-on-surface": "#312e3f", "tertiary-container": "#006b71", "on-error": "#690005", "secondary-container": "#6f00be", "on-secondary-container": "#d6a9ff" }, "borderRadius": { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" }, "spacing": { "space-sm": "0.75rem", "gutter-lg": "2.5rem", "gutter-sm": "1rem", "margin": "2rem", "gutter": "1.5rem", "margin-sm": "1.25rem", "space-xs": "0.375rem", "space-xl": "3.5rem", "space-md": "1.25rem", "margin-lg": "4rem", "space-lg": "2rem" }, "fontFamily": { "display-lg-mobile": ["EB Garamond"], "headline-xl": ["EB Garamond"], "headline-sm": ["EB Garamond"], "body-xl": ["Manrope"], "body-sm": ["Manrope"], "body-lg": ["Manrope"], "headline-md": ["EB Garamond"], "display-lg": ["EB Garamond"], "label-lg": ["Manrope"], "headline-xl-mobile": ["EB Garamond"], "label-md": ["Manrope"], "label-sm": ["Manrope"], "headline-lg": ["EB Garamond"], "body-md": ["Manrope"] }, "fontSize": { "display-lg-mobile": ["2.75rem", { "lineHeight": "3.125rem", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-xl": ["3.25rem", { "lineHeight": "3.625rem", "letterSpacing": "-0.015em", "fontWeight": "400" }], "headline-sm": ["1.375rem", { "lineHeight": "1.875rem", "letterSpacing": "0.01em", "fontWeight": "600" }], "body-xl": ["1.25rem", { "lineHeight": "1.875rem", "letterSpacing": "-0.01em", "fontWeight": "400" }], "body-sm": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.005em", "fontWeight": "400" }], "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "0em", "fontWeight": "400" }], "headline-md": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "0em", "fontWeight": "500" }], "display-lg": ["4.5rem", { "lineHeight": "4.75rem", "letterSpacing": "-0.02em", "fontWeight": "400" }], "label-lg": ["0.875rem", { "lineHeight": "1.125rem", "letterSpacing": "0.04em", "fontWeight": "600" }], "headline-xl-mobile": ["2.25rem", { "lineHeight": "2.625rem", "letterSpacing": "-0.01em", "fontWeight": "400" }], "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.08em", "fontWeight": "600" }], "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.12em", "fontWeight": "700" }], "headline-lg": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "0em", "fontWeight": "500" }], "body-md": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }] } } } }</script><style>@layer base { html, body { width: 100vw; margin: 0; padding: 0; } body { overscroll-behavior: none; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }
+  @keyframes starPulse {
+    0%, 100% { transform: scale(0.85) rotate(0deg); opacity: 0.45; filter: drop-shadow(0 0 4px rgba(245, 208, 97, 0.4)); }
+    50% { transform: scale(1.25) rotate(15deg); opacity: 1; filter: drop-shadow(0 0 12px rgba(245, 208, 97, 0.95)) drop-shadow(0 0 20px rgba(0, 220, 230, 0.6)); }
+  }
+  @keyframes glitterDrift {
+    0% { transform: translateY(0px) translateX(0px); opacity: 0.3; }
+    50% { transform: translateY(-14px) translateX(6px); opacity: 0.85; }
+    100% { transform: translateY(0px) translateX(0px); opacity: 0.3; }
+  }
+  @keyframes orbitShimmer {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes orbitShimmerReverse {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+  }
+  .animate-star-pulse {
+    animation: starPulse 2.5s infinite ease-in-out;
+  }
+  .animate-star-pulse-delayed {
+    animation: starPulse 2.8s infinite ease-in-out 1.2s;
+  }
+  .animate-star-pulse-fast {
+    animation: starPulse 1.8s infinite ease-in-out 0.6s;
+  }
+  .animate-glitter {
+    animation: glitterDrift 6s infinite linear;
+  }
+  .animate-glitter-rev {
+    animation: glitterDrift 7s infinite ease-in-out reverse;
+  }
+  .gold-stardust-glow {
+    filter: drop-shadow(0 0 8px rgba(245, 208, 97, 0.65));
+  }
+  .aurora-glow {
+    box-shadow: 0 0 24px rgba(0, 220, 230, 0.25), 0 0 40px rgba(127, 0, 255, 0.2);
+  }
+  </style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-surface text-on-surface font-body-md text-body-md min-h-screen flex flex-col relative selection:bg-primary selection:text-on-primary">
+<!-- 1. Background WebGL Shader with Stardust & Celestial Twinkles -->
+<!-- STITCH_SHADER_START:ANIMATION_115 class="fixed inset-0 w-full h-full pointer-events-none -z-10" -->
+<div class="fixed inset-0 w-full h-full pointer-events-none -z-10" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_115" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_115');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+varying vec2 v_texCoord;
+
+// Simplex Noise and Hash Functions
+vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+vec2 mod289(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+vec3 permute(vec3 x) { return mod289(((x*34.0)+1.0)*x); }
+
+float snoise(vec2 v) {
+    const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+    vec2 i  = floor(v + dot(v, C.yy) );
+    vec2 x0 = v -   i + dot(i, C.xx);
+    vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+    vec4 x12 = x0.xyxy + C.xxzz;
+    x12.xy -= i1;
+    i = mod289(i);
+    vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 )) + i.x + vec3(0.0, i1.x, 1.0 ));
+    vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+    m = m*m ; m = m*m ;
+    vec3 x = 2.0 * fract(p * C.www) - 1.0;
+    vec3 h = abs(x) - 0.5;
+    vec3 ox = floor(x + 0.5);
+    vec3 a0 = x - ox;
+    m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
+    vec3 g;
+    g.x  = a0.x  * x0.x  + h.x  * x0.y;
+    g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+    return 130.0 * dot(m, g);
+}
+
+// 4-pointed Star Sparkle Function (Sim & Parıltı)
+float starSparkle(vec2 uv, vec2 center, float size, float flareIntensity, float timeOffset) {
+    vec2 d = abs(uv - center);
+    float pulse = sin(u_time * 2.5 + timeOffset) * 0.45 + 0.55;
+    float crossGlow = (0.0018 * size * pulse) / (d.x + 0.003) * (0.0018 * size * pulse) / (d.y + 0.003);
+    float core = smoothstep(0.035 * size * pulse, 0.0, length(uv - center));
+    return (core * 2.2 + crossGlow * flareIntensity);
+}
+
+void main() {
+    vec2 p = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / min(u_resolution.x, u_resolution.y);
+    vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+    float t = u_time * 0.25;
+
+    // Organic harmonic swirling cosmic nebula
+    float n1 = snoise(p * 2.2 + vec2(t * 0.35, -t * 0.25));
+    float n2 = snoise(p * 4.6 - vec2(t * 0.2, t * 0.4) + n1 * 0.55);
+    float n3 = snoise(p * 8.5 + vec2(-t * 0.15, t * 0.2) + n2 * 0.35);
+
+    float dist = length(p);
+
+    // Velvet Cosmos & Stardust Palette
+    vec3 colDeepSpace   = vec3(0.035, 0.025, 0.075); // #090613 derin kozmik gece
+    vec3 colMysticViolet = vec3(0.380, 0.120, 0.650); // #611fa6 kadife mor
+    vec3 colAuroraCyan   = vec3(0.000, 0.920, 0.980); // #00ebfa canlı neon camgöbeği
+    vec3 colGoldSparkle  = vec3(1.000, 0.880, 0.420); // #ffe06b 24K altın sim parıltısı
+    vec3 colDiamondWhite = vec3(0.960, 0.980, 1.000); // Elmas pırlanta beyazı
+
+    // Nebula fluid blending
+    float blendVal = clamp(n1 * 0.5 + n2 * 0.35 + n3 * 0.15 + (1.0 - dist * 1.3), 0.0, 1.0);
+    vec3 col = colDeepSpace;
+    col = mix(col, colMysticViolet, smoothstep(0.15, 0.65, blendVal) * 0.7);
+    col = mix(col, colAuroraCyan, smoothstep(0.55, 0.95, blendVal) * 0.65);
+
+    // Core harmonic aura flare
+    float coreLight = exp(-dist * 3.4) * 0.75;
+    col += colAuroraCyan * coreLight * 0.5;
+    col += colGoldSparkle * (coreLight * coreLight * 0.9);
+
+    // 1. Mikro-Sim / Pırlanta Tozu (Fine Glitter Stardust)
+    float microStars1 = pow(max(0.0, snoise(p * 32.0 + t * 0.8)), 8.0) * 2.2;
+    float microStars2 = pow(max(0.0, snoise(p * 55.0 - t * 1.1 + vec2(4.2, 8.1))), 9.0) * 3.0;
+    col += mix(colGoldSparkle, colDiamondWhite, 0.6) * (microStars1 + microStars2);
+
+    // 2. Belirgin 4-Köşeli Parıldayan Yıldızlar (Twinkling Cross Stars)
+    float stars = 0.0;
+    // Yıldız 1: Sol üst
+    stars += starSparkle(p, vec2(-0.35, 0.42), 1.2, 0.9, 0.0);
+    // Yıldız 2: Sağ üst
+    stars += starSparkle(p, vec2(0.38, 0.48), 1.0, 0.8, 1.8);
+    // Yıldız 3: Merkez üst niyet noktası
+    stars += starSparkle(p, vec2(0.0, 0.28), 1.5, 1.2, 3.2);
+    // Yıldız 4: Sol orta
+    stars += starSparkle(p, vec2(-0.42, -0.05), 0.9, 0.7, 4.5);
+    // Yıldız 5: Sağ alt
+    stars += starSparkle(p, vec2(0.32, -0.38), 1.3, 1.0, 2.4);
+    // Yıldız 6: Sol alt
+    stars += starSparkle(p, vec2(-0.28, -0.45), 1.1, 0.8, 5.1);
+
+    col += colGoldSparkle * stars * 0.85;
+    col += colDiamondWhite * stars * 0.65;
+
+    // Soft celestial vignette
+    col *= smoothstep(1.3, 0.35, dist);
+
+    gl_FragColor = vec4(col, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_115 -->
+<!-- Floating Ambient Stardust Particles Layer (CSS Foreground Glitter Overlays) -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<!-- Cross Star Sparkle 1 -->
+<svg class="absolute top-20 left-8 w-6 h-6 text-[#f5d061] animate-star-pulse gold-stardust-glow" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 0 L13.5 9.5 L23 12 L13.5 14.5 L12 24 L10.5 14.5 L1 12 L10.5 9.5 Z"></path>
+</svg>
+<!-- Cross Star Sparkle 2 -->
+<svg class="absolute top-44 right-6 w-5 h-5 text-white animate-star-pulse-delayed" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 0 L13.2 9.2 L22.4 12 L13.2 14.8 L12 24 L10.8 14.8 L1.6 12 L10.8 9.2 Z"></path>
+</svg>
+<!-- Cross Star Sparkle 3 -->
+<svg class="absolute top-[38%] left-4 w-4 h-4 text-[#ffe06b] animate-star-pulse-fast gold-stardust-glow" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 0 L13.5 9.5 L23 12 L13.5 14.5 L12 24 L10.5 14.5 L1 12 L10.5 9.5 Z"></path>
+</svg>
+<!-- Cross Star Sparkle 4 -->
+<svg class="absolute top-[62%] right-5 w-7 h-7 text-[#f5d061] animate-star-pulse" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 0 L13.8 9.2 L23 12 L13.8 14.8 L12 24 L10.2 14.8 L1 12 L10.2 9.2 Z"></path>
+</svg>
+<!-- Cross Star Sparkle 5 -->
+<svg class="absolute bottom-32 left-10 w-5 h-5 text-white animate-star-pulse-delayed" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 0 L13.2 9.2 L22.4 12 L13.2 14.8 L12 24 L10.8 14.8 L1.6 12 L10.8 9.2 Z"></path>
+</svg>
+<!-- Floating Gold Dust Particles -->
+<span class="absolute top-28 left-1/3 w-1.5 h-1.5 rounded-full bg-[#f5d061] shadow-[0_0_8px_#f5d061] animate-glitter"></span>
+<span class="absolute top-64 right-1/4 w-1 h-1 rounded-full bg-white shadow-[0_0_6px_#ffffff] animate-glitter-rev"></span>
+<span class="absolute top-[48%] left-12 w-2 h-2 rounded-full bg-[#f5d061]/80 shadow-[0_0_10px_#f5d061] animate-glitter"></span>
+<span class="absolute top-[75%] right-16 w-1.5 h-1.5 rounded-full bg-tertiary shadow-[0_0_8px_#00dce6] animate-glitter-rev"></span>
+</div>
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/75 backdrop-blur-xl shadow-[0_1px_16px_rgba(0,0,0,0.4),0_0_20px_rgba(245,208,97,0.08)] border-b border-[#f5d061]/15"><div class="h-16 px-gutter-sm flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs min-w-0 relative"><div class="relative"><img alt="Veira için lüks, mistik ve göksel gece estetiğinde uygulama logosu: Derin uzay laciverti (#080A16) zemin üzerinde, parıldayan 8 köşeli altın kutup yıldızı (North Star / Polaris), çevresinde nöral zihin ve 432Hz rezonansı simgeleyen ince altın oran yörünge halkaları ve mistik yıldız tozu ışıltıları. Üst segment kişisel gelişim ve vizyon mimarisi marka amblemi.. Brand logo. - Primary color: #6366f1
+- Font: playfairDisplay
+- Mode: dark
+- Roundness: rounded-md
+" class="h-8 w-auto object-contain filter drop-shadow-[0_0_8px_rgba(245,208,97,0.6)]" src="https://lh3.googleusercontent.com/aida/AEtjO1V_u3zjQG4GQCYZEuxj8M9xq2smxjNtVU9yaeojBWdYWVLuRQ6QLhBBKGUR9nsGmGDnjfPlWAjdX30tFLRfgtp3tOMkNiJvOANq7HWxIcbeDzgCAkxj0m5abeHhWL9yGzBy8eq-4FbyL2m0F-Ml5dURr5aAW6jsPit0Qf6aMaih-R-6pNyxi5ntF5jzb970VpnjlZ-y4_nYetB-pNZ8sWrSt9mC-Hh0MgE0cJXgyM9_"/><span class="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#f5d061] animate-ping"></span></div><div class="flex flex-col min-w-0"><span class="font-label-sm text-label-sm text-[#f5d061] tracking-widest uppercase truncate flex items-center gap-1 font-bold">Veira Cosmos Core <span class="text-[10px]">✨</span></span><span class="font-headline-sm text-headline-sm text-on-surface truncate leading-none">Cosmos</span></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><div class="flex items-center gap-1.5 px-space-xs py-1 rounded-full bg-surface-container-high/80 backdrop-blur-md shadow-[0_0_14px_rgba(0,220,230,0.3)] border border-tertiary/30"><span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse shadow-[0_0_6px_#00dce6]"></span><span class="font-label-sm text-label-sm text-tertiary font-bold tracking-wider">528Hz</span></div><div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-[#f5d061] p-[1.5px] shadow-[0_0_12px_rgba(245,208,97,0.4)]"><div class="w-full h-full rounded-full bg-surface-container flex items-center justify-center"><span class="material-symbols-outlined text-[#f5d061] text-[18px]">person</span></div></div></div></div></header>
+<main class="flex-1 flex flex-col relative w-full pt-16 pb-28 bg-transparent z-10"><div class="flex flex-col w-full relative overflow-hidden select-none">
+<!-- Ambient Cosmic Gradient Layer (Glassmorphism & Depth) -->
+<div class="absolute inset-0 bg-gradient-to-b from-surface/10 via-surface/30 to-surface/90 pointer-events-none -z-10"></div>
+<!-- Main Scrollable Flow -->
+<div class="relative z-10 px-gutter-sm flex flex-col gap-space-md pt-2 pb-8 max-w-md mx-auto w-full">
+<!-- 1. Üst Başlık & Kozmik Saat -->
+<section class="relative flex flex-col gap-2 rounded-lg bg-surface-container-low/75 backdrop-blur-2xl p-space-sm shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_20px_rgba(245,208,97,0.1)] border border-[#f5d061]/20 overflow-hidden">
+<!-- Micro 4-pointed gold sparkle corner decoration -->
+<svg class="absolute top-2 right-2 w-4 h-4 text-[#f5d061] animate-star-pulse gold-stardust-glow" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 0 L13.5 9.5 L23 12 L13.5 14.5 L12 24 L10.5 14.5 L1 12 L10.5 9.5 Z"></path>
+</svg>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary-container/40 text-secondary border border-secondary/30 shadow-[0_0_8px_rgba(221,183,255,0.4)]">
+<span class="material-symbols-outlined text-[16px]">bedtime</span>
+</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-[#f5d061] tracking-widest uppercase font-semibold flex items-center gap-1">Ay Fazı · Boğa <span class="w-1 h-1 rounded-full bg-[#f5d061] inline-block animate-ping"></span></span>
+<span class="font-body-sm text-body-sm text-on-surface/90 font-medium">Büyüyen Hilal (%38)</span>
+</div>
+</div>
+<!-- 528Hz Solfeggio Badge with Gold & Aurora Aura -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-container/30 backdrop-blur-md shadow-[0_0_16px_rgba(0,220,230,0.3)] border border-tertiary/40">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-[#f5d061]"></span>
+</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold tracking-wider">528Hz DNA Onarımı</span>
+</div>
+</div>
+<div class="mt-1 flex flex-col">
+<h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight flex items-center gap-1.5">
+  Selin, 16. Gün Kozmik Uyumdasın 
+  <span class="inline-block text-[#f5d061] filter drop-shadow-[0_0_6px_#f5d061] text-lg animate-pulse">✨</span>
+</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span>Kronosferik Ritim: 03:42:19</span>
+<span class="inline-block w-1 h-1 rounded-full bg-[#f5d061]"></span>
+<span class="text-[#f5d061] font-medium">İsviçre Haute Horoloji Senkronizasyonu</span>
+</p>
+</div>
+</section>
+<!-- 2. MERKEZDEKİ CANLI 'NÖRAL REZONANS KÜRESİ' (Altın Yörüngeler, Yıldız Düğümleri & Stardust Halo) -->
+<section class="relative flex flex-col items-center justify-center py-5 px-2 rounded-xl bg-surface-container/70 backdrop-blur-3xl shadow-[0_16px_40px_-8px_rgba(0,0,0,0.8),0_0_40px_rgba(245,208,97,0.15),inset_0_0_30px_rgba(127,0,255,0.15)] border border-[#f5d061]/25 overflow-hidden">
+<!-- Shimmering background gold dust overlay on orb container -->
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(245,208,97,0.12)_0%,transparent_70%)] pointer-events-none"></div>
+<!-- Odak Niyeti Capsule with Gold Glow -->
+<div class="z-20 -mt-1 mb-2 px-4 py-1.5 rounded-full bg-surface-container-high/85 backdrop-blur-lg shadow-[0_0_24px_rgba(245,208,97,0.25)] border border-[#f5d061]/40 flex items-center gap-2">
+<svg class="w-3.5 h-3.5 text-[#f5d061] animate-star-pulse gold-stardust-glow" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 0 L13.5 9.5 L23 12 L13.5 14.5 L12 24 L10.5 14.5 L1 12 L10.5 9.5 Z"></path>
+</svg>
+<span class="font-label-sm text-label-sm text-[#f5d061] font-bold tracking-wide">"Como Gölü &amp; Sonsuz Yaratıcı Özgürlük"</span>
+<span class="material-symbols-outlined text-tertiary text-[14px]">auto_awesome</span>
+</div>
+<!-- Gyroscopic Interactive Resonator Orb Stage -->
+<div class="relative w-64 h-64 flex items-center justify-center cursor-pointer transition-transform duration-500 ease-out active:scale-95 group" id="neuralOrbTrigger">
+<!-- Layer 1: Outermost Gold Stardust Orbit Ring with 4-Pointed Star Nodes -->
+<svg class="absolute inset-0 w-full h-full animate-[orbitShimmer_28s_linear_infinite]" viewbox="0 0 260 260">
+<!-- Glowing Golden Orbit Track -->
+<circle class="text-[#f5d061]/45" cx="130" cy="130" fill="none" r="122" stroke="currentColor" stroke-dasharray="6 14" stroke-width="1.4"></circle>
+<circle class="text-[#ffe06b]/70" cx="130" cy="130" fill="none" r="114" stroke="currentColor" stroke-dasharray="2 10" stroke-width="0.9"></circle>
+<!-- Sacred Geometry Triangles -->
+<polygon class="text-[#f5d061]/30" fill="none" points="130,16 230,190 30,190" stroke="currentColor" stroke-width="1"></polygon>
+<polygon class="text-tertiary/30" fill="none" points="130,244 30,70 230,70" stroke="currentColor" stroke-width="0.8"></polygon>
+<!-- Star Nodes on Orbit (Gold Nodes) -->
+<circle class="filter drop-shadow-[0_0_8px_#f5d061]" cx="130" cy="8" fill="#f5d061" r="3.5"></circle>
+<circle class="filter drop-shadow-[0_0_6px_#ffe06b]" cx="230" cy="190" fill="#ffe06b" r="3"></circle>
+<circle class="filter drop-shadow-[0_0_6px_#00dce6]" cx="30" cy="190" fill="#00dce6" r="3"></circle>
+</svg>
+<!-- Layer 2: Counter-Rotating Telemetry Orbit with Gold & Aurora Radiance -->
+<svg class="absolute inset-0 w-full h-full animate-[orbitShimmerReverse_20s_linear_infinite]" viewbox="0 0 260 260">
+<!-- Zihin Berraklığı: Arc (Teal) -->
+<circle class="text-tertiary filter drop-shadow-[0_0_10px_rgba(0,220,230,0.8)]" cx="130" cy="130" fill="none" r="92" stroke="currentColor" stroke-dasharray="540" stroke-dashoffset="65" stroke-linecap="round" stroke-width="3.5"></circle>
+<!-- Eylem İvmesi: Golden Solar Arc (24K Gold) -->
+<circle class="text-[#f5d061] filter drop-shadow-[0_0_12px_rgba(245,208,97,0.9)]" cx="130" cy="130" fill="none" r="82" stroke="currentColor" stroke-dasharray="480" stroke-dashoffset="120" stroke-linecap="round" stroke-width="3"></circle>
+<!-- Ruhsal Denge: Arc (Mystic Purple) -->
+<circle class="text-primary-container filter drop-shadow-[0_0_8px_rgba(127,0,255,0.7)]" cx="130" cy="130" fill="none" r="72" stroke="currentColor" stroke-dasharray="420" stroke-dashoffset="25" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<!-- Ambient Shimmering Stardust Aura -->
+<div class="absolute w-40 h-40 rounded-full bg-gradient-to-tr from-primary via-tertiary-container to-[#f5d061] opacity-65 blur-2xl animate-pulse transition-all duration-700" id="orbAura"></div>
+<!-- Central Bioluminescent Fluid Core Sphere -->
+<div class="relative w-28 h-28 rounded-full bg-gradient-to-br from-surface-container-lowest via-primary-container to-[#6f00be] shadow-[0_0_40px_rgba(245,208,97,0.4),0_0_36px_rgba(127,0,255,0.7),inset_0_0_24px_rgba(245,208,97,0.5)] border border-[#f5d061]/50 flex flex-col items-center justify-center overflow-hidden">
+<!-- Refraction Highlight -->
+<div class="absolute -top-6 -left-6 w-20 h-20 bg-white/25 rounded-full blur-md"></div>
+<svg class="w-6 h-6 text-[#f5d061] animate-star-pulse filter drop-shadow-[0_0_10px_#f5d061]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 0 L13.5 9.5 L23 12 L13.5 14.5 L12 24 L10.5 14.5 L1 12 L10.5 9.5 Z"></path>
+</svg>
+<span class="font-headline-sm text-headline-sm text-white font-bold tracking-tighter mt-0.5 filter drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">432<span class="text-[#f5d061] text-xs font-semibold">Hz</span></span>
+<span class="font-label-sm text-label-sm text-[#f5d061] tracking-widest uppercase text-[9px] font-bold">Kozmik Rezonans</span>
+<!-- Touch ripple element for micro-interaction -->
+<div class="absolute inset-0 rounded-full bg-[#f5d061]/40 scale-0 opacity-0 pointer-events-none transition-transform duration-700 ease-out" id="pulseRipple"></div>
+</div>
+<!-- Floating 4-pointed Sparkle Nodes Orbiting Orb -->
+<div class="absolute top-3 right-8 animate-star-pulse gold-stardust-glow">
+<svg class="w-5 h-5 text-[#f5d061]" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0 L13.5 9.5 L23 12 L13.5 14.5 L12 24 L10.5 14.5 L1 12 L10.5 9.5 Z"></path></svg>
+</div>
+<div class="absolute bottom-5 left-8 animate-star-pulse-delayed">
+<svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0 L13.5 9.5 L23 12 L13.5 14.5 L12 24 L10.5 14.5 L1 12 L10.5 9.5 Z"></path></svg>
+</div>
+<div class="absolute top-1/2 left-2 animate-star-pulse-fast">
+<span class="w-2 h-2 rounded-full bg-tertiary block shadow-[0_0_10px_#00dce6]"></span>
+</div>
+</div>
+<!-- Telemetry Metric Badges (3 Temel Metrik) with Shimmer Accents -->
+<div class="grid grid-cols-3 gap-2 w-full mt-3">
+<div class="flex flex-col items-center p-2 rounded-lg bg-surface-container-high/70 backdrop-blur-md border border-tertiary/20 shadow-[0_0_12px_rgba(0,220,230,0.15)]">
+<div class="flex items-center gap-1 text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary shadow-[0_0_6px_#00dce6]"></span>
+<span class="font-headline-sm text-headline-sm leading-none font-bold">94%</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-[10px] mt-1 text-center font-medium">Zihin Berraklığı</span>
+</div>
+<div class="flex flex-col items-center p-2 rounded-lg bg-surface-container-high/70 backdrop-blur-md border border-[#f5d061]/30 shadow-[0_0_14px_rgba(245,208,97,0.2)]">
+<div class="flex items-center gap-1 text-[#f5d061]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#f5d061] shadow-[0_0_6px_#f5d061]"></span>
+<span class="font-headline-sm text-headline-sm leading-none font-bold">82%</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-[10px] mt-1 text-center font-semibold">Eylem İvmesi</span>
+</div>
+<div class="flex flex-col items-center p-2 rounded-lg bg-surface-container-high/70 backdrop-blur-md border border-primary/20 shadow-[0_0_12px_rgba(213,186,255,0.15)]">
+<div class="flex items-center gap-1 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_6px_#d5baff]"></span>
+<span class="font-headline-sm text-headline-sm leading-none font-bold">98%</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-[10px] mt-1 text-center font-medium">Ruhsal Denge</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-[#f5d061] mt-2.5 text-center flex items-center justify-center gap-1.5 font-semibold">
+<span class="material-symbols-outlined text-[15px] animate-bounce">touch_app</span>
+<span>Küreye dokun ve niyetini evrene fısılda</span>
+<svg class="w-3.5 h-3.5 text-[#f5d061] animate-star-pulse" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0 L13.5 9.5 L23 12 L13.5 14.5 L12 24 L10.5 14.5 L1 12 L10.5 9.5 Z"></path></svg>
+</p>
+</section>
+<!-- 3. HAREKETLİ 15 DAKİKALIK TEK MİKRO-EYLEM KAPSÜLÜ (Altın Yıldız ve Stardust Işıltıları) -->
+<section class="relative rounded-xl overflow-hidden bg-surface-container-low/85 backdrop-blur-2xl shadow-[0_20px_48px_-12px_rgba(0,0,0,0.85),0_0_28px_rgba(245,208,97,0.15)] border border-[#f5d061]/25">
+<!-- Floating Corner Star Sparkle -->
+<div class="absolute top-2 right-2 z-20 animate-star-pulse gold-stardust-glow pointer-events-none">
+<svg class="w-5 h-5 text-[#f5d061]" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0 L13.5 9.5 L23 12 L13.5 14.5 L12 24 L10.5 14.5 L1 12 L10.5 9.5 Z"></path></svg>
+</div>
+<!-- Como Lake Villa Ken-Burns Dynamic Visual Backdrop -->
+<div class="relative w-full h-44 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-10000 ease-out transform scale-105 hover:scale-115" data-alt="Ultra-luxurious Italian Lake Como grand neoclassical villa with stone colonnades and infinity terrace overlooking deep crystalline twilight blue waters, alpine mist, regal violet and warm amber evening ambient lights, haute couture tranquility, editorial photography" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuArToWQgi097SHL57WdX0T4PF-_4CwFvzUXWSJzv5emviOLFcw11qQo06-5Bcdx_pIT0AO-ABdYrYd463cqLNGgl2agRK2ahORN5nTJhcsy4_cIMnVqVNNk8z-ClxkHY6Dd6hUl0vdKAiiPvWVItG2XkJxkoTjOG_p1nyc2LTL5esU-aOBuzA3Zig0m8NIi4Eo1V2I5l_59oBvSaOFuWKF7_sQa6gMz1qPZRuXYBJ0')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-surface-container-low/60 to-transparent"></div>
+<!-- Live Countdown Pill Indicator with Gold Border -->
+<div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-surface-container-lowest/85 backdrop-blur-md flex items-center gap-1.5 shadow-[0_4px_16px_rgba(0,0,0,0.6)] border border-[#f5d061]/30">
+<span class="material-symbols-outlined text-[#f5d061] text-[16px] animate-spin" style="animation-duration: 9s;">hourglass_top</span>
+<span class="font-label-sm text-label-sm text-on-surface font-bold tracking-wider">KALAN: <span class="text-[#f5d061]" id="countdownTimer">14:58</span></span>
+</div>
+<div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-gradient-to-r from-primary-container to-[#6f00be] border border-[#f5d061]/40 backdrop-blur-md text-[#ffe06b] font-label-sm text-label-sm font-bold uppercase tracking-wider shadow-[0_0_12px_rgba(245,208,97,0.3)] flex items-center gap-1">
+<span>✨ Mikro-Eylem</span>
+</div>
+</div>
+<!-- Action Content Pod -->
+<div class="p-space-md -mt-4 relative z-10 flex flex-col gap-3">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-[#f5d061] uppercase tracking-widest font-bold flex items-center gap-1">
+<span>Visus-Action Köprüsü</span>
+<span class="text-xs">✦</span>
+</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-tight mt-0.5">
+  İtalyanca çalışma portföyünden 1 vize yazısını incele
+</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">
+  Bugünkü tek ve berrak adımın. Zihnini Como villasının ferah terasında hayal ederek satırları oku.
+</p>
+</div>
+<!-- Interactive Complete Button with 24K Gold Sparkle Gradient & Aura Glow -->
+<button class="w-full py-3.5 px-6 rounded-full bg-gradient-to-r from-primary-container via-[#6f00be] to-[#b38600] hover:brightness-110 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_28px_rgba(245,208,97,0.4),0_0_16px_rgba(127,0,255,0.4)] border border-[#f5d061]/60 group relative overflow-hidden" id="completeActionBtn">
+<div class="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent)] -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+<svg class="w-5 h-5 text-[#f5d061] group-hover:rotate-45 transition-transform" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 0 L13.5 9.5 L23 12 L13.5 14.5 L12 24 L10.5 14.5 L1 12 L10.5 9.5 Z"></path>
+</svg>
+<span class="font-label-lg text-label-lg text-white font-bold tracking-wide flex items-center gap-1.5" id="btnText">
+  Tamamlandı Olarak Mühürle
+</span>
+<span class="material-symbols-outlined text-[#f5d061] text-[18px]" id="btnIcon">auto_awesome</span>
+</button>
+</div>
+<!-- Celebration Overlay Canvas (Triggers on completion) -->
+<div class="absolute inset-0 pointer-events-none flex flex-col items-center justify-center bg-surface-container-lowest/90 backdrop-blur-xl opacity-0 transition-opacity duration-500 z-30" id="confettiOverlay">
+<svg class="w-16 h-16 text-[#f5d061] animate-star-pulse filter drop-shadow-[0_0_20px_#f5d061]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 0 L13.5 9.5 L23 12 L13.5 14.5 L12 24 L10.5 14.5 L1 12 L10.5 9.5 Z"></path>
+</svg>
+<span class="font-headline-md text-headline-md text-white font-bold mt-2 filter drop-shadow-[0_0_10px_#f5d061]">Kozmik İvme Mühürlendi</span>
+<span class="font-body-sm text-body-sm text-[#f5d061] mt-1 font-semibold flex items-center gap-1">✨ +100 Frekans Rezonansı Eklendi ✨</span>
+</div>
+</section>
+<!-- 4. ÇİFT KANALLI 432Hz AKUSTİK FREKANS AKORT BARI (Altın & Camgöbeği Parıltılı Mikser) -->
+<section class="rounded-xl p-space-md bg-surface-container/75 backdrop-blur-2xl shadow-[0_12px_32px_rgba(0,0,0,0.6),0_0_24px_rgba(245,208,97,0.12)] border border-[#f5d061]/20 flex flex-col gap-3 relative overflow-hidden">
+<!-- Corner Cross Star Accent -->
+<svg class="absolute top-2.5 right-2.5 w-4 h-4 text-[#f5d061] animate-star-pulse-fast gold-stardust-glow" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 0 L13.5 9.5 L23 12 L13.5 14.5 L12 24 L10.5 14.5 L1 12 L10.5 9.5 Z"></path>
+</svg>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#f5d061] text-[22px] filter drop-shadow-[0_0_6px_#f5d061]">graphic_eq</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm leading-tight text-on-surface flex items-center gap-1.5">
+  Akustik Frekans Akordu <span class="text-xs text-[#f5d061]">✦</span>
+</span>
+<span class="font-label-sm text-label-sm text-tertiary">Çift Kanal Solfeggio Mikseri</span>
+</div>
+</div>
+<!-- Mini Equalizer Waves Animating with Gold Accents -->
+<div class="flex items-end gap-1 h-6 px-2.5 py-1 rounded-full bg-surface-container-lowest/80 border border-[#f5d061]/25">
+<span class="w-1 bg-[#f5d061] rounded-full animate-[pulse_1.1s_ease-in-out_infinite] h-5 shadow-[0_0_6px_#f5d061]"></span>
+<span class="w-1 bg-secondary rounded-full animate-[pulse_0.8s_ease-in-out_infinite] h-3"></span>
+<span class="w-1 bg-tertiary rounded-full animate-[pulse_1.4s_ease-in-out_infinite] h-6 shadow-[0_0_6px_#00dce6]"></span>
+<span class="w-1 bg-[#ffe06b] rounded-full animate-[pulse_0.9s_ease-in-out_infinite] h-4"></span>
+<span class="w-1 bg-white rounded-full animate-[pulse_1.2s_ease-in-out_infinite] h-2"></span>
+</div>
+</div>
+<!-- Channel Sliders & Mixer Pods -->
+<div class="grid grid-cols-2 gap-2 mt-1">
+<!-- Track 1: 432Hz Derin Delta -->
+<div class="p-3 rounded-lg bg-surface-container-high/70 border border-[#f5d061]/20 flex flex-col gap-2 relative overflow-hidden group">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">432Hz Derin Delta</span>
+<button class="w-6 h-6 rounded-full bg-gradient-to-tr from-[#6f00be] to-[#b38600] flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-transform shadow-[0_0_10px_rgba(245,208,97,0.5)]">
+<span class="material-symbols-outlined text-[14px]">volume_up</span>
+</button>
+</div>
+<!-- Tactile Visual Bar with Gold Shimmer -->
+<div class="w-full bg-surface-container-lowest h-2 rounded-full overflow-hidden flex">
+<div class="bg-gradient-to-r from-primary via-[#f5d061] to-[#ffe06b] h-full w-[80%] rounded-full shadow-[0_0_10px_#f5d061]"></div>
+</div>
+<span class="font-label-sm text-label-sm text-outline text-[10px]">Sinir Sistemi Sakinliği</span>
+</div>
+<!-- Track 2: Gece Yağmuru -->
+<div class="p-3 rounded-lg bg-surface-container-high/70 border border-tertiary/20 flex flex-col gap-2 relative overflow-hidden group">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Gece Yağmuru</span>
+<button class="w-6 h-6 rounded-full bg-tertiary-container flex items-center justify-center text-on-tertiary-container hover:scale-110 active:scale-95 transition-transform shadow-[0_0_10px_rgba(0,220,230,0.5)]">
+<span class="material-symbols-outlined text-[14px]">water_drop</span>
+</button>
+</div>
+<!-- Tactile Visual Bar -->
+<div class="w-full bg-surface-container-lowest h-2 rounded-full overflow-hidden flex">
+<div class="bg-gradient-to-r from-tertiary-container to-tertiary h-full w-[65%] rounded-full shadow-[0_0_10px_#00dce6]"></div>
+</div>
+<span class="font-label-sm text-label-sm text-outline text-[10px]">Teta Dalga Rezonansı</span>
+</div>
+</div>
+<!-- Quick Listening Mode Pill Button -->
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1.5 font-medium">
+<span class="material-symbols-outlined text-[#f5d061] text-[16px]">headphones</span> 
+Binaural 3D Ses Sahnesi Açık
+</span>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-highest/90 hover:bg-surface-bright text-[#f5d061] font-label-sm text-label-sm border border-[#f5d061]/35 shadow-[0_0_10px_rgba(245,208,97,0.2)] active:scale-95 transition-all flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px]">tune</span> Frekans Değiştir
+</button>
+</div>
+</section>
+<!-- 5. TEZAHÜR SEKANSLARI (YATAY VİZYON KARTLARI) -->
+<section class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-1.5">
+<svg class="w-4 h-4 text-[#f5d061] animate-star-pulse gold-stardust-glow" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 0 L13.5 9.5 L23 12 L13.5 14.5 L12 24 L10.5 14.5 L1 12 L10.5 9.5 Z"></path>
+</svg>
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium">Tezahür Sekansları</span>
+</div>
+<span class="font-label-sm text-label-sm text-[#f5d061] hover:text-white transition-colors cursor-pointer font-bold flex items-center gap-0.5">2027 Projeksiyonu ›</span>
+</div>
+<!-- Horizontal Carousel Slider -->
+<div class="flex gap-3 overflow-x-auto pb-2 scrollbar-none snap-x snap-mandatory -mx-gutter-sm px-gutter-sm">
+<!-- Vision Card 1: Como Villa & Atölye -->
+<div class="snap-center shrink-0 w-64 rounded-xl overflow-hidden bg-surface-container-low/85 backdrop-blur-xl shadow-[0_12px_28px_rgba(0,0,0,0.6)] border border-[#f5d061]/25 flex flex-col group">
+<div class="relative h-32 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Cinematic wide shot of an elegant minimalist artist studio overlooking Lake Como, huge glass walls, velvet cushions, golden morning sunlight reflecting on water, modern high-end architectural aesthetics" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC06KAOkaQmzt7DTQSwnF5_2SOpQAC7aGb2S15PHu1rn5nuBNIN-FsijLqoGIqK-uoPdEOdtcpeYdfvcigW2W6pKqFELfOOJjIncMb3KzFGCkC4fvtwP7G6nZQAXgej4eUFc7kRxgQoJyUKcPpmcsqdpgu846oQ67921_YoKpW-aadhm80M6H3oczRpFxeM5LyLxGKotOvDybEI6q8Nu_4JdOnL95-v_9tTro-nal8')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-black/20"></div>
+<span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-full bg-surface-container-lowest/85 text-[#f5d061] font-label-sm text-label-sm uppercase tracking-wider backdrop-blur-md border border-[#f5d061]/30 font-bold flex items-center gap-1">
+<span class="text-[10px]">✨</span> Mekan Vizyonu
+</span>
+</div>
+<div class="p-3 flex flex-col">
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold">Como Göl Evi &amp; Atölye</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1 mt-0.5">Yaratıcı akış ve mutlak sükûnet mabedi.</p>
+<div class="mt-2.5 flex items-center justify-between pt-2">
+<span class="font-label-sm text-label-sm text-[#f5d061] font-bold">Uyum: %97</span>
+<span class="material-symbols-outlined text-[#f5d061] text-[16px]">north_east</span>
+</div>
+</div>
+</div>
+<!-- Vision Card 2: Haute Horology & Girişim -->
+<div class="snap-center shrink-0 w-64 rounded-xl overflow-hidden bg-surface-container-low/85 backdrop-blur-xl shadow-[0_12px_28px_rgba(0,0,0,0.6)] border border-[#f5d061]/25 flex flex-col group">
+<div class="relative h-32 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Swiss haute horology atelier workshop bench, precision tourbillon movement under warm spotlight, obsidian velvet displays, micro-mechanics luxury timepieces crafted with supreme mastery" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDN3zz1-IC8cg4rMeMNXb-vYrriDOoQqFHk2FlzKyGl_lrFgR8acAOJw5Vbrb43tuCySlCIVd72K7vPyKq_OAx1TfdCECmTqFEkSyZk0n4mkCPaW-tXkTmES4I56VDaiPVcWtl-2kayaemrIIYXmAfDAOyEuDMaRtHmmrzbTmXZnQp-LAaoPE0DY9WwQJJbCnfsqoroCTOL4pUP8n07MqtRwN-Gp2u-hNxnPvE5CGY')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-black/20"></div>
+<span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-full bg-surface-container-lowest/85 text-secondary-fixed font-label-sm text-label-sm uppercase tracking-wider backdrop-blur-md border border-secondary-fixed/30 font-bold flex items-center gap-1">
+<span class="text-[10px]">✨</span> Kariyer &amp; İtibar
+</span>
+</div>
+<div class="p-3 flex flex-col">
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold">Cenevre Küresel Vakfı</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1 mt-0.5">Özgür dijital sermaye mimarisi.</p>
+<div class="mt-2.5 flex items-center justify-between pt-2">
+<span class="font-label-sm text-label-sm text-[#f5d061] font-bold">Uyum: %89</span>
+<span class="material-symbols-outlined text-[#f5d061] text-[16px]">north_east</span>
+</div>
+</div>
+</div>
+<!-- Vision Card 3: Zihinsel Dinginlik -->
+<div class="snap-center shrink-0 w-64 rounded-xl overflow-hidden bg-surface-container-low/85 backdrop-blur-xl shadow-[0_12px_28px_rgba(0,0,0,0.6)] border border-[#f5d061]/25 flex flex-col group">
+<div class="relative h-32 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A tranquil luxury retreat in St. Moritz surrounded by snow-capped mountains, outdoor steaming thermal infinity bath, starry night sky with gentle purple aurora glow, ultra-quiet sanctuary" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBzLB2qoxmvGApf1RbH-OKqQh3DTQs9AVA5zIytHB_LR41X9sljFABlp-kNczjapeJRvwnXq0EpLG2HsR5u_NEOg-53WEagQL7sGNFPR2gOsL-ujoUKdzb82Q_8_4NIf_aW5Vv7-3wlQesPTZOfZP62Qz4rFD_X8XbFZtkQwAJHbkiWbhF--g9yVty1k-_zyyMc39X-ViMDkriyhmYNdSTGHl4-InmoV2rqZ-M5lAM')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-black/20"></div>
+<span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-full bg-surface-container-lowest/85 text-primary font-label-sm text-label-sm uppercase tracking-wider backdrop-blur-md border border-primary/30 font-bold flex items-center gap-1">
+<span class="text-[10px]">✨</span> Bütünsel Birlik
+</span>
+</div>
+<div class="p-3 flex flex-col">
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold">Engin İçsel Huzur</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1 mt-0.5">Düşüncelerden arınmış berrak varoluş.</p>
+<div class="mt-2.5 flex items-center justify-between pt-2">
+<span class="font-label-sm text-label-sm text-[#f5d061] font-bold">Uyum: %95</span>
+<span class="material-symbols-outlined text-[#f5d061] text-[16px]">north_east</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<script>
+  // Interactive Living Orb Logic (Haptic vibration & breathing pulse expansion)
+  const orbTrigger = document.getElementById('neuralOrbTrigger');
+  const orbAura = document.getElementById('orbAura');
+  const pulseRipple = document.getElementById('pulseRipple');
+
+  if (orbTrigger && orbAura && pulseRipple) {
+    const triggerResonance = () => {
+      // Pulse animation trigger
+      orbAura.classList.remove('opacity-65', 'blur-2xl');
+      orbAura.classList.add('opacity-100', 'blur-3xl', 'scale-125');
+      
+      pulseRipple.classList.remove('scale-0', 'opacity-0');
+      pulseRipple.classList.add('scale-150', 'opacity-80');
+
+      if (navigator.vibrate) {
+        navigator.vibrate([25, 45, 25]);
+      }
+
+      setTimeout(() => {
+        orbAura.classList.add('opacity-65', 'blur-2xl');
+        orbAura.classList.remove('opacity-100', 'blur-3xl', 'scale-125');
+        
+        pulseRipple.classList.add('scale-0', 'opacity-0');
+        pulseRipple.classList.remove('scale-150', 'opacity-80');
+      }, 700);
+    };
+
+    orbTrigger.addEventListener('click', triggerResonance);
+  }
+
+  // 15-Minute Countdown Micro-interaction
+  const timerElem = document.getElementById('countdownTimer');
+  let secondsRemaining = 14 * 60 + 58;
+
+  setInterval(() => {
+    if (secondsRemaining > 0) {
+      secondsRemaining--;
+      const mins = Math.floor(secondsRemaining / 60);
+      const secs = secondsRemaining % 60;
+      if (timerElem) {
+        timerElem.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      }
+    }
+  }, 1000);
+
+  // Micro-Action Completion & Cosmic Seal Celebration
+  const completeBtn = document.getElementById('completeActionBtn');
+  const confettiOverlay = document.getElementById('confettiOverlay');
+  const btnText = document.getElementById('btnText');
+  const btnIcon = document.getElementById('btnIcon');
+
+  if (completeBtn && confettiOverlay) {
+    completeBtn.addEventListener('click', () => {
+      confettiOverlay.classList.remove('opacity-0', 'pointer-events-none');
+      confettiOverlay.classList.add('opacity-100');
+
+      if (btnText && btnIcon) {
+        btnText.textContent = 'Mühürlendi ✓';
+        btnIcon.textContent = 'task_alt';
+      }
+
+      completeBtn.classList.remove('from-primary-container', 'via-[#6f00be]', 'to-[#b38600]');
+      completeBtn.classList.add('from-tertiary-container', 'to-[#f5d061]');
+
+      if (navigator.vibrate) {
+        navigator.vibrate([60, 40, 120]);
+      }
+
+      setTimeout(() => {
+        confettiOverlay.classList.add('opacity-0', 'pointer-events-none');
+        confettiOverlay.classList.remove('opacity-100');
+      }, 2400);
+    });
+  }
+</script></main>
+<!-- Bottom Navigation Bar with Gold Stardust Edge & Active Sparkle Glow -->
+<nav class="fixed bottom-0 w-full z-50 pb-safe pointer-events-none" data-active-classes="text-[#f5d061] font-bold"><div class="px-gutter-sm pb-space-sm pointer-events-auto"><div class="h-16 bg-surface-container/90 backdrop-blur-2xl rounded-full shadow-[0_16px_40px_-8px_rgba(0,0,0,0.85),0_0_24px_rgba(245,208,97,0.22)] border border-[#f5d061]/30 px-space-xs flex items-center justify-around relative overflow-hidden">
+<!-- Subtle Stardust Sparkle along Bottom Bar -->
+<div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#f5d061]/60 to-transparent"></div>
+<a aria-current="page" class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 transition-all text-[#f5d061] font-bold relative" data-path="cosmos" href="#">
+<svg class="w-5 h-5 text-[#f5d061] animate-star-pulse filter drop-shadow-[0_0_8px_#f5d061]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 0 L13.5 9.5 L23 12 L13.5 14.5 L12 24 L10.5 14.5 L1 12 L10.5 9.5 Z"></path>
+</svg>
+<span class="font-label-sm text-label-sm leading-tight mt-0.5 text-[#f5d061]">Cosmos</span>
+</a>
+<a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 text-on-surface-variant transition-all hover:text-[#f5d061]" data-path="vizyon" href="#">
+<span class="material-symbols-outlined text-[22px]">visibility</span>
+<span class="font-label-sm text-label-sm leading-tight mt-0.5">Vizyon</span>
+</a>
+<a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 text-on-surface-variant transition-all hover:text-[#f5d061]" data-path="432hz" href="#">
+<span class="material-symbols-outlined text-[22px]">graphic_eq</span>
+<span class="font-label-sm text-label-sm leading-tight mt-0.5">432Hz</span>
+</a>
+<a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 text-on-surface-variant transition-all hover:text-[#f5d061]" data-path="hedefler" href="#">
+<span class="material-symbols-outlined text-[22px]">adjust</span>
+<span class="font-label-sm text-label-sm leading-tight mt-0.5">Hedefler</span>
+</a>
+<a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 text-on-surface-variant transition-all hover:text-[#f5d061]" data-path="ayarlar" href="#">
+<span class="material-symbols-outlined text-[22px]">tune</span>
+<span class="font-label-sm text-label-sm leading-tight mt-0.5">Ayarlar</span>
+</a>
+</div></div></nav></body></html>
